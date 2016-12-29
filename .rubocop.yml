@@ -18,6 +18,9 @@ Style/ExtraSpacing:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
+Style/Lambda:
+  EnforcedStyle: literal
+
 Performance/Casecmp:
   Enabled: false
 
