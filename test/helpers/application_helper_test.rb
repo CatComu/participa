@@ -67,7 +67,7 @@ class ApplicationHelperTest < ActionView::TestCase
 1
   test "should steps_nav work" do 
     result = steps_nav(1, ["primero", "segundo", "tercero"])
-    expected = "<nav class=\"steps3\">\n  <ul>\n    <li class=active>\n      <span class=\"block\">\n        <span class=\"tab-number\">1)</span>\n        <span class=\"tab-text\">[&quot;primero&quot;, &quot;segundo&quot;, &quot;tercero&quot;]</span>\n      </span>\n    </li>\n    <li >\n      <span class=\"block\">\n        <span class=\"tab-number\">2)</span>\n        <span class=\"tab-text\"></span>\n      </span>\n    </li>\n    <li >\n      <span class=\"block\">\n        <span class=\"tab-number\">3)</span>\n        <span class=\"tab-text\"></span>\n      </span>\n    </li>\n  </ul>\n</nav>\n\n<h3>\n  <span>[&quot;primero&quot;, &quot;segundo&quot;, &quot;tercero&quot;]</span>\n</h3>\n"
+    expected = "<nav class=\"steps3\">\n  <ul>\n    <li class=active>\n      <span class=\"block\">\n        <span class=\"tab-number\">1</span>\n        <span class=\"tab-text\">[&quot;primero&quot;, &quot;segundo&quot;, &quot;tercero&quot;]</span>\n      </span>\n    </li>\n    <li >\n      <span class=\"block\">\n        <span class=\"tab-number\">2</span>\n        <span class=\"tab-text\"></span>\n      </span>\n    </li>\n    <li >\n      <span class=\"block\">\n        <span class=\"tab-number\">3</span>\n        <span class=\"tab-text\"></span>\n      </span>\n    </li>\n  </ul>\n</nav>\n\n<h3>\n  <span>[&quot;primero&quot;, &quot;segundo&quot;, &quot;tercero&quot;]</span>\n</h3>\n"
     assert_equal expected, result
   end
 
