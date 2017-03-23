@@ -6,7 +6,6 @@ class ApplicationIntegrationTest < ActionDispatch::IntegrationTest
 
   setup do
     @user = create(:user)
-    @user_foreign = create(:user, :foreigner)
   end
 
   test "sets locale from default_url_options by default" do
