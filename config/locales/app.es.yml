@@ -367,7 +367,6 @@ es:
       close_message: "Ha llegado la fecha límite para votar. La votación está cerrada."
     other_locales: "Otros idiomas"
     home_address: "Domicilio"
-    unauthorized: "No tienes permisos para acceder a esa sección"
     banned: "Gracias, %{full_name}. Lamentamos decirte que para poder participar debes enviarnos además una fotocopia de tu documento de identidad a la dirección LOPD@podemos.info o, si te viene mejor, pasarte por cualquier Delegación del Partido. Si quieres más información puedes consultarnos también en organos.autonomicos@podemos.info. Pero lo más eficaz para poder participar de forma inmediata es escanear tu documento y mandárnoslos al primer correo. Muchas gracias y perdona las molestias."
     devise:
       mailer:
@@ -952,6 +951,8 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <a href='http://unpaisencomu.cat/es/contact'>aquí</a>.
         </p>
         "
+  unauthorized:
+    default: "No tienes permisos para acceder a esa sección"
   verification:
     from: de
     from_with_article: del

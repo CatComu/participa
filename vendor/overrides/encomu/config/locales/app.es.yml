@@ -36,12 +36,9 @@ es:
     hints:
       user:
         wants_newsletter: "Desmarca esta casilla si no quieres recibir nuestra newsletter. Solo enviamos información importante."
-  app:
-    unauthorized: "No tienes permisos para acceder a esa sección"
   bec:
     other_locales: "Otros idiomas"
     home_address: "Domicilio"
-    unauthorized: "No tienes permisos para acceder a esa sección"
     devise:
       mailer:
         hello: "¡Hola %{user}!"
