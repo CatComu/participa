@@ -39,7 +39,7 @@ end
 
 
 ActiveAdmin.register Collaboration do
-if Rails.application.secrets.features["collaborations"]
+  if Rails.application.secrets.features["collaborations"]
     menu :parent => "Colaboraciones"
   else
     menu false
