@@ -52,8 +52,8 @@ class ApplicationIntegrationTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  if available_features["verification_sms"]
-    test "starts sms verification for unconfirmed users, allows access to profile" do
+  test "starts sms verification for unconfirmed users, allows access to profile" do
+    with_verifications(presential: false, sms: true) do
       login @user
       assert_equal sms_validator_step1_path(locale: 'es'), current_path
       assert_text "Por seguridad, debes confirmar tu teléfono."
