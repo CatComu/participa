@@ -14,11 +14,12 @@ es:
     hints:
       locked: "No puedes modificar este campo"
       password: ""
-      current_password: "Por seguridad, debes introducir tu contraseña actual para hacer cambios. Haz click %{link} si no la recuerdas. "
-      labels:
+      current_password: "Introduce tu contraseña para validar los cambios "
+    labels:
       new_password: "Contraseña nueva"
       new_password_confirmation: "Confirmar contraseña nueva"
     links:
+      home: "Inicio"
       sign_in: "Iniciar sesión"
       sign_in_with: "Iniciar sesión con %{provider}"
       sign_up: "Inscribirse"
@@ -29,12 +30,14 @@ es:
       confirmation_instructions: "¿No has recibido las instrucciones de confirmación?"
       unlock_instructions: "¿No has recibido las instrucciones de desbloqueo?"
       here: "aquí"
+      email: "Email o Documento (DNI / NIE / Pasaporte)"
+      passw: "Contraseña"
     messages:
       cancel_account_confirmation: "¿Estás seguro?"
       waiting_confirmation: "Actualmente esperando instrucciones para %{email}"
     titles:
       sign_in: "Iniciar sesión"
-      sign_up: "Formulario de inscripción en Podemos partido político CIF G86976941"
+      sign_up: "Inscripción a Un País en Comú"
       cancel_account: "Cancelar mi cuenta"
       forgot_password: "¿Has olvidado tu contraseña?"
       change_password: "Cambiar tu contraseña"
