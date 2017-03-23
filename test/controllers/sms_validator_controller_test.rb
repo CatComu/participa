@@ -5,7 +5,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
   around do |&block|
     @user = create(:user, :not_confirmed_by_sms)
 
-    with_verifications(sms: true) { super(&block) }
+    with_verifications(sms: true, presential: false) { super(&block) }
   end
 
   test "redirects to login page when anonymous" do

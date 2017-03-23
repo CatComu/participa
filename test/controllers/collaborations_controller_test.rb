@@ -1,10 +1,11 @@
 require 'test_helper'
 
 class CollaborationsControllerTest < ActionController::TestCase
-  
-  setup do
-    @user = create(:user, :confirmed_by_sms)
+  around do |&block|
+    @user = create(:user)
     @collaboration = create(:collaboration, user: @user)
+
+    with_verifications(sms: false, presential: false) { super(&block) }
   end
 
   test "should authenticate user" do
