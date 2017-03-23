@@ -44,17 +44,16 @@ class Ability
       can [:show, :update], User, id: user.id
       can :show, Notice
 
-      if Rails.application.secrets.features["verification_presencial"]
+      if Features.presential_verifications?
         can [:step1, :step2, :step3, :confirm, :search, :result_ok, :result_ko], :verification if user.verifying_presentially?
         can :show, :verification
       end
 
-      if Rails.application.secrets.features["verification_sms"]
+      if Features.online_verifications?
         can [:step1, :step2, :step3, :phone, :captcha, :valid], :sms_validator
       end
 
-      if Rails.application.secrets.features["verification_presencial"] ||
-         Rails.application.secrets.features["verification_sms"]
+      if Features.verifications?
         can [:create, :create_token, :check], :vote if user.is_verified?
       end
 

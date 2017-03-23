@@ -52,7 +52,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def new
-    if Rails.application.secrets.features["allow_inscription"]
+    if Features.inscriptions?
       super do |user|
         user.assign_attributes(country: "ES", catalonia_resident: "1")
       end
@@ -65,7 +65,7 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     if resource.valid_with_captcha?
       super do
-        if Rails.application.secrets.features["elections"]
+        if Features.elections?
           # If the user already had a location but deleted itself, he should have
           # his previous location
           #

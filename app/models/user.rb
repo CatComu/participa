@@ -639,13 +639,13 @@ class User < ActiveRecord::Base
   end
 
   def is_verified_online?
-    return false unless Rails.application.secrets.features["verification_sms"]
+    return false unless Features.online_verifications?
 
     self.confirmed_by_sms?
   end
 
   def is_verified_presentially?
-    return false unless Rails.application.secrets.features["verification_presencial"]
+    return false unless Features.presential_verifications?
 
     self.verified_by_id?
   end

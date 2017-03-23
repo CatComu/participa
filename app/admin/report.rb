@@ -1,7 +1,3 @@
-def use_resque
-  return Rails.application.secrets.features["use_resque"]
-end
-
 ActiveAdmin.register Report do
   menu :parent => "Users"
   permit_params  :title, :query, :main_group, :groups, :version_at
@@ -71,7 +67,7 @@ ActiveAdmin.register Report do
   end
 
   member_action :run do
-    if use_resque
+    if Features.background_jobs?
       Resque.enqueue(PodemosReportWorker, params[:id])
     else
       PodemosReportWorker.perform params[:id]

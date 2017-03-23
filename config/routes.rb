@@ -117,7 +117,7 @@ Rails.application.routes.draw do
       end
     end
     
-    if Rails.application.secrets.features["verification_presencial"]
+    if Features.presential_verifications?
       scope '/verificadores' do 
         get '/', to: 'verification#step1', as: :verification_step1
         get '/nueva', to: 'verification#step2', as: :verification_step2

@@ -1,6 +1,6 @@
 require "test_helper"
 
-if available_features["proposals"]
+if Features.proposals?
 
   class ProposalsTest < JsFeatureTest
     

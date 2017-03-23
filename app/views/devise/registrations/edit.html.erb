@@ -21,7 +21,7 @@
               <span><%=t("user.change_email") %></span>
             </a>
           </li>
-          <% if online_verifications_enabled? %>
+          <% if Features.online_verifications? %>
             <li>
               <a href="#change-phone" class="js-change-tab">
                 <span><%=t("user.change_phone") %></span>
@@ -50,7 +50,7 @@
              class="<%= 'invisible' unless account_update_tab == 'email' %> js-personal-content">
           <%= render partial: 'change_email' %>
         </div>
-        <% if online_verifications_enabled? %>
+        <% if Features.online_verifications? %>
           <div id="change-phone" class="invisible js-personal-content">
             <%= render partial: 'change_phone' %>
           </div>

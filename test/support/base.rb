@@ -5,15 +5,15 @@ class ActiveSupport::TestCase
   include Minitest::Hooks
 
   def with_verifications(presential: true, sms: true)
-    prev_presential = available_features["verification_presencial"]
-    prev_sms = available_features["verification_sms"]
+    prev_presential = Features.presential_verifications?
+    prev_sms = Features.online_verifications?
 
-    available_features["verification_presencial"] = presential
-    available_features["verification_sms"] = sms
+    Rails.application.secrets.features["verification_presencial"] = presential
+    Rails.application.secrets.features["verification_sms"] = sms
 
     yield
   ensure
-    available_features["verification_presencial"] = prev_presential
-    available_features["verification_sms"] = prev_sms
+    Rails.application.secrets.features["verification_presencial"] = prev_presential
+    Rails.application.secrets.features["verification_sms"] = prev_sms
   end
 end
