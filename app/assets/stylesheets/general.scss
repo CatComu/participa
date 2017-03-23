@@ -474,14 +474,16 @@ submenu
 steps
 ----------------------------------- */
 
+.steps3{
+  padding:30px 10px;
+}
 .steps3 ul{
   display:block;
-  margin:0 0 1.5em;
+  margin:0;
   overflow:hidden;
   width:100%;
 }
 .steps3 li{
-  text-transform:lowercase;
   display:block;
   float:left;
   clear:none;
@@ -489,77 +491,50 @@ steps
   margin:0;
   padding:0;
   overflow:hidden;
-  background:#EB5A59;
-}
-.steps3 li:nth-child(1),
-.steps3 li:nth-child(2){
-  background:#EB5A59 image-url("bg.steps-tip-right.png") right 50% no-repeat;
-}
-.steps3 li:nth-child(2) span.block,
-.steps3 li:nth-child(3) span.block{
-  background:image-url("bg.steps-tip-left.png") -5em 50% no-repeat;
-}
-.steps3 li span.block{
-  display:block;
-  color:#fff;
-  width:100%;
-  overflow:hidden;
 }
 .steps3 li span.block span.tab-number{
+  border:4px solid black;
+  border-radius: 50%;
   display:block;
-  width:15%;
+  line-height:52px;
+  font-size:30px;
+  font-weight:bold;
+  text-align:center;
+  width:60px;
+  height:60px;
+  margin-right:20px;
+  padding:0 10px;
   float:left;
+}
+.steps3 li.active span.block span.tab-number{
+  background:black;
+  color:white;
 }
 .steps3 li span.block span.tab-text{
-  padding-top:0.15em;
-  display:block;
-  width:85%;
-  float:left;
-  margin-top:3%;
   font-weight:bold;
+  font-size:1.5em;
 }
-.steps3 li:nth-child(1) span.block span.tab-number{
-  margin-left:5%;
+.steps3 li span.block{
+  height:60px;
+  display:table;
 }
-.steps3 li:nth-child(2) span.block span.tab-number,
-.steps3 li:nth-child(3) span.block span.tab-number{
-  margin-left:15%;
+.steps3 li span.block span.tab-text{
+  display:table-cell;
+  vertical-align:middle;
 }
-.steps3 li:nth-child(1) span.block span.tab-text{
-  width:65%;
-  margin-right:15%;
+@media only screen and (max-width: 600px) {
+  .steps3 li span.block span.tab-text{
+    display:none;
+  }
 }
-.steps3 li:nth-child(2) span.block span.tab-text{
-  width:55%;
-  margin-right:15%;
+@media only screen and (min-width: 600px) {
+  .steps3 li:nth-child(2) span.block span.tab-number{
+    margin-left: 40px;
+  }
+  .steps3 li:nth-child(3) span.block span.tab-number{
+    margin-left: 40px;
+  }
 }
-.steps3 li:nth-child(3) span.block span.tab-text{
-  width:70%;
-}
-.steps3 li:nth-child(1).active{
-  background:#716e6b image-url("bg.steps-tip-right.png") right 50% no-repeat;
-  float:left;
-}
-.steps3 li:nth-child(1).active span.block{
-  color:#fff;
-}
-.steps3 li:nth-child(2).active{
-  background:#716e6b image-url("bg.steps-tip-right.png") right 50% no-repeat;
-  float:left;
-}
-.steps3 li:nth-child(2).active span.block{
-  background:image-url("bg.steps-tip-left.png") -5em 50% no-repeat;
-  color:#fff;
-}
-.steps3 li:nth-child(3).active{
-  background:#716e6b;
-  float:left;
-}
-.steps3 li:nth-child(3).active span.block{
-  background:image-url("bg.steps-tip-left.png") -5em 50% no-repeat;
-  color:#fff;
-}
-
 
 /* -----------------------------------
 pagination
@@ -1446,21 +1421,6 @@ elementos
 .menu ul li.menu-hamb{
   display:block;
 }
-.steps3 li span.block{
-  height:3em;
-}
-.steps3 li span.block span.tab-text{
-  display:none;
-}
-.steps3 li:nth-child(1) span.block span.tab-number{
-  width:70%;
-  text-align:center;
-}
-.steps3 li:nth-child(2) span.block span.tab-number,
-.steps3 li:nth-child(3) span.block span.tab-number{
-  width:70%;
-  text-align:center;
-}
 .tools li h3{
   width:75%;
 }
@@ -1599,14 +1559,8 @@ font sizes
 .login-box form input,
 .login-box form div.remember label,
 .submenu li a,
-.steps3 li span.block span.tab-text{
-  font-size:1.2em;
-}
 .content .intro p {
   font-size:1.6em;
-}
-.steps3 li span.block span.tab-number{
-  font-size:2em;
 }
 .content .login-box p,
 .pagination li a{
@@ -1690,21 +1644,6 @@ layout 2: 460-600 (intermedia 1) # # # # # # # # # # # # # # # # # # # # # # # #
   .menu ul li.menu-hamb{
     display:block;
   }
-  .steps3 li span.block{
-    height:3em;
-  }
-  .steps3 li span.block span.tab-text{
-    display:none;
-  }
-  .steps3 li:nth-child(1) span.block span.tab-number{
-    width:70%;
-    text-align:center;
-  }
-  .steps3 li:nth-child(2) span.block span.tab-number,
-  .steps3 li:nth-child(3) span.block span.tab-number{
-    width:70%;
-    text-align:center;
-  }
   .tools li h3{
     width:80%;
   }
@@ -1724,14 +1663,8 @@ layout 2: 460-600 (intermedia 1) # # # # # # # # # # # # # # # # # # # # # # # #
   .login-box form input,
   .login-box form div.remember label,
   .submenu li a,
-  .steps3 li span.block span.tab-text{
-    font-size:1.2em;
-  }
   .content .intro p {
     font-size:1.6em;
-  }
-  .steps3 li span.block span.tab-number{
-    font-size:2em;
   }
   .content .login-box p,
   .pagination li a{
@@ -1777,23 +1710,6 @@ layout 3: 600-768 (intermedia 2) # # # # # # # # # # # # # # # # # # # # # # # #
     position:relative;
     overflow:hidden;
   }
-  .steps3 li span.block{
-    height:3.75em;
-  }
-  .steps3 li span.block span.tab-text{
-    display:block;
-    line-height:1.1em;
-  }
-  .steps3 li:nth-child(1) span.block span.tab-number{
-    width:15%;
-    text-align:left;
-  }
-  .steps3 li:nth-child(2) span.block span.tab-number,
-  .steps3 li:nth-child(3) span.block span.tab-number{
-    width:15%;
-    text-align:left;
-  }
-
 
   /*
   elementos
@@ -1813,16 +1729,6 @@ layout 3: 600-768 (intermedia 2) # # # # # # # # # # # # # # # # # # # # # # # #
   }
   .menu ul li.menu-hamb{
     display:none;
-  }
-  .steps3 li:nth-child(1) span.block span.tab-number{
-    width:12%;
-  }
-  .steps3 li:nth-child(1) span.block span.tab-text{
-    width:68%;
-  }
-  .steps3 li:nth-child(2) span.block span.tab-number,
-  .steps3 li:nth-child(3) span.block span.tab-number{
-    width:15%;
   }
   .tools li h3{
     width:85%;
@@ -1846,14 +1752,8 @@ layout 3: 600-768 (intermedia 2) # # # # # # # # # # # # # # # # # # # # # # # #
   .login-box form input,
   .login-box form div.remember label,
   .submenu li a,
-  .steps3 li span.block span.tab-text{
-    font-size:1.3em;
-  }
   .content .intro p {
     font-size:1.6em;
-  }
-  .steps3 li span.block span.tab-number{
-    font-size:2.4em;
   }
   .content .login-box p,
   .pagination li a{
@@ -1929,22 +1829,6 @@ layout 4: 769-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   .menu ul li.menu-hamb{
     display:none;
   }
-  .steps3 li span.block{
-    height:5.2em;
-  }
-  .steps3 li span.block span.tab-text{
-    display:block;
-    line-height:1.3em;
-  }
-  .steps3 li:nth-child(1) span.block span.tab-number{
-    width:15%;
-    text-align:left;
-  }
-  .steps3 li:nth-child(2) span.block span.tab-number,
-  .steps3 li:nth-child(3) span.block span.tab-number{
-    width:15%;
-    text-align:left;
-  }
   .tools li{
     width:29%;
     margin-right:2%;
@@ -1971,14 +1855,8 @@ layout 4: 769-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   .login-box form input,
   .login-box form div.remember label,
   .submenu li a,
-  .steps3 li span.block span.tab-text{
-    font-size:1.2em;
-  }
   .content .intro p {
     font-size:1.6em;
-  }
-  .steps3 li span.block span.tab-number{
-    font-size:2.8em;
   }
   .content .login-box p,
   .pagination li a{
@@ -2040,22 +1918,6 @@ layout 4+: 978-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   .menu ul li.menu-hamb{
     display:none;
   }
-  .steps3 li span.block{
-    height:6.2em;
-  }
-  .steps3 li span.block span.tab-text{
-    display:block;
-    line-height:1.3em;
-  }
-  .steps3 li:nth-child(1) span.block span.tab-number{
-    width:15%;
-    text-align:left;
-  }
-  .steps3 li:nth-child(2) span.block span.tab-number,
-  .steps3 li:nth-child(3) span.block span.tab-number{
-    width:15%;
-    text-align:left;
-  }
   .tools li{
     width:45%;
     margin-right:2%;
@@ -2097,14 +1959,8 @@ layout 4+: 978-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   .login-box form input,
   .login-box form div.remember label,
   .submenu li a,
-  .steps3 li span.block span.tab-text{
-    font-size:1.5em;
-  }
   .content .intro p {
     font-size:1.6em;
-  }
-  .steps3 li span.block span.tab-number{
-    font-size:3em;
   }
   .content .login-box p,
   .pagination li a{
