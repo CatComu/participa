@@ -63,8 +63,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
     phone = '666666666'
     sign_in @user
     post :phone, params: { user: { unconfirmed_phone: phone } } 
-    @user = User.find @user.id # relaod @user data
-    assert_equal "0034#{phone}", @user.unconfirmed_phone
+    assert_equal "0034#{phone}", @user.reload.unconfirmed_phone
     assert_redirected_to sms_validator_step2_path
   end
 
@@ -72,8 +71,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
     phone = '666666666'
     sign_in @user
     post :phone, params: { user: { unconfirmed_phone: phone } }
-    @user = User.find @user.id # relaod @user data
-    assert_equal "0034#{phone}", @user.unconfirmed_phone
+    assert_equal "0034#{phone}", @user.reload.unconfirmed_phone
     assert_redirected_to sms_validator_step2_path
   end
 
