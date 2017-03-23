@@ -85,6 +85,7 @@ class ApplicationController < ActionController::Base
   end
 
   def allowed_for_unverified?
+      params[:controller] == 'page' or
       params[:controller] == 'devise/sessions' or
       params[:controller] == "registrations" or
       params[:controller].start_with? "admin/"
