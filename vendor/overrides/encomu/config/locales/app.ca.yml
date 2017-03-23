@@ -105,7 +105,6 @@ La quantitat que vós doneu no us ha sigut lliurada per part d’alguna persona 
   bec:
     other_locales: "Altres idiomes"
     home_address: "Adreça"
-    unauthorized: "No tens permisos per accedir a aquesta secció"
     devise:
       mailer:
         hello: "Hola %{user}!"
