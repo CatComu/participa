@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope "/(:locale)", locale: /es|ca|eu/ do 
+  scope "/(:locale)", locale: /es|ca/ do 
 
     get '/openid/discover', to: 'open_id#discover', as: "open_id_discover"
     get '/openid', to: 'open_id#index', as: "open_id_index"
