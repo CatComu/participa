@@ -52,15 +52,13 @@ class ApplicationController < ActionController::Base
   end
 
   def verified_user
-    if current_user
-      return nil if allowed_for_unverified?
+    return unless current_user && !current_user.is_verified? && !allowed_for_unverified?
 
-      if !current_user.is_verified? && online_verifications_enabled?
-        if params["controller"] == "sms_validator"
-          flash.now[:alert] = t("issues.confirm_sms")
-        else
-          redirect_to sms_validator_step1_path
-        end
+    if online_verifications_enabled?
+      if params["controller"] == "sms_validator"
+        flash.now[:alert] = t("issues.confirm_sms")
+      else
+        redirect_to sms_validator_step1_path
       end
     end
   end
