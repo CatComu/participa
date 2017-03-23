@@ -18,20 +18,19 @@ ActiveAdmin.register User do
   scope :banned
   scope :admins
 
-  if Rails.application.secrets.features["verification_sms"]
+  if Features.online_verifications?
     scope :verifying_online
     scope :verified_online
     scope :unverified_online
   end
 
-  if Rails.application.secrets.features["verification_presencial"]
+  if Features.presential_verifications?
     scope :verifying_presentially
     scope :verified_presentially
     scope :unverified_presentially
   end
 
-  if Rails.application.secrets.features["verification_presencial"] ||
-     Rails.application.secrets.features["verification_sms"]
+  if Features.verifications?
     scope :verified
     scope :unverified
   end
@@ -187,7 +186,7 @@ ActiveAdmin.register User do
       row :remember_created_at
       row :deleted_at
       row :participation_team_at
-      if Rails.application.secrets.features["verification_presencial"]
+      if Features.presential_verifications?
         row :verified_by
         row :verified_at
       end
@@ -253,7 +252,7 @@ ActiveAdmin.register User do
   filter :wants_participation
   filter :participation_team_id, as: :select, collection: ParticipationTeam.all
   filter :votes_election_id, as: :select, collection: Election.all
-  if Rails.application.secrets.features["verification_presencial"]
+  if Features.presential_verifications?
     filter :verified_by_id, as: :select, collection: User.presential_verifier_ever
   end
 
@@ -276,7 +275,7 @@ ActiveAdmin.register User do
   action_item(:edit, :only => :show) do
     unless user.is_verified?
       msg = "¿Estas segura de querer verificar a este usuario?"
-      if Rails.application.secrets.features["verification_presencial"]
+      if Features.presential_verifications?
         msg += " Recuerda revisar su documento y domicilio."
       end
       link_to('Verificar usuario', verify_admin_user_path(user), method: :post, data: { confirm: msg })

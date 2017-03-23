@@ -25,10 +25,6 @@ def with_blocked_change_location
   end
 end
 
-def available_features
-  Rails.application.secrets.features
-end
-
 require 'capybara/poltergeist'
 
 # Poltergeist customization

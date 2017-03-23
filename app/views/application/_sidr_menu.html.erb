@@ -11,7 +11,7 @@
     <%#= link_to "Avisos", notices_path %>
   </li -->
   <% if can? :step1, :verification %>
-    <% if Rails.application.secrets.features["verification_presencial"] %>
+    <% if Features.presential_verifications? %>
       <li class="menu-verif">
         <%= link_to "Verificacion", verification_step1_path %>
       </li>

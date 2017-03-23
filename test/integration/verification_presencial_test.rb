@@ -93,7 +93,7 @@ class VerificationPresencialTest < JsFeatureTest
   private
 
   def pending_verification_message
-    if available_features["verification_sms"]
+    if Features.online_verifications?
       "Por seguridad, debes confirmar tu teléfono."
     else
       "No has finalizado la verificación"
@@ -101,7 +101,7 @@ class VerificationPresencialTest < JsFeatureTest
   end
 
   def pending_verification_path
-    if available_features["verification_sms"]
+    if Features.online_verifications?
       sms_validator_step1_path(locale: "es")
     else
       root_path(locale: "es")

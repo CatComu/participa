@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
   validates :payment_type, :amount, :payable_at, presence: true
 
   STATUS = {"Nueva" => 0, "Sin confirmar" => 1, "OK" => 2, "Alerta" => 3, "Error" => 4, "Devuelta" => 5}
-  if Rails.application.secrets.features["collaborations_redsys"]
+  if Features.redsys_collaborations?
     PAYMENT_TYPES = {
       I18n.t('podemos.collaboration.order.cc') => 1, 
       I18n.t('podemos.collaboration.order.ccc') => 2, 

@@ -33,13 +33,8 @@ def show_collaboration_orders(collaboration, html_output = true)
   html_output ? output.html_safe : output
 end
 
-def use_resque
-  return Rails.application.secrets.features["use_resque"]
-end
-
-
 ActiveAdmin.register Collaboration do
-  if Rails.application.secrets.features["collaborations"]
+  if Features.collaborations?
     menu :parent => "Colaboraciones"
   else
     menu false
@@ -318,7 +313,7 @@ ActiveAdmin.register Collaboration do
   
   collection_action :charge, :method => :get do
     Collaboration.credit_cards.pluck(:id).each do |cid|
-      if use_resque
+      if Features.background_jobs?
         Resque.enqueue(PodemosCollaborationWorker, cid)
       else
         PodemosCollaborationWorker.perform cid
@@ -329,7 +324,7 @@ ActiveAdmin.register Collaboration do
 
   collection_action :generate_orders, :method => :get do 
     Collaboration.banks.pluck(:id).each do |cid|
-      if use_resque
+      if Features.background_jobs?
         Resque.enqueue(PodemosCollaborationWorker, cid)
       else
         PodemosCollaborationWorker.perform cid
@@ -341,7 +336,7 @@ ActiveAdmin.register Collaboration do
 
   collection_action :generate_csv, :method => :get do
     Collaboration.bank_file_lock true
-    if use_resque
+    if Features.background_jobs?
       Resque.enqueue(PodemosCollaborationWorker, -1)
     else
       PodemosCollaborationWorker.perform -1

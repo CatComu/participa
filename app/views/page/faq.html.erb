@@ -9,10 +9,10 @@
     <li><a class="selected" href="#general"><%= t('.general')%></a></li>
     <li><a href="#inscripcion"><%= t('.inscription')%></a></li>
     <li><a href="#inscripcion-errores"><%= t('.inscription_errors')%></a></li>
-    <% if Rails.application.secrets.features["verification_presencial"] %>
+    <% if Features.presential_verifications? %>
       <li><a href="#verificaciones"><%= t('.verification')%></a></li>
     <% end %>
-    <% if Rails.application.secrets.features["elections"] %>
+    <% if Features.elections? %>
       <li><a href="#votaciones"><%= t('.voting')%></a></li>
     <% end %>
   </ul> <!-- cd-faq-categories -->
@@ -34,14 +34,14 @@
       <%= t('.faq3_html')%>
     </ul> <!-- cd-faq-group -->
 
-    <% if Rails.application.secrets.features["verification_presencial"] %>
+    <% if Features.presential_verifications? %>
       <ul id="verificaciones" class="cd-faq-group">
         <li class="cd-faq-title"><h2><%= t('.verification')%></h2></li>
         <%= t('.faq4_html', verifications_url: verification_show_path)%>
       </ul> <!-- cd-faq-group -->
     <% end %>
 
-    <% if Rails.application.secrets.features["elections"] %>
+    <% if Features.elections? %>
       <ul id="votaciones" class="cd-faq-group">
         <li class="cd-faq-title"><h2><%= t('.voting')%></h2></li>
         <%= t('.faq5_html')%>
