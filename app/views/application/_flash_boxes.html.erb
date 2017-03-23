@@ -1,4 +1,4 @@
-<% if [:error, :notice, :recaptcha_error, :alert].any? { |err| flash[err].present? } %>
+<% if [:error, :notice, :recaptcha_error, :alert].any? { |type| flash[type].present? } %>
 <div class="content-content">
   <div class="row">
     <div class="col-md-6">
