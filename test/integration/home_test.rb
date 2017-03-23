@@ -9,6 +9,54 @@ class HomeTest < ActionDispatch::IntegrationTest
     assert_title "Iniciar sesión"
   end
 
+  test "sets locale from default_url_options by default" do
+    I18n.with_locale(:es) do
+      visit root_path
+      assert_equal '/es', page.current_path
+    end
+  end
+
+  test "sets locale from url" do
+    I18n.with_locale(:es) do
+      visit root_path(locale: 'ca')
+
+      assert_equal(:ca, I18n.locale)
+    end
+  end
+
+  test "properly translates flash messages when changing locale" do
+    with_verifications(presential: false, sms: true) do
+      I18n.with_locale(:es) do
+        login create(:user)
+        assert_text "Por seguridad, debes confirmar tu teléfono."
+        click_link "Català"
+        assert_text "Per seguretat, has de confirmar el teu telèfon."
+      end
+    end
+  end
+
+  test "allows foreign users to login" do
+    with_verifications(presential: false, sms: false) do
+      login create(:user, country: "DE", province: "BE", town: nil)
+      assert_title "Datos personales"
+    end
+  end
+
+  test "allows rare foreign users (no province) to login" do
+    with_verifications(presential: false, sms: false) do
+      login create(:user, country: "PS", province: nil, town: nil)
+      assert_title "Datos personales"
+    end
+  end
+
+  test "allows access to profile to unverified users" do
+    with_verifications(presential: false, sms: true) do
+      login create(:user)
+      visit edit_user_registration_path
+      assert_title 'Datos personales'
+    end
+  end
+
   test "redirects to edit profile when no verifications enabled" do
     with_verifications(presential: false, sms: false) do
       login create(:user)
