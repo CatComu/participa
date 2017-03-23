@@ -117,17 +117,15 @@ Rails.application.routes.draw do
       end
     end
     
-    if Features.presential_verifications?
-      scope '/verificadores' do 
-        get '/', to: 'verification#step1', as: :verification_step1
-        get '/nueva', to: 'verification#step2', as: :verification_step2
-        get '/confirmar', to: 'verification#step3', as: :verification_step3
-        post '/search', to: 'verification#search', as: :verification_search
-        post '/confirm', to: 'verification#confirm', as: :verification_confirm
-        get '/ok', to: 'verification#result_ok', as: :verification_result_ok
-        get '/ko', to: 'verification#result_ko', as: :verification_result_ko
-      end
-    end    
+    scope '/verificadores' do 
+      get '/', to: 'verification#step1', as: :verification_step1
+      get '/nueva', to: 'verification#step2', as: :verification_step2
+      get '/confirmar', to: 'verification#step3', as: :verification_step3
+      post '/search', to: 'verification#search', as: :verification_search
+      post '/confirm', to: 'verification#confirm', as: :verification_confirm
+      get '/ok', to: 'verification#result_ok', as: :verification_result_ok
+      get '/ko', to: 'verification#result_ko', as: :verification_result_ko
+    end
 
     scope '/verificaciones' do 
       get '/', to: 'verification#show', as: :verification_show
