@@ -57,6 +57,14 @@ class HomeTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "allows access to static pages to unverified users" do
+    with_verifications(presential: false, sms: true) do
+      login create(:user)
+      visit page_privacy_policy_path
+      assert_title 'Política de Privacidad'
+    end
+  end
+
   test "redirects to edit profile when no verifications enabled" do
     with_verifications(presential: false, sms: false) do
       login create(:user)
