@@ -24,8 +24,4 @@ class PageController < ApplicationController
 
   def guarantees
   end
-
-  def votacio_preacord
-    render layout: 'minimal'
-  end
 end

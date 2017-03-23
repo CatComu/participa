@@ -7,12 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :banned_user
   before_action :verified_user
   before_action :configure_sign_in_params, if: :devise_controller?
-  before_action :allow_iframe_requests
   before_action :admin_logger
-
-  def allow_iframe_requests
-    response.headers.delete('X-Frame-Options')
-  end
 
   def admin_logger
     if params["controller"].starts_with? "admin/"
