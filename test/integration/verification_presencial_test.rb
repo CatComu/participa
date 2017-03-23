@@ -3,15 +3,7 @@ require "test_helper"
 class VerificationPresencialTest < JsFeatureTest
 
   around do |&block|
-    with_verifications(presential: true) do
-      # Routes are defined conditionally on the presence of this feature
-      Rails.application.reload_routes!
-
-      super(&block)
-    end
-
-    # Leave routes as they were previously
-    Rails.application.reload_routes!
+    with_verifications(presential: true) { super(&block) }
   end
 
   test "users need to be verified to access other tools" do
