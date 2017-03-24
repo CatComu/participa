@@ -36,3 +36,6 @@ app/assets/fonts/StagSans-Semibold-Web.woff
 app/assets/fonts/StagStencil-Bold-Web.eot
 app/assets/fonts/StagStencil-Bold-Web.woff
 app/assets/fonts/StagStencil-Bold-Web.woff2
+
+# Ignore file uploads
+/public/system

@@ -59,20 +59,32 @@ class SmsValidatorControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "advances to second step after setting phone for first time" do
-    phone = '666666666'
+  test "advances to second step after uploading documents" do
     sign_in @user
-    post :phone, params: { user: { unconfirmed_phone: phone } } 
-    assert_equal "0034#{phone}", @user.reload.unconfirmed_phone
+
+    image = fixture_file_upload(
+      Rails.root.join('test', 'fixtures', 'test.png'),
+      'image/png'
+    )
+
+    user_params = { identity_documents_attributes: {
+        "0" => {
+          scanned_picture: image
+        }
+      }
+    }
+
+    post :documents, params: { user: user_params }
+    assert_equal 1, @user.identity_documents.count
     assert_redirected_to sms_validator_step2_path
   end
 
-  test "advances to second step after updating an unconfirmed phone" do
+  test "advances to third step after updating an unconfirmed phone" do
     phone = '666666666'
     sign_in @user
     post :phone, params: { user: { unconfirmed_phone: phone } }
     assert_equal "0034#{phone}", @user.reload.unconfirmed_phone
-    assert_redirected_to sms_validator_step2_path
+    assert_redirected_to sms_validator_step3_path
   end
 
   test "allows step2 directly when phone is set" do
@@ -82,21 +94,21 @@ class SmsValidatorControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "does not allow step2 directly when phone not set yet" do
-    @user.update_attribute(:phone, nil)
-    @user.update_attribute(:unconfirmed_phone, nil)
-    sign_in @user
-    get :step2 
-    assert_response :redirect
-    assert_redirected_to sms_validator_step1_path
-  end
-
   test "does not allow step3 directly when phone not set yet" do
+    @user.update_attribute(:phone, nil)
     @user.update_attribute(:unconfirmed_phone, nil)
     sign_in @user
     get :step3 
     assert_response :redirect
-    assert_redirected_to sms_validator_step1_path
+    assert_redirected_to sms_validator_step2_path
+  end
+
+  test "does not allow step3 directly when unconfirmed phone not set yet" do
+    @user.update_attribute(:unconfirmed_phone, nil)
+    sign_in @user
+    get :step3 
+    assert_response :redirect
+    assert_redirected_to sms_validator_step2_path
   end
 
   test "does not allow step3 directly when no sms confirmation token yet" do

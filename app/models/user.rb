@@ -36,6 +36,11 @@ class User < ActiveRecord::Base
   has_many :microcredit_loans
   has_many :verificated_users, class_name: "User", foreign_key: "verified_by_id"
 
+  has_many :identity_documents
+  accepts_nested_attributes_for :identity_documents,
+                                reject_if: :all_blank,
+                                allow_destroy: true
+
   belongs_to :catalan_town, foreign_key: :town, primary_key: :code
 
   extend Enumerize

@@ -85,7 +85,7 @@ class HomeTest < ActionDispatch::IntegrationTest
     with_verifications(presential: false, sms: true) do
       login create(:user)
       visit root_path
-      assert_title "Introduce tu número de teléfono móvil"
+      assert_title "Envíanos la documentación"
     end
   end
 
@@ -101,7 +101,7 @@ class HomeTest < ActionDispatch::IntegrationTest
     with_verifications(presential: true, sms: true) do
       login create(:user)
       visit root_path
-      assert_title "Introduce tu número de teléfono móvil"
+      assert_title "Envíanos la documentación"
     end
   end
 

@@ -1,6 +1,4 @@
 class SmsValidatorController < ApplicationController
-  include SimpleCaptcha::ControllerHelpers
-  
   before_action :authenticate_user! 
   before_action :can_change_phone
 
@@ -12,21 +10,18 @@ class SmsValidatorController < ApplicationController
 
   def step1 
     authorize! :step1, :sms_validator
+
+    current_user.identity_documents.build
   end
 
   def step2
     authorize! :step2, :sms_validator
-    redirect_to sms_validator_step1_path if current_user.unconfirmed_phone.nil? 
     @user = current_user
   end
 
   def step3
     authorize! :step3, :sms_validator
-    if current_user.unconfirmed_phone.nil? 
-      redirect_to sms_validator_step1_path 
-      return
-    end
-    if current_user.sms_confirmation_token.nil? 
+    if current_user.unconfirmed_phone.nil? || current_user.sms_confirmation_token.nil? 
       redirect_to sms_validator_step2_path
       return
     end
@@ -48,20 +43,19 @@ class SmsValidatorController < ApplicationController
     end
     if current_user.save
       current_user.set_sms_token!
-      redirect_to sms_validator_step2_path
+      redirect_to sms_validator_step3_path
     else
-      render action: "step1"
+      render action: "step2"
     end
   end
 
-  def captcha 
-    authorize! :captcha, :sms_validator
-    if simple_captcha_valid?
-      current_user.send_sms_token!
-      render action: "step3"
+  def documents 
+    authorize! :documents, :sms_validator
+    if current_user.update(documents_params)
+      redirect_to sms_validator_step2_path
     else
-      flash.now[:error] = t('sms_validator.phone.captcha_invalid') 
-      render action: "step2"
+      flash.now[:error] = t('sms_validator.documents.invalid')
+      render action: "step1"
     end
   end
 
@@ -82,6 +76,12 @@ class SmsValidatorController < ApplicationController
   end
 
   private
+
+  def documents_params
+    params
+      .require(:user)
+      .permit(identity_documents_attributes: [:id, :scanned_picture, :_destroy])
+  end
 
   def phone_params
     params.require(:user).permit(:unconfirmed_phone)

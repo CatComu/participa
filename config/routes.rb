@@ -67,8 +67,8 @@ Rails.application.routes.draw do
           get :step1, to: 'sms_validator#step1', as: 'sms_validator_step1'
           get :step2, to: 'sms_validator#step2', as: 'sms_validator_step2'
           get :step3, to: 'sms_validator#step3', as: 'sms_validator_step3'
+          post :documents, to: 'sms_validator#documents', as: 'sms_validator_documents'
           post :phone, to: 'sms_validator#phone', as: 'sms_validator_phone'
-          post :captcha, to: 'sms_validator#captcha', as: 'sms_validator_captcha'
           post :valid, to: 'sms_validator#valid', as: 'sms_validator_valid'
         end
       end
