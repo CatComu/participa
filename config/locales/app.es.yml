@@ -8,6 +8,10 @@ es:
       es: "español"
       eu: "vasco"
       ga: "gallego"
+  cocoon:
+    identity_documents:
+      add: "Añadir otro documento"
+      remove: "Eliminar documento"
   errors:
     show:
       "404":
@@ -890,22 +894,28 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     message:
       default: "El texto introducido no corresponde con el de la imagen"
   sms_validator:
+    documents:
+      local_id: Para la verificación necesitas enviarnos un DNI o NIE con domicilio en Cataluña.
+      foreign_id: >
+        Alternativamente, puedes enviarnos un DNI o NIE con domicilio fuera de
+        Cataluña (o pasaporte, o carnet de conducir) y un certificado de
+        empadronamiento o recibo de un suministro básico (agua, luz o gas) que
+        no tenga más de tres meses de antigüedad y en el cual aparezca tu
+        identidad y un domicilio en Cataluña.
+      invalid: Hubo un error al subir los documentos.
     steps:
-      step1: "Introduce tu número de teléfono móvil"
-      step2: "Rellena el código de la imagen"
+      step1: "Envíanos la documentación"
+      step2: "Introduce tu número de teléfono móvil"
       step3: "Introduce el código recibido por SMS"
     phone:
       p1: "Introduce tu nuevo número de teléfono móvil."
       p2: "Recibirás el código de verificación para validar el nuevo número en unos segundos."
       p3: "Si ya has participado en alguna votación de Un País en Comú, te enviaremos el código por correo electrónico."
-      p4: "Introduce el texto que aparece en la imagen."
       p5: "Introduce el código que hayas recibido por SMS para confirmarlo"
       valid: "Has validado correctamente."
       invalid: "El código que has puesto no corresponde con el que te enviamos por SMS."
-      captcha: "Validar Captcha"
       token: Código SMS
       button: "Comprobar"
-      captcha_invalid: "Captcha inválido"
       information_html: "Debes ingresar un teléfono móvil válido para el país en el que te encuentras, sin prefijo internacional, sólo con números (sin espacios ni guiones). Según el formulario que has rellenado te encuentras en <b>%{country}</b> (prefijo internacional +%{prefix})."
   static:
     privacy: Política de privacidad

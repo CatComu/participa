@@ -3,6 +3,10 @@ ca:
     flatpickr_code: "cat"
     language: "Idioma"
     language_name: "Català"
+  cocoon:
+    identity_documents:
+      add: "Añadir otro documento"
+      remove: "Eliminar documento"
   activerecord:
     models:
       user:
@@ -243,22 +247,30 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
     message:
       default: "El text introductori no es correspon amb el de la imatge"
   sms_validator:
+    documents:
+      local_id: >
+        Para la verificación necesitas enviarnos un DNI o NIE amb domicili a
+        Catalunya.
+      foreign_id: >
+        Alternativamente, puedes enviarnos un DNI o NIE amb domicili de fora de
+        Catalunya (o Passaport, o Permís de Conducció) y un certificat
+        d'empadronament o rebut d'un suministrament bàsic (aigua, llum o gas)
+        que no tingui més de tres mesos d'antiguitat i en el qual aparegui la
+        identitat de la persona i un domicili a Catalunya.
+      invalid: Hubo un error al subir los documentos.
     steps:
-      step1: "Introdueix el teu número de telèfon mòbil"
-      step2: "Emplena el codi de la imatge"
+      step1: "Envíanos la documentación"
+      step2: "Introdueix el teu número de telèfon mòbil"
       step3: "Introdueix el codi rebut per SMS"
     phone:
       p1: "Introdueix el teu nou número de telèfon mòbil."
       p2: "Rebràs el codi de verificació per validar el nou número en uns segons."
       p3: "Si ja has participat en alguna votació de Un País En Comú, t'enviarem el codi per correu electrònic."
-      p4: "Introdueix el text que apareix a la imatge."
       p5: "Introdueix el codi que hagis rebut per SMS per confirmar-lo"
       valid: "Has validat correctament el teu nou número de telèfon."
       invalid: "El codi que has posat no correspon amb el que t'hem enviar per SMS."
-      captcha: "Validar Captcha"
       token: Codi SMS
       button: "Comprova"
-      captcha_invalid: "Captcha invàlid"
       information_html: "Has d'ingressar un telèfon mòbil vàlid per al país on et trobes, sense prefix internacional, només amb números (sense espais ni guions). Segons el formulari que has emplenat et trobes a <b>%{country}</b> (prefix internacional +%{prefix})."
   static:
     privacy: Política de privacitat

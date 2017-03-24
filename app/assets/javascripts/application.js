@@ -41,3 +41,4 @@
 //= require select2_impl
 //= require slicknav_menu
 //= require verifications_map
+//= require documents

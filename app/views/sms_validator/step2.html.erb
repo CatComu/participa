@@ -6,22 +6,29 @@
     <div class="row">
       <%= render partial: "steps", locals: {step: 2} %>
 
-      <%= semantic_form_for(:captcha, url: sms_validator_captcha_path, html: {method: :post}) do |f| %>
+      <%= semantic_form_for(current_user, url: sms_validator_phone_path, html: {method: :post}) do |f| %>
         <fieldset>
-          <legend class="invisible">Captcha</legend>
+          <legend class="invisible">Cambia tu móvil</legend>
 
-          <p><%= t('sms_validator.phone.p4') %></p>
+          <p><%= t('sms_validator.phone.p2') %></p>
+
+          <p><%= t('sms_validator.phone.information_html',
+                   country: current_user.country_name,
+                   prefix: current_user.phone_prefix) %></p>
+
+          <%= errors_in_form current_user %>
 
           <div class="inputlabel-box">
-            <%= f.label :captcha %>
-            <div class="input-box">
-              <%= show_simple_captcha %>
-            </div>
+            <% if current_user.errors.include?(:unconfirmed_phone) %>
+              <%= field_notice_box %>
+            <% end %>
+            <%= f.input :unconfirmed_phone, as: :number,
+                                            prepend: "+#{current_user.phone_prefix}",
+                                            input_html: {autofocus: true, class: "unconfirmed-phone", required: true, value: current_user.unconfirmed_phone_number } %>
           </div>
 
-          <%= f.actions class: 'enter' do %>
-            <%= f.action :submit, label: t('sms_validator.phone.captcha'),
-                                  button_html: {class: 'button'} %>
+          <%= f.actions do %>
+            <%= f.action :submit, label: "Guardar móvil", button_html: {class: "button"} %>
           <% end %>
         </fieldset>
       <% end %>

@@ -50,7 +50,7 @@ class Ability
       end
 
       if Features.online_verifications?
-        can [:step1, :step2, :step3, :phone, :captcha, :valid], :sms_validator
+        can [:step1, :step2, :step3, :phone, :documents, :valid], :sms_validator
       end
 
       if Features.verifications?
