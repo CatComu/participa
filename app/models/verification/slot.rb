@@ -1,5 +1,5 @@
 class Verification::Slot < ApplicationRecord
-  belongs_to :verification_center, class_name: 'Verification::Center', foreign_key: 'verification_center_id'
+  belongs_to :verification_center, class_name: 'Verification::Center', foreign_key: :verification_center_id
   belongs_to :user
 
   validates :starts_at, :ends_at, presence: true

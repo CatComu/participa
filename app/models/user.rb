@@ -3,7 +3,7 @@ require 'securerandom'
 class User < ApplicationRecord
   include Verifierable
 
-  belongs_to :verified_by, class_name: "User", foreign_key: "verified_by_id" #, counter_cache: :verified_by_id
+  belongs_to :verified_by, class_name: "User", foreign_key: :verified_by_id #, counter_cache: :verified_by_id
 
   apply_simple_captcha
 
@@ -34,7 +34,7 @@ class User < ApplicationRecord
   has_one :collaboration, dependent: :destroy
   has_and_belongs_to_many :participation_team
   has_many :microcredit_loans
-  has_many :verificated_users, class_name: "User", foreign_key: "verified_by_id"
+  has_many :verificated_users, class_name: "User", foreign_key: :verified_by_id
 
   has_many :identity_documents
   accepts_nested_attributes_for :identity_documents,

@@ -6,7 +6,7 @@ class Order < ApplicationRecord
   has_paper_trail
 
   belongs_to :parent, -> { with_deleted }, polymorphic: true
-  belongs_to :collaboration, -> { with_deleted.joins(:order).where(orders: {parent_type: 'Collaboration'}) }, foreign_key: 'parent_id'
+  belongs_to :collaboration, -> { with_deleted.joins(:order).where(orders: {parent_type: 'Collaboration'}) }, foreign_key: :parent_id
   belongs_to :user, -> { with_deleted }
 
   attr_accessor :raw_xml
