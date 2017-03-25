@@ -912,7 +912,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       p2: "Recibirás el código de verificación para validar el nuevo número en unos segundos."
       p3: "Si ya has participado en alguna votación de Un País en Comú, te enviaremos el código por correo electrónico."
       p5: "Introduce el código que hayas recibido por SMS para confirmarlo"
-      valid: "Has validado correctamente."
+      valid: "Has sido verificado correctamente. Si tus documentos están bien, estás autorizado para votar."
       invalid: "El código que has puesto no corresponde con el que te enviamos por SMS."
       token: Código SMS
       button: "Comprobar"
