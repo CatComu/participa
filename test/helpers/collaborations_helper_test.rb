@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class CollaborationsHelperTest < ActionView::TestCase
+  around do |&block|
+    with_features(collaborations: true) { super(&block) }
+  end
 
   test "should new_or_edit_collaboration_path work" do
     collaboration = nil

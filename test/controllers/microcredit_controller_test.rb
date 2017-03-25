@@ -2,9 +2,11 @@ require 'test_helper'
 
 class MicrocreditControllerTest < ActionController::TestCase
 
-  setup do
+  around do |&block|
     @microcredit = create(:microcredit)
     @user = create(:user)
+
+    with_features(microcredits: true, collaborations: true) { super(&block) }
   end
 
   test "should get provinces" do

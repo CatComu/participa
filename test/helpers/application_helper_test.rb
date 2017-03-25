@@ -6,6 +6,12 @@ class ApplicationHelperTest < ActionView::TestCase
 
   attr_reader :request 
 
+  around do |&block|
+    with_features(participation_teams: true, collaborations: true) do
+      super(&block)
+    end
+  end
+
   test "should nav_menu_link_to work" do 
     response = nav_menu_link_to "Salir", "sign-out", destroy_user_session_path, [destroy_user_session_path], method: :delete, title: "Cerrar sesión"
     expected = "<a title=\"Cerrar sesión\" class=\"\" rel=\"nofollow\" data-method=\"delete\" href=\"/users/sign_out\"><i class=\"fa fa-sign-out\"></i><span>Salir</span></a>"

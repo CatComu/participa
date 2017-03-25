@@ -2,7 +2,12 @@ require "test_helper"
 
 class CollaborationsTest < ActionDispatch::IntegrationTest
   around do |&block|
-    with_verifications(sms: false, presential: false) { super(&block) }
+    with_features(collaborations: true,
+                  collaborations_redsys: true,
+                  verification_sms: false,
+                  verification_presencial: false) do
+      super(&block)
+    end
   end
 
   test "new collaboration" do

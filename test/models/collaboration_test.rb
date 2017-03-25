@@ -2,8 +2,10 @@ require 'test_helper'
 
 class CollaborationTest < ActiveSupport::TestCase
 
-  setup do
+  around do |&block|
     @collaboration = create(:collaboration, :ccc)
+
+    with_features(collaborations: true) { super(&block) }
   end
 
   test "should validations on collaborations work" do

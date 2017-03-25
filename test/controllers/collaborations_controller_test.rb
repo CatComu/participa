@@ -5,7 +5,12 @@ class CollaborationsControllerTest < ActionController::TestCase
     @user = create(:user)
     @collaboration = create(:collaboration, user: @user)
 
-    with_verifications(sms: false, presential: false) { super(&block) }
+    with_features(collaborations: true,
+                  collaborations_redsys: true,
+                  verifications_sms: false,
+                  verifications_presencial: false) do
+      super(&block)
+    end
   end
 
   test "should authenticate user" do

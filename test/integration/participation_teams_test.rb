@@ -3,7 +3,9 @@ require "test_helper"
 class ParticipationTeamsTest < JsFeatureTest
 
   test "can't access as anon, can join, can delete itself" do
-    with_verifications(sms: false, presential: false) do
+    with_features(participation_teams: true,
+                  verifications_sms: false,
+                  verifications_presencial: false) do
       visit participation_teams_path
       assert_content "Necesitas iniciar sesión o registrarte para continuar."
 
