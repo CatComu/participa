@@ -17,6 +17,10 @@ module Features
     features["verification_sms"]
   end
 
+  def online_verifications_only?
+    features["verification_sms"] && !features["verification_presencial"]
+  end
+
   def elections?
     features["elections"]
   end

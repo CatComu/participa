@@ -90,7 +90,7 @@ class HomeTest < ActionDispatch::IntegrationTest
     with_verifications(presential: true, sms: true) do
       login create(:user)
       visit root_path
-      assert_title "Envíanos la documentación"
+      assert_title "No te has verificado"
     end
   end
 

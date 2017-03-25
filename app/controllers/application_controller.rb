@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    if Features.online_verifications? && current_user && !current_user.is_verified?
+    if Features.online_verifications_only? && current_user && !current_user.is_verified?
       redirect_to sms_validator_step1_url, :alert => t("issues.confirm_sms")
     else
       redirect_to root_url, :alert => exception.message
