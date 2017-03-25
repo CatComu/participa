@@ -9,7 +9,7 @@ class ActiveAdminTest < ActionDispatch::IntegrationTest
     user = create(:user)
     login_as(user)
     visit admin_collaborations_path
-    assert_content "Por seguridad, debes confirmar tu teléfono"
+    assert_content "No tienes permisos para acceder a esa sección "
   end
 
   test "verified normal user shouldn't access the admin" do

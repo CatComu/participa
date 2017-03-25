@@ -85,18 +85,18 @@ class VerificationPresencialTest < JsFeatureTest
   private
 
   def pending_verification_message
-    if Features.online_verifications?
-      "Por seguridad, debes confirmar tu teléfono."
-    else
+    if Features.presential_verifications?
       "No has finalizado la verificación"
+    else
+      "Por seguridad, debes confirmar tu teléfono."
     end
   end
 
   def pending_verification_path
-    if Features.online_verifications?
-      sms_validator_step1_path(locale: "es")
-    else
+    if Features.presential_verifications?
       root_path(locale: "es")
+    else
+      sms_validator_step1_path(locale: "es")
     end
   end
 end

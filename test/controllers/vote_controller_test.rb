@@ -6,7 +6,7 @@ class VoteControllerTest < ActionController::TestCase
     @user = create(:user, :confirmed_by_sms)
     @election = create(:election)
 
-    with_verifications(sms: true) { super(&block) }
+    with_verifications(sms: true, presential: true) { super(&block) }
   end
 
   test "should not get create as anon" do
@@ -20,7 +20,7 @@ class VoteControllerTest < ActionController::TestCase
     sign_in create(:user)
     get :create, params: { election_id: @election.id }
     assert_response :redirect
-    assert_redirected_to sms_validator_step1_url
+    assert_redirected_to root_url(locale: 'es')
     #assert response.header["Location"].starts_with? "https://vota.podemos.info/"
   end
 

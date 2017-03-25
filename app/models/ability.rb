@@ -50,7 +50,7 @@ class Ability
       can [:show, :update], User, id: user.id
       can :show, Notice
 
-      if !Features.online_verifications? || user.is_verified?
+      if !Features.online_verifications_only? || user.is_verified?
         can :index, :tools
       end
 
