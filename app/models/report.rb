@@ -1,4 +1,4 @@
-class Report < ActiveRecord::Base
+class Report < ApplicationRecord
 
   def self.serialize_relation_query relation
     relation.to_sql.sub(/ LIMIT \d+/, ' ').sub(/ OFFSET \d+/, ' ').strip
@@ -10,7 +10,7 @@ class Report < ActiveRecord::Base
       table_name = table_name.captures.first if table_name
 
       if table_name
-        @model = ActiveRecord::Base.send(:descendants).select do |m| m.table_name==table_name end .first
+        @model = ApplicationRecord.send(:descendants).select do |m| m.table_name==table_name end .first
       end
     end
   end

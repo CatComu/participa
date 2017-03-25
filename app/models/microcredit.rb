@@ -1,4 +1,4 @@
-class Microcredit < ActiveRecord::Base
+class Microcredit < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
 

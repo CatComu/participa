@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CatalanTown < ActiveRecord::Base
+class CatalanTown < ApplicationRecord
   self.primary_key = :code
 
   validates :code,

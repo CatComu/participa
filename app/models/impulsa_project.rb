@@ -1,4 +1,4 @@
-class ImpulsaProject < ActiveRecord::Base
+class ImpulsaProject < ApplicationRecord
   belongs_to :impulsa_edition_category
   belongs_to :user, -> { with_deleted }
   has_one :impulsa_edition, through: :impulsa_edition_category

@@ -1,4 +1,4 @@
-class Verification::Center < ActiveRecord::Base
+class Verification::Center < ApplicationRecord
   validates :name, :street, :city, presence: true
 
   has_many :verification_slots, -> { for_center }, class_name: 'Verification::Slot', foreign_key: 'verification_center_id'

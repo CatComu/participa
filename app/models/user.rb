@@ -1,6 +1,6 @@
 require 'securerandom'
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Verifierable
 
   belongs_to :verified_by, class_name: "User", foreign_key: "verified_by_id" #, counter_cache: :verified_by_id

@@ -1,4 +1,4 @@
-class Verification::Slot < ActiveRecord::Base
+class Verification::Slot < ApplicationRecord
   belongs_to :verification_center, class_name: 'Verification::Center', foreign_key: 'verification_center_id'
   belongs_to :user
 

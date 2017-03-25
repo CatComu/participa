@@ -1,4 +1,4 @@
-class IdentityDocument < ActiveRecord::Base
+class IdentityDocument < ApplicationRecord
   has_attached_file :scanned_picture, styles: { thumb: "x200" }
 
   validates_attachment :scanned_picture,
