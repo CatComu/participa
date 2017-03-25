@@ -53,16 +53,16 @@ module Verifierable
   end
 
   def unconfirmed_by_sms?
-    self.sms_confirmed_at.nil?
+    sms_confirmed_at.nil?
   end
 
   def confirmed_by_sms?
-    !self.unconfirmed_by_sms?
+    !unconfirmed_by_sms?
   end
 
   def can_change_phone?
-    self.unconfirmed_by_sms? or
-      self.sms_confirmed_at < DateTime.now-self.class.sms_confirmation_period
+    unconfirmed_by_sms? or
+      sms_confirmed_at < DateTime.now-self.class.sms_confirmation_period
   end
 
   def generate_sms_token
@@ -70,30 +70,30 @@ module Verifierable
   end
 
   def set_sms_token!
-    self.update_attribute(:sms_confirmation_token, generate_sms_token)
+    update_attribute(:sms_confirmation_token, generate_sms_token)
   end
 
   def send_sms_token!
     require 'sms'
-    self.update_attribute(:confirmation_sms_sent_at, DateTime.now)
-    SMS::Sender.send_message(self.unconfirmed_phone, self.sms_confirmation_token)
+    update_attribute(:confirmation_sms_sent_at, DateTime.now)
+    SMS::Sender.send_message(unconfirmed_phone, sms_confirmation_token)
   end
 
   def check_sms_token(token)
-    if token == self.sms_confirmation_token
-      if self.unconfirmed_phone
-        self.update_attribute(:phone, self.unconfirmed_phone)
-        self.update_attribute(:unconfirmed_phone, nil)
+    if token == sms_confirmation_token
+      if unconfirmed_phone
+        update_attribute(:phone, unconfirmed_phone)
+        update_attribute(:unconfirmed_phone, nil)
 
-        if not self.is_verified? and not self.is_admin?
+        if not is_verified? and not is_admin?
           filter = SpamFilter.any? self
           if filter
-            self.update_attribute(:banned, true)
-            self.add_comment("Usuario baneado automáticamente por el filtro: #{filter}")
+            update_attribute(:banned, true)
+            add_comment("Usuario baneado automáticamente por el filtro: #{filter}")
           end
         end
       end
-      self.update_attribute(:sms_confirmed_at, DateTime.now)
+      update_attribute(:sms_confirmed_at, DateTime.now)
       true
     else
       false
@@ -107,17 +107,17 @@ module Verifierable
   def is_verified_online?
     return false unless Features.online_verifications?
 
-    self.confirmed_by_sms?
+    confirmed_by_sms?
   end
 
   def is_verified_presentially?
     return false unless Features.presential_verifications?
 
-    self.verified_by_id?
+    verified_by_id?
   end
 
   def verify! user
-    self.update(verified_at: DateTime.now, verified_by: user)
+    update(verified_at: DateTime.now, verified_by: user)
     VerificationMailer.verified(self).deliver_now
   end
 end
