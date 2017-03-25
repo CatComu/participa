@@ -50,7 +50,7 @@ class Ability
       can [:show, :update], User, id: user.id
       can :show, Notice
 
-      if !Features.online_verifications_only? || user.is_verified?
+      if !Features.online_verifications_only? || user.voting_right?
         can :index, :tools
       end
 
@@ -62,11 +62,11 @@ class Ability
         can :show, :verification
       end
 
-      if Features.online_verifications? && (!user.is_verified? || user.can_change_phone?)
+      if Features.online_verifications? && (user.unconfirmed_by_sms? || user.can_change_phone?)
         can [:step1, :step2, :step3, :phone, :documents, :valid], :sms_validator
       end
 
-      if Features.verifications? && user.is_verified?
+      if Features.verifications? && user.voting_right?
         can [:create, :create_token, :check, :sms_check, :send_sms_check], :vote
       end
 

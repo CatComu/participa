@@ -102,7 +102,7 @@ class User < ApplicationRecord
   end
 
   def validates_unconfirmed_phone_uniqueness
-    if User.verified_online.where(phone: self.unconfirmed_phone).exists?
+    if User.confirmed_by_sms.where(phone: self.unconfirmed_phone).exists?
       self.errors.add(:phone, "Ya hay alguien con ese número de teléfono")
     end
   end

@@ -18,6 +18,8 @@ ActiveAdmin.register User do
   scope :banned
   scope :admins
 
+  scope :confirmed_by_sms
+
   scope :verifying_online
   scope :verified_online
   scope :unverified_online
@@ -28,6 +30,9 @@ ActiveAdmin.register User do
 
   scope :verified
   scope :unverified
+
+  scope :voting_right
+  scope :online_verification_pending
 
   permit_params :email, :password, :password_confirmation, :first_name, :last_name, :document_type, :document_vatid, :born_at, :address, :town, :postal_code, :province, :country, :vote_province, :vote_town, :wants_newsletter, :phone, :unconfirmed_phone
 

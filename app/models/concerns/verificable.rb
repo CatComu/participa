@@ -6,6 +6,8 @@ module Verificable
 
   included do
     belongs_to :verified_by, class_name: "User"
+    belongs_to :verified_online_by, class_name: "User"
+
     has_many :verificated_users, class_name: "User", foreign_key: :verified_by_id
 
     has_many :verification_slots, class_name: "Verification::Slot"
@@ -24,14 +26,19 @@ module Verificable
       joins(:verification_slots).merge(Verification::Slot.presential.past_or_current)
     end
 
-    scope :verified, -> { where.not(verified_at: nil) }
-    scope :unverified, -> { where(verified_at: nil) }
+    scope :confirmed_by_sms, -> { where.not(sms_confirmed_at: nil) }
 
-    scope :verified_presentially, -> { where.not(verified_at: nil, verified_by: nil) }
-    scope :unverified_presentially, -> { where(verified_by_id: nil)}
+    scope :verified, -> { verified_presentially.or(verified_online) }
+    scope :unverified, -> { where(verified_by: nil, verified_online_by: nil) }
 
-    scope :verified_online, -> { where.not(verified_at: nil, sms_confirmed_at: nil) }
-    scope :unverified_online, -> { where(sms_confirmed_at: nil) }
+    scope :verified_presentially, -> { where.not(verified_by: nil) }
+    scope :unverified_presentially, -> { where(verified_by: nil) }
+
+    scope :verified_online, -> { where.not(verified_online_by: nil) }
+    scope :unverified_online, -> { where(verified_online_by: nil) }
+
+    scope :voting_right, -> { verified_presentially.or(confirmed_by_sms) }
+    scope :online_verification_pending, -> { confirmed_by_sms.unverified_online }
   end
 
   class_methods do
@@ -57,6 +64,8 @@ module Verificable
   end
 
   def confirmed_by_sms?
+    return false unless Features.online_verifications?
+
     !unconfirmed_by_sms?
   end
 
@@ -100,6 +109,10 @@ module Verificable
     end
   end
 
+  def voting_right?
+    confirmed_by_sms? || is_verified_presentially?
+  end
+
   def is_verified?
     is_verified_online? || is_verified_presentially?
   end
@@ -107,7 +120,7 @@ module Verificable
   def is_verified_online?
     return false unless Features.online_verifications?
 
-    confirmed_by_sms?
+    confirmed_by_sms? && verified_online_by_id?
   end
 
   def is_verified_presentially?
@@ -119,5 +132,9 @@ module Verificable
   def verify! user
     update(verified_at: DateTime.now, verified_by: user)
     VerificationMailer.verified(self).deliver_now
+  end
+
+  def verify_online! user
+    update(verified_online_at: DateTime.now, verified_online_by: user)
   end
 end

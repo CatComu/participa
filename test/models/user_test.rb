@@ -576,22 +576,23 @@ class UserTest < ActiveSupport::TestCase
 
   test ".verification scopes" do
     unverified = create(:user)
+    confirmed_by_sms = create(:user, :confirmed_by_sms)
     verified_presentially = create(:user, :verified_presentially)
-    verified_online = create(:user, :confirmed_by_sms)
-    verified_both_ways = create(:user, :verified_presentially, :confirmed_by_sms)
+    verified_online = create(:user, :verified_online)
+    verified_both_ways = create(:user, :verified_presentially, :verified_online)
 
     assert_matches_array \
       [verified_presentially, verified_online, verified_both_ways],
       User.verified
 
-    assert_matches_array [unverified], User.unverified
+    assert_matches_array [unverified, confirmed_by_sms], User.unverified
 
     assert_matches_array \
       [verified_presentially, verified_both_ways],
       User.verified_presentially
 
     assert_matches_array \
-      [unverified, verified_online],
+      [unverified, confirmed_by_sms, verified_online],
       User.unverified_presentially
 
     assert_matches_array \
@@ -599,8 +600,14 @@ class UserTest < ActiveSupport::TestCase
       User.verified_online
 
     assert_matches_array \
-      [unverified, verified_presentially],
+      [unverified, confirmed_by_sms, verified_presentially],
       User.unverified_online
+
+    assert_matches_array \
+      [confirmed_by_sms, verified_presentially, verified_online, verified_both_ways],
+      User.voting_right
+
+    assert_matches_array [confirmed_by_sms], User.online_verification_pending
   end
 
   test ".created work" do 
@@ -719,20 +726,76 @@ class UserTest < ActiveSupport::TestCase
     check_verifications(presential: true, sms: true)
   end
 
+  test "#voting_right? when no verifications enabled" do
+    check_voting_right(presential: false, sms: false)
+  end
+
+  test "#voting_right? when only presential verifications enabled" do
+    check_voting_right(presential: true, sms: false)
+  end
+
+  test "#voting_right? when only sms verifications enabled" do
+    check_voting_right(presential: false, sms: true)
+  end
+
+  test "#voting_right? when presential & sms verifications enabled" do
+    check_voting_right(presential: false, sms: true)
+  end
+
   private
+
+  def check_voting_right(presential:, sms:)
+    with_verifications(presential: presential, sms: sms) do
+      user = create(:user, :not_verified_online, :not_confirmed_by_sms, :not_verified_presentially)
+      assert_equal false, user.voting_right?
+
+      user = create(:user, :not_verified_online, :confirmed_by_sms, :not_verified_presentially)
+      assert_equal sms, user.voting_right?
+
+      user = create(:user, :not_verified_online, :not_confirmed_by_sms, :verified_presentially)
+      assert_equal presential, user.voting_right?
+
+      user = create(:user, :not_verified_online, :confirmed_by_sms, :verified_presentially)
+      assert_equal presential || sms, user.voting_right?
+
+      user = create(:user, :verified_online, :not_confirmed_by_sms, :not_verified_presentially)
+      assert_equal false, user.voting_right?
+
+      user = create(:user, :verified_online, :confirmed_by_sms, :not_verified_presentially)
+      assert_equal sms, user.voting_right?
+
+      user = create(:user, :verified_online, :not_confirmed_by_sms, :verified_presentially)
+      assert_equal presential, user.voting_right?
+
+      user = create(:user, :verified_online, :confirmed_by_sms, :verified_presentially)
+      assert_equal presential || sms, user.voting_right?
+    end
+  end
 
   def check_verifications(presential:, sms:)
     with_verifications(presential: presential, sms: sms) do
-      user = create(:user, :not_confirmed_by_sms, :not_verified_presentially)
+      user = create(:user, :not_verified_online, :not_confirmed_by_sms, :not_verified_presentially)
       assert_equal false, user.is_verified?
 
-      user = create(:user, :confirmed_by_sms, :not_verified_presentially)
-      assert_equal sms, user.is_verified?
+      user = create(:user, :not_verified_online, :confirmed_by_sms, :not_verified_presentially)
+      assert_equal false, user.is_verified?
 
-      user = create(:user, :not_confirmed_by_sms, :verified_presentially)
+      user = create(:user, :not_verified_online, :not_confirmed_by_sms, :verified_presentially)
       assert_equal presential, user.is_verified?
 
-      user = create(:user, :confirmed_by_sms, :verified_presentially)
+      user = create(:user, :not_verified_online, :confirmed_by_sms, :verified_presentially)
+      assert_equal presential, user.is_verified?
+
+      user = create(:user, :verified_online, :not_confirmed_by_sms, :not_verified_presentially)
+      assert_equal false, user.is_verified?
+
+      user = create(:user, :verified_online, :confirmed_by_sms, :not_verified_presentially)
+      assert_equal sms, user.is_verified?
+
+      user = create(:user, :verified_online, :not_confirmed_by_sms, :verified_presentially)
+      assert_equal presential, user.is_verified?
+
+      user = create(:user, :verified_online, :confirmed_by_sms, :verified_presentially)
       assert_equal presential || sms, user.is_verified?
     end
   end

@@ -1,4 +1,4 @@
-<% if current_user.is_verified? %>
+<% if current_user.voting_right? %>
   <%= content_for :title, "#{t 'verification.user_verified'} | Votación" %>
 <% else %>
   <%= content_for :title, t('verification.user_unverified') %>
@@ -19,7 +19,7 @@
       </div>
     <% end %>
 
-    <% if current_user.is_verified? %>
+    <% if current_user.voting_right? %>
       <%= render partial: "election_wrapper", locals: { upcoming_elections: @upcoming_elections, elections: @elections, finished_elections: @finished_elections } %>
     <% else %>
       <%= render partial: "verification_pending" %>
