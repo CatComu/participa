@@ -39,7 +39,7 @@ end
 class UserDeletionAfterJsActionsTest < JsFeatureTest
 
   test "a logged in user should delete itself after making a support on a proposal" do
-    with_verifications(sms: true) do
+    with_features(verifications_sms: true, proposals: true) do
       assert_equal 0, Support.all.count 
       proposal = create(:proposal)
       user = create(:user, :confirmed_by_sms)

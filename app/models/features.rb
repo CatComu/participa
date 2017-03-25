@@ -49,6 +49,14 @@ module Features
     features["use_resque"]
   end
 
+  def openid?
+    features["openid"]
+  end
+
+  def notifications?
+    features["notifications"]
+  end
+
   private
 
   def features

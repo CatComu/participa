@@ -8,9 +8,13 @@ end
 
 class OrderTest < ActiveSupport::TestCase
 
-  setup do
+  around do |&block|
     @collaboration = create(:collaboration, :ccc)
     @order = @collaboration.create_order Date.today, true
+
+    with_features(collaborations: true, collaborations_redsys: true) do
+      super(&block)
+    end
   end
 
   test "should .unique_month work for Date, Time and DateTime" do
