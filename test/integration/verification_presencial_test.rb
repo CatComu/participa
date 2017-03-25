@@ -86,7 +86,7 @@ class VerificationPresencialTest < JsFeatureTest
 
   def pending_verification_message
     if Features.presential_verifications?
-      "No has finalizado la verificación"
+      "¡Sólo te queda una última verificación por hacer!"
     else
       "Por seguridad, debes confirmar tu teléfono."
     end

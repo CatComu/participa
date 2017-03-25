@@ -974,11 +974,24 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       no_points: "No hay ningún punto activo actualmente."
       link_title: "inscribirte"
     pending_title: ¡Sólo te queda una última verificación por hacer!
-    reasons: >
+    reasons_presential: >
       Para que nuestros procesos de votación sean lo más democráticos posible
       necesitamos que aportes tu documentación de manera presencial.
-    how_to_presential: >
-      En el mapa encontrarás todos los puntos para verificarte en toda Cataluña.
+    reasons_both_html: >
+      Para que nuestros procesos de votación sean lo más democráticos posible
+      necesitamos que aportes tu documentación de manera presencial o mediante
+      %{form}.
+    how_to:
+      header: "Ponemos a tu disposición dos maneras de verificar tu identidad:"
+      presential: >
+        En el mapa encontrarás todos los puntos para verificarte en toda
+        Cataluña.
+      online_html: >
+        A través de la web de verificación digital (accede desde %{link}). Un
+        equipo de personas comprobarán después que todo esté correcto.
+      here: aquí
+    presential_name: Verificación presencial
+    online_name: Verificación digital
     requirements:
       header: "Documentación requerida para la verificación:"
       local_id: DNI o NIE con domicilio en Cataluña.

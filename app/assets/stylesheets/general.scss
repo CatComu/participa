@@ -1839,10 +1839,12 @@ layout 4+: 978-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   color: #cc2626;
 }
 
-.requirements {
+.requirements,
+.how-to {
   margin: 0 0 3em;
 
-  .title {
+  .title,
+  ol li {
     margin-bottom: 1em;
   }
 
@@ -1851,8 +1853,15 @@ layout 4+: 978-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
     li {
       list-style-position: inside;
-      list-style-type: lower-alpha;
     }
+  }
+
+  .lettered li {
+    list-style-type: lower-alpha;
+  }
+
+  .numbered li {
+    list-style-type: decimal;
   }
 }
 

@@ -1,11 +1,43 @@
-<p><%= t('verification.reasons') %></p>
+<p>
+  <% if Features.online_verifications? %>
+    <% link = link_to t('verification.online_name').downcase,
+                      sms_validator_step1_path %>
 
-<p><%= t('verification.how_to_presential') %></p>
+    <%= t('verification.reasons_both_html', form: link) %>
+  <% else %>
+    <%= t('verification.reasons_presential') %>
+  <% end %>
+</p>
+
+<div class="how-to">
+  <% if Features.online_verifications? %>
+    <p class="title"><%= t('verification.how_to.header') %></p>
+
+    <ol class="numbered">
+      <li>
+        <strong><%= t('verification.presential_name') %>:</strong><br />
+        <%= t('verification.how_to.presential') %>
+      </li>
+
+      <li>
+        <% link = link_to t('verification.how_to.here'),
+                          sms_validator_step1_path %>
+
+                        <strong><%= t('verification.online_name') %>:</strong><br />
+        <%= t('verification.how_to.online_html', link: link) %>
+      </li>
+    </ol>
+  <% else %>
+    <p>
+      <%= t('verification.how_to.presential') %>
+    </p>
+  <% end %>
+</div>
 
 <div class="requirements">
   <p class="title"><%= t('verification.requirements.header') %></p>
 
-  <ol>
+  <ol class="lettered">
     <li><%= t('verification.requirements.local_id') %></li>
     <li><%= t('verification.requirements.foreign_id') %></li>
   </ol>

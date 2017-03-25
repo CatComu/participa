@@ -328,11 +328,24 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       no_points: "No hi ha cap punt actiu actualment"
       link_title: "inscriure't"
     pending_title: Només et queda una última verificació per fer!
-    reasons: >
+    reasons_presential: >
       Perquè els nostres processos de votació siguin tan democràtics com sigui
       possible necessitem que aportis la teva documentació de manera presencial.
-    how_to_presential: >
-      Al mapa trobaràs tots els punts per verificar-te a tot Catalunya.
+    reasons_both_html: >
+      Perquè els nostres processos de votació siguin tan democràtics com sigui
+      possible necessitem que aportis la teva documentació de manera presencial
+      o mitjançant la %{form}.
+    how_to:
+      header: >
+        Posem a la teva disposició dues maneres de verificar la teva identitat:
+      presential: >
+        Al mapa trobaràs tots els punts per verificar-te a tot Catalunya.
+      online_html: >
+        A través del web de verificació digital (accedeix des d'%{link}). Un
+        equip de persones comprovaran després que tot està correcte.
+      here: aquí
+    presential_name: Verificació presencial
+    online_name: Verificació digital
     requirements:
       header: "Documentació requerida per la verificació:"
       local_id: DNI o NIE amb domicili a Catalunya.
