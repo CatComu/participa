@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  include Verifierable
+  include Verificable
 
   apply_simple_captcha
 

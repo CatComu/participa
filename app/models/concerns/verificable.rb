@@ -1,7 +1,7 @@
 require 'active_support/concern'
 require 'securerandom'
 
-module Verifierable
+module Verificable
   extend ActiveSupport::Concern
 
   included do
