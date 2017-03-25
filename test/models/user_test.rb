@@ -256,8 +256,8 @@ class UserTest < ActiveSupport::TestCase
     assert_includes user.errors[:unconfirmed_phone], "Debes poner un teléfono móvil válido de España empezando por 6 o 7."
   end
 
-  if Features.online_verifications?
-    test ".validates_unconfirmed_phone_uniqueness" do
+  test ".validates_unconfirmed_phone_uniqueness" do
+    with_verifications(sms: true, presential: false) do
       phone = "0034612345678"
       sms_confirmed_user = create(:user, :confirmed_by_sms, phone: phone)
       user = create(:user)
