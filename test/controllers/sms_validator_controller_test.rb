@@ -42,7 +42,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
     get :step1
     assert_response :redirect
     assert_redirected_to root_url 
-    assert_equal "Ya has confirmado tu número en los últimos meses.", flash[:error]
+    assert_equal "Ya has confirmado tu número en los últimos meses.", flash[:alert]
   end
 
   test "allows sms confirmation when not confirmed by sms" do

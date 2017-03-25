@@ -87,7 +87,9 @@ class SmsValidatorController < ApplicationController
 
   def can_change_phone
     unless current_user.can_change_phone?
-      redirect_to root_path, flash: {error: "Ya has confirmado tu número en los últimos meses." }
+      msg = "Ya has confirmado tu número en los últimos meses."
+
+      raise CanCan::AccessDenied.new(msg, params[:action], :sms_validator)
     end
   end
 end

@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
   before_action :banned_user
-  before_action :verified_user
   before_action :configure_sign_in_params, if: :devise_controller?
   before_action :admin_logger
 
@@ -44,18 +43,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def verified_user
-    return unless current_user && !current_user.is_verified? && !allowed_for_unverified?
-
-    if Features.online_verifications?
-      unless params["controller"] == "sms_validator"
-        redirect_to sms_validator_step1_path, alert: t("issues.confirm_sms")
-      end
-    end
-  end
-
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    if Features.online_verifications? && current_user && !current_user.is_verified?
+      redirect_to sms_validator_step1_url, :alert => t("issues.confirm_sms")
+    else
+      redirect_to root_url, :alert => exception.message
+    end
   end
 
   def access_denied exception
@@ -80,12 +73,5 @@ class ApplicationController < ActionController::Base
 
   def sign_in_permitted_keys
     %i(login document_vatid email password remember_me)
-  end
-
-  def allowed_for_unverified?
-      params[:controller] == 'page' or
-      params[:controller] == 'devise/sessions' or
-      params[:controller] == "registrations" or
-      params[:controller].start_with? "admin/"
   end
 end
