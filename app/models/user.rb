@@ -1,9 +1,5 @@
-require 'securerandom'
-
 class User < ApplicationRecord
   include Verifierable
-
-  belongs_to :verified_by, class_name: "User"
 
   apply_simple_captcha
 
@@ -34,7 +30,6 @@ class User < ApplicationRecord
   has_one :collaboration, dependent: :destroy
   has_and_belongs_to_many :participation_team
   has_many :microcredit_loans
-  has_many :verificated_users, class_name: "User", foreign_key: :verified_by_id
 
   has_many :identity_documents
   accepts_nested_attributes_for :identity_documents,
@@ -137,15 +132,6 @@ class User < ApplicationRecord
   scope :participation_team, -> { includes(:participation_team).where.not(participation_team_at: nil) }
   scope :has_circle, -> { where.not(circle: nil) }
 
-  scope :verified, -> { where.not(verified_at: nil) }
-  scope :unverified, -> { where(verified_at: nil) }
-
-  scope :verified_presentially, -> { where.not(verified_at: nil, verified_by: nil) }
-  scope :unverified_presentially, -> { where(verified_by_id: nil)}
-
-  scope :verified_online, -> { where.not(verified_at: nil, sms_confirmed_at: nil) }
-  scope :unverified_online, -> { where(sms_confirmed_at: nil) }
-
   scope :has_collaboration, -> { joins(:collaboration).where.not(collaborations: { user_id: nil }) }
   scope :has_collaboration_credit_card, -> { joins(:collaboration).where(collaborations: { payment_type: 1 }) }
   scope :has_collaboration_bank_national, -> { joins(:collaboration).where(collaborations: { payment_type: 2 }) }
@@ -240,23 +226,6 @@ class User < ApplicationRecord
     self.admin
   end
 
-  def unconfirmed_by_sms?
-    self.sms_confirmed_at.nil?
-  end
-
-  def confirmed_by_sms?
-    !self.unconfirmed_by_sms?
-  end
-
-  def can_change_phone?
-    self.unconfirmed_by_sms? or
-      self.sms_confirmed_at < DateTime.now-self.class.sms_confirmation_period
-  end
-
-  def self.sms_confirmation_period
-    3.months
-  end
-
   def self.blocked_provinces
     Rails.application.secrets.users["blocked_provinces"]
   end
@@ -274,41 +243,6 @@ class User < ApplicationRecord
     # use database version if vote_town has changed
     !self.has_verified_vote_town? or !self.persisted? or
       (Rails.application.secrets.users["allows_location_change"] and !User.blocked_provinces.member?(vote_province_persisted))
-  end
-
-  def generate_sms_token
-    SecureRandom.hex(4).upcase
-  end
-
-  def set_sms_token!
-    self.update_attribute(:sms_confirmation_token, generate_sms_token)
-  end
-
-  def send_sms_token!
-    require 'sms'
-    self.update_attribute(:confirmation_sms_sent_at, DateTime.now)
-    SMS::Sender.send_message(self.unconfirmed_phone, self.sms_confirmation_token)
-  end
-
-  def check_sms_token(token)
-    if token == self.sms_confirmation_token
-      if self.unconfirmed_phone
-        self.update_attribute(:phone, self.unconfirmed_phone)
-        self.update_attribute(:unconfirmed_phone, nil)
-
-        if not self.is_verified? and not self.is_admin?
-          filter = SpamFilter.any? self
-          if filter
-            self.update_attribute(:banned, true)
-            self.add_comment("Usuario baneado automáticamente por el filtro: #{filter}")
-          end
-        end
-      end
-      self.update_attribute(:sms_confirmed_at, DateTime.now)
-      true
-    else
-      false
-    end
   end
 
   def phone_normalize(phone_number, country_iso=nil)
@@ -637,26 +571,5 @@ class User < ApplicationRecord
 
   def sms_check_token
     Digest::SHA1.digest("#{sms_check_at}#{id}#{Rails.application.secrets.users['sms_secret_key'] }")[0..3].codepoints.map { |c| "%02X" % c }.join if sms_check_at
-  end
-
-  def is_verified?
-    is_verified_online? || is_verified_presentially?
-  end
-
-  def is_verified_online?
-    return false unless Features.online_verifications?
-
-    self.confirmed_by_sms?
-  end
-
-  def is_verified_presentially?
-    return false unless Features.presential_verifications?
-
-    self.verified_by_id?
-  end
-
-  def verify! user
-    self.update(verified_at: DateTime.now, verified_by: user)
-    VerificationMailer.verified(self).deliver_now
   end
 end
