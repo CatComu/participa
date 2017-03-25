@@ -974,7 +974,9 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       no_points: "No hay ningún punto activo actualmente."
       link_title: "inscribirte"
     pending0_html: No has finalizado la verificación
-    pending1_html: Para acabar el proceso de verificación necesitas aportar documentación de forma presencial.
+    pending_presential_verification: Para acabar el proceso de verificación necesitas aportar documentación de forma presencial.
+    pending_any_verification_html: Para acabar el proceso de verificación necesitas aportar documentación de forma presencial, o mediante %{link}.
+    online: verificación digital
     pending2_html: <b>Trae un DNI o NIE</b> que tenga la dirección de Cataluña
     pending3_html: ¿No tienes dirección en Cataluña?
     pending4_html: "<li>Trae el:</li><li><b>DNI/NIE</b> con dirección</li><li><li> de fuera de Cataluña </li><li> o el <b>Pasaporte</b></li><li> o el <b>Carnet de conducir</b></li>"

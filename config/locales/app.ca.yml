@@ -330,7 +330,9 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
     user_verified: Usuari verificat
     user_unverified: No t'has verificat
     pending0_html: No has acabat la verificació
-    pending1_html: Per acabar el procés de verificació necessites aportar documentació de forma presencial.
+    pending_presential_verification: Per acabar el procés de verificació necessites aportar documentació de forma presencial.
+    pending_any_verification_html: Per acabar el procés de verificació necessites aportar documentació de forma presencial, o mediante %{link}.
+    online: verificació digital
     pending2_html: <b>Porta un DNI o NIE</b> que tingui l'adreça de Catalunya
     pending3_html: No tens adreça a Catalunya?
     pending4_html: "<li>Porta el:</li><li><b>DNI/NIE</b> amb adreça</li><li><li> de fora de Catalunya </li><li> o el <b>passaport</b></li><li> o el <b>carnet de conduir</b></li>"

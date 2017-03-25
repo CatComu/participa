@@ -1,7 +1,15 @@
 <div class="row">
   <div class="verif-new-first">
     <p class="title"><%= t('verification.pending0_html') %></p>
-    <p><%= t('verification.pending1_html') %></p>
+
+    <p>
+      <% if Features.online_verifications? %>
+        <% link = link_to t('verification.online'), sms_validator_step1_path %>
+        <%= t('verification.pending_any_verification_html', link: link) %>
+      <% else %>
+        <%= t('verification.pending_presential_verification') %>
+      <% end %>
+    </p>
 
     <div class="verif-new-docu">
       <span><%= image_tag "ico.verif.dni.png" %></span>
