@@ -15,6 +15,15 @@ class VoteControllerTest < ActionController::TestCase
     assert_redirected_to "/users/sign_in" # FIXME bug con locales
   end
 
+  test "should not get create as unverified user" do
+    @election.update_attributes(starts_at: DateTime.now-7.days, ends_at: DateTime.now+10.days)
+    sign_in create(:user)
+    get :create, params: { election_id: @election.id }
+    assert_response :redirect
+    assert_redirected_to sms_validator_step1_url
+    #assert response.header["Location"].starts_with? "https://vota.podemos.info/"
+  end
+
   test "should get create as user" do
     @election.update_attributes(starts_at: DateTime.now-7.days, ends_at: DateTime.now+10.days)
     sign_in @user
