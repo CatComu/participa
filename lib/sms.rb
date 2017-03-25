@@ -14,10 +14,11 @@ module SMS
           msg: "El teu codi d'activació per a Un País en Comú és #{code}"
         }
         response = client.call(:send_sms, message: message)
+        Rails.logger.info response.to_s
       when "development", "test"
-        Rails.logger.info "ACTIVATION CODE para #{to} == #{code}"
+        Rails.logger.info "ACTIVATION CODE para #{dst} == #{code}"
       else
-        Rails.logger.info "ACTIVATION CODE para #{to} == #{code}"
+        Rails.logger.info "ACTIVATION CODE para #{dst} == #{code}"
       end
     end
   end
