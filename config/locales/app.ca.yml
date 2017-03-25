@@ -267,7 +267,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       p2: "Rebràs el codi de verificació per validar el nou número en uns segons."
       p3: "Si ja has participat en alguna votació de Un País En Comú, t'enviarem el codi per correu electrònic."
       p5: "Introdueix el codi que hagis rebut per SMS per confirmar-lo"
-      valid: "Has validat correctament el teu nou número de telèfon."
+      valid: "Has sido verificado correctamente. Si tus documentos están bien, estás autorizado para votar."
       invalid: "El codi que has posat no correspon amb el que t'hem enviar per SMS."
       token: Codi SMS
       button: "Comprova"
