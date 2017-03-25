@@ -2,12 +2,6 @@ class SmsValidatorController < ApplicationController
   before_action :authenticate_user! 
   before_action :can_change_phone
 
-  def can_change_phone
-    unless current_user.can_change_phone?
-      redirect_to root_path, flash: {error: "Ya has confirmado tu número en los últimos meses." }
-    end
-  end
-
   def step1 
     authorize! :step1, :sms_validator
 
@@ -91,4 +85,9 @@ class SmsValidatorController < ApplicationController
     params.require(:user).permit(:sms_user_token_given)
   end
 
+  def can_change_phone
+    unless current_user.can_change_phone?
+      redirect_to root_path, flash: {error: "Ya has confirmado tu número en los últimos meses." }
+    end
+  end
 end
