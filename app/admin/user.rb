@@ -18,22 +18,16 @@ ActiveAdmin.register User do
   scope :banned
   scope :admins
 
-  if Features.online_verifications?
-    scope :verifying_online
-    scope :verified_online
-    scope :unverified_online
-  end
+  scope :verifying_online
+  scope :verified_online
+  scope :unverified_online
 
-  if Features.presential_verifications?
-    scope :verifying_presentially
-    scope :verified_presentially
-    scope :unverified_presentially
-  end
+  scope :verifying_presentially
+  scope :verified_presentially
+  scope :unverified_presentially
 
-  if Features.verifications?
-    scope :verified
-    scope :unverified
-  end
+  scope :verified
+  scope :unverified
 
   permit_params :email, :password, :password_confirmation, :first_name, :last_name, :document_type, :document_vatid, :born_at, :address, :town, :postal_code, :province, :country, :vote_province, :vote_town, :wants_newsletter, :phone, :unconfirmed_phone
 
