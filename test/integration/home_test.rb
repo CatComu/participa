@@ -9,10 +9,18 @@ class HomeTest < ActionDispatch::IntegrationTest
     assert_title "Iniciar sesión"
   end
 
-  test "sets locale from default_url_options by default" do
+  test "does not redirect" do
     I18n.with_locale(:es) do
       visit root_path
-      assert_equal '/es', page.current_path
+      assert_equal '/', page.current_path
+    end
+  end
+
+  test "sets locale to default locale if no locale provided" do
+    I18n.with_locale(:ca) do
+      visit root_path
+
+      assert_equal(I18n.default_locale, I18n.locale)
     end
   end
 

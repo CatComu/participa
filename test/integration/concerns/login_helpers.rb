@@ -9,6 +9,10 @@ module Participa
         fill_in 'user[password]', with: password || user.password
         click_button 'Iniciar sesión'
       end
+
+      def logout
+        click_link 'Cerrar sesión'
+      end
     end
   end
 end

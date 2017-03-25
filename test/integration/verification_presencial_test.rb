@@ -1,6 +1,8 @@
 require "test_helper"
+require "integration/concerns/login_helpers"
 
 class VerificationPresencialTest < JsFeatureTest
+  include Participa::Test::LoginHelpers
 
   around do |&block|
     with_verifications(presential: true) { super(&block) }
@@ -17,8 +19,7 @@ class VerificationPresencialTest < JsFeatureTest
     election = create(:election)
 
     # should see the pending verification message if isn't verified
-    login_as(user)
-    visit root_path
+    login(user)
     assert_content pending_verification_message
 
     # can't access verification admin
@@ -37,8 +38,7 @@ class VerificationPresencialTest < JsFeatureTest
     election = create(:election)
 
     # should see the pending verification message if isn't verified
-    login_as(user)
-    visit root_path
+    login(user)
     refute_content "Por seguridad, debes confirmar tu teléfono."
 
     # can't access verification admin
@@ -54,14 +54,13 @@ class VerificationPresencialTest < JsFeatureTest
 
     # should see the pending verification message if isn't verified
     user2 = create(:user)
-    login_as(user2)
-    visit root_path
+    login(user2)
     assert_content pending_verification_message
-    logout(user2)
+    logout
 
     # user1 can verify user2
     user1 = create(:user, :verifying_presentially, :confirmed_by_sms)
-    login_as(user1)
+    login(user1)
     visit verification_step1_path
     assert_content I18n.t('verification.form.document')
     check('user_document')
@@ -73,13 +72,12 @@ class VerificationPresencialTest < JsFeatureTest
     assert_content I18n.t('verification.result')
     click_button('Si, estos datos coinciden')
     assert_content I18n.t('verification.alerts.ok.title')
-    logout(user1)
+    logout
 
     # should see the OK verification message
-    login_as(user2)
-    visit root_path
+    login(user2)
     assert_content I18n.t('voting.election_none')
-    logout(user2)
+    logout
   end
 
   private

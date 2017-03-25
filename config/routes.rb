@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get '', to: redirect("/#{I18n.locale}")
-
   if Features.redsys_collaborations?
     # redsys MerchantURL 
     post '/orders/callback/redsys', to: 'orders#callback_redsys', as: 'orders_callback_redsys'
