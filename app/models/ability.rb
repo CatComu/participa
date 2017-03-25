@@ -33,19 +33,28 @@ class Ability
       cannot :manage, Resque
       cannot :manage, ActiveAdmin
 
-      can [:read], MicrocreditLoan if user.finances_admin?
-      can [:read, :update], Microcredit if user.finances_admin?
+      if user.finances_admin?
+        can [:read], MicrocreditLoan if user.finances_admin?
+        can [:read, :update], Microcredit if user.finances_admin?
+      end
 
-      can [:show, :read], ImpulsaEdition if user.impulsa_admin?
-      can [:show, :read, :update], ImpulsaProject if user.impulsa_admin?
+      if user.impulsa_admin?
+        can [:show, :read], ImpulsaEdition
+        can [:show, :read, :update], ImpulsaProject
+      end
       
-      can [:read, :create], ActiveAdmin::Comment if user.finances_admin? || user.impulsa_admin?
+      if user.finances_admin? || user.impulsa_admin?
+        can [:read, :create], ActiveAdmin::Comment
+      end
 
       can [:show, :update], User, id: user.id
       can :show, Notice
 
       if Features.presential_verifications?
-        can [:step1, :step2, :step3, :confirm, :search, :result_ok, :result_ko], :verification if user.verifying_presentially?
+        if user.verifying_presentially?
+          can [:step1, :step2, :step3, :confirm, :search, :result_ok, :result_ko], :verification
+        end
+
         can :show, :verification
       end
 
@@ -53,8 +62,8 @@ class Ability
         can [:step1, :step2, :step3, :phone, :documents, :valid], :sms_validator
       end
 
-      if Features.verifications?
-        can [:create, :create_token, :check], :vote if user.is_verified?
+      if Features.verifications? && user.is_verified?
+        can [:create, :create_token, :check], :vote
       end
 
       cannot :admin, :all
