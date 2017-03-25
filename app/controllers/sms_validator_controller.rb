@@ -35,6 +35,7 @@ class SmsValidatorController < ApplicationController
     end
     if current_user.save
       current_user.set_sms_token!
+      current_user.send_sms_token!
       redirect_to sms_validator_step3_path
     else
       render action: "step2"
