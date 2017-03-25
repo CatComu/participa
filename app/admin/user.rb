@@ -96,14 +96,6 @@ ActiveAdmin.register User do
           end
         end
       end
-      row :esendex_status do
-        if user.phone?
-          span link_to("Ver en panel de Elementos Enviados de Esendex (confirmado)", "https://www.esendex.com/echo/a/#{Rails.application.secrets.esendex[:account_reference]}/Sent/Messages?FilterRecipientValue=#{user.phone.sub(/^00/,'')}")
-        end
-        if user.unconfirmed_phone? 
-          span link_to("Ver en panel de Elementos Enviados de Esendex (no confirmado)", "https://www.esendex.com/echo/a/#{Rails.application.secrets.esendex[:account_reference]}/Sent/Messages?FilterRecipientValue=#{user.unconfirmed_phone.sub(/^00/,'')}")
-        end
-      end
       row :validations_status do
         if user.valid?
           status_tag("El usuario supera todas las validaciones", :ok)
@@ -173,9 +165,6 @@ ActiveAdmin.register User do
       row :sms_confirmation_token
       row :confirmation_sms_sent_at
       row :sms_confirmed_at
-      #row :sms_confirmation do
-      #  link_to "Ver en Esendex (proveedor SMS)", "https://www.esendex.com/echo/a/EX0145806/Sent/Messages?FilterRecipientValue="
-      #end
       row :failed_attempts
       row :locked_at
       row :sign_in_count

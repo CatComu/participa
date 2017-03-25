@@ -206,10 +206,7 @@ programarlo). CI is also implemented using [travis-ci](http://travis-ci.org/).
     * [Sobre la integración, versión más actualizada](https://github.com/agoravoting/agora-core-view/blob/master/INTEGRATION.md),
     * [Sobre la API REST general de AgoraVoting](https://agora-ciudadana.readthedocs.org/).
 
-* Para el envío de SMS usamos [esendex](http://esendex.es/). Puede comprobarse
-  con el comando `bin/rake esendex:validate[username,password,account_reference]`.
-  La configuración de la autenticación se encuentra en unas claves de
-  `secrets.yml`.
+* Para el envío de SMS usamos una API WSDL. La configuración de la autenticación se encuentra en unas claves de `secrets.yml` y el código para el envio en `lib/sms.rb`
 
 * Para el control de excepciones en staging y production usamos una instancia
   privada de la Asociación aLabs de [errbit](https://github.com/errbit/errbit),
