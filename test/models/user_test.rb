@@ -574,7 +574,7 @@ class UserTest < ActiveSupport::TestCase
    # español
    # extranjero
 
-  test ".verification scopes" do
+  test "verification scopes" do
     unverified = create(:user)
     confirmed_by_sms = create(:user, :confirmed_by_sms)
     verified_presentially = create(:user, :verified_presentially)
