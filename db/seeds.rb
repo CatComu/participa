@@ -1,7 +1,7 @@
 require 'database_cleaner'
 
 DatabaseCleaner.clean_with :truncation
-pw = '123456789'
+pw = '111111'
 
 puts "Creating Users"
 
@@ -16,12 +16,12 @@ superadmin = FactoryGirl.create(:user, :superadmin, password: pw, email: "supera
 puts "Creating superadmin user with email #{superadmin.email}"
 
 (0..10).each do |i| 
-  user = FactoryGirl.create(:user, password: pw) 
+  user = FactoryGirl.create(:user, password: pw, email: "unverified#{i}@example.org")
   puts "Creating unverified user with email #{user.email}"
 end
 
 (0..10).each do |i| 
-  user = FactoryGirl.create(:user, password: pw) 
+  user = FactoryGirl.create(:user, password: pw, email: "verified#{i}@example.org")
   user.verify! admin
   puts "Creating verified user with email #{user.email}"
 end
