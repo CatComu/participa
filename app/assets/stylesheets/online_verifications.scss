@@ -1,9 +1,11 @@
+$white: #fff;
+
 .doc-info li {
   font-size: 1.8em;
-  margin: 0 0 1.5em 0;
+  margin: 0 0 1.5em;
 
-  &:before {
-    content: "\2713";
+  &::before {
+    content: '\2713';
     margin-left: 1.1em;
   }
 }
@@ -22,16 +24,17 @@
 }
 
 fieldset .inputlabel-box .doc-upload input {
-  background: white;
+  background: $white;
 }
 
 .doc-remove-link {
-  @extend .doc-link;
+  @extend %doc-link;
 
-  height: 30px;
   display: block;
+  height: 30px;
 }
 
+%doc-link,
 .doc-link {
   clear: left;
   font-size: 1.7em;
