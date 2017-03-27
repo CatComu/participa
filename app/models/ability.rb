@@ -62,8 +62,14 @@ class Ability
         can :show, :verification
       end
 
-      if Features.online_verifications? && (user.unconfirmed_by_sms? || user.can_change_phone?)
-        can [:step1, :step2, :step3, :phone, :documents, :valid], :sms_validator
+      if Features.online_verifications?
+        if user.unconfirmed_by_sms? || user.online_verification_pending?
+          can [:step1, :documents], :sms_validator
+        end
+
+        if user.unconfirmed_by_sms? || user.can_change_phone?
+          can [:step2, :step3, :phone, :valid], :sms_validator
+        end
       end
 
       if Features.verifications? && user.voting_right?

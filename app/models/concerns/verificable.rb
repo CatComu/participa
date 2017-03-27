@@ -117,6 +117,12 @@ module Verificable
     is_verified_online? || is_verified_presentially?
   end
 
+  def online_verification_pending?
+    return false unless Features.online_verifications?
+
+    confirmed_by_sms? && verified_online_by.nil?
+  end
+
   def is_verified_online?
     return false unless Features.online_verifications?
 

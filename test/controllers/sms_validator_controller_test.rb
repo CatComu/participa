@@ -36,10 +36,17 @@ class SmsValidatorControllerTest < ActionController::TestCase
     end
   end
 
-  test "does not allow sms confirmation when confirmed by sms recently" do
+  test "allows document upload while user not yet verified online" do
     user = create(:user, :confirmed_by_sms)
     sign_in user
     get :step1
+    assert_response :success
+  end
+
+  test "does not allow sms confirmation when confirmed by sms recently" do
+    user = create(:user, :confirmed_by_sms)
+    sign_in user
+    get :step2
     assert_response :redirect
     assert_redirected_to root_url 
     assert_equal "Ya has confirmado tu número en los últimos meses.", flash[:alert]

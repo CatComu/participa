@@ -1,0 +1,10 @@
+<div class="nested-fields">
+  <div class="doc-upload">
+    <%= f.input :scanned_picture,
+                as: :file,
+                label: false,
+                input_html: { required: true } %>
+
+    <%= link_to_remove_association f, class: 'doc-remove-link' %>
+  </div>
+</div>

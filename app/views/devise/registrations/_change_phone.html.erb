@@ -3,24 +3,19 @@
 </h2>
 
 <section class="content-text">
-
-  <% if resource.can_change_phone? %>
-    <p><%= t("user.change_phone_explain_html",
+  <p><%= t("user.change_phone_explain_html",
              unprefixed_phone: resource.phone_no_prefix,
              phone_country: resource.phone_country_name,
              phone_prefix: resource.phone_prefix) %></p>
 
-    <div class="buttonbox">
-      <%=
-          button_to(
-                  t("user.change_phone"),
-                  sms_validator_step1_path,
-                  method: :get,
-                  class: "button"
-          )
-      %>
-    </div>
-  <% else %>
-    <p><%= t("user.cannot_change_phone") %></p>
-  <% end %>
+  <div class="buttonbox">
+    <%=
+        button_to(
+               t("user.change_phone"),
+               sms_validator_step2_path,
+               method: :get,
+               class: "button"
+        )
+    %>
+  </div>
 </section>

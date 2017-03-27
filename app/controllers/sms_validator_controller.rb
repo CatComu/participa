@@ -1,11 +1,9 @@
 class SmsValidatorController < ApplicationController
   before_action :authenticate_user! 
-  before_action :can_change_phone
+  before_action :can_change_phone, except: [:step1, :documents]
 
   def step1 
     authorize! :step1, :sms_validator
-
-    current_user.identity_documents.build
   end
 
   def step2
@@ -46,7 +44,12 @@ class SmsValidatorController < ApplicationController
   def documents 
     authorize! :documents, :sms_validator
     if current_user.update(documents_params)
-      redirect_to sms_validator_step2_path
+      if current_user.confirmed_by_sms?
+        redirect_back fallback_location: root_path,
+                      notice: t('sms_validator.documents.updated')
+      else
+        redirect_to sms_validator_step2_path
+      end
     else
       flash.now[:error] = t('sms_validator.documents.invalid')
       render action: "step1"
@@ -74,7 +77,7 @@ class SmsValidatorController < ApplicationController
   def documents_params
     params
       .require(:user)
-      .permit(identity_documents_attributes: [:id, :scanned_picture, :_destroy])
+      .permit(identity_documents_attributes: [:scanned_picture])
   end
 
   def phone_params
