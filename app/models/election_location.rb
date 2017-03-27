@@ -87,11 +87,11 @@ class ElectionLocation < ApplicationRecord
   end
 
   def link
-    "#{election.server_url}election/#{vote_id}/vote"
+    "#{election.server_url}booth/#{vote_id}/vote"
   end
 
   def new_link
-    "#{election.server_url}election/#{new_vote_id}/vote"
+    "#{election.server_url}booth/#{new_vote_id}/vote"
   end
 
   def election_layout
