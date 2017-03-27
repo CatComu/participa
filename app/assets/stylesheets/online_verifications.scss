@@ -1,0 +1,38 @@
+.doc-info li {
+  font-size: 1.8em;
+  margin: 0 0 1.5em 0;
+
+  &:before {
+    content: "\2713";
+    margin-left: 1.1em;
+  }
+}
+
+.doc-upload {
+  clear: left;
+  padding: 20px;
+
+  .file {
+    input {
+      background-color: red;
+      height: 30px;
+      padding: 0;
+    }
+  }
+}
+
+fieldset .inputlabel-box .doc-upload input {
+  background: white;
+}
+
+.doc-remove-link {
+  @extend .doc-link;
+
+  height: 30px;
+  display: block;
+}
+
+.doc-link {
+  clear: left;
+  font-size: 1.7em;
+}
