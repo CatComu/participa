@@ -15,7 +15,7 @@ show_provinces = (country_code) ->
   $('#js-microcredit_loan-province-wrapper').load "/"+window.lang+"/microcreditos/provincias?microcredit_loan_country=" + country_code, ->
     prov_select = $('select#microcredit_loan_province')
     if (prov_select.length>0 && prov_select.select2)
-      prov_select.select2 {formatNoMatches: "No se encontraron resultados"}
+      prov_select.select2
     else
       show_towns null
 
@@ -40,7 +40,7 @@ show_towns = (country_code, province_code) ->
       if (has_towns)
         town_select = $('select#microcredit_loan_town')
         if (town_select.select2)
-          town_select.select2 { formatNoMatches: "No se encontraron resultados" }
+          town_select.select2
           options = town_select.children("option")
           if (options.length>1)
             postal_code = $('#microcredit_loan_postal_code').val

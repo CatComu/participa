@@ -14,9 +14,7 @@ function show_provinces(country_code, catalonia_resident){
   $select_wrapper.load(url + ' ' + select_id + '> *', function() {
     var $prov_select = $('select#user_province');
     if ($prov_select.length > 0 && $prov_select.select2)
-      $prov_select.select2({
-        formatNoMatches: 'No se encontraron resultados'
-      });
+      $prov_select.select2();
   });
 }
 
@@ -35,9 +33,7 @@ function show_towns(parent, field, country_code, province_code, prefix){
   $select_wrapper.load(url + ' ' + select_id + '> *', function() {
     var $town_select = $('select#' + field);
     if ($town_select.select2)
-      $town_select.select2({
-        formatNoMatches: 'No se encontraron resultados'
-      });
+      $town_select.select2();
 
     if (field == 'user_town') {
       var options = $town_select.children('option');
