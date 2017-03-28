@@ -8,11 +8,12 @@ class VerificationPresencialTest < JsFeatureTest
     with_verifications(presential: true) { super(&block) }
   end
 
-  test "users need to be verified to access other tools" do
-    # cant access as anon
+  test "anonymous users can't verify presentially" do
     visit verification_step1_path
     assert_equal page.current_path, root_path(locale: :es)
+  end
 
+  test "presential verificators have normal access to other sections" do
     # initialize
     user = create(:user)
     election = create(:election)
