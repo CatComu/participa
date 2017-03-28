@@ -70,6 +70,14 @@ FactoryGirl.define do
     superadmin true
   end
 
+  trait :not_banned do
+    banned false
+  end
+
+  trait :banned do
+    banned true
+  end
+
   trait :not_confirmed_by_sms do
     sms_confirmed_at nil
   end

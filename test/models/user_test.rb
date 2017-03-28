@@ -575,6 +575,7 @@ class UserTest < ActiveSupport::TestCase
    # extranjero
 
   test "verification scopes" do
+    banned = create(:user, :banned)
     unverified = create(:user)
     confirmed_by_sms = create(:user, :confirmed_by_sms)
     verified_presentially = create(:user, :verified_presentially)
@@ -585,14 +586,14 @@ class UserTest < ActiveSupport::TestCase
       [verified_presentially, verified_online, verified_both_ways],
       User.verified
 
-    assert_matches_array [unverified, confirmed_by_sms], User.unverified
+    assert_matches_array [banned, unverified, confirmed_by_sms], User.unverified
 
     assert_matches_array \
       [verified_presentially, verified_both_ways],
       User.verified_presentially
 
     assert_matches_array \
-      [unverified, confirmed_by_sms, verified_online],
+      [banned, unverified, confirmed_by_sms, verified_online],
       User.unverified_presentially
 
     assert_matches_array \
@@ -600,7 +601,7 @@ class UserTest < ActiveSupport::TestCase
       User.verified_online
 
     assert_matches_array \
-      [unverified, confirmed_by_sms, verified_presentially],
+      [banned, unverified, confirmed_by_sms, verified_presentially],
       User.unverified_online
 
     assert_matches_array \
@@ -746,57 +747,69 @@ class UserTest < ActiveSupport::TestCase
 
   def check_voting_right(presential:, sms:)
     with_verifications(presential: presential, sms: sms) do
-      user = create(:user, :not_verified_online, :not_confirmed_by_sms, :not_verified_presentially)
-      assert_equal false, user.voting_right?
+      voting_right_expectations(presential, sms).each do |state, expectation|
+        msg = <<~MSG
+          Expected a user with flags #{state} to #{expectation ? '' : 'not'}
+          have voting right.
+        MSG
 
-      user = create(:user, :not_verified_online, :confirmed_by_sms, :not_verified_presentially)
-      assert_equal sms, user.voting_right?
-
-      user = create(:user, :not_verified_online, :not_confirmed_by_sms, :verified_presentially)
-      assert_equal presential, user.voting_right?
-
-      user = create(:user, :not_verified_online, :confirmed_by_sms, :verified_presentially)
-      assert_equal presential || sms, user.voting_right?
-
-      user = create(:user, :verified_online, :not_confirmed_by_sms, :not_verified_presentially)
-      assert_equal false, user.voting_right?
-
-      user = create(:user, :verified_online, :confirmed_by_sms, :not_verified_presentially)
-      assert_equal sms, user.voting_right?
-
-      user = create(:user, :verified_online, :not_confirmed_by_sms, :verified_presentially)
-      assert_equal presential, user.voting_right?
-
-      user = create(:user, :verified_online, :confirmed_by_sms, :verified_presentially)
-      assert_equal presential || sms, user.voting_right?
+        assert_equal expectation, create(:user, *state).voting_right?, msg
+      end
     end
   end
 
   def check_verifications(presential:, sms:)
     with_verifications(presential: presential, sms: sms) do
-      user = create(:user, :not_verified_online, :not_confirmed_by_sms, :not_verified_presentially)
-      assert_equal false, user.is_verified?
+      verification_expectations(presential, sms).each do |state, expectation|
+        msg = <<~MSG
+          Expected a user with flags #{state} to #{expectation ? '' : 'not'}
+          be considered verified.
+        MSG
 
-      user = create(:user, :not_verified_online, :confirmed_by_sms, :not_verified_presentially)
-      assert_equal false, user.is_verified?
-
-      user = create(:user, :not_verified_online, :not_confirmed_by_sms, :verified_presentially)
-      assert_equal presential, user.is_verified?
-
-      user = create(:user, :not_verified_online, :confirmed_by_sms, :verified_presentially)
-      assert_equal presential, user.is_verified?
-
-      user = create(:user, :verified_online, :not_confirmed_by_sms, :not_verified_presentially)
-      assert_equal false, user.is_verified?
-
-      user = create(:user, :verified_online, :confirmed_by_sms, :not_verified_presentially)
-      assert_equal sms, user.is_verified?
-
-      user = create(:user, :verified_online, :not_confirmed_by_sms, :verified_presentially)
-      assert_equal presential, user.is_verified?
-
-      user = create(:user, :verified_online, :confirmed_by_sms, :verified_presentially)
-      assert_equal presential || sms, user.is_verified?
+        assert_equal expectation, create(:user, *state).is_verified?, msg
+      end
     end
+  end
+
+  def voting_right_expectations(presential, sms)
+    {
+      %i(not_banned not_verified_online not_confirmed_by_sms not_verified_presentially) => false,
+      %i(not_banned not_verified_online not_confirmed_by_sms verified_presentially) => presential,
+      %i(not_banned not_verified_online confirmed_by_sms not_verified_presentially) => sms,
+      %i(not_banned not_verified_online confirmed_by_sms verified_presentially) => presential || sms,
+      %i(not_banned verified_online not_confirmed_by_sms not_verified_presentially) => false,
+      %i(not_banned verified_online not_confirmed_by_sms verified_presentially) => presential,
+      %i(not_banned verified_online confirmed_by_sms not_verified_presentially) => sms,
+      %i(not_banned verified_online confirmed_by_sms verified_presentially) => presential || sms,
+      %i(banned not_verified_online not_confirmed_by_sms not_verified_presentially) => false,
+      %i(banned not_verified_online not_confirmed_by_sms verified_presentially) => false,
+      %i(banned not_verified_online confirmed_by_sms not_verified_presentially) => false,
+      %i(banned not_verified_online confirmed_by_sms verified_presentially) => false,
+      %i(banned verified_online not_confirmed_by_sms not_verified_presentially) => false,
+      %i(banned verified_online not_confirmed_by_sms verified_presentially) => false,
+      %i(banned verified_online confirmed_by_sms not_verified_presentially) => false,
+      %i(banned verified_online confirmed_by_sms verified_presentially) => false
+    }
+  end
+
+  def verification_expectations(presential, sms)
+    {
+      %i(not_banned not_verified_online not_confirmed_by_sms not_verified_presentially) => false,
+      %i(not_banned not_verified_online not_confirmed_by_sms verified_presentially) => presential,
+      %i(not_banned not_verified_online confirmed_by_sms not_verified_presentially) => false,
+      %i(not_banned not_verified_online confirmed_by_sms verified_presentially) => presential,
+      %i(not_banned verified_online not_confirmed_by_sms not_verified_presentially) => false,
+      %i(not_banned verified_online not_confirmed_by_sms verified_presentially) => presential,
+      %i(not_banned verified_online confirmed_by_sms not_verified_presentially) => sms,
+      %i(not_banned verified_online confirmed_by_sms verified_presentially) => presential || sms,
+      %i(banned not_verified_online not_confirmed_by_sms not_verified_presentially) => false,
+      %i(banned not_verified_online not_confirmed_by_sms verified_presentially) => false,
+      %i(banned not_verified_online confirmed_by_sms not_verified_presentially) => false,
+      %i(banned not_verified_online confirmed_by_sms verified_presentially) => false,
+      %i(banned verified_online not_confirmed_by_sms not_verified_presentially) => false,
+      %i(banned verified_online not_confirmed_by_sms verified_presentially) => false,
+      %i(banned verified_online confirmed_by_sms not_verified_presentially) => false,
+      %i(banned verified_online confirmed_by_sms verified_presentially) => false
+    }
   end
 end
