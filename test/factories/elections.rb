@@ -5,11 +5,20 @@ FactoryGirl.define do
     title "Hola mundo"
     agora_election_id 1
     scope 0
-    starts_at "2014-09-22 17:01:18"
-    ends_at "2014-09-28 17:01:18"
+    closed
     server "agora"
     
     after(:build) { |election| election.election_locations << create(:election_location, election: election) }
+  end
+
+  trait :closed do
+    starts_at { DateTime.now - 2.weeks }
+    ends_at { DateTime.now - 1.week }
+  end
+
+  trait :opened do
+    starts_at { DateTime.now - 1.week }
+    ends_at { DateTime.now + 1.week }
   end
 
   trait :autonomy do

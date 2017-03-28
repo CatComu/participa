@@ -34,7 +34,6 @@ class VerificationPresencialTest < JsFeatureTest
   test "users verified presentially are not bothered with online confirmations" do
     # initialize
     user = create(:user, :verified_presentially)
-    election = create(:election)
 
     # should see the pending verification message if isn't verified
     login(user)
@@ -43,10 +42,28 @@ class VerificationPresencialTest < JsFeatureTest
     # can't access verification admin
     visit verification_step1_path
     assert_equal root_path(locale: "es"), page.current_path
+  end
+
+  test "users verified presentially can't vote page if voting is closed" do
+    # initialize
+    user = create(:user, :verified_presentially)
+    election = create(:election, :closed)
+    login(user)
 
     # can't access vote
     visit create_vote_path(election_id: election.id)
     assert_equal root_path(locale: "es"), page.current_path
+  end
+
+  test "users verified presentially can vote page if voting is opened" do
+    # initialize
+    user = create(:user, :verified_presentially)
+    election = create(:election, :opened)
+    login(user)
+
+    # can't access vote
+    visit create_vote_path(election_id: election.id)
+    assert_equal create_vote_path(election_id: election.id), page.current_path
   end
 
   test "presential verifiers can verify users presentially" do
