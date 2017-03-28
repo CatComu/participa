@@ -126,7 +126,7 @@ es:
         one: No se pudo guardar este/a %{model} porque se encontró 1 error
         other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
   helpers:
-    buttons:
+    button:
       send_docs: Enviar documentos
     select:
       prompt: Por favor seleccione
