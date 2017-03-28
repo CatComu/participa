@@ -15,9 +15,6 @@
           <p><%= t('sms_validator.phone.p5') %></p>
 
           <div class="inputlabel-box">
-            <% if current_user.errors.include?(:phone) %>
-              <%= field_notice_box %>
-            <% end %>
             <%= f.input :sms_user_token_given,
                         label: t('sms_validator.phone.token') %>
           </div>

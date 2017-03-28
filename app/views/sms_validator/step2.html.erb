@@ -19,9 +19,6 @@
           <%= errors_in_form current_user %>
 
           <div class="inputlabel-box">
-            <% if current_user.errors.include?(:unconfirmed_phone) %>
-              <%= field_notice_box %>
-            <% end %>
             <%= f.input :unconfirmed_phone, as: :number,
                                             prepend: "+#{current_user.phone_prefix}",
                                             input_html: {autofocus: true, class: "unconfirmed-phone", required: true, value: current_user.unconfirmed_phone_number } %>
