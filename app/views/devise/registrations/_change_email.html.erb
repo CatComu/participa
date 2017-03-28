@@ -1,8 +1,6 @@
 <%= content_tag(:h2, t("user.change_email"))%>
 
-<section class="content-text">
-  <p> <%= t('user.change_email_explain') %> </p>
-</section>
+<p> <%= t('user.change_email_explain') %> </p>
 
 <% if resource.class.reconfirmable && resource.unconfirmed_email.present? %>
     <%= alert_box "" do %>

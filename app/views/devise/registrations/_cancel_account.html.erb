@@ -2,20 +2,18 @@
   <%= t("user.cancel_account") %>
 </h2>
 
-<section class="content-text">
-  <%= t('user.cancel_account_explain_html') %>
+<p> <%= t('user.cancel_account_explain_html') %> </p>
 
-  <div class="buttonbox">
-    <%=
-        button_to(
-                t("devise.buttons.cancel_account"),
-                user_registration_path,
-                data: {
-                      confirm: t("devise.messages.cancel_account_confirmation"),
-                }, 
-                method: :delete, 
-                class: "button button-danger"
-        )
-    %>
-  </div>
-</section>
+<div class="buttonbox">
+  <%=
+      button_to(
+              t("devise.buttons.cancel_account"),
+              user_registration_path,
+              data: {
+                    confirm: t("devise.messages.cancel_account_confirmation"),
+              }, 
+              method: :delete, 
+              class: "button button-danger"
+      )
+  %>
+</div>

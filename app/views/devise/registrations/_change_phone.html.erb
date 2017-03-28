@@ -2,20 +2,18 @@
   <%= t("user.change_phone") %>
 </h2>
 
-<section class="content-text">
-  <p><%= t("user.change_phone_explain_html",
-             unprefixed_phone: resource.phone_no_prefix,
-             phone_country: resource.phone_country_name,
-             phone_prefix: resource.phone_prefix) %></p>
+<p><%= t("user.change_phone_explain_html",
+           unprefixed_phone: resource.phone_no_prefix,
+           phone_country: resource.phone_country_name,
+           phone_prefix: resource.phone_prefix) %></p>
 
-  <div class="buttonbox">
-    <%=
-        button_to(
-               t("user.change_phone"),
-               sms_validator_step2_path,
-               method: :get,
-               class: "button"
-        )
-    %>
-  </div>
-</section>
+<div class="buttonbox">
+  <%=
+      button_to(
+             t("user.change_phone"),
+             sms_validator_step2_path,
+             method: :get,
+             class: "button"
+      )
+  %>
+</div>
