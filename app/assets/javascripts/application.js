@@ -26,7 +26,6 @@
 
 //= require organization
 
-//= require box_close
 //= require collaborations
 //= require credits
 //= require faq

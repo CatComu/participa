@@ -42,19 +42,19 @@ class ApplicationHelperTest < ActionView::TestCase
 
   test "should alert_box work" do 
     result = alert_box("Alerta") do "bla" end
-    expected = "<div class=\"box\">\n  <div class=\"box-ok\">\n    <p><strong>Alerta</strong></p>\n      <p></p>\n    <a class=\"box-close\" href=\"#\">\n      <span></span>\n    </a>\n  </div>\n</div>\n"
+    expected = "<div class=\"box\">\n  <div class=\"box-ok\">\n    <p><strong>Alerta</strong></p>\n      <p></p>\n  </div>\n</div>\n"
     assert_equal expected, result
   end
 
   test "should error_box work" do 
     result = error_box("title") do "bla" end
-    expected = "<div class=\"box\">\n  <div class=\"box-ko\">\n    <p><strong>title</strong></p>\n\n    <p></p>\n\n        <a class=\"box-close\" href=\"#\">\n          <span></span>\n        </a>\n  </div>\n</div>\n"
+    expected = "<div class=\"box\">\n  <div class=\"box-ko\">\n    <p><strong>title</strong></p>\n\n    <p></p>\n  </div>\n</div>\n"
     assert_equal expected, result
   end
 
   test "should render_flash work" do 
-    result = render_flash "application/error", "Error", "" do "bla" end 
-    expected = "<div class=\"box\">\n  <div class=\"box-ko\">\n    <p><strong>Error</strong></p>\n\n    <p></p>\n\n        <a class=\"box-close\" href=\"#\">\n          <span></span>\n        </a>\n  </div>\n</div>\n"
+    result = render_flash "application/error", "Error" do "bla" end 
+    expected = "<div class=\"box\">\n  <div class=\"box-ko\">\n    <p><strong>Error</strong></p>\n\n    <p></p>\n  </div>\n</div>\n"
     assert_equal expected, result
   end
 

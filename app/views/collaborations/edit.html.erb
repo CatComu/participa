@@ -18,7 +18,7 @@
       <%= render partial: "form", locals: { f: f } %>
       <%= render partial: "frequency_table" %>
       <% if @collaboration.has_payment? %>
-          <%= error_box "Cambios en la colaboración", false do %>
+          <%= error_box "Cambios en la colaboración" do %>
             <p>Si deseas cambiar el método de pago de tu colaboración debes cancelar tu colaboración actual y crear una nueva. </p>
           <% end %>
       <% end %>

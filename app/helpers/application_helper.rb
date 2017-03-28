@@ -27,24 +27,20 @@ module ApplicationHelper
     render partial: 'application/info', locals: { content: content }
   end
 
-  # Renders an alert with given title,
-  # text for close-button and content given in
-  # a block.
-  def alert_box title, close_text="", &block
-    render_flash 'application/alert', title, close_text, &block
+  # Renders an alert with given title, and content given in a block.
+  def alert_box title, &block
+    render_flash 'application/alert', title, &block
   end
 
-  # Renders an error with given title,
-  # text for close-button and content given in
-  # a block.
-  def error_box title, close_text="", &block
-    render_flash 'application/error', title, close_text, &block
+  # Renders an error with given title, content given in a block.
+  def error_box title, &block
+    render_flash 'application/error', title, &block
   end
 
   # Generalization from render_alert and render_error
-  def render_flash partial_name, title, close_text="", &block
+  def render_flash partial_name, title, &block
     content = with_output_buffer(&block)
-    render partial: partial_name, locals: {title: title, content: content, close_text: close_text}
+    render partial: partial_name, locals: {title: title, content: content}
   end
 
   def field_notice_box

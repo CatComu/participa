@@ -7,7 +7,7 @@
 
       <%= render partial: "steps", locals: {step: 3} %>
 
-      <%= error_box t("podemos.collaboration.ko.title"), false do %>
+      <%= error_box t("podemos.collaboration.ko.title") do %>
           <p><%= @order.error_message %></p>
       <% end %>
       <p><%= t("podemos.collaboration.ko.contact") %></p>
