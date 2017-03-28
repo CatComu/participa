@@ -1,12 +1,16 @@
 $white: #fff;
 
-.doc-info li {
+%info-section,
+.info-section {
+  padding: 20px 20px 0;
+}
+
+.info-list li {
   font-size: 1.8em;
   margin: 0 0 1.5em;
 
   &::before {
     content: '\2713';
-    margin-left: 1.1em;
   }
 }
 

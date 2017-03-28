@@ -4,10 +4,14 @@
   <fieldset>
     <legend class="invisible">Introduce tu documentación</legend>
 
-    <ul class="doc-info">
-      <li><%= t('sms_validator.documents.local_id') %></li>
-      <li><%= t('sms_validator.documents.foreign_id') %></li>
-    </ul>
+    <div class="row">
+      <div class="info-section">
+        <ul class="info-list">
+          <li><%= t('sms_validator.documents.local_id') %></li>
+          <li><%= t('sms_validator.documents.foreign_id') %></li>
+        </ul>
+      </div>
+    </div>
 
     <div id="doc-field-container" class="inputlabel-box">
       <% if current_user.errors.include?(:identity_documents) %>
