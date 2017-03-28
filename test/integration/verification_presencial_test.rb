@@ -15,11 +15,10 @@ class VerificationPresencialTest < JsFeatureTest
 
   test "presential verificators have normal access to other sections" do
     # initialize
-    user = create(:user)
     election = create(:election)
 
     # should see the pending verification message if isn't verified
-    login(user)
+    login create(:user)
     assert_content pending_verification_message
 
     # can't access verification admin
