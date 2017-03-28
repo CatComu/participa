@@ -10,7 +10,7 @@ class VerificationPresencialTest < JsFeatureTest
 
   test "anonymous users can't verify presentially" do
     visit verification_step1_path
-    assert_equal page.current_path, root_path(locale: :es)
+    assert_equal root_path(locale: :es), page.current_path
   end
 
   test "presential verificators have normal access to other sections" do
