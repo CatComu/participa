@@ -14,19 +14,6 @@ $white: #fff;
   }
 }
 
-.doc-upload {
-  clear: left;
-  padding: 20px;
-
-  .file {
-    input {
-      background-color: red;
-      height: 30px;
-      padding: 0;
-    }
-  }
-}
-
 fieldset .inputlabel-box .doc-upload input {
   background: $white;
 }
