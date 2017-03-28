@@ -740,7 +740,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "#voting_right? when presential & online verifications enabled" do
-    check_voting_right(presential: false, online: true)
+    check_voting_right(presential: true, online: true)
   end
 
   private
