@@ -7,7 +7,7 @@ class ActiveAdminTest < ActionDispatch::IntegrationTest
   end
 
   test "unverified normal user shouldn't access the admin with both verifications" do
-    with_verifications(sms: true, presential: true) do
+    with_verifications(online: true, presential: true) do
       user = create(:user)
       login_as(user)
       visit admin_collaborations_path
@@ -16,7 +16,7 @@ class ActiveAdminTest < ActionDispatch::IntegrationTest
   end
 
   test "unverified normal user shouldn't access the admin with only presential verifications" do
-    with_verifications(sms: false, presential: true) do
+    with_verifications(online: false, presential: true) do
       user = create(:user)
       login_as(user)
       visit admin_collaborations_path
@@ -25,7 +25,7 @@ class ActiveAdminTest < ActionDispatch::IntegrationTest
   end
 
   test "unverified normal user shouldn't access the admin with only online verifications" do
-    with_verifications(sms: true, presential: false) do
+    with_verifications(online: true, presential: false) do
       user = create(:user)
       login_as(user)
       visit admin_collaborations_path
@@ -34,7 +34,7 @@ class ActiveAdminTest < ActionDispatch::IntegrationTest
   end
 
   test "verified normal user shouldn't access the admin with both verifications" do
-    with_verifications(sms: true, presential: true) do
+    with_verifications(online: true, presential: true) do
       user = create(:user, :confirmed_by_sms)
       login_as(user)
       visit admin_collaborations_path
@@ -43,7 +43,7 @@ class ActiveAdminTest < ActionDispatch::IntegrationTest
   end
 
   test "verified normal user shouldn't access the admin with only presential verifications" do
-    with_verifications(sms: false, presential: true) do
+    with_verifications(online: false, presential: true) do
       user = create(:user, :confirmed_by_sms)
       login_as(user)
       visit admin_collaborations_path
@@ -52,7 +52,7 @@ class ActiveAdminTest < ActionDispatch::IntegrationTest
   end
 
   test "verified normal user shouldn't access the admin with only online verifications" do
-    with_verifications(sms: true, presential: false) do
+    with_verifications(online: true, presential: false) do
       user = create(:user, :confirmed_by_sms)
       login_as(user)
       visit admin_collaborations_path

@@ -6,7 +6,7 @@ class VoteControllerTest < ActionController::TestCase
     @user = create(:user, :confirmed_by_sms)
     @election = create(:election)
 
-    with_verifications(sms: true, presential: true) { super(&block) }
+    with_verifications(online: true, presential: true) { super(&block) }
   end
 
   test "should not get create as anon" do

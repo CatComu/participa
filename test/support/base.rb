@@ -24,16 +24,16 @@ class ActiveSupport::TestCase
     Rails.application.reload_routes!
   end
 
-  def with_verifications(presential: true, sms: true)
+  def with_verifications(presential: true, online: true)
     prev_presential = Features.presential_verifications?
-    prev_sms = Features.online_verifications?
+    prev_online = Features.online_verifications?
 
     Rails.application.secrets.features["verification_presencial"] = presential
-    Rails.application.secrets.features["verification_sms"] = sms
+    Rails.application.secrets.features["verification_sms"] = online
 
     yield
   ensure
     Rails.application.secrets.features["verification_presencial"] = prev_presential
-    Rails.application.secrets.features["verification_sms"] = prev_sms
+    Rails.application.secrets.features["verification_sms"] = prev_online
   end
 end

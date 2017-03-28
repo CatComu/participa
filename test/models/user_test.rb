@@ -257,7 +257,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test ".validates_unconfirmed_phone_uniqueness" do
-    with_verifications(sms: true, presential: false) do
+    with_verifications(online: true, presential: false) do
       phone = "0034612345678"
       sms_confirmed_user = create(:user, :confirmed_by_sms, phone: phone)
       user = create(:user)
@@ -712,42 +712,42 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "#is_verified? when no verifications enabled" do
-    check_verifications(presential: false, sms: false)
+    check_verifications(presential: false, online: false)
   end
 
   test "#is_verified? when only presential verifications enabled" do
-    check_verifications(presential: true, sms: false)
+    check_verifications(presential: true, online: false)
   end
 
-  test "#is_verified? when only sms verifications enabled" do
-    check_verifications(presential: false, sms: true)
+  test "#is_verified? when only online verifications enabled" do
+    check_verifications(presential: false, online: true)
   end
 
-  test "#is_verified? when presential & sms verifications enabled" do
-    check_verifications(presential: true, sms: true)
+  test "#is_verified? when presential & online verifications enabled" do
+    check_verifications(presential: true, online: true)
   end
 
   test "#voting_right? when no verifications enabled" do
-    check_voting_right(presential: false, sms: false)
+    check_voting_right(presential: false, online: false)
   end
 
   test "#voting_right? when only presential verifications enabled" do
-    check_voting_right(presential: true, sms: false)
+    check_voting_right(presential: true, online: false)
   end
 
-  test "#voting_right? when only sms verifications enabled" do
-    check_voting_right(presential: false, sms: true)
+  test "#voting_right? when only online verifications enabled" do
+    check_voting_right(presential: false, online: true)
   end
 
-  test "#voting_right? when presential & sms verifications enabled" do
-    check_voting_right(presential: false, sms: true)
+  test "#voting_right? when presential & online verifications enabled" do
+    check_voting_right(presential: false, online: true)
   end
 
   private
 
-  def check_voting_right(presential:, sms:)
-    with_verifications(presential: presential, sms: sms) do
-      voting_right_expectations(presential, sms).each do |state, expectation|
+  def check_voting_right(presential:, online:)
+    with_verifications(presential: presential, online: online) do
+      voting_right_expectations(presential, online).each do |state, expectation|
         msg = <<~MSG
           Expected a user with flags #{state} to #{expectation ? '' : 'not'}
           have voting right.
@@ -758,9 +758,9 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  def check_verifications(presential:, sms:)
-    with_verifications(presential: presential, sms: sms) do
-      verification_expectations(presential, sms).each do |state, expectation|
+  def check_verifications(presential:, online:)
+    with_verifications(presential: presential, online: online) do
+      verification_expectations(presential, online).each do |state, expectation|
         msg = <<~MSG
           Expected a user with flags #{state} to #{expectation ? '' : 'not'}
           be considered verified.
@@ -771,16 +771,16 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  def voting_right_expectations(presential, sms)
+  def voting_right_expectations(presential, online)
     {
       %i(not_banned not_verified_online not_confirmed_by_sms not_verified_presentially) => false,
       %i(not_banned not_verified_online not_confirmed_by_sms verified_presentially) => presential,
-      %i(not_banned not_verified_online confirmed_by_sms not_verified_presentially) => sms,
-      %i(not_banned not_verified_online confirmed_by_sms verified_presentially) => presential || sms,
+      %i(not_banned not_verified_online confirmed_by_sms not_verified_presentially) => online,
+      %i(not_banned not_verified_online confirmed_by_sms verified_presentially) => presential || online,
       %i(not_banned verified_online not_confirmed_by_sms not_verified_presentially) => false,
       %i(not_banned verified_online not_confirmed_by_sms verified_presentially) => presential,
-      %i(not_banned verified_online confirmed_by_sms not_verified_presentially) => sms,
-      %i(not_banned verified_online confirmed_by_sms verified_presentially) => presential || sms,
+      %i(not_banned verified_online confirmed_by_sms not_verified_presentially) => online,
+      %i(not_banned verified_online confirmed_by_sms verified_presentially) => presential || online,
       %i(banned not_verified_online not_confirmed_by_sms not_verified_presentially) => false,
       %i(banned not_verified_online not_confirmed_by_sms verified_presentially) => false,
       %i(banned not_verified_online confirmed_by_sms not_verified_presentially) => false,
@@ -792,7 +792,7 @@ class UserTest < ActiveSupport::TestCase
     }
   end
 
-  def verification_expectations(presential, sms)
+  def verification_expectations(presential, online)
     {
       %i(not_banned not_verified_online not_confirmed_by_sms not_verified_presentially) => false,
       %i(not_banned not_verified_online not_confirmed_by_sms verified_presentially) => presential,
@@ -800,8 +800,8 @@ class UserTest < ActiveSupport::TestCase
       %i(not_banned not_verified_online confirmed_by_sms verified_presentially) => presential,
       %i(not_banned verified_online not_confirmed_by_sms not_verified_presentially) => false,
       %i(not_banned verified_online not_confirmed_by_sms verified_presentially) => presential,
-      %i(not_banned verified_online confirmed_by_sms not_verified_presentially) => sms,
-      %i(not_banned verified_online confirmed_by_sms verified_presentially) => presential || sms,
+      %i(not_banned verified_online confirmed_by_sms not_verified_presentially) => online,
+      %i(not_banned verified_online confirmed_by_sms verified_presentially) => presential || online,
       %i(banned not_verified_online not_confirmed_by_sms not_verified_presentially) => false,
       %i(banned not_verified_online not_confirmed_by_sms verified_presentially) => false,
       %i(banned not_verified_online confirmed_by_sms not_verified_presentially) => false,

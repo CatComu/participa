@@ -32,7 +32,7 @@ class VerificationPresencialTest < JsFeatureTest
 
   end
 
-  test "users verified presentially are not bothered with sms confirmations" do
+  test "users verified presentially are not bothered with online confirmations" do
     # initialize
     user = create(:user, :verified_presentially)
     election = create(:election)

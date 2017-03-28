@@ -33,21 +33,21 @@ class HomeTest < ActionDispatch::IntegrationTest
   end
 
   test "allows foreign users to login" do
-    with_verifications(presential: false, sms: false) do
+    with_verifications(presential: false, online: false) do
       login create(:user, country: "DE", province: "BE", town: nil)
       assert_title "Datos personales"
     end
   end
 
   test "allows rare foreign users (no province) to login" do
-    with_verifications(presential: false, sms: false) do
+    with_verifications(presential: false, online: false) do
       login create(:user, country: "PS", province: nil, town: nil)
       assert_title "Datos personales"
     end
   end
 
   test "allows access to profile to unverified users" do
-    with_verifications(presential: false, sms: true) do
+    with_verifications(presential: false, online: true) do
       login create(:user)
       visit edit_user_registration_path
       assert_title 'Datos personales'
@@ -55,7 +55,7 @@ class HomeTest < ActionDispatch::IntegrationTest
   end
 
   test "allows access to static pages to unverified users" do
-    with_verifications(presential: false, sms: true) do
+    with_verifications(presential: false, online: true) do
       login create(:user)
       visit page_privacy_policy_path
       assert_title 'Política de Privacidad'
@@ -63,7 +63,7 @@ class HomeTest < ActionDispatch::IntegrationTest
   end
 
   test "redirects to edit profile when no verifications enabled" do
-    with_verifications(presential: false, sms: false) do
+    with_verifications(presential: false, online: false) do
       login create(:user)
       visit root_path
       assert_title "Datos personales"
@@ -71,7 +71,7 @@ class HomeTest < ActionDispatch::IntegrationTest
   end
 
   test "shows verification page when only presential verifications enabled" do
-    with_verifications(presential: true, sms: false) do
+    with_verifications(presential: true, online: false) do
       login create(:user)
       visit root_path
       assert_title "No te has verificado"
@@ -79,7 +79,7 @@ class HomeTest < ActionDispatch::IntegrationTest
   end
 
   test "redirects to sms verification when only sms verifications enabled" do
-    with_verifications(presential: false, sms: true) do
+    with_verifications(presential: false, online: true) do
       login create(:user)
       visit root_path
       assert_title "Envíanos la documentación"
@@ -87,7 +87,7 @@ class HomeTest < ActionDispatch::IntegrationTest
   end
 
   test "shows election page when only sms verifications enabled & user verified" do
-    with_verifications(presential: false, sms: true) do
+    with_verifications(presential: false, online: true) do
       login create(:user, :confirmed_by_sms)
       visit root_path
       assert_title "Usuario/a verificado/a | Votación"
@@ -95,7 +95,7 @@ class HomeTest < ActionDispatch::IntegrationTest
   end
 
   test "redirects to sms verification when both verifications enabled & user not verified" do
-    with_verifications(presential: true, sms: true) do
+    with_verifications(presential: true, online: true) do
       login create(:user)
       visit root_path
       assert_title "No te has verificado"
@@ -103,7 +103,7 @@ class HomeTest < ActionDispatch::IntegrationTest
   end
 
   test "shows election page when both verifications enabled & user verified presentially" do
-    with_verifications(presential: true, sms: true) do
+    with_verifications(presential: true, online: true) do
       login create(:user, :verified_presentially)
       visit root_path
       assert_title "Usuario/a verificado/a | Votación"
@@ -111,7 +111,7 @@ class HomeTest < ActionDispatch::IntegrationTest
   end
 
   test "shows election page when both verifications enabled & user verified by sms" do
-    with_verifications(presential: true, sms: true) do
+    with_verifications(presential: true, online: true) do
       login create(:user, :confirmed_by_sms)
       visit root_path
       assert_title "Usuario/a verificado/a | Votación"
