@@ -2,4 +2,14 @@
   <%= t("user.change_documents") %>
 </h2>
 
+<div class="info-section">
+  <%= t("user.change_documents_explain") %>
+</div>
+
+<div class="info-section">
+  <ul id="images" class="image-list">
+    <%= render 'application/identity_documents', user: current_user %>
+  </ul>
+</div>
+
 <%= render "application/identity_documents_form", user: current_user %>

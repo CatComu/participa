@@ -3,14 +3,23 @@ $white: #fff;
 %info-section,
 .info-section {
   padding: 20px 20px 0;
+  font-size: 1.8em;
 }
 
 .info-list li {
-  font-size: 1.8em;
   margin: 0 0 1.5em;
 
   &::before {
     content: '\2713';
+  }
+}
+
+.image-list li {
+  display: inline;
+
+  img {
+    cursor: zoom-in;
+    height: 200px;
   }
 }
 
