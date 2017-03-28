@@ -9,7 +9,6 @@ class VerificationPresencialTest < JsFeatureTest
   end
 
   test "users need to be verified to access other tools" do
-
     # cant access as anon
     visit verification_step1_path
     assert_equal page.current_path, root_path(locale: :es)
@@ -29,7 +28,6 @@ class VerificationPresencialTest < JsFeatureTest
     # can't access vote
     visit create_vote_path(election_id: election.id)
     assert_content pending_verification_message
-
   end
 
   test "users verified presentially are not bothered with online confirmations" do
@@ -51,7 +49,6 @@ class VerificationPresencialTest < JsFeatureTest
   end
 
   test "presential verifiers can verify users presentially" do
-
     # should see the pending verification message if isn't verified
     user2 = create(:user)
     login(user2)
