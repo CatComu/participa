@@ -1,9 +1,4 @@
 class VerificationController < ApplicationController
-
-  # TODO: checkbox TOS
-  # TODO: mail TOS
-  # TODO: confirm mail TOS
- 
   # GET /verificaciones
   def show
     authorize! :show, :verification
