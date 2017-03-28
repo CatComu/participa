@@ -69,7 +69,7 @@ class VerificationPresencialTest < JsFeatureTest
     user2 = create(:user)
 
     # user1 can verify user2
-    user1 = create(:user, :verifying_presentially, :confirmed_by_sms)
+    user1 = create(:user, :verifying_presentially)
     login(user1)
     visit verification_step1_path
     assert_content I18n.t('verification.form.document')
