@@ -320,6 +320,23 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
   unauthorized:
     default: "No tens permisos per accedir a aquesta secció"
     banned:
+  online_verifications:
+    admin:
+    index:
+      title:
+      welcome:
+      accept_title:
+      accept_description:
+      reject_title:
+      reject_description:
+      get_started:
+      no_pending_users:
+    show:
+      title:
+      change:
+      accept:
+      reject:
+    you_are_done:
   verification:
     from: de
     from_with_article: del

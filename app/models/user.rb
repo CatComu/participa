@@ -216,6 +216,10 @@ class User < ApplicationRecord
     "#{self.first_name} #{self.last_name}"
   end
 
+  def full_name_and_id
+    "#{self.full_name} (#{self.document_type_name} #{self.document_vatid})"
+  end
+
   def full_address
     "#{self.address}, #{self.town_name}, #{self.province_name}, CP #{self.postal_code}, #{self.country_name}"
   end

@@ -1,8 +1,10 @@
 require "test_helper"
 require "integration/concerns/login_helpers"
+require "integration/concerns/verification_helpers"
 
 class VerificationPresencialTest < JsFeatureTest
   include Participa::Test::LoginHelpers
+  include Participa::Test::VerificationHelpers
 
   around do |&block|
     with_verifications(presential: true) { super(&block) }
@@ -87,23 +89,5 @@ class VerificationPresencialTest < JsFeatureTest
     # should see the OK verification message
     login(user2)
     assert_content I18n.t('voting.election_none')
-  end
-
-  private
-
-  def pending_verification_message
-    if Features.presential_verifications?
-      "¡Sólo te queda una última verificación por hacer!"
-    else
-      "Por seguridad, debes confirmar tu teléfono."
-    end
-  end
-
-  def pending_verification_path
-    if Features.presential_verifications?
-      root_path(locale: "es")
-    else
-      sms_validator_step1_path(locale: "es")
-    end
   end
 end

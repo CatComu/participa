@@ -128,6 +128,15 @@ Rails.application.routes.draw do
       get '/ko', to: 'verification#result_ko', as: :verification_result_ko
     end
 
+    scope '/verificadoresdigitales' do
+      get '/', to: 'online_verifications#index', as: :online_verifications
+      get '/search', to: 'online_verifications#search', as: :search_online_verification
+      get '/:user_id', to: 'online_verifications#show', as: :online_verification
+
+      post '/:user_id/accept', to: 'online_verifications#accept', as: :accept_online_verification
+      post '/:user_id/reject', to: 'online_verifications#reject', as: :reject_online_verification
+    end
+
     scope '/verificaciones' do 
       get '/', to: 'verification#show', as: :verification_show
     end

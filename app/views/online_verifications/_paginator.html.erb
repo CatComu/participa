@@ -1,0 +1,15 @@
+<div class="pending-counter">
+  <% if current_index > 0 %>
+    <%= link_to online_verification_path(@pending_users[current_index - 1]) do %>
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <% end %>
+  <% end %>
+
+  <%= "#{current_index + 1} / #{total_count}" %>
+
+  <% if current_index < total_count - 1 %>
+    <%= link_to online_verification_path(@pending_users[current_index + 1]) do %>
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <% end %>
+  <% end %>
+</div>

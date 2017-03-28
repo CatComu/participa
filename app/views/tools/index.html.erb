@@ -6,9 +6,9 @@
 
 <div class="content-content">
   <div class="box-info">
-    <% if can? :step1, :verification %>
-      <div style="margin-bottom: 1em;">
-        <%= alert_box "Info" do %>
+    <% if can?( :step1, :verification) || can?(:index, :online_verifications) %>
+      <%= alert_box "Info" do %>
+        <% if can?( :step1, :verification) %>
           <p>Puedes acceder al
             <%= link_to verification_step1_path do %>
               <%= image_tag("ico.menu-verif-on.svg") %>
@@ -16,7 +16,16 @@
             <% end %>
           </p>
         <% end %>
-      </div>
+
+        <% if can?(:index, :online_verifications) %>
+          <p>Puedes acceder al
+            <%= link_to online_verifications_path do %>
+              <%= image_tag("ico.menu-verif-on.svg") %>
+              <%= t('online_verifications.admin') %>
+            <% end %>
+          </p>
+        <% end %>
+      <% end %>
     <% end %>
 
     <% if current_user.voting_right? %>

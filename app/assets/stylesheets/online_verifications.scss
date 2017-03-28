@@ -1,9 +1,18 @@
+@import 'img-viewerjs/dist/viewer';
+
+$gray: #63717f;
 $white: #fff;
 
 %info-section,
 .info-section {
   padding: 20px 20px 0;
   font-size: 1.8em;
+}
+
+.info-section--separator {
+  @extend %info-section;
+
+  border-top: 1px solid $gray;
 }
 
 .info-list li {
@@ -38,4 +47,74 @@ fieldset .inputlabel-box .doc-upload input {
 .doc-link {
   clear: left;
   font-size: 1.7em;
+}
+
+.online-verification-actions {
+  margin-top: 60px;
+}
+
+.online-verification-nav {
+  padding-bottom: 20px;
+}
+
+.pending-counter {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 900;
+}
+
+.verification-search {
+  $background: #2b303b;
+  $black: #000;
+  $white: #fff;
+  $full-width: 260px;
+  $separation: 4px;
+  $height: 30px;
+
+  height: 100%;
+  min-width: $full-width;
+
+  .select2-container {
+    float: left;
+    height: $height;
+    margin-top: 0;
+    width: 70%;
+
+    .select2-choice {
+      height: $height;
+      line-height: $height;
+    }
+  }
+
+  .btn {
+    height: $height;
+    line-height: $height;
+    margin-left: $separation;
+    padding: 0 2%;
+    width: 26%;
+  }
+}
+
+@media (min-width: 601px) {
+  .pending-counter {
+    display: inline-block;
+  }
+
+  .verification-search {
+    float: right;
+    width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .pending-counter,
+  .verification-search {
+    padding-top: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .verification-search {
+    padding-bottom: 20px;
+  }
 }

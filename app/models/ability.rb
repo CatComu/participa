@@ -63,6 +63,10 @@ class Ability
       end
 
       if Features.online_verifications?
+        if user.verifying_online?
+          can [:show, :search, :accept, :reject, :index], :online_verifications
+        end
+
         if user.unconfirmed_by_sms? || user.online_verification_pending?
           can [:step1, :documents], :sms_validator
         end

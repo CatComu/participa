@@ -970,6 +970,32 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     banned: >
       Gracias, %{full_name}. Para poder participar es necesario que nos escribas
       un correo electrónico a soporte@unpaisencomu.cat.
+  online_verifications:
+    admin: Gestor de verificaciones digitales
+    index:
+      title: Interfaz de Verificación Digital
+      welcome: >
+        Bienvenido a la interfaz de verificación. En cada pantalla podrás ver los
+        datos de una usuaria que ha iniciado el proceso de verificación digital,
+        así como los documentos que ha subido. Las posibles acciones que puedes
+        tomar tras analizar la solicitud son las siguentes.
+      accept_title: Aceptar (botón verde)
+      accept_description: >
+        Confirmas la vericidad de la usuaria y la validez de los documentos que ha
+        subido. Los votos que haya emitido o emita en el futuro serán considerados
+        válidos.
+      reject_title: Rechazar (botón rojo)
+      reject_description: >
+        Señalizas que se trata de una solicitud fraudulenta. La usuaria será
+        baneada y no podrá acceder más a la plataforma de participación.
+      get_started: Comenzar
+      no_pending_users: No hay usuarias pendientes de verificar en este momento.
+    show:
+      title: Verificación Digital
+      change: Cambiar
+      accept: Aceptar
+      reject: Rechazar
+    you_are_done: No quedan usuarias pendientes de verificación. ¡Buen trabajo!
   verification:
     from: de
     from_with_article: del

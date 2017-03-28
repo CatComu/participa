@@ -1,0 +1,34 @@
+<% content_for :title, t('.title') %>
+
+<div class="content-content verification">
+  <div class="box-info">
+
+    <h2><%= t('.title') %></h2>
+
+    <div class="row">
+      <p><%= t('.welcome') %></p>
+
+      <ul class="info-list">
+        <li>
+          <strong><%= t('.accept_title') %></strong>
+
+          <%= t('.accept_description') %>
+        </li>
+
+        <li>
+          <strong><%= t('.reject_title') %></strong>
+
+          <%= t('.reject_description') %>
+        </li>
+      </ul>
+
+      <p>
+        <% if @pending_users.any? %>
+          <%= link_to t('.get_started'), online_verification_path(@pending_users.first), class: 'button' %>
+        <% else %>
+          <%= t('.no_pending_users') %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

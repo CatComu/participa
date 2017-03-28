@@ -1,0 +1,78 @@
+<% content_for :title, t('.title') %>
+
+<div class="content-content verification">
+  <div class="box-info">
+    <nav class="online-verification-nav">
+      <%= render "paginator" %>
+
+      <div class="verification-search">
+        <%= form_tag search_online_verification_path, method: :get, enforce_utf8: false do %>
+          <%= select_tag 'user_id', options_from_collection_for_select(@pending_users, :id, :full_name_and_id) %>
+          <%= submit_tag t('.change'), name: nil, class: 'btn btn-warning' %>
+        <% end %>
+      </div>
+    </nav>
+
+    <h2>
+      <%= @user.full_name_and_id %>
+    </h2>
+
+    <div class="row">
+      <div class="info-section--separator">
+        <ul class="info-list">
+          <li>
+            <strong><%= t('activerecord.attributes.user.born_at') %></strong>:
+            <%= @user.born_at %>
+          </li>
+
+          <% unless @user.in_spain? %>
+            <li>
+              <strong><%= t('activerecord.attributes.user.country') %></strong>:
+              <%= @user.country_name %>
+            </li>
+          <% end %>
+
+          <li>
+            <strong><%= t('activerecord.attributes.user.province') %></strong>:
+            <%= @user.province_name %>
+          </li>
+
+          <li>
+            <strong><%= t('activerecord.attributes.user.address') %></strong>:
+            <%= @user.address %>
+          </li>
+
+          <li>
+            <strong><%= t('activerecord.attributes.user.postal_code') %></strong>:
+            <%= @user.postal_code %>
+          </li>
+
+          <li>
+            <strong><%= t('activerecord.attributes.user.phone') %></strong>:
+            <%= @user.phone %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="info-section--separator">
+        <ul id="images" class="image-list">
+          <%= render 'application/identity_documents', user: @user %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row online-verification-actions">
+      <%= link_to t('.accept'),
+                  accept_online_verification_path(@user),
+                  method: :post,
+                  class: 'btn btn-lg btn-success' %>
+
+      <%= link_to t('.reject'),
+                  reject_online_verification_path(@user),
+                  method: :post,
+                  class: 'btn btn-lg btn-danger' %>
+    </div>
+  </div>
+</div>

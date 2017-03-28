@@ -1,3 +1,4 @@
+#= require img-viewerjs/dist/viewer
 #= require cocoon
 
 hideSingleRemoveLink = ->
@@ -9,6 +10,9 @@ showMultipleRemoveLinks = ->
     $('.doc-remove-link').show()
 
 $ ->
+  if document.getElementById('images')
+    viewer = new Viewer(document.getElementById('images'), url: 'data-original')
+
   hideSingleRemoveLink()
 
   $('#doc-field-container').on 'cocoon:after-insert', showMultipleRemoveLinks
