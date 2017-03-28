@@ -87,7 +87,6 @@ class VerificationPresencialTest < JsFeatureTest
     # should see the OK verification message
     login(user2)
     assert_content I18n.t('voting.election_none')
-    logout
   end
 
   private
