@@ -66,11 +66,7 @@ class VerificationPresencialTest < JsFeatureTest
   end
 
   test "presential verifiers can verify users presentially" do
-    # should see the pending verification message if isn't verified
     user2 = create(:user)
-    login(user2)
-    assert_content pending_verification_message
-    logout
 
     # user1 can verify user2
     user1 = create(:user, :verifying_presentially, :confirmed_by_sms)
