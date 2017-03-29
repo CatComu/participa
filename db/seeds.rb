@@ -32,3 +32,15 @@ puts "Creating superadmin user with email #{superadmin.email}"
                             email: "confirmed_by_sms#{i}@example.org")
   puts "Creating user confirmed_by_sms with email #{user.email}"
 end
+
+%w(
+  invalid_id
+  unverifiable_id
+  unmatched_identity
+  non_local_id_with_missing_residence_proof
+  non_local_id_with_outdated_residence_proof
+  non_local_id_with_unmatched_residence_proof
+  non_local_id_with_unverifiable_residence_proof
+).each do |code|
+  OnlineVerifications::Label.find_or_create_by!(code: code)
+end
