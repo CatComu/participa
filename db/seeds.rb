@@ -18,9 +18,7 @@ puts "Creating superadmin user with email #{superadmin.email}"
 (0..10).each do |i| 
   user = FactoryGirl.create(:user, password: pw, email: "unverified#{i}@example.org")
   puts "Creating unverified user with email #{user.email}"
-end
 
-(0..10).each do |i| 
   user = FactoryGirl.create(:user, password: pw, email: "verified#{i}@example.org")
   user.verify! admin
   puts "Creating verified user with email #{user.email}"
