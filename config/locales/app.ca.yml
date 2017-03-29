@@ -366,11 +366,11 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       link_title: "inscriure't"
     pending_title: Només et queda una última verificació per fer!
     reasons_presential: >
-      Perquè els nostres processos de votació siguin tan democràtics com sigui
-      possible necessitem que aportis la teva documentació de manera presencial.
+      Perquè els nostres processos de votació resultin tan democràtics com sigui
+      possible ens cal que hi aportis la teva documentació de manera presencial.
     reasons_both_html: >
-      Perquè els nostres processos de votació siguin tan democràtics com sigui
-      possible necessitem que aportis la teva documentació de manera presencial
+      Perquè els nostres processos de votació resultin tan democràtics com sigui
+      possible ens cal que hi aportis la teva documentació de manera presencial
       o mitjançant la %{form}.
     how_to:
       header: >
@@ -389,8 +389,8 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       foreign_id: >
         DNI o NIE amb domicili de fora de Catalunya o passaport o permís de
         conduir + certificat d'empadronament o rebut d'un subministrament bàsic
-        (aigua, llum o gas) que no tingui més de tres meses d'antiguitat i en la
-        que aparegui la identitat de la persona i un domicili a Catalunya.
+        (aigua, llum o gas) que no tingui més de tres meses d'antiguitat i on
+        aparegui la identitat de la persona i un domicili a Catalunya.
     bring_your_documents_to: "Porta la documentació a:"
     user_verified: Usuari verificat
     user_unverified: No t'has verificat
