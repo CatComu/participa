@@ -1,5 +1,6 @@
 #= require img-viewerjs/dist/viewer
 #= require cocoon
+#= require bootstrap/modal
 
 hideSingleRemoveLink = ->
   if $('.doc-remove-link:visible').length == 1

@@ -322,6 +322,15 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
     banned:
   online_verifications:
     admin:
+    label:
+      invalid_id:
+      unverifiable_id:
+      unmatched_identity:
+      non_local_id_with_missing_residence_proof:
+      non_local_id_with_invalid_residence_proof:
+      non_local_id_with_outdated_residence_proof:
+      non_local_id_with_unmatched_residence_proof:
+      non_local_id_with_unverifiable_residence_proof:
     index:
       title:
       welcome:
@@ -329,13 +338,21 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       accept_description:
       reject_title:
       reject_description:
+      report_title:
+      report_description:
       get_started:
       no_pending_users:
+    report:
+      success:
+    report_modal:
+      title:
+      button:
     show:
       title:
       change:
       accept:
       reject:
+      report:
     you_are_done:
   verification:
     from: de

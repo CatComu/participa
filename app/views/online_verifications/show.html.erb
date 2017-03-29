@@ -73,6 +73,14 @@
                   reject_online_verification_path(@user),
                   method: :post,
                   class: 'btn btn-lg btn-danger' %>
+
+      <button type="button" class="btn btn-lg btn-warning" data-toggle="modal" data-target="#issue-modal">
+        <%= t('.report') %>
+      </button>
     </div>
   </div>
 </div>
+
+<%= render 'report_modal',
+           event: OnlineVerifications::Report.new(verified: @user),
+           modal_id: 'issue-modal' %>

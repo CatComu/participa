@@ -28,6 +28,15 @@ class OnlineVerificationsController < ApplicationController
     pick_next
   end
 
+  def report
+    authorize! :report, :online_verifications
+
+    OnlineVerifications::Report.create!(report_params)
+
+    redirect_to online_verification_path(@user),
+                notice: I18n.t("online_verifications.report.success")
+  end
+
   def index
     authorize! :index, :online_verifications
   end
@@ -59,5 +68,12 @@ class OnlineVerificationsController < ApplicationController
 
   def load_user
     @user = User.find(params[:user_id])
+  end
+
+  def report_params
+    params
+      .require(:online_verifications_report)
+      .permit(:verified_id, label_ids: [])
+      .merge(verifier_id: current_user.id)
   end
 end

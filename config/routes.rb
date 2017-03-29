@@ -135,6 +135,7 @@ Rails.application.routes.draw do
 
       post '/:user_id/accept', to: 'online_verifications#accept', as: :accept_online_verification
       post '/:user_id/reject', to: 'online_verifications#reject', as: :reject_online_verification
+      post '/:user_id/report', to: 'online_verifications#report', as: :report_online_verification
     end
 
     scope '/verificaciones' do 

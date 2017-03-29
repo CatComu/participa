@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325231114) do
+ActiveRecord::Schema.define(version: 20170329140722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -416,15 +416,28 @@ ActiveRecord::Schema.define(version: 20170325231114) do
     t.datetime "sent_at"
   end
 
-  create_table "online_verifications", force: :cascade do |t|
-    t.text     "comment"
-    t.integer  "status",      null: false
+  create_table "online_verification_events", force: :cascade do |t|
+    t.string   "type",        null: false
     t.integer  "verified_id", null: false
-    t.integer  "verifier_id", null: false
+    t.integer  "verifier_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["verified_id"], name: "index_online_verifications_on_verified_id", using: :btree
-    t.index ["verifier_id"], name: "index_online_verifications_on_verifier_id", using: :btree
+    t.index ["verified_id"], name: "index_online_verification_events_on_verified_id", using: :btree
+  end
+
+  create_table "online_verification_issues", force: :cascade do |t|
+    t.integer  "report_id"
+    t.integer  "label_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_online_verification_issues_on_label_id", using: :btree
+    t.index ["report_id"], name: "index_online_verification_issues_on_report_id", using: :btree
+  end
+
+  create_table "online_verification_labels", force: :cascade do |t|
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -665,8 +678,10 @@ ActiveRecord::Schema.define(version: 20170325231114) do
   add_foreign_key "impulsa_project_topics", "impulsa_projects"
   add_foreign_key "impulsa_projects", "impulsa_edition_categories"
   add_foreign_key "impulsa_projects", "users"
-  add_foreign_key "online_verifications", "users", column: "verified_id"
-  add_foreign_key "online_verifications", "users", column: "verifier_id"
+  add_foreign_key "online_verification_events", "users", column: "verified_id"
+  add_foreign_key "online_verification_events", "users", column: "verifier_id"
+  add_foreign_key "online_verification_issues", "online_verification_events", column: "report_id"
+  add_foreign_key "online_verification_issues", "online_verification_labels", column: "label_id"
   add_foreign_key "users", "users", column: "verified_online_by_id"
   add_foreign_key "verification_slots", "users"
 end

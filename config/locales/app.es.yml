@@ -972,6 +972,33 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       un correo electrónico a soporte@unpaisencomu.cat.
   online_verifications:
     admin: Gestor de verificaciones digitales
+    label:
+      invalid_id: >
+        El documento de identidad no es válido. Debe ser DNI, NIE o pasaporte.
+      unverifiable_id: >
+        El documento de identidad no es verificable. En la foto debe poder
+        distinguirse claramente tu nombre. Comprueba que no esté borrosa.
+      unmatched_identity: >
+        El documento de identidad no coincide con la identidad del solicitante.
+        Comprueba que la persona registrada es la misma que el titular del
+        documento que envías.
+      non_local_id_with_missing_residence_proof: >
+        El documento es de fuera de Cataluña y no se incluye un documento extra
+        con una prueba de residencia en Cataluña mediante factura reciente de
+        suministro básico.
+      non_local_id_with_invalid_residence_proof: >
+        El documento es de fuera de Cataluña y la prueba de residencia que se
+        incluye no es válida. Debe ser un recibo de agua, luz o gas.
+      non_local_id_with_outdated_residence_proof: >
+        El documento es de fuera de Cataluña y la prueba de residencia que se
+        incluye no es reciente. Debe ser un recibo de los últimos tres meses.
+      non_local_id_with_unmatched_residence_proof: >
+        El documento es de fuera de Cataluña y la prueba de residencia que se
+        incluye no está a nombre del solicitante.
+      non_local_id_with_unverifiable_residence_proof: >
+        El documento es de fuera de Cataluña y la prueba de residencia que se
+        incluye no es verificable. En la foto debe poder distinguirse claramente
+        la fecha, tipo y titular del recibo. Comprueba que no esté borrosa.
     index:
       title: Interfaz de Verificación Digital
       welcome: >
@@ -988,13 +1015,32 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       reject_description: >
         Señalizas que se trata de una solicitud fraudulenta. La usuaria será
         baneada y no podrá acceder más a la plataforma de participación.
+      report_title: Señalar un problema (botón naranja)
+      report_description: >
+        Si la solicitud es válida pero está incompleta. Por ejemplo, si faltan
+        documentos, las fotografías están borrosas y no permiten leer los datos,
+        etc. Esta opción permite señalar los problemas detectados entra varias
+        opciones predefinidas y envía un email a la usuaria informándola de los
+        problemas y de como solucionarlos mediante la subida de nuevos
+        documentos. Se recomienda complementar el uso de esta opción con una
+        llamada telefónica directa para informar del caso. Los tiempos son muy
+        ajustados y no queremos que nadie se quede sin votar porque no pudo leer
+        un email. El uso de este botón queda registrado en la solicitud para que
+        futuras verificadoras puedan comprobar fácilmente si la usuaria
+        solucionó los problemas originales.
       get_started: Comenzar
       no_pending_users: No hay usuarias pendientes de verificar en este momento.
+    report:
+      success: Solicitud actualizada correctamente
+    report_modal:
+      title: Señalar un problema con la solicitud de %{name}
+      button: Informar a la usuaria
     show:
       title: Verificación Digital
       change: Cambiar
       accept: Aceptar
       reject: Rechazar
+      report: Señalar un problema
     you_are_done: No quedan usuarias pendientes de verificación. ¡Buen trabajo!
   verification:
     from: de
