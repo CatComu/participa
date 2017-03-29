@@ -5,8 +5,8 @@ ca:
     language_name: "Català"
   cocoon:
     identity_documents:
-      add: "Añadir otro documento"
-      remove: "Eliminar documento"
+      add: "Afegir-hi un altre document"
+      remove: "Eliminar document"
   activerecord:
     models:
       user:
@@ -199,8 +199,11 @@ ca:
     change_email_explain: "Si canvies el teu correu electrònic t'enviarem un altre correu perquè el confirmis."
     change_phone: "Canvia el telèfon mòbil"
     change_phone_explain_html: "T'has validat amb el telèfon mòbil <b>%{unprefixed_phone}</b> de <b>%{phone_country}</b> (prefix internacional %{phone_prefix})."
-    change_documents:
-    change_documents_explain:
+    change_documents: "Els meus documents"
+    change_documents_explain: >
+      Aquesta és la llista d'imatges que ens has facilitat per al procés de
+      verificació digital. Si hi ha errors a la teva sol·licitud inicial, o et
+      manca qualsevol document, aquí pots carregar les imatges que necessitis.
     change_password: "Canvia contrasenya"
     cancel_account: "Dóna'm de baixa"
     cancel_account_explain_html: "<p>Si cliques \"Dóna'm de baixa\" deixaràs de ser membre de Un País En Comú i cancel·larem les teves dades personals conforme a allò convingut a la Llei Orgànica 15/1999 de Protecció de Dades de Caràcter Personal.</p>
@@ -258,10 +261,10 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
         d'empadronament o rebut d'un suministrament bàsic (aigua, llum o gas)
         que no tingui més de tres meses d'antiguitat i en el qual aparegui la
         identitat de la persona i un domicili a Catalunya.
-      invalid: Hubo un error al subir los documentos.
-      updated: Documentos subidos correctamente. Los revisaremos próximamente.
+      invalid: Hi ha hagut un error en carregar els documents.
+      updated: Documents carregats correctament. Els revisarem aviat.
     steps:
-      step1: "Envíanos la documentación"
+      step1: "Envia'ns la documentació"
       step2: "Introdueix el teu número de telèfon mòbil"
       step3: "Introdueix el codi rebut per SMS"
     phone:
@@ -269,7 +272,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       p2: "Rebràs el codi de verificació per validar el nou número en uns segons."
       p3: "Si ja has participat en alguna votació de Un País En Comú, t'enviarem el codi per correu electrònic."
       p5: "Introdueix el codi que hagis rebut per SMS per confirmar-lo"
-      valid: "Has sido verificado correctamente. Si tus documentos están bien, estás autorizado para votar."
+      valid: "T'hem verificat correctament. Si els teus documents són correctes, tindràs l'autorització per votar."
       invalid: "El codi que has posat no correspon amb el que t'hem enviar per SMS."
       token: Codi SMS
       button: "Comprova"
@@ -319,9 +322,11 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
         "
   unauthorized:
     default: "No tens permisos per accedir a aquesta secció"
-    banned:
+    banned: >
+      Gràcies, %{full_name}. Per poder participar-hi cal que ens escriguis un
+      correu electrònic a soporte@unpaisencomu.cat
   online_verifications:
-    admin:
+    admin: Gestor de verificacions digitals
     label:
       invalid_id:
       unverifiable_id:
@@ -332,16 +337,28 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       non_local_id_with_unmatched_residence_proof:
       non_local_id_with_unverifiable_residence_proof:
     index:
-      title:
-      welcome:
-      accept_title:
-      accept_description:
-      reject_title:
-      reject_description:
+      title: Interfície de Verificació Digital
+      welcome: >
+        Et donem la benvinguda a la interfície de verificació. A cada pantalla
+        podràs veure les dades d'una persona usuària que ha iniciat el procés de
+        verificació digital, així com els documents que ha carregat. Les
+        possibles accions que pots prendre després d'analitzar la sol·licitud
+        són les següents.
+      accept_title: Acceptar (botó verd)
+      accept_description: >
+        Confirmes la veracitat de la persona usuària i la validesa dels
+        documents que hi ha carregat. Els vots que hagi emès o emeti en el futur
+        seran considerats vàlids.
+      reject_title: Refusar (botó vermell)
+      reject_description: >
+        Assenyales que es tracta d'una sol·licitud fraudulenta. La persona
+        usuària serà proscrita i no podrà accedir més a la plataforma de
+        participació.
       report_title:
       report_description:
-      get_started:
-      no_pending_users:
+      get_started: Començar
+      no_pending_users: >
+        Hores d'ara no hi ha persones usuàries pendents de verificar.
     report:
       success:
     report_modal:
@@ -353,7 +370,8 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       accept:
       reject:
       report:
-    you_are_done:
+    you_are_done: >
+      No resten persones usuàries pendents de verificació. Bona feina!
   verification:
     from: de
     from_with_article: del

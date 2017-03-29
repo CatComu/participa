@@ -127,7 +127,7 @@ ca:
         other: No s'ha pogut desar aquest/a %{model} poerquè s'ha trobat %{count} errors
   helpers:
     button:
-      send_docs: Enviar documentos
+      send_docs: Enviar documents
     select:
       prompt: Sisplau selecciona
     submit:
