@@ -336,6 +336,11 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       non_local_id_with_outdated_residence_proof:
       non_local_id_with_unmatched_residence_proof:
       non_local_id_with_unverifiable_residence_proof:
+  mailer:
+    subject:
+    introduction:
+    suggested_action:
+    suggested_action_text_only:
     index:
       title: Interfície de Verificació Digital
       welcome: >

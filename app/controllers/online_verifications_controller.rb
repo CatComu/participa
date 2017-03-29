@@ -31,7 +31,10 @@ class OnlineVerificationsController < ApplicationController
   def report
     authorize! :report, :online_verifications
 
-    OnlineVerifications::Report.create!(report_params)
+    event = OnlineVerifications::Report.create!(report_params)
+
+    # @todo Handle failures gracefully
+    OnlineVerificationMailer.report(event).deliver_now
 
     redirect_to online_verification_path(@user),
                 notice: I18n.t("online_verifications.report.success")

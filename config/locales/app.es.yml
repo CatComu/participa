@@ -999,6 +999,19 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
         El documento es de fuera de Cataluña y la prueba de residencia que se
         incluye no es verificable. En la foto debe poder distinguirse claramente
         la fecha, tipo y titular del recibo. Comprueba que no esté borrosa.
+    mailer:
+      subject: Revisa tu solicitud de verificación digital en Un País En Comú
+      introduction: >
+        Hola, hemos revisado tu solicitud de verificación digital y hemos
+        detectado los siguientes problemas con los documentos que has subido.
+      suggested_action: >
+        Por favor, haz click en el siguiente enlace para subir los documentos
+        corregidos. De esta manera podremos verificar tu identidad y podrás
+        votar en las próximas consultas
+      suggested_action_text_only: >
+        Por favor, visita la siguiente url para subir los documentos corregidos.
+        De esta manera podremos verificar tu identidad y podrás votar en las
+        próximas consultas
     index:
       title: Interfaz de Verificación Digital
       welcome: >

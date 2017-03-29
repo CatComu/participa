@@ -1,0 +1,9 @@
+<%= t('online_verifications.mailer.introduction') %>
+
+<%- @event.labels.each do |issue_label| %>
+  <%= "* #{issue_label.description}" %>
+<%- end %>
+
+<%= t('online_verifications.mailer.suggested_action_text_only') %>
+
+<%= edit_user_registration_url(anchor: 'change-documents') %>
