@@ -67,6 +67,8 @@ FactoryGirl.define do
   end
 
   trait :superadmin do
+    admin
+
     superadmin true
   end
 

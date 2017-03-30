@@ -6,7 +6,7 @@ class AbilityTest < ActiveSupport::TestCase
     @user1 = create(:user)
     @user2 = create(:user, document_type: 3, document_vatid: "22222D")
     @admin = create(:user, :admin)
-    @superadmin = create(:user, :admin, :superadmin)
+    @superadmin = create(:user, :superadmin)
     @notice = create(:notice)
   end
 
