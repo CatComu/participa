@@ -373,6 +373,8 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       accept:
       reject:
       report:
+    user_uploaded:
+    verifier_reported:
     you_are_done: >
       No resten persones usuàries pendents de verificació. Bona feina!
   verification:

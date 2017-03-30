@@ -56,10 +56,10 @@
     </div>
 
     <div class="row">
-      <div class="info-section--separator">
-        <ul id="images" class="image-list">
-          <%= render 'application/identity_documents', user: @user %>
-        </ul>
+      <div class="info-section">
+        <ol class="activity-feed">
+          <%= render @events %>
+        </ol>
       </div>
     </div>
 

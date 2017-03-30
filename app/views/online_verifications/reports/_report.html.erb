@@ -1,0 +1,16 @@
+<li class="feed-item">
+  <time class="date" datetime="<%= report.created_at %>">
+    <%= report.created_at.to_s(:short) %>
+  </time>
+
+  <span class="text">
+    <%= t('online_verifications.verifier_reported',
+          name: report.verifier.first_name) %>
+  </span>
+
+  <ul class="info-list">
+    <% report.labels.each do |issue_label| %>
+      <li><%= issue_label.description %></li>
+    <% end %>
+  </ul>
+</li>

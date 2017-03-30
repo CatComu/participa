@@ -9,8 +9,9 @@ module Verificable
     belongs_to :verified_online_by, class_name: "User"
 
     has_many :verificated_users, class_name: "User", foreign_key: :verified_by_id
-
     has_many :verification_slots, class_name: "Verification::Slot"
+
+    has_many :uploads, class_name: "OnlineVerifications::Upload", foreign_key: :verified_id
 
     accepts_nested_attributes_for :verification_slots, allow_destroy: true
 

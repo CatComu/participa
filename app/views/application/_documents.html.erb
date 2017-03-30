@@ -1,4 +1,4 @@
-<% user.identity_documents.find_each do |document| %>
+<% upload.documents.find_each do |document| %>
   <li>
     <%= image_tag document.scanned_picture.url(:thumb),
                   data: { original: document.scanned_picture.url(:original) } %>

@@ -6,10 +6,12 @@
   <%= t("user.change_documents_explain") %>
 </div>
 
-<div class="info-section">
-  <ul id="images" class="image-list">
-    <%= render 'application/identity_documents', user: current_user %>
-  </ul>
-</div>
+<% current_user.uploads.each do |upload| %>
+  <div class="info-section">
+    <ul id="images" class="image-list">
+      <%= render 'application/documents', upload: upload %>
+    </ul>
+  </div>
+<% end %>
 
-<%= render "application/identity_documents_form", user: current_user %>
+<%= render "application/documents_form" %>

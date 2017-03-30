@@ -11,8 +11,8 @@ showMultipleRemoveLinks = ->
     $('.doc-remove-link').show()
 
 $ ->
-  if document.getElementById('images')
-    viewer = new Viewer(document.getElementById('images'), url: 'data-original')
+  for element, _index in $('.image-list')
+    viewer = new Viewer(element, url: 'data-original')
 
   hideSingleRemoveLink()
 

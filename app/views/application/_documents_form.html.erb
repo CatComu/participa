@@ -1,4 +1,4 @@
-<%= semantic_form_for(current_user,
+<%= semantic_form_for(OnlineVerifications::Upload.new,
                       url: sms_validator_documents_path,
                       html: {method: :post, multipart: true}) do |f| %>
   <fieldset>
@@ -14,18 +14,14 @@
     </div>
 
     <div id="doc-field-container" class="inputlabel-box">
-      <% if current_user.errors.include?(:identity_documents) %>
-        <%= field_notice_box %>
-      <% end %>
-
-      <%= f.semantic_fields_for :identity_documents, current_user.identity_documents.build do |doc_form| %>
-        <%= render 'identity_document_fields', f: doc_form %>
+      <%= f.semantic_fields_for :documents, f.object.documents.build do |doc_form| %>
+        <%= render 'document_fields', f: doc_form %>
       <% end %>
 
       <div class="doc-link">
         <%= link_to_add_association t("online_verifications.add_another_document"),
                                     f,
-                                    :identity_documents %>
+                                    :documents %>
       </div>
     </div>
 

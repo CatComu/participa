@@ -74,15 +74,21 @@ class SmsValidatorControllerTest < ActionController::TestCase
       'image/png'
     )
 
-    user_params = { identity_documents_attributes: {
+    online_verifications_upload = { documents_attributes: {
         "0" => {
           scanned_picture: image
         }
       }
     }
 
-    post :documents, params: { user: user_params }
-    assert_equal 1, @user.identity_documents.count
+    post :documents,
+         params: { online_verifications_upload: online_verifications_upload }
+
+    events = OnlineVerifications::Event.where(verified: @user)
+    assert_equal 1, events.count
+
+    event = events.first
+    assert_equal 1, event.documents.count
     assert_redirected_to sms_validator_step2_path
   end
 

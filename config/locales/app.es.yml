@@ -1052,6 +1052,8 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       accept: Aceptar
       reject: Rechazar
       report: Señalar un problema
+    user_uploaded: "%{name} subió los siguientes documentos"
+    verifier_reported: "%{name} reportó los siguientes problemas"
     you_are_done: No quedan usuarias pendientes de verificación. ¡Buen trabajo!
   verification:
     from: de

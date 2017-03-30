@@ -1,0 +1,13 @@
+<li class="feed-item">
+  <time class="date" datetime="<%= upload.created_at %>">
+    <%= upload.created_at.to_s(:short) %>
+  </time>
+
+  <span class="text">
+    <%= t('online_verifications.user_uploaded', name: upload.verified.first_name) %>
+  </span>
+
+  <ul id=<%= "images-#{upload.id}" %> class="image-list">
+    <%= render 'application/documents', upload: upload %>
+  </ul>
+</li>

@@ -44,7 +44,10 @@ class SmsValidatorController < ApplicationController
 
   def documents 
     authorize! :documents, :sms_validator
-    if current_user.update(documents_params)
+
+    event = OnlineVerifications::Upload.new(upload_params)
+
+    if event.save
       if current_user.confirmed_by_sms?
         redirect_back fallback_location: root_path,
                       notice: t('sms_validator.documents.updated')
@@ -75,10 +78,11 @@ class SmsValidatorController < ApplicationController
 
   private
 
-  def documents_params
+  def upload_params
     params
-      .require(:user)
-      .permit(identity_documents_attributes: [:scanned_picture])
+      .require(:online_verifications_upload)
+      .permit(documents_attributes: [:scanned_picture])
+      .merge(verified_id: current_user.id)
   end
 
   def phone_params

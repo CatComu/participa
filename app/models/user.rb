@@ -31,9 +31,6 @@ class User < ApplicationRecord
   has_and_belongs_to_many :participation_team
   has_many :microcredit_loans
 
-  has_many :identity_documents
-  accepts_nested_attributes_for :identity_documents, reject_if: :all_blank
-
   belongs_to :catalan_town, foreign_key: :town, primary_key: :code
 
   extend Enumerize

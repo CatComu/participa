@@ -4,6 +4,8 @@ class OnlineVerificationsController < ApplicationController
 
   def show
     authorize! :show, :online_verifications
+
+    @events = OnlineVerifications::Event.where(verified: @user)
   end
 
   def search

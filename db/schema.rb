@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329140722) do
+ActiveRecord::Schema.define(version: 20170330021014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,17 +145,6 @@ ActiveRecord::Schema.define(version: 20170329140722) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
-  end
-
-  create_table "identity_documents", force: :cascade do |t|
-    t.integer  "user_id",                      null: false
-    t.string   "scanned_picture_file_name"
-    t.string   "scanned_picture_content_type"
-    t.integer  "scanned_picture_file_size"
-    t.datetime "scanned_picture_updated_at"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.index ["user_id"], name: "index_identity_documents_on_user_id", using: :btree
   end
 
   create_table "impulsa_edition_categories", force: :cascade do |t|
@@ -416,6 +405,17 @@ ActiveRecord::Schema.define(version: 20170329140722) do
     t.datetime "sent_at"
   end
 
+  create_table "online_verification_documents", force: :cascade do |t|
+    t.integer  "upload_id",                    null: false
+    t.string   "scanned_picture_file_name"
+    t.string   "scanned_picture_content_type"
+    t.integer  "scanned_picture_file_size"
+    t.datetime "scanned_picture_updated_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["upload_id"], name: "index_online_verification_documents_on_upload_id", using: :btree
+  end
+
   create_table "online_verification_events", force: :cascade do |t|
     t.string   "type",        null: false
     t.integer  "verified_id", null: false
@@ -671,13 +671,13 @@ ActiveRecord::Schema.define(version: 20170329140722) do
     t.index ["deleted_at"], name: "index_votes_on_deleted_at", using: :btree
   end
 
-  add_foreign_key "identity_documents", "users"
   add_foreign_key "impulsa_edition_categories", "impulsa_editions"
   add_foreign_key "impulsa_edition_topics", "impulsa_editions"
   add_foreign_key "impulsa_project_topics", "impulsa_edition_topics"
   add_foreign_key "impulsa_project_topics", "impulsa_projects"
   add_foreign_key "impulsa_projects", "impulsa_edition_categories"
   add_foreign_key "impulsa_projects", "users"
+  add_foreign_key "online_verification_documents", "users", column: "upload_id"
   add_foreign_key "online_verification_events", "users", column: "verified_id"
   add_foreign_key "online_verification_events", "users", column: "verifier_id"
   add_foreign_key "online_verification_issues", "online_verification_events", column: "report_id"
