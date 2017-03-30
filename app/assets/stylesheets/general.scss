@@ -1188,9 +1188,7 @@ info page
 body elements
 ----------------------------------- */
 
-.button,
-a.button,
-input.button{
+.button{
   padding:.7em 3em;
   background:#000;
   color:#fff;
@@ -1202,15 +1200,11 @@ input.button{
   margin-top:5px;
   text-decoration:none;
 }
-.button:hover,
-a.button:hover,
-input.button:hover{
+.button:hover{
   background:#269283;
 }
 
-.button-primary,
-a.button-primary,
-input.button-primary{
+.button-primary{
   padding:1em 3em;
   background:#716E6B;
   color:#fff;
@@ -1223,9 +1217,7 @@ input.button-primary{
   cursor:hand;
   text-decoration:none;
 }
-.button-primary:hover,
-a.button-primary:hover,
-input.button-primary:hover{
+.button-primary:hover{
   background:#269283;
 }
 
