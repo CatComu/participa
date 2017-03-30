@@ -23,16 +23,15 @@ class SmsValidatorController < ApplicationController
 
   def phone
     authorize! :phone, :sms_validator
-    begin 
-      phone = current_user.phone_normalize(phone_params[:unconfirmed_phone])
-    rescue
-      current_user.errors.add(:unconfirmed_phone, "Revisa el formato")
-    end
-    if phone.nil? 
-      current_user.unconfirmed_phone = phone_params[:unconfirmed_phone]
-    else
-      current_user.unconfirmed_phone = phone
-    end
+
+    phone = begin
+              current_user.phone_normalize(phone_params[:unconfirmed_phone])
+            rescue
+              phone_params[:unconfirmed_phone]
+            end
+
+    current_user.unconfirmed_phone = phone
+
     if current_user.save
       current_user.set_sms_token!
       current_user.send_sms_token!

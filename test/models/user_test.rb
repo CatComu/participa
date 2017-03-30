@@ -229,7 +229,7 @@ class UserTest < ActiveSupport::TestCase
     user = create(:user)
     user.unconfirmed_phone = "aaaa"
     assert_not user.valid?
-    assert_includes user.errors[:unconfirmed_phone], "Revisa el formato de tu teléfono"
+    assert_includes user.errors[:unconfirmed_phone], "no es un número"
   end
 
   test ".validates_phone_format does not accept invalid phone numbers" do
@@ -239,8 +239,15 @@ class UserTest < ActiveSupport::TestCase
     assert_includes user.errors[:phone], "Revisa el formato de tu teléfono"
   end
 
-  test ".validates_unconfirmed_phone does not accept invalid phone numbers" do
-    user = create(:user)
+  test ".validates_unconfirmed_phone does not accept invalid phone numbers from Spain" do
+    user = create(:user, country: "ES")
+    user.unconfirmed_phone = "12345"
+    assert_not user.valid?
+    assert_includes user.errors[:unconfirmed_phone], "Debes poner un teléfono móvil válido de España empezando por 6 o 7."
+  end
+
+  test ".validates_unconfirmed_phone does not accept invalid phone numbers from outside Spain" do
+    user = create(:user, country: "BR", province: "RJ", town: nil)
     user.unconfirmed_phone = "12345"
     assert_not user.valid?
     assert_includes user.errors[:unconfirmed_phone], "Revisa el formato de tu teléfono"
