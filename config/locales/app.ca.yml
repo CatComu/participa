@@ -447,8 +447,6 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
     mailer:
       hello: "Hola %{user},"
       bye: Salutacions.
-      finish:
-        subject: Un País en Comú - Fin del primer proceso de verificación
       verified:
         subject: Un País en Comú - Has estat verificat correctament
         message: "Has sigut verificat i ja formes part de la comunitat d'Un País en Comú.

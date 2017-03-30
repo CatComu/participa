@@ -1134,8 +1134,6 @@ Número de teléfono y correo electrónico y comunícale que nos pondremos en co
     mailer:
       hello: "Hola %{user},"
       bye: Saludos.
-      finish:
-        subject: Un País en Comú - Fin del primer proceso de verificación
       verified:
         subject: Un País en Comú - Has sido verificado correctamente
         message: "Enhorabuena!! Ya has sido verificado/a y formas parte de la comunidad de Un País en Comú.

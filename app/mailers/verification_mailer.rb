@@ -16,10 +16,4 @@ class VerificationMailer < ActionMailer::Base
       mail(to: @user.email, subject: t('verification.mailer.verified.subject'))
     end
   end
-
-  def finish user
-    @user = user
-    mail(to: @user.email, subject: t('verification.mailer.finish.subject'))
-  end
-
 end
