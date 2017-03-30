@@ -8,10 +8,6 @@ es:
       es: "español"
       eu: "vasco"
       ga: "gallego"
-  cocoon:
-    identity_documents:
-      add: "Añadir otro documento"
-      remove: "Eliminar documento"
   errors:
     show:
       "404":
@@ -972,6 +968,8 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       un correo electrónico a soporte@unpaisencomu.cat.
   online_verifications:
     admin: Gestor de verificaciones digitales
+    add_another_document: Añadir otro documento
+    remove_document: Eliminar documento
     label:
       invalid_id: >
         El documento de identidad no es válido. Debe ser DNI, NIE o pasaporte.

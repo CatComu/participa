@@ -3,10 +3,6 @@ ca:
     flatpickr_code: "cat"
     language: "Idioma"
     language_name: "Català"
-  cocoon:
-    identity_documents:
-      add: "Afegir-hi un altre document"
-      remove: "Eliminar document"
   activerecord:
     models:
       user:
@@ -327,6 +323,8 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       correu electrònic a soporte@unpaisencomu.cat
   online_verifications:
     admin: Gestor de verificacions digitals
+    add_another_document: Afegir-hi un altre document
+    remove_document: Eliminar document
     label:
       invalid_id:
       unverifiable_id:

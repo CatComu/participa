@@ -23,7 +23,9 @@
       <% end %>
 
       <div class="doc-link">
-        <%= link_to_add_association f, :identity_documents %>
+        <%= link_to_add_association t("online_verifications.add_another_document"),
+                                    f,
+                                    :identity_documents %>
       </div>
     </div>
 
