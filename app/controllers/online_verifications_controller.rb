@@ -19,7 +19,7 @@ class OnlineVerificationsController < ApplicationController
 
     @user.verify_online!(current_user)
 
-    pick_next
+    pick_next('accept')
   end
 
   def reject
@@ -27,7 +27,7 @@ class OnlineVerificationsController < ApplicationController
 
     @user.update!(banned: true)
 
-    pick_next
+    pick_next('reject')
   end
 
   def report
@@ -48,9 +48,10 @@ class OnlineVerificationsController < ApplicationController
 
   private
 
-  def pick_next
+  def pick_next(action)
     if @pending_users.any?
-      redirect_to online_verification_path(@pending_users.first)
+      redirect_to online_verification_path(@pending_users.first),
+                  notice: I18n.t("online_verifications.#{action}.success")
     else
       redirect_to online_verifications_path,
                   notice: I18n.t("online_verifications.you_are_done")

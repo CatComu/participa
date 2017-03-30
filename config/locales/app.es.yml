@@ -1041,6 +1041,10 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
         solucionó los problemas originales.
       get_started: Comenzar
       no_pending_users: No hay usuarias pendientes de verificar en este momento.
+    accept:
+      success: Usuaria verificada correctamente
+    reject:
+      success: Usuaria baneada correctamente
     report:
       success: Solicitud actualizada correctamente
     report_modal:

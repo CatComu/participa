@@ -362,6 +362,10 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       get_started: Començar
       no_pending_users: >
         Hores d'ara no hi ha persones usuàries pendents de verificar.
+    accept:
+      success:
+    reject:
+      success:
     report:
       success:
     report_modal:
