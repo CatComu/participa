@@ -8,33 +8,37 @@
     <div class="row">
       <p><%= t('.welcome') %></p>
 
-      <ul class="info-list">
-        <li>
-          <strong><%= t('.accept_title') %></strong>
+      <div class="info-section">
+        <ul class="info-list">
+          <li>
+            <strong><%= t('.accept_title') %></strong>.
 
-          <%= t('.accept_description') %>
-        </li>
+            <%= t('.accept_description') %>
+          </li>
 
-        <li>
-          <strong><%= t('.reject_title') %></strong>
+          <li>
+            <strong><%= t('.reject_title') %></strong>.
 
-          <%= t('.reject_description') %>
-        </li>
+            <%= t('.reject_description') %>
+          </li>
 
-        <li>
-          <strong><%= t('.report_title') %></strong>
+          <li>
+            <strong><%= t('.report_title') %></strong>.
 
-          <%= t('.report_description') %>
-        </li>
-      </ul>
+            <%= t('.report_description') %>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-      <p>
-        <% if @pending_users.any? %>
-          <%= link_to t('.get_started'), online_verification_path(@pending_users.first), class: 'button' %>
-        <% else %>
-          <%= t('.no_pending_users') %>
-        <% end %>
-      </p>
+    <div class="row">
+      <% if @pending_users.any? %>
+        <%= link_to t('.get_started'),
+                    online_verification_path(@pending_users.first),
+                    class: 'button-block' %>
+      <% else %>
+        <%= t('.no_pending_users') %>
+      <% end %>
     </div>
   </div>
 </div>
