@@ -519,40 +519,6 @@ tools
 .box-large .action {
   margin-top: 30px;
 }
-.tools ul{
-  position:relative;
-}
-.tools li{
-  width:97%;
-  position:relative;
-  display:block;
-  float:left;
-  padding:1.5%;
-  margin-bottom:1.5em;
-}
-.tools li:nth-child(3n+0){
-  margin-right:0;
-  clear:right;
-}
-.tools li h3{
-  position: absolute;
-  width: 75%;
-  top: 0;
-  right: 0;
-  border-bottom:0;
-}
-.tools li .button{
-  display:block;
-  width: 100%;
-  padding:1em 0;
-  text-align:center;
-}
-.tools li .buttonbox{
-  padding-bottom:0;
-}
-
-
-
 
 /* -----------------------------------
 microcredits
@@ -1298,9 +1264,6 @@ elementos
 .menu ul li.menu-hamb{
   display:block;
 }
-.tools li h3{
-  width:75%;
-}
 .subtitle {
   margin:1em 0;
   padding:1em 0;
@@ -1427,10 +1390,6 @@ layout 2: 460-600 (intermedia 1) # # # # # # # # # # # # # # # # # # # # # # # #
   .menu ul li.menu-hamb{
     display:block;
   }
-  .tools li h3{
-    width:80%;
-  }
-
   .subtitle-welcome ol li {
     margin: 0 0 4em;
   }
@@ -1512,9 +1471,6 @@ layout 3: 600-768 (intermedia 2) # # # # # # # # # # # # # # # # # # # # # # # #
   }
   .menu ul li.menu-hamb{
     display:none;
-  }
-  .tools li h3{
-    width:85%;
   }
   .subtitle-welcome ol li {
     margin: 0 0 4em;
@@ -1612,13 +1568,6 @@ layout 4: 769-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   .menu ul li.menu-hamb{
     display:none;
   }
-  .tools li{
-    width:29%;
-    margin-right:2%;
-  }
-  .tools li h3{
-    width:75%;
-  }
   .subtitle-welcome ol li {
     margin: 0 0 4em;
   }
@@ -1701,13 +1650,6 @@ layout 4+: 978-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   .menu ul li.menu-hamb{
     display:none;
   }
-  .tools li{
-    width:45%;
-    margin-right:2%;
-  }
-  .tools li h3{
-    width:75%;
-  }
   .content-content-home{
     margin: auto;
     width: 96%;
@@ -1761,12 +1703,6 @@ layout 4+: 978-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     font-size:1.6em;
   }
 }
-.tools li {
- margin-left: -10px;
- text-align: left;
- width: 90%;
-}
-
 .img3 {
  max-width: 100%;
  height: auto;
