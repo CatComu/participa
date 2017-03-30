@@ -12,6 +12,7 @@ module Participa
 
       def logout
         click_link 'Cerrar sesión'
+        assert_content "Has cerrado la sesión satisfactoriamente"
       end
     end
   end
