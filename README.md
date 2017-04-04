@@ -4,7 +4,7 @@ El objetivo de esta aplicación es ofrecer una interfaz única a los usuarios in
 inscribirse a una organización.
 
 Entre las funcionalidades en las que consiste ahora mismo es con elecciones
-(integración con Agora Voting), Colaboraciones económicas (donaciones
+(integración con nVotes), Colaboraciones económicas (donaciones
 periódicas), Microcréditos (sistema de prestamos distribuidos), Notificaciones
 móviles (para dispositivos Android),
 
@@ -18,7 +18,7 @@ móviles (para dispositivos Android),
 
 ### Elecciones
 
-Permite servir de censo integrado con Agora Voting: *Agora Voting es un
+Permite servir de censo integrado con nVotes: *nVotes es un
 software libre de votaciones que permite a cualquier organización realizar
 procesos electorales de forma segura, flexible, transparente y a un precio
 competitivo*. Permite que las elecciones se realicen en función a la
@@ -195,7 +195,7 @@ programarlo). CI is also implemented using [travis-ci](http://travis-ci.org/).
 ## APIs externas
 
 * Para las votaciones de los usuarios usamos
-  [Agora Voting](https://agoravoting.com/), que han realizado una integración
+  [nVotes](https://nvotes.com/), que han realizado una integración
   con la plataforma de Podemos. La configuración del secreto compartido se
   encuentra en una clave de `secrets.yml`.
 
