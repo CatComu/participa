@@ -1,7 +1,7 @@
 # Participa
 
-El objetivo de esta aplicación es ofrecer una interfaz única a los usuarios interesados donde
-inscribirse a una organización.
+El objetivo de esta aplicación es ofrecer una interfaz única a los usuarios
+interesados donde inscribirse a una organización.
 
 Entre las funcionalidades en las que consiste ahora mismo es con elecciones
 (integración con nVotes), Colaboraciones económicas (donaciones
