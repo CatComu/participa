@@ -8,13 +8,11 @@ Entre las funcionalidades en las que consiste ahora mismo es con elecciones
 periódicas), Microcréditos (sistema de prestamos distribuidos), Notificaciones
 móviles (para dispositivos Android),
 
-![Pantallazo de Participa](doc/images/participa01.png)
+![Home](doc/images/home.png)
 
-![Pantallazo de Participa](doc/images/participa02.png)
+![Verification](doc/images/verification.png)
 
-![Pantallazo de Participa](doc/images/participa03.png)
-
-![Pantallazo de Participa](doc/images/participa04.png)
+![Election](doc/images/election.png)
 
 ## Funcionalidades
 
