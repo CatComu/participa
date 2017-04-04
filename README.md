@@ -77,16 +77,6 @@ la formación sobre la participación digital.
 
 * http://www.europapress.es/nacional/noticia-podemos-crea-estructura-participacion-paralela-circulos-articulara-equipos-accion-20141217145841.html
 
-### Verificación por SMS
-
-Método de verificación utilizado por Podemos. Cuando un usuario se inscribe
-debe confirmar su correo electrónico y su teléfono móvil con un código que se
-le envía. Con esto se permite que haya mayor cantidad de Participación en
-pérdida de una mayor seguridad. Estos problemas se suplen con  herramientas de
-Reportes de grupos de usuarios y de Anti Spam con blacklists.
-
-* http://www.eldiario.es/turing/tecnologia-detras-voto-online-primarias_0_238326398.html
-
 ### Verificación presencial
 
 Método de verificación utilizado por Barcelona En Comú. Una vez el usuario se
@@ -96,6 +86,22 @@ presencialmente los documentos con los requisitos mínimos que debe cumplir (ser
 mayor de 16 años y con domicilio en Barcelona).
 
 * https://barcelonaencomu.cat/es/post/inscribete-bcomu-hagamos-juntos-otra-barcelona
+
+### Verificación digital
+
+Método de verificación utilizado por Podemos (en su versión simplificada que
+sólo require confirmar el teléfono) y por EnComu. Cuando un usuario se inscribe
+debe confirmar su correo electrónico y su teléfono móvil con un código que se
+le envía. Así mismo, debe subir a la aplicación para probar su identidad, y que
+luego serán verificados para poder confirmar el voto. Esto supone un compromiso
+un sistema más inseguro pero que fomenta más la participación (como el de
+Podemos), o un sistema de verificación puramente presencial, más seguro pero
+menos accesible (como el de Barcelona En Comú).
+
+En general, cualquier sistema de verificación se complementa herramientas de
+Reportes de grupos de usuarios y de Anti Spam con blacklists.
+
+* http://www.eldiario.es/turing/tecnologia-detras-voto-online-primarias_0_238326398.html
 
 ### Blog (Brújula)
 
