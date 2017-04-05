@@ -6,8 +6,7 @@ class ConfirmationMailer < ActionMailer::Base
     @user = user
     @token = user.confirmation_token
 
-    subject = 'Un País En Comú - Re-envío de la confirmación / ' \
-              'Re-enviament de la confirmació'
+    subject = '[Un País en Comú - ATENCIÓ] Si no confirmes el teu correu, no podràs participar!'
 
     mail(to: user.email, subject: subject)
 

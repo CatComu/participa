@@ -1,20 +1,19 @@
-<% [%w(Castellano es), %w(Catatá ca)].each do |language, locale| %>
-  <%= "------ #{language} ------" %>
-
-  <%= t('.hello', user: @user.full_name, locale: locale) %>
+<% %w(ca es).each do |locale| %>
+  <%= t('.hello', user: @user.first_name, locale: locale) %>
 
   <%= t('.explanation', locale: locale) %>
+
+  <%= t('.instructions', locale: locale) %>
 
   <% url = confirmation_url(@user, confirmation_token: @token, locale: locale) %>
   <%= link_to url, url %>
 
   <%= url.to_s %>
 
-  <%= t('.ignore', locale: locale) %>
+  <%= t('.apologize', locale: locale) %>
 
-  <%= t('.bye', locale: locale) %>
-
-  <% if locale == 'es' %>
+  <% if locale == 'ca' %>
+    ----------------------------------------------------------------------------
 
   <% end %>
 <% end %>

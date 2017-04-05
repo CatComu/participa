@@ -7,18 +7,6 @@ es:
         trans_man: Hombre (trans)
         trans_woman: Mujer (trans)
         fluid: Género No-binario
-  confirmation_mailer:
-    retry_confirmation_instructions:
-      hello: "Hola, %{user}:"
-      explanation: >-
-        Debido a algunos problemas en la recepción de correos electrónicos,
-        estamos reenviando el correo de confirmación a personas que creemos que
-        pueden no haberlo recibido. Para confirmar tu cuenta haz click en el
-        siguiente enlace:
-      ignore: >-
-        Si ya recibiste este email pero habías decidido no confirmar tu cuenta,
-        puedes ignorar este mensaje.
-      bye: Saludos!
   errors:
     show:
       "404":

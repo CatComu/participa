@@ -3,6 +3,19 @@ ca:
     flatpickr_code: "cat"
     language: "Idioma"
     language_name: "Català"
+  confirmation_mailer:
+    retry_confirmation_instructions:
+      hello: "Hola, %{user}:"
+      explanation: >-
+        Hem detectat que no has confirmat el teu correu. Hi ha hagut diversos
+        problemes tècnics aliens a la nostra voluntat, per això hem volgut
+        escriure't per assegurar-nos que has rebut el correu de confirmació.
+      instructions: >-
+        Confirma el teu correu clicant al link següent per poder seguir amb el
+        procés de votació d'Un País en Comú, així com per poder accedir a
+        l'Assemblea d'aquest cap de setmana!
+      apologize: >-
+        Si no ha sigut el teu cas, et demanem disculpes per aquest correu.
   home:
     signup_title: Inscriu-te per poder votar
   activerecord:
