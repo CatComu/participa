@@ -2,7 +2,7 @@ require 'test_helper'
 
 class VerifiableTest < ActiveSupport::TestCase
   test "verification scopes" do
-    banned = create(:user, :banned)
+    create(:user, :banned)
     unverified = create(:user)
     confirmed_by_sms = create(:user, :confirmed_by_sms)
     verified_presentially = create(:user, :verified_presentially)
@@ -13,14 +13,14 @@ class VerifiableTest < ActiveSupport::TestCase
       [verified_presentially, verified_online, verified_both_ways],
       User.verified
 
-    assert_matches_array [banned, unverified, confirmed_by_sms], User.unverified
+    assert_matches_array [unverified, confirmed_by_sms], User.unverified
 
     assert_matches_array \
       [verified_presentially, verified_both_ways],
       User.verified_presentially
 
     assert_matches_array \
-      [banned, unverified, confirmed_by_sms, verified_online],
+      [unverified, confirmed_by_sms, verified_online],
       User.unverified_presentially
 
     assert_matches_array \
@@ -28,7 +28,7 @@ class VerifiableTest < ActiveSupport::TestCase
       User.verified_online
 
     assert_matches_array \
-      [banned, unverified, confirmed_by_sms, verified_presentially],
+      [unverified, confirmed_by_sms, verified_presentially],
       User.unverified_online
 
     assert_matches_array \

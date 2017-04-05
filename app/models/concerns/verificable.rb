@@ -31,13 +31,13 @@ module Verificable
     scope :confirmed_by_sms, -> { not_banned.where.not(sms_confirmed_at: nil) }
 
     scope :verified, -> { verified_presentially.or(verified_online) }
-    scope :unverified, -> { where(verified_by: nil, verified_online_by: nil) }
+    scope :unverified, -> { unverified_presentially.unverified_online }
 
     scope :verified_presentially, -> { not_banned.where.not(verified_by: nil) }
-    scope :unverified_presentially, -> { where(verified_by: nil) }
+    scope :unverified_presentially, -> { not_banned.where(verified_by: nil) }
 
     scope :verified_online, -> { not_banned.where.not(verified_online_by: nil) }
-    scope :unverified_online, -> { where(verified_online_by: nil) }
+    scope :unverified_online, -> { not_banned.where(verified_online_by: nil) }
 
     scope :voting_right, -> { verified_presentially.or(confirmed_by_sms) }
     scope :confirmed_by_sms_but_still_unverified, -> { confirmed_by_sms.unverified_online }
