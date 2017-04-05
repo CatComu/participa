@@ -4,7 +4,7 @@ namespace :encomu do
     target = if args[:mlist].present?
                User.where(email: args[:mlist].split(','))
              else
-               User.where(confirmed_at: nil)
+               User.where('confirmed_at is NULL AND confirmation_sent_at < ?', 1.day.ago)
              end
 
     if target.none?
