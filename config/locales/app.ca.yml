@@ -3,6 +3,17 @@ ca:
     flatpickr_code: "cat"
     language: "Idioma"
     language_name: "Català"
+  confirmation_mailer:
+    retry_confirmation_instructions:
+      hello: "Hola, %{user}:"
+      explanation: >-
+        A causa d'alguns problemes en la recepció de correus electrònics, estem
+        re-enviant el correu de confirmació a persones que creiem que poden no
+        haver-ho rebut. Per confirmar el teu compte fes clic al següent enllaç:
+      ignore: >-
+        Si ja vas rebre aquest email però havies decidit no confirmar el teu
+        compte, pots ignorar aquest missatge.
+      bye: Salutacions!
   home:
     signup_title: Inscriu-te per poder votar
   activerecord:
