@@ -4,9 +4,7 @@ namespace :encomu do
     target = if args[:mlist].present?
                User.where(email: args[:mlist].split(','))
              else
-               User.where <<-SQL.squish, Time.zone.local(2016, 12, 27)
-                 confirmed_at IS NULL AND confirmation_sent_at < ?
-               SQL
+               User.where(confirmed_at: nil)
              end
 
     if target.none?
