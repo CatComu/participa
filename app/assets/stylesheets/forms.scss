@@ -264,17 +264,17 @@ fieldset .inputlabel-box p, fieldset .inputlabel-box li{
   margin:0;
 }
 
-fieldset .inputlabel-box ul{
+.gender-list {
   list-style-type: circle;
+
+  li {
+    font-size: 1.3em;
+    list-style: inside;
+  }
 }
-fieldset .inputlabel-box li{
-  list-style: inside;
-}
+
 fieldset .inputlabel-box ul.terms-links li{
   list-style: none;
-}
-fieldset .inputlabel-box ul.info-list li{
-  font-size: 1.3em;
 }
 fieldset .alert-nexttolabel{
   display:inline-block;
