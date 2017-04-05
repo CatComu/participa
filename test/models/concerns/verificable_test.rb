@@ -35,6 +35,8 @@ class VerifiableTest < ActiveSupport::TestCase
       [confirmed_by_sms, verified_presentially, verified_online, verified_both_ways],
       User.voting_right
 
+    assert_matches_array [unverified], User.no_voting_right
+
     assert_matches_array [confirmed_by_sms], User.confirmed_by_sms_but_still_unverified
   end
 

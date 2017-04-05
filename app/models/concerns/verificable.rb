@@ -40,6 +40,8 @@ module Verificable
     scope :unverified_online, -> { not_banned.where(verified_online_by: nil) }
 
     scope :voting_right, -> { verified_presentially.or(confirmed_by_sms) }
+    scope :no_voting_right, -> { unverified_presentially.unconfirmed_by_sms }
+
     scope :confirmed_by_sms_but_still_unverified, -> { confirmed_by_sms.unverified_online }
   end
 
