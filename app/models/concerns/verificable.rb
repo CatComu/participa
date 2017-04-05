@@ -29,6 +29,7 @@ module Verificable
     end
 
     scope :confirmed_by_sms, -> { not_banned.where.not(sms_confirmed_at: nil) }
+    scope :unconfirmed_by_sms, -> { not_banned.where(sms_confirmed_at: nil) }
 
     scope :verified, -> { verified_presentially.or(verified_online) }
     scope :unverified, -> { unverified_presentially.unverified_online }
