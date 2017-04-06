@@ -117,7 +117,7 @@ class User < ApplicationRecord
   scope :created, -> { not_banned }
   scope :deleted, -> { only_deleted }
   scope :admins, -> { where(admin: true) }
-  scope :signed_in, -> { where.not(sign_in_count: nil) }
+  scope :signed_in, -> { where.not(sign_in_count: 0) }
   scope :participation_team, -> { includes(:participation_team).where.not(participation_team_at: nil) }
   scope :has_circle, -> { where.not(circle: nil) }
 
