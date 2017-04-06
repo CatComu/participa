@@ -1,26 +1,24 @@
 # Participa
 
-El objetivo de esta aplicación es ofrecer una interfaz única a los usuarios interesados donde
-inscribirse a una organización.
+El objetivo de esta aplicación es ofrecer una interfaz única a los usuarios
+interesados donde inscribirse a una organización.
 
 Entre las funcionalidades en las que consiste ahora mismo es con elecciones
-(integración con Agora Voting), Colaboraciones económicas (donaciones
+(integración con nVotes), Colaboraciones económicas (donaciones
 periódicas), Microcréditos (sistema de prestamos distribuidos), Notificaciones
 móviles (para dispositivos Android),
 
-![Pantallazo de Participa](doc/images/participa01.png)
+![Home](doc/images/home.png)
 
-![Pantallazo de Participa](doc/images/participa02.png)
+![Verification](doc/images/verification.png)
 
-![Pantallazo de Participa](doc/images/participa03.png)
-
-![Pantallazo de Participa](doc/images/participa04.png)
+![Election](doc/images/election.png)
 
 ## Funcionalidades
 
 ### Elecciones
 
-Permite servir de censo integrado con Agora Voting: *Agora Voting es un
+Permite servir de censo integrado con nVotes: *nVotes es un
 software libre de votaciones que permite a cualquier organización realizar
 procesos electorales de forma segura, flexible, transparente y a un precio
 competitivo*. Permite que las elecciones se realicen en función a la
@@ -79,16 +77,6 @@ la formación sobre la participación digital.
 
 * http://www.europapress.es/nacional/noticia-podemos-crea-estructura-participacion-paralela-circulos-articulara-equipos-accion-20141217145841.html
 
-### Verificación por SMS
-
-Método de verificación utilizado por Podemos. Cuando un usuario se inscribe
-debe confirmar su correo electrónico y su teléfono móvil con un código que se
-le envía. Con esto se permite que haya mayor cantidad de Participación en
-pérdida de una mayor seguridad. Estos problemas se suplen con  herramientas de
-Reportes de grupos de usuarios y de Anti Spam con blacklists.
-
-* http://www.eldiario.es/turing/tecnologia-detras-voto-online-primarias_0_238326398.html
-
 ### Verificación presencial
 
 Método de verificación utilizado por Barcelona En Comú. Una vez el usuario se
@@ -98,6 +86,22 @@ presencialmente los documentos con los requisitos mínimos que debe cumplir (ser
 mayor de 16 años y con domicilio en Barcelona).
 
 * https://barcelonaencomu.cat/es/post/inscribete-bcomu-hagamos-juntos-otra-barcelona
+
+### Verificación digital
+
+Método de verificación utilizado por Podemos (en su versión simplificada que
+sólo require confirmar el teléfono) y por EnComu. Cuando un usuario se inscribe
+debe confirmar su correo electrónico y su teléfono móvil con un código que se
+le envía. Así mismo, debe subir a la aplicación para probar su identidad, y que
+luego serán verificados para poder confirmar el voto. Esto supone un compromiso
+un sistema más inseguro pero que fomenta más la participación (como el de
+Podemos), o un sistema de verificación puramente presencial, más seguro pero
+menos accesible (como el de Barcelona En Comú).
+
+En general, cualquier sistema de verificación se complementa herramientas de
+Reportes de grupos de usuarios y de Anti Spam con blacklists.
+
+* http://www.eldiario.es/turing/tecnologia-detras-voto-online-primarias_0_238326398.html
 
 ### Blog (Brújula)
 
@@ -197,7 +201,7 @@ programarlo). CI is also implemented using [travis-ci](http://travis-ci.org/).
 ## APIs externas
 
 * Para las votaciones de los usuarios usamos
-  [Agora Voting](https://agoravoting.com/), que han realizado una integración
+  [nVotes](https://nvotes.com/), que han realizado una integración
   con la plataforma de Podemos. La configuración del secreto compartido se
   encuentra en una clave de `secrets.yml`.
 
