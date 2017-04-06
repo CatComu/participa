@@ -8,12 +8,19 @@ ActiveAdmin.register User do
   scope :unconfirmed_mail
   scope :confirmed_mail
   scope :signed_in
-  scope :has_collaboration
-  scope :has_collaboration_credit_card
-  scope :has_collaboration_bank_national
-  scope :has_collaboration_bank_international
-  scope :participation_team
-  scope :has_circle
+
+  if Features.collaborations?
+    scope :has_collaboration
+    scope :has_collaboration_credit_card
+    scope :has_collaboration_bank_national
+    scope :has_collaboration_bank_international
+  end
+
+  if Features.participation_teams?
+    scope :participation_team
+    scope :has_circle
+  end
+
   scope :banned
   scope :admins
 
