@@ -604,6 +604,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email confirmation scopes work" do 
+    create(:user, :banned)
     unconfirmed = create(:user, :unconfirmed_mail)
     confirmed = create(:user, :confirmed_mail)
 
