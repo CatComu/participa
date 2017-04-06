@@ -13,8 +13,8 @@ FactoryGirl.define do
   end
 
   factory :user do
-    last_name "Pepito"
-    first_name "Perez"
+    last_name "Perez"
+    first_name "Pepito"
     email 
     password '123456789'
     confirmed_at Time.zone.now

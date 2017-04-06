@@ -66,7 +66,7 @@ class ActiveAdminTest < ActionDispatch::IntegrationTest
     visit admin_users_path
     assert_content "Salir"
     assert_content "Usuario"
-    assert_content "Perez Pepito"
+    assert_content "Pepito Perez"
   end
 
 end 
