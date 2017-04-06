@@ -7,7 +7,7 @@ namespace :encomu do
 
     args.with_defaults(:input_file => nil)
 
-    fill_data args.input_file, User.confirmed
+    fill_data args.input_file, User.confirmed_mail
 
   end
 

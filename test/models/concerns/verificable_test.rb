@@ -2,9 +2,10 @@ require 'test_helper'
 
 class VerifiableTest < ActiveSupport::TestCase
   test "verification scopes" do
-    banned = create(:user, :banned)
+    create(:user, :banned)
     unverified = create(:user)
     confirmed_by_sms = create(:user, :confirmed_by_sms)
+    not_confirmed_by_sms = create(:user, :not_confirmed_by_sms)
     verified_presentially = create(:user, :verified_presentially)
     verified_online = create(:user, :verified_online)
     verified_both_ways = create(:user, :verified_presentially, :verified_online)
@@ -13,14 +14,16 @@ class VerifiableTest < ActiveSupport::TestCase
       [verified_presentially, verified_online, verified_both_ways],
       User.verified
 
-    assert_matches_array [banned, unverified, confirmed_by_sms], User.unverified
+    assert_matches_array \
+      [unverified, not_confirmed_by_sms, confirmed_by_sms],
+      User.unverified
 
     assert_matches_array \
       [verified_presentially, verified_both_ways],
       User.verified_presentially
 
     assert_matches_array \
-      [banned, unverified, confirmed_by_sms, verified_online],
+      [unverified, not_confirmed_by_sms, confirmed_by_sms, verified_online],
       User.unverified_presentially
 
     assert_matches_array \
@@ -28,14 +31,16 @@ class VerifiableTest < ActiveSupport::TestCase
       User.verified_online
 
     assert_matches_array \
-      [banned, unverified, confirmed_by_sms, verified_presentially],
+      [unverified, not_confirmed_by_sms, confirmed_by_sms, verified_presentially],
       User.unverified_online
 
     assert_matches_array \
       [confirmed_by_sms, verified_presentially, verified_online, verified_both_ways],
       User.voting_right
 
-    assert_matches_array [confirmed_by_sms], User.confirmed_by_sms_but_still_unverified
+    assert_matches_array [unverified, not_confirmed_by_sms], User.no_voting_right
+
+    assert_matches_array [confirmed_by_sms], User.unverified_with_voting_right
   end
 
   test ".presential_verifier_ever gives past & present presential verifiers" do

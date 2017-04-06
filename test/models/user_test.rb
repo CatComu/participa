@@ -198,10 +198,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test ".full_name" do
-    user = create(:user)
-    u = User.new(first_name: "Juan", last_name: "Perez")
-    assert_equal("Juan Perez", u.full_name)
-    assert_equal("Perez Pepito", user.full_name)
+    user = User.new(first_name: "Juan", last_name: "Perez")
+    assert_equal("Juan Perez", user.full_name)
   end
 
   test ".full_address" do
@@ -605,8 +603,13 @@ class UserTest < ActiveSupport::TestCase
     skip("TODO")
   end
 
-  test ".unconfirmed_mail work" do 
-    skip("TODO")
+  test "email confirmation scopes work" do 
+    create(:user, :banned)
+    unconfirmed = create(:user, :unconfirmed_mail)
+    confirmed = create(:user, :confirmed_mail)
+
+    assert_equal [unconfirmed], User.unconfirmed_mail
+    assert_equal [confirmed], User.confirmed_mail
   end
 
   test ".unconfirmed_phone work" do 

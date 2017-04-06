@@ -1,30 +1,34 @@
 ActiveAdmin.register User do
   config.per_page = 50
 
-  scope_to User, association_method: :with_deleted
-
   scope :created, default: true
-  scope :confirmed
   scope :deleted
+  scope :banned
+
+  scope :admins
+  scope :signed_in
+
+  if Features.collaborations?
+    scope :has_collaboration
+    scope :has_collaboration_credit_card
+    scope :has_collaboration_bank_national
+    scope :has_collaboration_bank_international
+  end
+
+  if Features.participation_teams?
+    scope :participation_team
+    scope :has_circle
+  end
+
   scope :unconfirmed_mail
   scope :confirmed_mail
-  scope :signed_in
-  scope :has_collaboration
-  scope :has_collaboration_credit_card
-  scope :has_collaboration_bank_national
-  scope :has_collaboration_bank_international
-  scope :participation_team
-  scope :has_circle
-  scope :banned
-  scope :admins
 
   scope :confirmed_by_sms
+  scope :unconfirmed_by_sms
 
-  scope :verifying_online
   scope :verified_online
   scope :unverified_online
 
-  scope :verifying_presentially
   scope :verified_presentially
   scope :unverified_presentially
 
@@ -32,7 +36,11 @@ ActiveAdmin.register User do
   scope :unverified
 
   scope :voting_right
-  scope :confirmed_by_sms_but_still_unverified
+  scope :no_voting_right
+  scope :unverified_with_voting_right
+
+  scope :verifying_online
+  scope :verifying_presentially
 
   permit_params :email, :password, :password_confirmation, :first_name, :last_name, :document_type, :document_vatid, :born_at, :address, :town, :postal_code, :province, :country, :vote_province, :vote_town, :wants_newsletter, :phone, :unconfirmed_phone
 
@@ -397,7 +405,6 @@ ActiveAdmin.register User do
     require 'podemos_export'
     file = params["fill_csv"]["file"]
     subaction = params["commit"]
-#    csv = fill_data file.read, User.confirmed
     csv = fill_data file.read.force_encoding('utf-8'), User
     if subaction == "Descargar CSV"
       send_data csv["results"],

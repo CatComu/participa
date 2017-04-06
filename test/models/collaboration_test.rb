@@ -443,7 +443,7 @@ class CollaborationTest < ActiveSupport::TestCase
       date = Date.civil(2015,03,20)
       id = "%02d%02d%06d" % [ date.year%100, date.month, order.id%1000000 ]
       response = [id, 
-      	"PEREZ PEPITO", 
+      	"PEPITO PEREZ", 
       	user.document_vatid, 
       	user.email, 
       	"C/ INVENTADA, 123", 
@@ -461,7 +461,7 @@ class CollaborationTest < ActiveSupport::TestCase
       	"Colaboración marzo 2015", 
       	"10-03-2015", 
       	"Mensual", 
-      	"PEREZ PEPITO"]
+      	"PEPITO PEREZ"]
     assert_equal( response, @collaboration.get_bank_data(Date.civil(2015,03,20)) )
   end
 

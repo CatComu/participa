@@ -14,12 +14,12 @@ class SpamFilter < ApplicationRecord
 
 
   def query_count
-    User.confirmed.not_verified.not_banned.where(query).count
+    User.verified_online.unverified_presentially.where(query).count
   end
 
   def run offset, limit
     matches = []
-    User.confirmed.not_verified.not_banned.where(query).offset(offset).limit(limit).each do |user|
+    User.verified_online.unverified_presentially.where(query).offset(offset).limit(limit).each do |user|
       matches << user if @proc.call user, @data
     end
     matches

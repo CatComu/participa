@@ -13,8 +13,8 @@ FactoryGirl.define do
   end
 
   factory :user do
-    last_name "Pepito"
-    first_name "Perez"
+    last_name "Perez"
+    first_name "Pepito"
     email 
     password '123456789'
     confirmed_at Time.zone.now
@@ -78,6 +78,14 @@ FactoryGirl.define do
 
   trait :banned do
     banned true
+  end
+
+  trait :unconfirmed_mail do
+    confirmed_at nil
+  end
+
+  trait :confirmed_mail do
+    confirmed_at { Time.zone.now }
   end
 
   trait :not_confirmed_by_sms do

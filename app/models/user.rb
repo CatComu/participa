@@ -117,9 +117,6 @@ class User < ApplicationRecord
   scope :created, -> { where(deleted_at: nil)  }
   scope :deleted, -> { where.not(deleted_at: nil) }
   scope :admins, -> { where(admin: true) }
-  scope :unconfirmed_mail, -> { where(confirmed_at: nil)  }
-  scope :confirmed_mail, -> { where.not(confirmed_at: nil) }
-  scope :confirmed, -> { where.not(confirmed_at: nil).where.not(sms_confirmed_at: nil) }
   scope :signed_in, -> { where.not(sign_in_count: nil) }
   scope :participation_team, -> { includes(:participation_team).where.not(participation_team_at: nil) }
   scope :has_circle, -> { where.not(circle: nil) }

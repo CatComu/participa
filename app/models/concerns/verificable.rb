@@ -28,19 +28,25 @@ module Verificable
       joins(:verification_slots).merge(Verification::Slot.presential.past_or_current)
     end
 
+    scope :unconfirmed_mail, -> { not_banned.where(confirmed_at: nil)  }
+    scope :confirmed_mail, -> { not_banned.where.not(confirmed_at: nil) }
+
     scope :confirmed_by_sms, -> { not_banned.where.not(sms_confirmed_at: nil) }
+    scope :unconfirmed_by_sms, -> { not_banned.where(sms_confirmed_at: nil) }
 
     scope :verified, -> { verified_presentially.or(verified_online) }
-    scope :unverified, -> { where(verified_by: nil, verified_online_by: nil) }
+    scope :unverified, -> { unverified_presentially.unverified_online }
 
     scope :verified_presentially, -> { not_banned.where.not(verified_by: nil) }
-    scope :unverified_presentially, -> { where(verified_by: nil) }
+    scope :unverified_presentially, -> { not_banned.where(verified_by: nil) }
 
     scope :verified_online, -> { not_banned.where.not(verified_online_by: nil) }
-    scope :unverified_online, -> { where(verified_online_by: nil) }
+    scope :unverified_online, -> { not_banned.where(verified_online_by: nil) }
 
     scope :voting_right, -> { verified_presentially.or(confirmed_by_sms) }
-    scope :confirmed_by_sms_but_still_unverified, -> { confirmed_by_sms.unverified_online }
+    scope :no_voting_right, -> { unverified_presentially.unconfirmed_by_sms }
+
+    scope :unverified_with_voting_right, -> { confirmed_by_sms.unverified_online }
   end
 
   class_methods do
@@ -53,7 +59,7 @@ module Verificable
     # So, for example, can be paginated and works in the admin.
     #
     def pending_moderation
-      confirmed_by_sms_but_still_unverified.select(&:pending_moderation?)
+      unverified_with_voting_right.select(&:pending_moderation?)
     end
   end
 

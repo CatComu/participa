@@ -237,25 +237,29 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
   active_admin:
     scopes:
       created: "Creats"
-      confirmed: "Confirmats"
       deleted: "Esborrats"
-      unconfirmed_mail: "Correu electrònic sin confirmar"
-      confirmed_mail: "Correu electrònic confirmat"
+      banned: "Expulsats"
+      unconfirmed_mail: "Email sense confirmar"
+      confirmed_mail: "Email confirmat"
+      unconfirmed_by_sms: "Telèfon sense confirmar"
+      confirmed_by_sms: "Telèfon confirmat"
+      verified_presentially: "Verificat presencialmente"
+      unverified_presentially: "No verificat presencialmente"
+      verified_online: "Verificat online"
+      unverified_online: "No verificat online"
+      verified: "Verificat"
+      unverified: "No verificat"
+      voting_right: "Amb dret a vot"
+      no_voting_right: "Sense dret a vot"
+      unverified_with_voting_right: "No verificat amd dret a vot"
+      verifying_online:
+      verifying_presentially:
       signed_in: "Has iniciat sessió"
       not_signed_in: "No has iniciat sessió"
       has_collaboration: "Amb col·laboració econòmica"
       has_collaboration_credit_card: "Amb col·laboració econòmica (targeta de crèdit)"
       has_collaboration_bank_national: "Amb col·laboració econòmica (banc nacional)"
       has_collaboration_bank_international: "Amb col·laboració econòmica (banc internacional)"
-      verified:
-      unverified:
-      verified_presentially:
-      unverified_presentially:
-      verified_online:
-      unverified_online:
-      verifying_online:
-      verifying_presentially:
-      voting_right:
       participation_team:
       has_circle:
   formtastic:
