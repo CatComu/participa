@@ -198,10 +198,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test ".full_name" do
-    user = create(:user)
-    u = User.new(first_name: "Juan", last_name: "Perez")
-    assert_equal("Juan Perez", u.full_name)
-    assert_equal("Perez Pepito", user.full_name)
+    user = User.new(first_name: "Juan", last_name: "Perez")
+    assert_equal("Juan Perez", user.full_name)
   end
 
   test ".full_address" do
