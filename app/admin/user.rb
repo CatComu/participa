@@ -5,8 +5,9 @@ ActiveAdmin.register User do
 
   scope :created, default: true
   scope :deleted
-  scope :unconfirmed_mail
-  scope :confirmed_mail
+  scope :banned
+
+  scope :admins
   scope :signed_in
 
   if Features.collaborations?
@@ -21,16 +22,15 @@ ActiveAdmin.register User do
     scope :has_circle
   end
 
-  scope :banned
-  scope :admins
+  scope :unconfirmed_mail
+  scope :confirmed_mail
 
   scope :confirmed_by_sms
+  scope :unconfirmed_by_sms
 
-  scope :verifying_online
   scope :verified_online
   scope :unverified_online
 
-  scope :verifying_presentially
   scope :verified_presentially
   scope :unverified_presentially
 
@@ -38,7 +38,11 @@ ActiveAdmin.register User do
   scope :unverified
 
   scope :voting_right
+  scope :no_voting_right
   scope :unverified_with_voting_right
+
+  scope :verifying_online
+  scope :verifying_presentially
 
   permit_params :email, :password, :password_confirmation, :first_name, :last_name, :document_type, :document_vatid, :born_at, :address, :town, :postal_code, :province, :country, :vote_province, :vote_town, :wants_newsletter, :phone, :unconfirmed_phone
 
