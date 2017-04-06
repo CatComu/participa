@@ -237,7 +237,6 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
   active_admin:
     scopes:
       created: "Creats"
-      confirmed: "Confirmats"
       deleted: "Esborrats"
       unconfirmed_mail: "Correu electrònic sin confirmar"
       confirmed_mail: "Correu electrònic confirmat"

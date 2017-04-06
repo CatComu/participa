@@ -69,12 +69,12 @@ class Election < ApplicationRecord
 
   def current_total_census
     case self.scope
-      when 0 then User.confirmed.not_banned.count
-      when 1 then User.confirmed.not_banned.ransack( {vote_autonomy_in: self.election_locations.map {|l| "c_#{l.location}" }}).result.count
-      when 2 then User.confirmed.not_banned.ransack( {vote_province_in: self.election_locations.map {|l| "p_#{l.location}" }}).result.count
-      when 3 then User.confirmed.not_banned.where(vote_town: self.election_locations.map {|l| "m_#{l.location[0..1]}_#{l.location[2..4]}_#{l.location[5]}" }).count
-      when 4 then User.confirmed.not_banned.ransack( {vote_island_in: self.election_locations.map {|l| "i_#{l.location}" }}).result.count
-      when 5 then User.confirmed.not_banned.where.not(country:"ES").count
+      when 0 then User.voting_right.count
+      when 1 then User.voting_right.ransack( {vote_autonomy_in: self.election_locations.map {|l| "c_#{l.location}" }}).result.count
+      when 2 then User.voting_right.ransack( {vote_province_in: self.election_locations.map {|l| "p_#{l.location}" }}).result.count
+      when 3 then User.voting_right.where(vote_town: self.election_locations.map {|l| "m_#{l.location[0..1]}_#{l.location[2..4]}_#{l.location[5]}" }).count
+      when 4 then User.voting_right.ransack( {vote_island_in: self.election_locations.map {|l| "i_#{l.location}" }}).result.count
+      when 5 then User.voting_right.where.not(country:"ES").count
     end
   end
 

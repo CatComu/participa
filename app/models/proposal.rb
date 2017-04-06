@@ -19,7 +19,7 @@ class Proposal < ApplicationRecord
   end
 
   def confirmed_users
-    User.confirmed.count
+    User.verified.count
   end
 
   def remaining_endorsements_for_approval

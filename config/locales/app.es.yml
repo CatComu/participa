@@ -529,7 +529,6 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
   active_admin:
     scopes:
       created: "Creados"
-      confirmed: "Confirmados"
       deleted: "Borrados"
       unconfirmed_mail: "Correo electrónico sin confirmar"
       confirmed_mail: "Correo electrónico confirmado"

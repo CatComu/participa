@@ -4,7 +4,6 @@ ActiveAdmin.register User do
   scope_to User, association_method: :with_deleted
 
   scope :created, default: true
-  scope :confirmed
   scope :deleted
   scope :unconfirmed_mail
   scope :confirmed_mail
@@ -397,7 +396,6 @@ ActiveAdmin.register User do
     require 'podemos_export'
     file = params["fill_csv"]["file"]
     subaction = params["commit"]
-#    csv = fill_data file.read, User.confirmed
     csv = fill_data file.read.force_encoding('utf-8'), User
     if subaction == "Descargar CSV"
       send_data csv["results"],
