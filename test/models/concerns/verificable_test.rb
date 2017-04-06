@@ -40,7 +40,7 @@ class VerifiableTest < ActiveSupport::TestCase
 
     assert_matches_array [unverified, not_confirmed_by_sms], User.no_voting_right
 
-    assert_matches_array [confirmed_by_sms], User.confirmed_by_sms_but_still_unverified
+    assert_matches_array [confirmed_by_sms], User.unverified_with_voting_right
   end
 
   test ".presential_verifier_ever gives past & present presential verifiers" do

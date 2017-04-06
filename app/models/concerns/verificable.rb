@@ -46,7 +46,7 @@ module Verificable
     scope :voting_right, -> { verified_presentially.or(confirmed_by_sms) }
     scope :no_voting_right, -> { unverified_presentially.unconfirmed_by_sms }
 
-    scope :confirmed_by_sms_but_still_unverified, -> { confirmed_by_sms.unverified_online }
+    scope :unverified_with_voting_right, -> { confirmed_by_sms.unverified_online }
   end
 
   class_methods do
@@ -59,7 +59,7 @@ module Verificable
     # So, for example, can be paginated and works in the admin.
     #
     def pending_moderation
-      confirmed_by_sms_but_still_unverified.select(&:pending_moderation?)
+      unverified_with_voting_right.select(&:pending_moderation?)
     end
   end
 
