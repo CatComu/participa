@@ -114,8 +114,8 @@ class User < ApplicationRecord
   attr_accessor :login
 
   scope :wants_newsletter, -> {where(wants_newsletter: true)}
-  scope :created, -> { where(deleted_at: nil)  }
-  scope :deleted, -> { where.not(deleted_at: nil) }
+  scope :created, -> { not_banned }
+  scope :deleted, -> { only_deleted }
   scope :admins, -> { where(admin: true) }
   scope :signed_in, -> { where.not(sign_in_count: nil) }
   scope :participation_team, -> { includes(:participation_team).where.not(participation_team_at: nil) }

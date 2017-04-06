@@ -595,12 +595,14 @@ class UserTest < ActiveSupport::TestCase
     assert_not_equal user.town, user.vote_town, "User has changed his town (from Spain to a foreign country) and vote town changed"
   end
 
-  test ".created work" do 
-    skip("TODO")
-  end
+  test "main scopes work" do 
+    created = create(:user)
+    deleted = create(:user, deleted_at: Time.zone.now)
+    banned = create(:user, :banned)
 
-  test ".deleted work" do 
-    skip("TODO")
+    assert_equal [created], User.created
+    assert_equal [deleted], User.deleted
+    assert_equal [banned], User.banned
   end
 
   test "email confirmation scopes work" do 
