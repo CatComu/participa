@@ -255,7 +255,6 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       verifying_online:
       verifying_presentially:
       signed_in: "Has iniciat sessió"
-      not_signed_in: "No has iniciat sessió"
       has_collaboration: "Amb col·laboració econòmica"
       has_collaboration_credit_card: "Amb col·laboració econòmica (targeta de crèdit)"
       has_collaboration_bank_national: "Amb col·laboració econòmica (banc nacional)"
