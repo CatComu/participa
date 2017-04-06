@@ -80,6 +80,14 @@ FactoryGirl.define do
     banned true
   end
 
+  trait :unconfirmed_mail do
+    confirmed_at nil
+  end
+
+  trait :confirmed_mail do
+    confirmed_at { Time.zone.now }
+  end
+
   trait :not_confirmed_by_sms do
     sms_confirmed_at nil
   end

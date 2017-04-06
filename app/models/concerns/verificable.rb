@@ -28,6 +28,9 @@ module Verificable
       joins(:verification_slots).merge(Verification::Slot.presential.past_or_current)
     end
 
+    scope :unconfirmed_mail, -> { where(confirmed_at: nil)  }
+    scope :confirmed_mail, -> { where.not(confirmed_at: nil) }
+
     scope :confirmed_by_sms, -> { not_banned.where.not(sms_confirmed_at: nil) }
     scope :unconfirmed_by_sms, -> { not_banned.where(sms_confirmed_at: nil) }
 

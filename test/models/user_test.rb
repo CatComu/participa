@@ -603,8 +603,12 @@ class UserTest < ActiveSupport::TestCase
     skip("TODO")
   end
 
-  test ".unconfirmed_mail work" do 
-    skip("TODO")
+  test "email confirmation scopes work" do 
+    unconfirmed = create(:user, :unconfirmed_mail)
+    confirmed = create(:user, :confirmed_mail)
+
+    assert_equal [unconfirmed], User.unconfirmed_mail
+    assert_equal [confirmed], User.confirmed_mail
   end
 
   test ".unconfirmed_phone work" do 
