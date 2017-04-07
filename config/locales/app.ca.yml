@@ -513,7 +513,6 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
     email: Correu electrònic
     result: Per acabar el procés has de comprovar que les dades siguin les mateixes que ha donat l'inscrit/a.
     other: Verifica un altre usuari/ària.
-    sure: ¿Estàs segur/a que vols confirmar aquest usuari/ària?
     admin: Gestor de verificacions presencials
     alerts:
       already_presencial: "L'usuari/ària amb document %{document} ja estava  verificat, per %{by}, el %{when}. L'usuari/ària ja podrà votar."

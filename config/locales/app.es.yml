@@ -872,7 +872,6 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     document_type: Tipo y número de documento
     email: Correo electrónico
     result: Para finalizar el proceso tienes que comprobar que coincidan los datos con los que aquí se muestran.
-    sure: ¿Estás seguro/a que quieres confirmar este usuario/a?
     admin: Gestor de verificaciones presenciales
     alerts:
       already_presencial: "El usuario/a con documento %{document} ya estaba verificado, por %{by}, el %{when}. El usuario/a ya podrá votar."
