@@ -1,4 +1,6 @@
 class VerificationController < ApplicationController
+  before_action :load_user, only: %i(result_ok result_ko)
+
   def show
     authorize! :show, :verification
   end
@@ -17,11 +19,12 @@ class VerificationController < ApplicationController
 
   def result_ok
     authorize! :result_ok, :verification
+
+    @user.verify! current_user
   end
 
   def result_ko
     authorize! :result_ko, :verification
-    @user = User.find params[:id]
   end
 
   def search
@@ -44,18 +47,12 @@ class VerificationController < ApplicationController
       render :step2
     end
   end
-  
-  def confirm
-    authorize! :confirm, :verification
-    @user = User.find params[:id]
-    if @user.verify! current_user
-      redirect_to verification_result_ok_path
-    else
-      redirect_to verification_result_ko_path
-    end
-  end
 
   private
+
+  def load_user
+    @user = User.find params[:id]
+  end
 
   def search_params
     params.require(:user).permit(:email)

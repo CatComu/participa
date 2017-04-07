@@ -21,9 +21,9 @@
         </li>
       </ul>
 
-      <%= button_to t('verification.confirm'), verification_confirm_path(id: @user.id), class: "button-primary", method: :post %>
+      <%= link_to t('verification.confirm'), verification_result_ok_path(id: @user.id), class: "button-primary", method: :post %>
 
-      <%= link_to t('verification.no_confirm'), verification_result_ko_path(id: @user.id), class: "button" %>
+      <%= link_to t('verification.no_confirm'), verification_result_ko_path(id: @user.id), class: "button", method: :post %>
     </div>
   </div>
 </div>

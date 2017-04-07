@@ -82,13 +82,37 @@ class VerificationPresencialTest < JsFeatureTest
     fill_in(:user_email, with: user.email)
     click_button('Siguiente')
     assert_content I18n.t('verification.result')
-    click_button('Si, estos datos coinciden')
+    click_link('Si, estos datos coinciden')
     assert_content I18n.t('verification.alerts.ok.title')
     logout
 
     # should see the OK verification message
     login(user)
     assert_content I18n.t('voting.election_none')
+  end
+
+  test "presential verifiers can reject users presentially" do
+    user = create(:user)
+
+    # verification can verify user
+    verificator = create(:user, :verifying_presentially)
+    login(verificator)
+    visit verification_step1_path
+    assert_content I18n.t('verification.form.document')
+    check('user_document')
+    check('user_town')
+    check('user_age_restriction')
+    click_button('Siguiente')
+    fill_in(:user_email, with: user.email)
+    click_button('Siguiente')
+    assert_content I18n.t('verification.result')
+    click_link('No, estos datos no coinciden')
+    assert_content I18n.t('verification.alerts.ko.title')
+    logout
+
+    # should not see the OK verification message
+    login(user)
+    refute_content I18n.t('voting.election_none')
   end
 
   test "presential verifiers cannot verify unconfirmed users" do
