@@ -26,9 +26,11 @@ class ReportGroup < ApplicationRecord
   def get_proc
     @proc ||= eval("Proc.new { |row| #{self[:proc]} }")
   end
+
   def get_whitelist
     @whitelist ||= self[:whitelist].split("\r\n")
   end
+
   def get_blacklist
     @blacklist ||= self[:blacklist].split("\r\n")
   end

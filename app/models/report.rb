@@ -21,6 +21,7 @@ class Report < ApplicationRecord
     end
     @main_group
   end
+
   def get_groups
     @groups ||= ReportGroup.unserialize(self[:groups])
   end

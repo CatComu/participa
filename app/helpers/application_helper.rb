@@ -46,9 +46,11 @@ module ApplicationHelper
   def field_notice_box
     render partial: 'application/form_field_notice'
   end
+
   def errors_in_form resource
     render partial: 'application/errors_in_form', locals: {resource: resource}
   end
+
   def steps_nav current_step, *steps_text
     render partial: 'application/steps_nav',
            locals: { first_step: steps_text[0],
