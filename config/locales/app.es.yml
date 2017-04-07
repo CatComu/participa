@@ -887,8 +887,6 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
         electrónico. Le acabamos de enviar un nuevo correo de confirmación para
         que pueda confirmar su correo, verificarse y votar.
       not_found: "No hemos encontrado un usuario/a con este correo electrónico %{query}. Presta atención y vuelve a escribir el correo. Si vuelve a ocurrir puede ser que el usuario no esté creado en el sistema o haya algún problema con su cuenta. Enviale sus datos al Responsable de tu Distrito para que lo revisemos. Ya lo contactaremos. "
-      problem: "No está inscrito/a, se inscribió con otro correo o escribió mal el correo al inscribirse. Envía a tu verificador vía Telegram la siguiente información: DNI
-Número de teléfono y correo electrónico y comunícale que nos pondremos en contacto con el o ella."
     mailer:
       hello: "Hola %{user},"
       bye: Saludos.

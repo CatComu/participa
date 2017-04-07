@@ -528,7 +528,6 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
         electrònic. Li acabem d'enviar un mail de confirmació ara mateix
         perquè pugui confirmar el seu correu, verificar-se i votar
       not_found: "No hem trobat un usuari/ària amb aquest document o correu electrònic. Búsqueda: %{query}"
-      problem: "Hi ha hagut un problema buscant aquest usuari/ària. Fes una foto al document, demana-li el seu correu electrònc i envia'l a  info@unpaisencomu.cat"
     mailer:
       hello: "Hola %{user},"
       bye: Salutacions.
