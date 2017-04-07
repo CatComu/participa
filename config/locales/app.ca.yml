@@ -460,6 +460,167 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
     verifier_reported_self: Es van informar dels següents problemes
     you_are_done: >
       No resten persones usuàries pendents de verificació. Bona feina!
+  page:
+    faq:
+      title: "Preguntes Freqüents - Votacions"
+      general: "GENERAL"
+      inscription: "INSCRIPCIÓ"
+      voting: "VOTACIÓ"
+      inscription_errors: "ERRORS D'INSCRIPCIÓ"
+      verification: "VERIFICACIÓ"
+      faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. Què em cal per accedir a participa.unpaisencomu.cat?</a>
+            <div class="cd-faq-content">
+    <p> Es necessari residir a la ciutat de Barcelona.
+    </p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; 1. <strong> DNI / NIF / Passaport </strong>. Per seguretat, ha de ser únic i no es podrà canviar. </p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp; 2. <strong> Correu electrònic </strong>: Per seguretat, ha de ser únic. </p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">2. Què faig si he perdut la contrassenya?</a>
+          <div class="cd-faq-content">
+           <p> Si no recordes la contrasenya, fes clic <a href="https://participa.unpaisencomu.cat/ca/users/password/new" target="_blank" title="Has oblidat la teva contrasenya?"> Aquí </a> per sol·licitar-ne una de nova. </p>
+          </div> <!-- cd-faq-content --></li>'
+      faq2_html: "<li><a class='cd-faq-trigger' href='#0'>3. No arecordo del correu electrònc. Què faig?</a>
+          <div class='cd-faq-content'>
+<p> Fes servir el DNI o passaport per entrar a la plataforma. Un cop a dins podràs canviar el teu correu electrònic. </ P>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class='cd-faq-trigger' href='#0'>4. M'han bloquejat el compte d'accés a la plataforma. Què puc fer?</a>
+            <div class='cd-faq-content'>
+              <p> Per seguretat, bloquegem el compte durant una hora després de 20 temptatives fallides d'accés. Un cop passat aquest temps, la persona usuària és desbloquejada automàticament. </ P>
+            </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+           <a class='cd-faq-trigger' href='#0'>5. Continuo sense poder accedir al portal de participació. Com puc comunicar-me amb l'equip de suport?</a>
+          <div class='cd-faq-content'>
+<p> Si tens algun problema pots comunicar-te amb nosaltres a <a href='mailto:contacte@unpaisencomu.cat'> contacte@unpaisencomu.cat </a> indicant si escau les dades següents: </ p>
+<p> Nom i cognoms: <br />
+Correu electrònic: <br />
+DNI: <br />
+Descripció del problema: </ p>
+          </div> <!-- cd-faq-content --></li>"
+      faq3_html: "<li><a class='cd-faq-trigger' href='#0'>6. Correu  electrònic, número de document o contrasenya invàlida.</a>
+          <div class='cd-faq-content'>
+            <p> Si no recordes el correu electrònic que vas fer servir per inscriure't, prova-ho amb el teu DNI. </p>
+             <p> Si no recordes la contrasenyaa, fes clic <a href='https://participa.unpaisencomu.cat/es/users/password/new' target='_blank' title='Has olblidat la teva contrasenya? '> Aquí </a> per sol·licitar-ne una de nova. </p>
+             <p> Si no reps la teva contrasenya, mira l'error núm. 2, que apareix més avall.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+           <a class='cd-faq-trigger' href='#0'>7. No m'arriben correus a cap dels meus comptes. Em sembla que m'he equivocat a l'hora d'escriure el meu correu electrònic.  </a>
+          <div class='cd-faq-content'>
+             <p><strong>Causa:</strong><br />Potser vas escriure malament el teu correu durant el procés de registre o el registre ha estat incomplet.</p>
+             <p> <strong> Solució:</strong><br />Escriu un correu a <a href='mailto:contacte@unpaisencomu.cat'>contacte@unpaisencomu.cat</a>indica-hi les teves dades personals i adjunta-hi una fotocòpia del teu DNI o passaport per donar-te de baixa i així podràs tornar a inscriure-t'hi.</p>
+     </div> <!-- cd-faq-content -->
+          </li>"
+      faq4_html: "<li> <a class='cd-faq-trigger' href='#0'>8. Quins mètodes de verificació s'han habilitat?</a> <div class='cd-faq-content'> <p>Hem habilitat <a href='%{verifications_url}'>punts presencials per a la verificació</a>.</p> </div> <!-- cd-faq-content --> </li>"
+      faq5_html: "<li><a class='cd-faq-trigger' href='#0'>9. Com puc votar?</a>
+      <div class='cd-faq-content'>
+        <p>Amb tres passos molt senzills:<br/>
+Amb tres passos molt senzills:
+ 1r.  Entra al web participa.unpaisencomu.cat, accedeix al portal de participació i introdueix el DNI / correu electrònic i la contrasenya.  Si no estàs inscrit/a, fes-ho aquí: https://participa.unpaisencomu.cat. És molt senzill.
+ 2n.  Accedeix a la cabina de votació: un cop hagis entrat a l'aplicació  de  Barcelona En Comú, veuràs un botó per votar. Fes-hi clic i se’t redirigirà a la cabina de votació,
+ 3r. Vota: respon la pregunta de la votació.
+</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>10. Qui pot votar?</a>
+      <div class='cd-faq-content'>
+        <p>Qualsevol  persona inscrita a Barcelona En Comú a través de  http://participa.unpaisencomu.cat que tingui més de 16 anys i visqui a  Barcelona i hagi realitzat la verificació presencial.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>11. Què necessito per votar?</a>
+      <div class='cd-faq-content'>
+        <p>Necessites un ordinador o qualsevol altre dispositiu (android / iphone) amb  accés a la xarxa per accedir a <a href='https://participa.unpaisencomu.cat' target='_blank' >https://participa.unpaisencomu.cat</a> i estar inscrit/a a <a href='https://participa.unpaisencomu.cat' target='_blank'>https://participa.unpaisencomu.cat</a>.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>12. Puc votar sense tenir ordinador?</a>
+      <div class='cd-faq-content'>
+        <p>Sí. Barcelona En Comú ha habilitat diversos punts de votació digital assistida
+      </div> <!-- cd-faq-content -->
+      </li>
+        <li>
+      <a class='cd-faq-trigger' href='#0'>13. Si no tinc un dispositiu mòbil (telèfon intel•ligent/tàblet), puc votar?</a>
+      <div class='cd-faq-content'>
+        <p>Sí, pots votar també des d'un ordinador amb accés a Internet a participa.unpaisencomu.cat. El mòbil només cal per registrar-se.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>14. Puc canviar el vot durant el període de votació?</a>
+      <div class='cd-faq-content'>
+        <p>No, un cop hagis emès el teu vot ja no podràs canviar-lo.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>15. Puc votar en blanc o abstenir-me?</a>
+      <div class='cd-faq-content'>
+        <p>Sí. En funció del tipus de pregunta, podràs votar en blanc o abstenir-te'n.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>16. Quines mesures de seguretat s'han implementat?</a>
+      <div class='cd-faq-content'>
+        <p>L'esquema de seguretat Agora Voting està basat en un verifiable mixnet amb xifrat de llindar El-Gamal de clau pública. La implementació la proporciona la llibreria Verificatum.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>17. En quines altres votacions s'ha fet servir Agora Voting?</a>
+      <div class='cd-faq-content'>
+        <p>Entre altres, Agora Voting s'ha utilitzat per fer les primàries europees i els consells municipals i autonòmics de Podem, en dues votacions de la iniciativa de Congrés Transparent i en les primàries de la Confederació Pirata.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>18. Com puc comprovar que el vot s’ha enregistrat correctament?</a>
+      <div class='cd-faq-content'>
+        <p>Amb el localitzador del vot que el sistema mostra després de votar a la cabina de votació, que has d'anotar. Un cop emès el vot, es podrà comprovar si el procés s'ha completat amb èxit. Aquesta comprovació no només serveix per verificar que el vot s’ha enregistrat, sinó que també verifica que s’ha comptabilitzat en el còmput (es pot veure dues preguntes més avall).</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>19. He buscat el meu vot tal com diu la pregunta anterior i no surt llistat. Per què?</a>
+      <div class='cd-faq-content'>
+        <p>Segurament has copiat malament el localitzador del vot. Sisplau, torna-ho a comprovar.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>20. Com puc comprovar que el còmput de la votació és correcte?</a>
+      <div class='cd-faq-content'>
+        <p>Agora Voting és un sistema verificable. Això vol dir que qualsevol pot revisar el còmput de la votació a partir dels localitzadors dels vots i les demostracions matemàtiques publicades després del còmput. Agora Voting proporciona un procediment de verificació que, com la resta del sistema, és públicament auditable. No obstant això, la verificació es basa en tècniques criptogràfiques que, tot i que estan ben establertes en l'àmbit acadèmic, no són fàcils d'entendre.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>21. És possible esbrinar el contingut del vot? Com puc saber que no es revelarà?</a>
+      <div class='cd-faq-content'>
+        <p>No, ni els administradors del sistema poden esbrinar-ho. Només és possible revelar el contingut d'un vot si totes les autoritats es posen d’acord per fer-ho (o si totes són atacades amb èxit, com es pot veure més avall). El secret del vot és segur.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>22. Quines són les autoritats de la votació?</a>
+      <div class='cd-faq-content'>
+        <p>Són dues: OpenKratio i Agora Voting. Pots veure més informació sobre les autoritats de la votació en aquests links: <a href='http://openkratio.org/' target='_blank'>http://openkratio.org/</a> i <a href='https://agoravoting.com/' target='_blank'></a>https://agoravoting.com/.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>23. Com s'assegura que cada persona vota una sola vegada i que només voten les persones amb dret a fer-ho?</a>
+      <div class='cd-faq-content'>
+        <p>Gràcies al sistema d'autenticació al portal de participació de Barcelona En Comú s'assegura que només aquelles persones que figurin en el cens de Barcelona En Comú poden votar i es controla que només hi hagi un vot per persona.</p>
+      </div> <!-- cd-faq-content -->
+      </li>
+      <li>
+      <a class='cd-faq-trigger' href='#0'>24. On puc trobar més informació tècnica sobre la votació?</a>
+      <div class='cd-faq-content'>
+        <p>Hem creat un document amb informació més tècnica en anglès, el technical overview. </p>
+      </div> <!-- cd-faq-content -->
+      </li>
+       <li>
+      <a class='cd-faq-trigger' href='#0'>25. Tinc més preguntes.</a>
+      <div class='cd-faq-content'>
+        <p>En aquest cas, pots contactar amb nosaltres i intentarem resoldre els teus dubtes, preguntes o comentaris enviant un mail a contacte@unpaisencomu.cat.</p>
+      </div> <!-- cd-faq-content --></li>"
   verification:
     from: de
     from_with_article: del
