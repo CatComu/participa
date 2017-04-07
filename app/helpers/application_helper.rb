@@ -16,12 +16,6 @@ module ApplicationHelper
     link_to name, url, html_options
   end
 
-  def new_notifications_class
-    # TODO: Implement check if there are any new notifications
-    # If so, return "claim"
-    ""
-  end
-
   def info_box &block
     content = with_output_buffer(&block)
     render partial: 'application/info', locals: { content: content }

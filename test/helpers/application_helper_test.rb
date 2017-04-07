@@ -30,10 +30,6 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal expected, response
   end
 
-  test "should new_notifications_class work" do 
-    assert_equal "", new_notifications_class
-  end
-
   test "should info_box work" do 
     result = info_box do "bla" end
     expected = "<div class=\"box\">\n  <div class=\"box-info\">\n    \n  </div>\n</div>\n"
