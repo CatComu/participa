@@ -270,6 +270,11 @@ fieldset .inputlabel-box p, fieldset .inputlabel-box li{
   li {
     font-size: 1.3em;
     list-style: inside;
+
+    strong {
+      position: relative;
+      left: -10px;
+    }
   }
 }
 
