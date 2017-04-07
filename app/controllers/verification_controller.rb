@@ -26,25 +26,22 @@ class VerificationController < ApplicationController
 
   def search
     authorize! :search, :verification
-    if params[:user]
-      @user = User.find_by_email(params[:user][:email])
-      if @user
-        if @user.confirmed_at.nil?
-          @user.send_confirmation_instructions
-          flash.now[:alert] = unconfirmed_email_alert
-          render :step2
-        elsif @user.is_verified_presentially? 
-          flash.now[:notice] = already_verified_alert
-          render :step2
-        else
-          render :step3
-        end
-      else 
-        flash.now[:error] = t('verification.alerts.not_found', query: params[:user][:email])
+
+    @user = User.find_by_email(search_params[:email])
+    if @user
+      if @user.confirmed_at.nil?
+        @user.send_confirmation_instructions
+        flash.now[:alert] = unconfirmed_email_alert
         render :step2
+      elsif @user.is_verified_presentially? 
+        flash.now[:notice] = already_verified_alert
+        render :step2
+      else
+        render :step3
       end
-    else
-      redirect_to verification_step1_path
+    else 
+      flash.now[:error] = t('verification.alerts.not_found', query: search_params[:email])
+      render :step2
     end
   end
   
@@ -59,6 +56,10 @@ class VerificationController < ApplicationController
   end
 
   private
+
+  def search_params
+    params.require(:user).permit(:email)
+  end
 
   def already_verified_alert
     t('verification.alerts.already_presencial', document: @user.document_vatid,
