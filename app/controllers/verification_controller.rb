@@ -40,7 +40,7 @@ class VerificationController < ApplicationController
           render :step3
         end
       else 
-        flash.now[:error] = t('verification.alerts.not_found', query1: params[:user][:email], query2: params[:user][:document_vatid] )
+        flash.now[:error] = t('verification.alerts.not_found', query: params[:user][:email])
         render :step2
       end
     else
