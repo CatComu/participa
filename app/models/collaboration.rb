@@ -165,6 +165,7 @@ class Collaboration < ApplicationRecord
     iban = iban_account.gsub(" ","") if not iban and iban_account and !iban_account.empty?
     iban
   end
+
   def calculate_bic
     bic = Podemos::SpanishBIC[ccc_entity] if ccc_account and (not iban_account or is_bank_national?)
     bic = Podemos::SpanishBIC[iban_account[4..7].to_i] if not bic and iban_account and !iban_account.empty? and iban_account[0..1]=="ES"

@@ -56,7 +56,7 @@ class Ability
 
       if Features.presential_verifications?
         if user.verifying_presentially?
-          can [:step1, :step2, :step3, :confirm, :search, :result_ok, :result_ko], :verification
+          can [:step1, :step2, :search, :result_ok, :result_ko], :verification
         end
 
         can :show, :verification

@@ -264,12 +264,30 @@ fieldset .inputlabel-box p, fieldset .inputlabel-box li{
   margin:0;
 }
 
-.gender-list {
+.dotted-list {
   list-style-type: circle;
 
   li {
-    font-size: 1.3em;
     list-style: inside;
+
+    strong {
+      position: relative;
+      left: -10px;
+    }
+  }
+}
+
+.verification-info-list {
+  @extend .dotted-list;
+
+  margin-top: 10px;
+}
+
+.gender-list {
+  @extend .dotted-list;
+
+  li {
+    font-size: 1.3em;
   }
 }
 

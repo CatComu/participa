@@ -16,12 +16,6 @@ module ApplicationHelper
     link_to name, url, html_options
   end
 
-  def new_notifications_class
-    # TODO: Implement check if there are any new notifications
-    # If so, return "claim"
-    ""
-  end
-
   def info_box &block
     content = with_output_buffer(&block)
     render partial: 'application/info', locals: { content: content }
@@ -46,16 +40,14 @@ module ApplicationHelper
   def field_notice_box
     render partial: 'application/form_field_notice'
   end
+
   def errors_in_form resource
     render partial: 'application/errors_in_form', locals: {resource: resource}
   end
+
   def steps_nav current_step, *steps_text
     render partial: 'application/steps_nav',
-           locals: { first_step: steps_text[0],
-                     second_step: steps_text[1],
-                     third_step: steps_text[2],
-                     steps_text: steps_text,
-                     current_step: current_step }
+           locals: { steps: steps_text, current_step: current_step }
   end
 
   def body_class signed_in, controller, action

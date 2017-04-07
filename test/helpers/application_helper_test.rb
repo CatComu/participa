@@ -30,10 +30,6 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal expected, response
   end
 
-  test "should new_notifications_class work" do 
-    assert_equal "", new_notifications_class
-  end
-
   test "should info_box work" do 
     result = info_box do "bla" end
     expected = "<div class=\"box\">\n  <div class=\"box-info\">\n    \n  </div>\n</div>\n"
@@ -72,8 +68,8 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "should steps_nav work" do 
-    result = steps_nav(1, %w(primero segundo tercero))
-    expected = "<nav class=\"steps3\">\n  <ul>\n    <li class=active>\n      <span class=\"block\">\n        <span class=\"tab-number\">1</span>\n        <span class=\"tab-text\">[&quot;primero&quot;, &quot;segundo&quot;, &quot;tercero&quot;]</span>\n      </span>\n    </li>\n    <li >\n      <span class=\"block\">\n        <span class=\"tab-number\">2</span>\n        <span class=\"tab-text\"></span>\n      </span>\n    </li>\n    <li >\n      <span class=\"block\">\n        <span class=\"tab-number\">3</span>\n        <span class=\"tab-text\"></span>\n      </span>\n    </li>\n  </ul>\n</nav>\n\n<h3>\n  <span>[&quot;primero&quot;, &quot;segundo&quot;, &quot;tercero&quot;]</span>\n</h3>\n"
+    result = steps_nav(1, 'primero', 'segundo', 'tercero')
+    expected = "<nav class=\"steps3\">\n  <ul>\n      <li class=active>\n        <span class=\"block\">\n          <span class=\"tab-number\">1</span>\n          <span class=\"tab-text\">primero</span>\n        </span>\n      </li>\n      <li >\n        <span class=\"block\">\n          <span class=\"tab-number\">2</span>\n          <span class=\"tab-text\">segundo</span>\n        </span>\n      </li>\n      <li >\n        <span class=\"block\">\n          <span class=\"tab-number\">3</span>\n          <span class=\"tab-text\">tercero</span>\n        </span>\n      </li>\n  </ul>\n</nav>\n"
     assert_equal expected, result
   end
 

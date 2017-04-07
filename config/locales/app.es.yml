@@ -818,6 +818,171 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     verifier_reported: "%{name} reportó los siguientes problemas"
     verifier_reported_self: "Se reportaron los siguientes problemas"
     you_are_done: No quedan usuarias pendientes de verificación. ¡Buen trabajo!
+  page:
+    faq:
+      title: "Preguntas Frecuentes - Votaciones"
+      general: "GENERAL"
+      inscription: "INSCRIPCIÓN"
+      voting: "VOTACIÓN"
+      inscription_errors: 'ERRORES INSCRIPCIÓN'
+      verification: "VERIFICACIÓN"
+      faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. ¿Qué necesito para entrar en participa.unpaisencomu.cat?</a>
+            <div class="cd-faq-content">
+    <p> Es necesario residir en la ciudad de Barcelona.
+    </p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;1. <strong>DNI/NIF/Pasaporte</strong>. Por seguridad, debe ser único y no se podrá cambiar. </p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;2. <strong>Correo electrónico</strong>: Por seguridad, debe ser único.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">2. ¿Qué hago si no recuerdo mi contraseña?</a>
+          <div class="cd-faq-content">
+            <p>Puedes solicitar una nueva <a href="https://participa.unpaisencomu.cat/es/users/password/new" target="_blank" title="¿Has olvidado tu contraseña?">aquí</a>.</p>
+          </div> <!-- cd-faq-content --></li>
+       '
+      faq2_html: '<li><a class="cd-faq-trigger" href="#0">3. No me acuerdo del correo electrónico ¿Qué hago?</a>
+          <div class="cd-faq-content">
+            <p>Usa tu DNI o pasaporte para entrar en la plataforma. Una vez dentro podrás cambiar tu correo electrónico.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">4. Me han bloqueado la cuenta ¿qué puedo hacer?</a>
+          <div class="cd-faq-content">
+            <p>Por seguridad, bloqueamos la cuenta durante una hora tras 20 intentos fallidos de acceso. Una vez pasado ese tiempo, la persona usuaria es desbloqueada automáticamente.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">5.  Sigo sin poder acceder al portal de participación. ¿Cómo puedo comunicarme con el equipo de soporte?</a>
+          <div class="cd-faq-content">
+            <p>Si tienes algún problema puedes comunicarte con nosotros en <a href="mailto:contacte@unpaisencomu.cat">contacte@unpaisencomu.cat</a> indicando si procede los siguientes datos:</p>
+            <p>Nombre y apellidos:<br />
+            Correo electrónico:<br />
+            DNI:<br />
+            Descripción del problema:</p>
+          </div> <!-- cd-faq-content --></li>'
+      faq3_html: "<li><a class='cd-faq-trigger' href='#0'>6. Correo electrónico, número de documento o contraseña inválida.</a>
+          <div class='cd-faq-content'>
+            <p> Si no recuerdas el correo electrónico que utilizaste para inscribirte, prueba con el DNI. </p>
+             <p> Si no recuerdas la contraseña, haz clic <a href='https://participa.unpaisencomu.cat/es/users/password/new' target='_blank' title='¿Has olvidado tu contraseña? '> Aquí </a> para sollicitar una nueva. </p>
+             <p> Si no recibes tu contraseña, mira el error 2, que aparece mas abajo.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class='cd-faq-trigger' href='#0'>7. No me llegan correos a ninguna de mis cuentas. Creo que me he equivocado de correo electrónico. </a>
+          <div class='cd-faq-content'>
+            <p><strong>Causa:</strong><br />Puede que escribieras mal el correo en el proceso de registro o el registro fue incompleto. </p>
+             <p> <strong> Solución:</strong><br />Escribe un correo a <a href='mailto:contacte@unpaisencomu.cat'>contacte@unpaisencomu.cat</a>indicando tus datos personales y adjuntando fotocopia de tu DNI o pasaporte y te daremos de baja para que vuelvas a inscribirte.</p>
+     </div> <!-- cd-faq-content -->
+          </li>"
+
+      faq4_html: ' <li>
+          <a class="cd-faq-trigger" href="#0">8. ¿Qué métodos de verificación se han habilitado?</a>
+          <div class="cd-faq-content">
+            <p>Hemos habilitado <a href="%{verifications_url}">puntos presenciales para la verificación</a>.</p>
+          </div> <!-- cd-faq-content -->
+          </li>'
+      faq5_html: '<li><a class="cd-faq-trigger" href="#0">9. ¿Cómo puedo votar?</a>
+          <div class="cd-faq-content">
+            <p>En tres sencillos pasos:<br/>
+    1ª. Entra en la web <a href="https://participa.unpaisencomu.cat" target="_blank">participa.unpaisencomu.cat</a>, accede al Portal de Participación, e introduce tu DNI/Correo electrónico y tu contraseña. Si no estas inscrito, hazlo aquí <a href="https://participa.unpaisencomu.cat" target="_blank">participa.unpaisencomu.cat</a>, es muy sencillo.<br/>
+    2ª. Accede a la cabina de votación: Una vez hayas entrado en la aplicación de Un País en Comú, verás un botón para votar. Pincha y serás redirigido a la cabina de votación, donde estarán las 3 votaciones que hay abiertas.<br/>
+    3ª. Vota: Responde a las preguntas de la votación. Antes de emitir tu voto, podrás confirmar las respuestas que has elegido y tendrás oportunidad de modificarlas. Una vez hayas hecho esto, podrás confirmar y emitir tu voto.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">10. ¿Quién puede votar?</a>
+          <div class="cd-faq-content">
+            <p>Cualquier persona que haya realizado la inscripción en <a href="https://participa.unpaisencomu.cat" target="_blank">participa.unpaisencomu.cat</a>, y se haya verificado presencialmente aportando los documentos que se solicitan y tenga más de 16 años.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">11. ¿Qué necesito para votar?</a>
+          <div class="cd-faq-content">
+            <p>Necesitas un ordenador o cualquier otro dispositivo (android/iphone) con acceso a internet para acceder a participa.unpaisencomu.cat y estar inscrito/a en participa.unpaisencomu.cat.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">12. ¿Puedo votar sin tener ordenador?</a>
+          <div class="cd-faq-content">
+        <p>Si. Un País en Comú ha habilitado varios puntos presenciales donde poder ayudarte a realizar el proceso.</p>      </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">13. No tengo un dispositivo móvil (teléfono inteligente/tableta), ¿puedo votar?</a>
+          <div class="cd-faq-content">
+            <p>Si, puedes votar también desde un ordenador con acceso a internet en participa.unpaisencomu.cat .</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">14. ¿Puedo cambiar mi voto durante el periodo de votación?</a>
+          <div class="cd-faq-content">
+            <p>No, una vez hayas emitido tu voto ya no podrás cambiarlo.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">15. ¿Puedo votar en blanco o abstenerme?</a>
+          <div class="cd-faq-content">
+            <p>Sí, dependiendo el tipo de pregunta podrás votar en blanco o abstenerte.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">16. ¿Qué medidas de seguridad se han implementado?</a>
+          <div class="cd-faq-content">
+            <p>El esquema de seguridad Agora Voting está basado en un <i>verifiable mixnet</i> con cifrado de umbral El-Gamal de clave pública. Ver más detalles aquí. La implementación la proporciona la librería Verificatum.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">17. ¿En qué otras votaciones se ha utilizado Agora Voting?</a>
+          <div class="cd-faq-content">
+            <p>Entre otras, Agora Voting se ha utilizado para llevar a cabo las primarias europeas, consejos municipales y autonómicos de Podemos, en dos votaciones  de la iniciativa de Congreso Transparente, así como para las primarias de la Confederación Pirata.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">18. ¿Cómo puedo comprobar que mi voto ha quedado registrado correctamente?</a>
+          <div class="cd-faq-content">
+            <p>A través del localizador del voto que el sistema muestra tras votar en la cabina de votación, que debes anotar. Una vez emitido el voto podrá comprobar si este se ha completado con éxito. Esta comprobación no solo sirve para verificar que tu voto ha sido registrado, sino que también verifica que ha sido contabilizado en el recuento.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">19. He buscado mi voto tal y como dice la pregunta anterior y no sale listado ¿Por qué?</a>
+          <div class="cd-faq-content">
+            <p>Seguramente has copiado mal el localizador de tu voto, por favor compruébalo de nuevo.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">20. ¿Cómo puedo comprobar que el recuento de la votación es correcto?</a>
+          <div class="cd-faq-content">
+            <p>Agora Voting es un sistema verificable. Esto significa que cualquiera puede revisar el recuento de la votación a partir de los localizadores de los votos y las demostraciones matemáticas publicadas tras el recuento. Agora Voting proporciona un procedimiento de verificación para dicho efecto. Este procedimiento, como el resto del sistema, es públicamente auditable. No obstante, la verificación se basa en técnicas criptográficas que, aunque bien establecidas en el ámbito académico, no son fáciles de entender para el ciudadano medio.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">21. ¿Es posible averiguar el contenido de mi voto? ¿Cómo puedo saber que no se revelará mi voto?</a>
+          <div class="cd-faq-content">
+            <p>No, ni siquiera los administradores del sistema pueden averiguarlo. Sólo es posible revelar el contenido de un voto si todas las autoridades conspiran para hacerlo (o si todas son atacadas con éxito, ver más abajo). El secreto del voto permanece seguro con tal de que una sola de estas autoridades no esté corrompida.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">22. ¿Cuáles son las autoridades de la votación?</a>
+          <div class="cd-faq-content">
+            <p>Son dos: OpenKratio y Agora Voting. Puedes ver más información sobre las autoridades de votación en estos links: <a href="http://openkratio.org/" target="_blank">http://openkratio.org/</a> y <a href="https://agoravoting.com/" target="_blank">https://agoravoting.com/</a>.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">23. ¿Cómo se asegura que cada votante vota una sola vez, y que sólo votan las personas con derecho a ello?</a>
+          <div class="cd-faq-content">
+            <p>Gracias al sistema de autenticación en el portal de participación de Un País en Comú se asegura que sólo aquellas personas que figuren en el censo de Un País en Comú pueden votar. Se controla que se efectúe sólo un voto asociado a cada persona en dicho censo.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">24. ¿Dónde puedo encontrar más información técnica acerca de la votación?</a>
+          <div class="cd-faq-content">
+            <p>Hemos creado un documento con información más técnica en inglés, el technical overview.</p>
+          </div> <!-- cd-faq-content -->
+          </li>
+          <li>
+          <a class="cd-faq-trigger" href="#0">25. Tengo más preguntas</a>
+          <div class="cd-faq-content">
+            <p>En ese caso, puedes contactar con nosotros e intentaremos resolver tus dudas, preguntas, o comentarios enviando un mail a contacte@unpaisencomu.cat.</p>
+          </div> <!-- cd-faq-content --></li>'
   verification:
     from: de
     from_with_article: del
@@ -857,22 +1022,20 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     user_verified: Usuario/a verificado/a
     user_unverified: No te has verificado
     title: Verificación
-    step1: Pedir documentos
-    step2: Pedir correo electrónico
-    step3: Comprobar
-    welcome_html: "<p>Pídele amablemente al usuario/a los documentos que debe haber traído. Se deben cumplir los siguientes requisitos:</p>"
+    step1: Busca
+    step2: Comprueba
     next: Siguiente
     next_user: Continuar con el siguiente usuario
-    confirm: Si, estos datos coinciden
-    no_confirm: No, estos datos no coinciden
+    confirm: Verificar
+    no_confirm: No verificar
     new: "Pídele a la persona el correo electrónico con el que se inscribió y escríbelo aquí."
     document: "DNI/NIE/Pasaporte"
     full_name: Nombre completo
     born_at: Fecha de nacimiento
     document_type: Tipo y número de documento
     email: Correo electrónico
-    result: Para finalizar el proceso tienes que comprobar que coincidan los datos con los que aquí se muestran.
-    sure: ¿Estás seguro/a que quieres confirmar este usuario/a?
+    result: "Estos son los datos asociados al email introducido:"
+    check: "Comprova que:"
     admin: Gestor de verificaciones presenciales
     alerts:
       already_presencial: "El usuario/a con documento %{document} ya estaba verificado, por %{by}, el %{when}. El usuario/a ya podrá votar."
@@ -886,9 +1049,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
         La persona con email <b>%{email}</b> no ha confirmado su correo
         electrónico. Le acabamos de enviar un nuevo correo de confirmación para
         que pueda confirmar su correo, verificarse y votar.
-      not_found: "No hemos encontrado un usuario/a con este correo electrónico %{query1} %{query2}. Presta atención y vuelve a escribir el correo. Si vuelve a ocurrir puede ser que el usuario no esté creado en el sistema o haya algún problema con su cuenta. Enviale sus datos al Responsable de tu Distrito para que lo revisemos. Ya lo contactaremos. "
-      problem: "No está inscrito/a, se inscribió con otro correo o escribió mal el correo al inscribirse. Envía a tu verificador vía Telegram la siguiente información: DNI
-Número de teléfono y correo electrónico y comunícale que nos pondremos en contacto con el o ella."
+      not_found: "No hemos encontrado un usuario/a con este correo electrónico %{query}. Presta atención y vuelve a escribir el correo. Si vuelve a ocurrir puede ser que el usuario no esté creado en el sistema o haya algún problema con su cuenta. Enviale sus datos al Responsable de tu Distrito para que lo revisemos. Ya lo contactaremos. "
     mailer:
       hello: "Hola %{user},"
       bye: Saludos.
@@ -908,10 +1069,16 @@ Gracias por inscribirte en Un País en Comú."
 <p>Cada vez que haya una consulta te avisaremos por correo electrónico para que puedas ejercer tu derecho a voto. Recuerda, ahora formas parte de la comunidad y podrás  participar en la toma colectiva de decisiones. </p>
 
 <p>Gracias por inscribirte en Un País en Comú.</p>"
-    form:
-      document: He verificado el documento original del inscrito/a
-      age: El inscrito/a es mayor de 16 años - nacido/a antes de %{date}
-      town: He verificado un documento (DNI/NIE/Pasaporte, recibo de un suministro) que acredita que el inscrito/a vive en Cataluña.
+    identity: >-
+      Los datos de los documentos aportados coinciden con los datos asociados al
+      email introducido.
+    documents: >-
+      El inscrito/a aporta un DNI o NIE con domicilio en Cataluña o,
+      alternativamente, un DNI o NIE con domicilio fuera de Cataluña (o
+      pasaporte, o carnét de conducir) y un certificado de empadronamiento o
+      recibo de un suministro básico (agua, luz o gas) que no tenga más de tres
+      meses de antigüedad.
+    age: El inscrito/a es mayor de 16 años - nacido/a antes del %{date}
   voting:
     title: "Bienvenido a Participa"
     election_one: Hay una votación en curso.
