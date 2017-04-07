@@ -1,36 +1,29 @@
 class VerificationController < ApplicationController
-  # GET /verificaciones
   def show
     authorize! :show, :verification
   end
 
-  # GET /verificadores
   def step1
     authorize! :step1, :verification
   end
 
-  # GET /verificadores/nueva
   def step2
     authorize! :step2, :verification
   end
 
-  # GET /verificadores/confirmar
   def step3
     authorize! :step3, :verification
   end
 
-  # GET /verificadores/ok
   def result_ok
     authorize! :result_ok, :verification
   end
 
-  # GET /verificadores/ko
   def result_ko
     authorize! :result_ko, :verification
     @user = User.find params[:id]
   end
 
-  # POST /verificadores/search
   def search
     authorize! :search, :verification
     if params[:user]
@@ -55,7 +48,6 @@ class VerificationController < ApplicationController
     end
   end
   
-  # POST /verificadores/confirm
   def confirm
     authorize! :confirm, :verification
     @user = User.find params[:id]
