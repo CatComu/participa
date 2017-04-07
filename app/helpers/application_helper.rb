@@ -50,7 +50,6 @@ module ApplicationHelper
            locals: { first_step: steps_text[0],
                      second_step: steps_text[1],
                      third_step: steps_text[2],
-                     steps_text: steps_text,
                      current_step: current_step }
   end
 
