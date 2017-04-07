@@ -1,0 +1,71 @@
+.steps3 {
+  padding: 30px 10px;
+}
+
+.steps3 ul {
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.steps3 li {
+  display: block;
+  float: left;
+  clear: none;
+  width: 33.3%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.steps3 li span.block span.tab-number {
+  border: 4px solid black;
+  border-radius: 50%;
+  display: block;
+  line-height: 52px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  padding: 0 10px;
+  float: left;
+}
+
+.steps3 li.active span.block span.tab-number {
+  background: black;
+  color: white;
+}
+
+.steps3 li span.block span.tab-text {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.steps3 li span.block {
+  height: 60px;
+  display: table;
+}
+
+.steps3 li span.block span.tab-text {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: 600px) {
+  .steps3 li span.block span.tab-text {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .steps3 li:nth-child(2) span.block span.tab-number {
+    margin-left: 40px;
+  }
+
+  .steps3 li:nth-child(3) span.block span.tab-number {
+    margin-left: 40px;
+  }
+}
