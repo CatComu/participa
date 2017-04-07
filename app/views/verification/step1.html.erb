@@ -8,34 +8,25 @@
     <div class="row">
       <%= render partial: "steps", locals: { step: 1 } %>
 
-      <%= t('verification.welcome_html') %>
+      <p>
+      <%= t('verification.new') %>
+      </p>
 
-      <%= semantic_form_for 'user', url: verification_step2_path, method: :get do |f| %>
-        <fieldset class="verification">
+      <%= semantic_form_for(:user, url: verification_search_path, html: {method: :post}) do |f| %>
 
-          <div class="inputlabel-box">
-            <input class="checkbox" id="user_document" name="user[document]" value="1" required="true" type="checkbox">
-            <label for="user_document">
-              <%= t('verification.form.document') %>
-            </label>
-          </div>
+          <fieldset class="verification-form">
 
-          <div class="inputlabel-box">
-            <input class="checkbox" id="user_town" name="user[town]" value="1" required="true" type="checkbox">
-            <label for="user_town">
-              <%= t('verification.form.town') %>
-            </label>
-          </div>
+            <div class="inputlabel-box">
+              <div class="input-box">
+                <%= f.input :email, as: :email, label: t('verification.email') %>
+              </div>
+            </div>
 
-          <div class="inputlabel-box">
-            <input class="checkbox" id="user_age_restriction" name="user[age_restriction]" value="1" required="true" type="checkbox">
-            <label for="user_age_restriction">
-              <%= t('verification.form.age', date: l(16.years.ago.to_date) ) %>
-            </label>
-          </div>
+            <div class="enter">
+              <%= f.action :submit, label: t('verification.next'), button_html: {class: 'button-primary'} %>
+            </div>
 
-        </fieldset>
-        <%= f.submit t('verification.next'), class: "button-primary" %>
+          </fieldset>
       <% end %>
 
     </div>

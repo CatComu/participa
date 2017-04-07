@@ -74,15 +74,10 @@ class VerificationPresencialTest < JsFeatureTest
     verificator = create(:user, :verifying_presentially)
     login(verificator)
     visit verification_step1_path
-    assert_content I18n.t('verification.form.document')
-    check('user_document')
-    check('user_town')
-    check('user_age_restriction')
-    click_button('Siguiente')
     fill_in(:user_email, with: user.email)
     click_button('Siguiente')
     assert_content I18n.t('verification.result')
-    click_link('Si, estos datos coinciden')
+    click_link('Verificar')
     assert_content I18n.t('verification.alerts.ok.title')
     logout
 
@@ -98,15 +93,10 @@ class VerificationPresencialTest < JsFeatureTest
     verificator = create(:user, :verifying_presentially)
     login(verificator)
     visit verification_step1_path
-    assert_content I18n.t('verification.form.document')
-    check('user_document')
-    check('user_town')
-    check('user_age_restriction')
-    click_button('Siguiente')
     fill_in(:user_email, with: user.email)
     click_button('Siguiente')
     assert_content I18n.t('verification.result')
-    click_link('No, estos datos no coinciden')
+    click_link('No verificar')
     assert_content I18n.t('verification.alerts.ko.title')
     logout
 
@@ -121,11 +111,6 @@ class VerificationPresencialTest < JsFeatureTest
     verificator = create(:user, :verifying_presentially)
     login(verificator)
     visit verification_step1_path
-    assert_content I18n.t('verification.form.document')
-    check('user_document')
-    check('user_town')
-    check('user_age_restriction')
-    click_button('Siguiente')
     fill_in(:user_email, with: unconfirmed_user.email)
 
     assert_difference -> { ActionMailer::Base.deliveries.count }, 1 do

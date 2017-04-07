@@ -121,8 +121,7 @@ Rails.application.routes.draw do
     
     scope '/verificadores' do 
       get '/', to: 'verification#step1', as: :verification_step1
-      get '/nueva', to: 'verification#step2', as: :verification_step2
-      get '/confirmar', to: 'verification#step3', as: :verification_step3
+      get '/confirmar', to: 'verification#step2', as: :verification_step2
       post '/search', to: 'verification#search', as: :verification_search
       post '/ok', to: 'verification#result_ok', as: :verification_result_ok
       post '/ko', to: 'verification#result_ko', as: :verification_result_ko

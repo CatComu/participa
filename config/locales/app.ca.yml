@@ -659,20 +659,19 @@ Amb tres passos molt senzills:
     user_verified: Usuari verificat
     user_unverified: No t'has verificat
     title: Verificació
-    step1: Documents
-    step2: Cerca
-    step3: Comprova
-    welcome_html: "<p>Demana-li amablement a l'usuari/ària els documents que ha d'haver portat. S'haurien de complir els requisits següents:</p>"
+    step1: Cerca
+    step2: Comprova
     next: Següent
     next_user: Continuar amb el següent usuari
-    confirm: Sí, aquestes dades coincideixen
-    no_confirm: No, aquestes dades no coincideixen
+    confirm: Verificar
+    no_confirm: No verificar
     new: "Escriu en el fomulari següent el document o correu electrònic amb què s'ha inscrit"
     document: "DNI/NIE/Passaport"
     full_name: Nom complet
     document_type: Tipus i número de document
     email: Correu electrònic
-    result: Per acabar el procés has de comprovar que les dades siguin les mateixes que ha donat l'inscrit/a.
+    result:  "Aquestes són les dades associades a l'email introduït:"
+    check: "Comprova que:"
     other: Verifica un altre usuari/ària.
     admin: Gestor de verificacions presencials
     alerts:
@@ -707,10 +706,16 @@ Recorda que ara formes part de la comunitat d'Un País en Comú."
 <p>Cada cop que hi hagi una consulta t'avisarem per correu electrònic perquè puguis participar.</p>
 
 <p>Recorda que ara formes part de la comunitat d'Un País en Comú.</p>"
-    form:
-      document: "He verificat el document original de l'inscrit/a"
-      age: "L'inscrit/a és major de 16 anys - nascut abans de %{date}"
-      town: "He verificat un document (DNI/NIE/Passaport, rebut d'un subministrament) que acredita que l'inscrit/a viu a Catalunya."
+    identity: >-
+      Les dades dels documents aportats coincideixen amb les dades associades
+      a l'email introduït.
+    documents: >-
+      L'inscrit/a aporta un DNI o NIE amb domicili a Catalunya o,
+      alternativament, un DNI o NIE amb domicili de fora de Catalunya (o
+      Passaport, o Permís de Conduir) i un certificat d'empadronament o rebut d'un
+      subministrament bàsic (aigua, llum o gas) que no tingui més de tres mesos
+      d'antiguitat
+    age: "L'inscrit/a és major de 16 anys - nascut abans de %{date}"
   voting:
     title: "Benvingut a Participa!"
     election_one: Hi ha una votació en curs.

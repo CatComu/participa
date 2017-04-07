@@ -1022,21 +1022,20 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     user_verified: Usuario/a verificado/a
     user_unverified: No te has verificado
     title: Verificación
-    step1: Pedir documentos
-    step2: Pedir correo electrónico
-    step3: Comprobar
-    welcome_html: "<p>Pídele amablemente al usuario/a los documentos que debe haber traído. Se deben cumplir los siguientes requisitos:</p>"
+    step1: Busca
+    step2: Comprueba
     next: Siguiente
     next_user: Continuar con el siguiente usuario
-    confirm: Si, estos datos coinciden
-    no_confirm: No, estos datos no coinciden
+    confirm: Verificar
+    no_confirm: No verificar
     new: "Pídele a la persona el correo electrónico con el que se inscribió y escríbelo aquí."
     document: "DNI/NIE/Pasaporte"
     full_name: Nombre completo
     born_at: Fecha de nacimiento
     document_type: Tipo y número de documento
     email: Correo electrónico
-    result: Para finalizar el proceso tienes que comprobar que coincidan los datos con los que aquí se muestran.
+    result: "Estos son los datos asociados al email introducido:"
+    check: "Comprova que:"
     admin: Gestor de verificaciones presenciales
     alerts:
       already_presencial: "El usuario/a con documento %{document} ya estaba verificado, por %{by}, el %{when}. El usuario/a ya podrá votar."
@@ -1070,10 +1069,16 @@ Gracias por inscribirte en Un País en Comú."
 <p>Cada vez que haya una consulta te avisaremos por correo electrónico para que puedas ejercer tu derecho a voto. Recuerda, ahora formas parte de la comunidad y podrás  participar en la toma colectiva de decisiones. </p>
 
 <p>Gracias por inscribirte en Un País en Comú.</p>"
-    form:
-      document: He verificado el documento original del inscrito/a
-      age: El inscrito/a es mayor de 16 años - nacido/a antes de %{date}
-      town: He verificado un documento (DNI/NIE/Pasaporte, recibo de un suministro) que acredita que el inscrito/a vive en Cataluña.
+    identity: >-
+      Los datos de los documentos aportados coinciden con los datos asociados al
+      email introducido.
+    documents: >-
+      El inscrito/a aporta un DNI o NIE con domicilio en Cataluña o,
+      alternativamente, un DNI o NIE con domicilio fuera de Cataluña (o
+      pasaporte, o carnét de conducir) y un certificado de empadronamiento o
+      recibo de un suministro básico (agua, luz o gas) que no tenga más de tres
+      meses de antigüedad.
+    age: El inscrito/a es mayor de 16 años - nacido/a antes del %{date}
   voting:
     title: "Bienvenido a Participa"
     election_one: Hay una votación en curso.

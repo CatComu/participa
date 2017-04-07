@@ -47,10 +47,7 @@ module ApplicationHelper
 
   def steps_nav current_step, *steps_text
     render partial: 'application/steps_nav',
-           locals: { first_step: steps_text[0],
-                     second_step: steps_text[1],
-                     third_step: steps_text[2],
-                     current_step: current_step }
+           locals: { steps: steps_text, current_step: current_step }
   end
 
   def body_class signed_in, controller, action

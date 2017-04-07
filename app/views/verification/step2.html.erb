@@ -8,28 +8,45 @@
     <div class="row">
       <%= render partial: "steps", locals: { step: 2 } %>
 
-      <p>
-      <%= t('verification.new') %>
-      </p>
+      <div class="info-section">
+        <%= t('verification.result') %>
 
-      <%= semantic_form_for(:user, url: verification_search_path, html: {method: :post}) do |f| %>
+        <ul class="verification-info-list">
+          <li>
+            <b><%= t('verification.full_name') %></b>: <%= @user.full_name %>
+          </li>
+          <li>
+            <b><%= t('verification.document_type') %></b>: <%= @user.document_type_name %> - <%= @user.document_vatid %>
+          </li>
+          <li>
+            <b><%= t('verification.born_at') %></b>: <%= l(@user.born_at) %>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-          <fieldset class="verification-form">
+    <div class="row">
+      <div class="info-section--separator">
+        <%= t('verification.check') %>
 
-            <div class="inputlabel-box">
-              <div class="input-box">
-                <%= f.input :email, as: :email, label: t('verification.email') %>
-              </div>
-            </div>
+        <ul class="info-list">
+          <li><%= t('verification.identity') %></li>
+          <li><%= t('verification.documents') %></li>
+          <li><%= t('verification.age', date: l(16.years.ago.to_date)) %></li>
+        </ul>
+      </div>
+    </div>
 
-            <div class="enter">
-              <%= f.action :submit, label: t('verification.next'), button_html: {class: 'button-primary'} %>
-            </div>
+    <div class="row online-verification-actions">
+      <%= link_to t('verification.confirm'),
+                  verification_result_ok_path(id: @user.id),
+                  class: "main-action-btn btn-success",
+                  method: :post %>
 
-          </fieldset>
-      <% end %>
-
+      <%= link_to t('verification.no_confirm'),
+                  verification_result_ko_path(id: @user.id),
+                  class: "secondary-action-btn btn-danger",
+                  method: :post %>
     </div>
   </div>
 </div>
-

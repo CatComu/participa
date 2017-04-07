@@ -1350,15 +1350,6 @@ layout 3: 600-768 (intermedia 2) # # # # # # # # # # # # # # # # # # # # # # # #
   .content-content h3{
     font-size:1.7em;
   }
-  .content-content fieldset.verification {
-    label {
-      width:80%;
-    }
-    .input-box {
-      width:10%;
-    }
-  }
-
 }
 
 /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -1433,15 +1424,6 @@ layout 4: 769-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   .content-content h3{
     font-size:1.8em;
   }
-  .content-content fieldset.verification {
-    label {
-      width:80%;
-    }
-    .input-box {
-      width:10%;
-    }
-  }
-
 }
 
 /* --------------------------------------------------------------------------------------------------------------------------------------------
@@ -1484,14 +1466,6 @@ layout 4+: 978-...+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     max-width: 96em;
     position:relative;
     overflow:hidden;
-  }
-  .content-content fieldset.verification {
-    label {
-      width:80%;
-    }
-    .input-box {
-      width:10%;
-    }
   }
   .subtitle-welcome ol li {
     margin: 0 0 4em;

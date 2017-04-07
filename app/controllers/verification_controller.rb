@@ -13,10 +13,6 @@ class VerificationController < ApplicationController
     authorize! :step2, :verification
   end
 
-  def step3
-    authorize! :step3, :verification
-  end
-
   def result_ok
     authorize! :result_ok, :verification
 
@@ -35,16 +31,16 @@ class VerificationController < ApplicationController
       if @user.confirmed_at.nil?
         @user.send_confirmation_instructions
         flash.now[:alert] = unconfirmed_email_alert
-        render :step2
+        render :step1
       elsif @user.is_verified_presentially? 
         flash.now[:notice] = already_verified_alert
-        render :step2
+        render :step1
       else
-        render :step3
+        render :step2
       end
     else 
       flash.now[:error] = t('verification.alerts.not_found', query: search_params[:email])
-      render :step2
+      render :step1
     end
   end
 
