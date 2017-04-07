@@ -30,7 +30,7 @@
           <div class="inputlabel-box">
             <input class="checkbox" id="user_age_restriction" name="user[age_restriction]" value="1" required="true" type="checkbox">
             <label for="user_age_restriction">
-              <%= t('verification.form.age', date: l(Date.current - 16.years) ) %>
+              <%= t('verification.form.age', date: l(16.years.ago.to_date) ) %>
             </label>
           </div>
 
