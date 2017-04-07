@@ -17,7 +17,7 @@
           <b><%= t('verification.document_type') %></b>: <%= @user.document_type_name %> - <%= @user.document_vatid %>
         </li>
         <li>
-          <b><%= t('verification.born_at') %></b>: <%= @user.born_at %>
+          <b><%= t('verification.born_at') %></b>: <%= l(@user.born_at) %>
         </li>
       </ul>
 
