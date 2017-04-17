@@ -34,8 +34,12 @@ class CollaborationsTest < ActionDispatch::IntegrationTest
     # logged in user, fill collaboration
     login_as(user)
     visit new_collaboration_path
-    #assert_content "Colaborando con Podemos conseguirás que este proyecto siga creciendo mes a mes"
-    assert_content "Apúntate a las donaciones periódiques de BComú"
+    assert_content <<~MSG.squish
+      Colaborando con Un País en Comú conseguirás que este proyecto siga
+      creciendo mes a mes y garantizarás la independencia necesaria para un
+      proyecto cuyas únicas lealtades van a estar del lado de la gente.
+    MSG
+
     select('500', :from=>'Importe mensual') 
     select('Trimestral', :from=>'Frecuencia de pago') 
     select('Domiciliación en cuenta bancaria (formato IBAN)', :from=>'Método de pago') 
@@ -68,8 +72,11 @@ class CollaborationsTest < ActionDispatch::IntegrationTest
 
     login_as(user)
     visit new_collaboration_path
-    #assert_content "Colaborando con Podemos conseguirás que este proyecto siga creciendo mes a mes"
-    assert_content "Apúntate a las donaciones periódiques de BComú"
+    assert_content <<~MSG.squish
+      Colaborando con Un País en Comú conseguirás que este proyecto siga
+      creciendo mes a mes y garantizarás la independencia necesaria para un
+      proyecto cuyas únicas lealtades van a estar del lado de la gente.
+    MSG
 
     select('500', :from=>'Importe mensual') 
     select('Trimestral', :from=>'Frecuencia de pago') 
