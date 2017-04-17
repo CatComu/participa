@@ -73,9 +73,10 @@ aquest missatge. Si ho reps diverses vegades, avisa'ns a %{mail}."
       forgot_manual_vot: "Veure el manual de votació"
       forgot_mail: "No he rebut el correu de confirmació"
       insc: "Inscripció"
-    new_email: "Nou correu electrònic"
-    new_password: "Contrasenya nova"
-    new_password_confirmation: "Contrasenya nova (repetir)"
+    labels:
+      new_email: "Nou correu electrònic"
+      new_password: "Contrasenya nova"
+      new_password_confirmation: "Contrasenya nova (repetir)"
   errors:
     messages:
       already_confirmed: "Ja estàs confirmat, sisplau intenta iniciar sessió."

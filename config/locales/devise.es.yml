@@ -73,9 +73,10 @@ este mensaje. Si lo recibes varias veces, avísanos a %{mail}."
       forgot_manual_vot: "Ver el manual de votación"
       forgot_mail: "No he recibido el correo de confirmación"
       insc: "Inscripción"
-    new_email: "Correo electrónico nuevo"
-    new_password: "Contraseña nueva"
-    new_password_confirmation: "Contraseña nueva (repetir)"
+    labels:
+      new_email: "Correo electrónico nuevo"
+      new_password: "Contraseña nueva"
+      new_password_confirmation: "Contraseña nueva (repetir)"
   errors:
     messages:
       confirmation: "El valor no coincide con la confirmación."

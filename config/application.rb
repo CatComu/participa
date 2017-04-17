@@ -21,11 +21,6 @@ module Participa
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'carmen', 'es', '*.{rb,yml}').to_s]
     config.action_mailer.default_url_options = { host: Rails.application.secrets.host }
 
-     # participa overrides start
-    folder = Rails.application.secrets.organization["folder"]
-
-    config.i18n.load_path += Dir[Rails.root.join('vendor', 'overrides', folder, 'config', 'locales', '*.{rb,yml}').to_s]
-
     config.generators do |g|
       g.test_framework :test_unit, fixture: true
     end

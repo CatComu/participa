@@ -1,4 +1,15 @@
 ca:
+  domicilio: "Domicili"
+  consentimiento: "Consentiment"
+  access_data: "Dades d'accés"
+  enumerize:
+    user:
+      gender_identity:
+        cis_man: Home (cis)
+        cis_woman: Dona (cis)
+        trans_man: Home (trans)
+        trans_woman: Dona (trans)
+        fluid: Gènere No-binari
   meta:
     flatpickr_code: "cat"
     language: "Idioma"
@@ -18,6 +29,21 @@ ca:
         Si no ha sigut el teu cas, et demanem disculpes per aquest correu.
   home:
     signup_title: Inscriu-te per poder votar
+  election:
+    close_message: "Ha arribat la data límit per votar. La votació està tancada."
+  errors:
+    show:
+      "404":
+        title: "Pàgina no trobada"
+        message_html: "No hem pogut trobar aquesta pàgina. Torna-ho a provar més tard o <a href='/'>prova-ho des de la pàgina principal</a>."
+      "500":
+        title: "Error en el servidor"
+        message_html: "Hi ha hagut un error en el servidor. Pots avisar-nos a <a href='mailto:contacte@unpaisencomu.cat'>contacte@unpaisencomu.cat</a>"
+    messages:
+      not_valid_spanish_vat: El número d'identificació fiscal no és vàlid
+      not_valid_nif: El DNI no és vàlid
+      not_valid_cif: El CIF no és vàlid
+      not_valid_nie: El NIE no és vàlid
   activerecord:
     models:
       user:
@@ -210,6 +236,73 @@ ca:
     confirm_sms: "Per seguretat, has de confirmar el teu telèfon."
     born_at: "Has d'indicar la teva data de naixement."
     location: "Sisplau, verifica que les dades de la teva adreça són correctes i desa les dades."
+  podemos:
+    error:
+      title: "No s'han pogut actualitzar les dades"
+      description: "Hi ha hagut els errors següents:"
+    collaboration:
+      cancel: Cancel·lar
+      confirm_ok: Confirmar
+      cancel_message: "Estàs segur que no vols confirmar aquesta col·laboració?"
+      confirm:  Revisa i confirma totes les dades per activar la col·laboració.
+      errors:
+        iban: "Marcada com a alerta perquè el número de compte indica un codi d'entitat invàlid o no trobat en la base de dades de BICs espanyols."
+        passport: "No pots col·laborar si no disposes de DNI o NIE."
+        age_over: "No pots col·laborar si ets menor d'edat."
+        valid: "Ccompte corrent invàlid. Dígit de control erroni. Sisplau revisa'l."
+      title: "Col·labora econòmicament"
+      p1: "BComú és una plataforma ciutadana que, per garantir la seva autonomia financera, necessita d'una petita aportació econòmica de cadascú de nosaltres ajudant així a garantir la independència i coherència del projecte. Fem-ho possible entre tots i totes! Apunta't a les donacions periódiques de BComú!"
+      ok:
+        p1: "La teva donació s'ha donat d'alta correctament."
+        p2: "Gràcies per col·laborar amb Barcelona En Comú."
+      ko:
+        title: Hi ha hagut un error amb la teva col·laboració.
+        contact: "Sisplau intenta realitzar el pagament un altre cop. Si tornes a tenir problemes contacta tresoreria@bcnencomu.cat "
+      passport_message_html: "<p>Segons la nostra base de dades estàs inscrit amb un nombre de passaport. Atès que la Llei Orgànica 8/2007, de 4 de juliol, sobre finançament dels  partits polítics, exigeix la identificació fiscal dels donants, per poder col·laborar econòmicament amb Barcelona En Comú i poder emplenar el formulari d'alta com a col·laborador és imprescindible disposar de DNI o NIE.</p><p>Si ets espanyol o estranger amb NIE envia'ns una còpia del teu DNI o document on consti el teu nombre d'identificació d'estranger a l'adreça xxxxx@xxxx.xxx perquè puguem actualitzar les dades de la teva inscripció.</p>"
+      over: Declaro ser major de 18 anys.
+      total_amount: Aportació económica
+      next: "Ja tens una col·laboració. És la següent:"
+      remove: Dóna de baixa la teva col·laboració
+      save: Desa canvis
+      are_you_sure: "Estàs segur que vols donar de baixa aquesta col·laboració?"
+      change_title: "Canvis en la col·laboració"
+      change: Si vols canviar de mètode de pagament de la teva col·laboració has de cancel·lar la teva col·laboració actual i crear-ne una de nova.
+      freq_table:
+        title: Colaboraciones
+        date: Data estimada de pagament
+        amount: Import
+        total: Total
+      terms_of_service:
+        accept: Accepto les condicions generals.
+        title: "Condicions Generals"
+        p1_title: "Relació entre Barcelona En Comú i el col·laborador"
+        p1: "La realització de donacions econòmiques no implica la vinculació del col·laborador amb Barcelona En Comú, ni li confereix la condició legal de soci, afiliat o simpatitzant, ni li atorga drets davant el partit, ni queda obligat pels seus estatuts i resta de normes internes. D’acord amb el que s'estableix a la Llei orgànica 8/2007, de 4 de juliol, de finançament de partits polítics, el vostre donatiu tindrà la consideració de ”donació privada”, diferent de les quotes de socis, afiliats o simpatitzants.
+
+Al confirmar aquest formulari accepteu que:
+
+aquesta donació no es realitza des d’organismes, entitats o empreses públiques.
+
+Aquesta donació no es realitza des d’empreses privades que tenen contractes, presten serveis o realitzen obres per a les Administracions Públiques, organismes públics o empreses de capital majoritàriament públic.
+
+Aquesta donació no es fa des de governs, organismes, entitats o empreses públiques estrangeres, o d’empreses relacionades directament o indirecta amb aquests.
+
+La quantitat que vós doneu no us ha sigut lliurada per part d’alguna persona o entitat amb l’objectiu que aquesta donació es pugui fer."
+        p2_title: "Protecció de dades de caràcter personal"
+        p2: "Barcelona En Comú, d’acord amb la Llei orgànica 15/1999, de protecció de dades de caràcter personal, us informa que les vostres dades seran incorporades al fitxer “donacions”, del qual és responsable Barcelona En Comú, que les emprarà per tramitar la vostra col·laboració, gestionar els càrrecs bancaris i complir amb la normativa de finançament de partits polítics, així com amb finalitats estadístiques i fer-vos arribar periòdicament informació de les seves activitats. Concediu el consentiment exprés perquè aquestes dades passin a formar part de Barcelona En Comú. Per exercir els vostres drets d’accés, rectificació, cancel·lació o oposició, com ara cancel·lar la subscripció, modificar les dades bancàries o l’import i freqüència de la vostra donació, podeu enviar un correu electrònic a tresoreria@bcnencomu.cat, indicant la referència “modificació de la donació” o per correu postal a la seu social sítia al carrer Castillejos, 233, baixos, de Barcelona, adjuntant còpia del vostre document nacional d’identitat."
+        p3_title: "Consentiment de l'ordre de domiciliació"
+        p3: "Autoritzeu a Barcelona En Comú i a la vostra entitat bancària a efectuar les operacions de cobrament mitjançant càrrecs al compte bancari que ens heu facilitat, per l’import i amb la freqüència que ens heu indicat al formulari. Els càrrecs domiciliats es realitzaran entre els dies 10 i 15 de cada mes."
+      freq:
+        first: "Mensual"
+        second: "Trimestral"
+        third: "Annual"
+      order:
+        cc: "Suscripción con Tarjeta de Crédito/Débito"
+        ccc: Domiciliació amb compte bancari (format CCC)
+        iban: Domiciliació amb compte bancari (format IBAN)
+      steps:
+        first: Quant i com vols col·laborar
+        second: Confirmació
+        third: Resultat
   recaptcha:
     errors:
       incorrect-captcha-sol: "Hi ha hagut un error amb el captcha, sisplau, completa'l de nou"
