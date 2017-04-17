@@ -40,7 +40,6 @@ gem 'active_skin'
 gem 'resque', github: 'resque/resque', require: 'resque/server'
 gem 'sinatra', '>= 2.0.0.beta2'
 
-gem 'aws-ses', '~> 0.6.0', :require => 'aws/ses'
 gem 'kaminari'
 gem 'pushmeup'
 gem 'date_validator'
