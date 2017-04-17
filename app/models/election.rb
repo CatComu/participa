@@ -117,19 +117,19 @@ class Election < ApplicationRecord
   end
 
   def self.available_servers
-    Rails.application.secrets.agora["servers"].keys
+    Rails.application.secrets.agora[:servers].keys
   end
 
   def server_shared_key
-    server = Rails.application.secrets.agora["default"]
-    server = self.server if self.server and !self.server.empty?
-    Rails.application.secrets.agora["servers"][server]["shared_key"]
+    server = Rails.application.secrets.agora[:default]
+    server = self.server.to_sym if self.server and !self.server.empty?
+    Rails.application.secrets.agora[:servers][server][:shared_key]
   end
 
   def server_url
-    server = Rails.application.secrets.agora["default"]
-    server = self.server if self.server and !self.server.empty?
-    Rails.application.secrets.agora["servers"][server]["url"]
+    server = Rails.application.secrets.agora[:default]
+    server = self.server.to_sym if self.server and !self.server.empty?
+    Rails.application.secrets.agora[:servers][server][:url]
   end
 
   def duration

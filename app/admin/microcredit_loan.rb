@@ -295,7 +295,7 @@ ActiveAdmin.register MicrocreditLoan do
   member_action :download_pdf do
     @loan = MicrocreditLoan.find(params[:id])
     @microcredit = @loan.microcredit
-    @brand_config = Rails.application.secrets.microcredits["brands"][Rails.application.secrets.microcredits["default_brand"]]
+    @brand_config = Rails.application.secrets.microcredits[:brands][Rails.application.secrets.microcredits[:default_brand].to_sym]
 
     render pdf: 'IngresoMicrocreditosPodemos.pdf', template: 'microcredit/email_guide.pdf.erb', encoding: "UTF-8"
   end

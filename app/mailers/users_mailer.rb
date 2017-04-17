@@ -22,7 +22,7 @@ class UsersMailer < ActionMailer::Base
       @user = User.find_by_email query
     end
     mail(
-      from: Rails.application.secrets["default_from_email"],
+      from: Rails.application.secrets[:default_from_email],
       to: @user.email,
       subject: "Un País En Comú - #{t('devise.mailer.remember_email.title')}"
     )

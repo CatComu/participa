@@ -220,7 +220,7 @@ class User < ApplicationRecord
   end
 
   def self.blocked_provinces
-    Rails.application.secrets.users["blocked_provinces"]
+    Rails.application.secrets.users[:blocked_provinces]
   end
 
   #
@@ -235,7 +235,7 @@ class User < ApplicationRecord
   def can_change_vote_location?
     # use database version if vote_town has changed
     !self.has_verified_vote_town? or !self.persisted? or
-      (Rails.application.secrets.users["allows_location_change"] and !User.blocked_provinces.member?(vote_province_persisted))
+      (Rails.application.secrets.users[:allows_location_change] and !User.blocked_provinces.member?(vote_province_persisted))
   end
 
   def phone_normalize(phone_number, country_iso = nil)
@@ -536,12 +536,12 @@ class User < ApplicationRecord
   end
 
   def can_check_sms_check?
-    sms_check_at.present? && (Time.zone.now < (sms_check_at + eval(Rails.application.secrets.users["sms_check_valid_interval"])))
+    sms_check_at.present? && (Time.zone.now < (sms_check_at + eval(Rails.application.secrets.users[:sms_check_valid_interval])))
   end
 
   def next_sms_check_request_at
     if sms_check_at.present?
-      sms_check_at + eval(Rails.application.secrets.users["sms_check_request_interval"])
+      sms_check_at + eval(Rails.application.secrets.users[:sms_check_request_interval])
     else
       Time.zone.now - 1.second
     end
@@ -563,6 +563,6 @@ class User < ApplicationRecord
   end
 
   def sms_check_token
-    Digest::SHA1.digest("#{sms_check_at}#{id}#{Rails.application.secrets.users['sms_secret_key']}")[0..3].codepoints.map { |c| "%02X" % c }.join if sms_check_at
+    Digest::SHA1.digest("#{sms_check_at}#{id}#{Rails.application.secrets.users[:sms_secret_key]}")[0..3].codepoints.map { |c| "%02X" % c }.join if sms_check_at
   end
 end

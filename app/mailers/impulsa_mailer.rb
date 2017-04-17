@@ -1,5 +1,5 @@
 class ImpulsaMailer < ActionMailer::Base
-  default from: Rails.application.secrets.impulsa["from_email"]
+  default from: Rails.application.secrets.impulsa[:from_email]
 
   def on_spam(project)
     mail(

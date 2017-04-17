@@ -28,7 +28,7 @@ class ElectionLocationQuestion < ApplicationRecord
   end
 
   def self.headers
-    @@headers ||= Rails.application.secrets.agora["options_headers"]
+    @@headers ||= Rails.application.secrets.agora[:options_headers]
   end
 
   def options_headers

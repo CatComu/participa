@@ -11,10 +11,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0'
+gem 'rails', '~> 5.1'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.1'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -24,7 +24,7 @@ gem 'sprockets-rails'
 gem 'pg'
 gem 'airbrake', group: :production
 
-gem 'devise'
+gem 'devise', github: 'plataformatec/devise'
 gem 'cancancan', '~> 1.9'
 gem 'bootstrap-sass'
 gem 'formtastic'

@@ -3,7 +3,7 @@ namespace :encomu do
   task :generate_sendy_lists => :environment do
     require 'municipy_extractor'
 
-    sendy_lists = SendyListsUpdater.new Rails.application.secrets.sendy["appID"], Rails.application.secrets.sendy["userID"]
+    sendy_lists = SendyListsUpdater.new Rails.application.secrets.sendy[:appID], Rails.application.secrets.sendy[:userID]
 
     sendy_lists.add_list "A - España", "m_"
     sendy_lists.add_list "A - Extranjero", "e_"

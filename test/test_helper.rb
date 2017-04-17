@@ -18,10 +18,10 @@ Warden.test_mode!
 
 def with_blocked_change_location
   begin
-    Rails.application.secrets.users["allows_location_change"] = false
+    Rails.application.secrets.users[:allows_location_change] = false
     yield
   ensure
-    Rails.application.secrets.users["allows_location_change"] = true
+    Rails.application.secrets.users[:allows_location_change] = true
   end
 end
 

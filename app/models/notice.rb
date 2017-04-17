@@ -13,7 +13,7 @@ class Notice < ApplicationRecord
     require 'pushmeup'
     GCM.host = 'https://android.googleapis.com/gcm/send'
     GCM.format = :json
-    GCM.key = Rails.application.secrets.gcm["key"]
+    GCM.key = Rails.application.secrets.gcm[:key]
 
     data = { title: title, message: message, url: link, msgcnt: "1", soundname: "beep.wav" }
     # for every 1000 devices we send only a notification

@@ -2,7 +2,7 @@ module Features
   extend self
 
   def inscriptions?
-    features["allow_inscription"]
+    features[:allow_inscription]
   end
 
   def verifications?
@@ -10,55 +10,55 @@ module Features
   end
 
   def presential_verifications?
-    features["verification_presencial"]
+    features[:verification_presencial]
   end
 
   def online_verifications?
-    features["verification_sms"]
+    features[:verification_sms]
   end
 
   def online_verifications_only?
-    features["verification_sms"] && !features["verification_presencial"]
+    features[:verification_sms] && !features[:verification_presencial]
   end
 
   def elections?
-    features["elections"]
+    features[:elections]
   end
 
   def collaborations?
-    features["collaborations"]
+    features[:collaborations]
   end
 
   def redsys_collaborations?
-    features["collaborations_redsys"]
+    features[:collaborations_redsys]
   end
 
   def blog?
-    features["blog"]
+    features[:blog]
   end
 
   def proposals?
-    features["proposals"]
+    features[:proposals]
   end
 
   def participation_teams?
-    features["participation_teams"]
+    features[:participation_teams]
   end
 
   def microcredits?
-    features["microcredits"]
+    features[:microcredits]
   end
 
   def background_jobs?
-    features["use_resque"]
+    features[:use_resque]
   end
 
   def openid?
-    features["openid"]
+    features[:openid]
   end
 
   def notifications?
-    features["notifications"]
+    features[:notifications]
   end
 
   private

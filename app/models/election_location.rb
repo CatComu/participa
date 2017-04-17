@@ -15,7 +15,7 @@ class ElectionLocation < ApplicationRecord
   ELECTION_LAYOUTS = ["pcandidates-election", "2questions-conditional"]
 
   def self.themes
-    @@themes ||= Rails.application.secrets.agora["themes"]
+    @@themes ||= Rails.application.secrets.agora[:themes]
   end
 
   after_initialize do

@@ -68,9 +68,9 @@ class CollaborationsControllerTest < ActionController::TestCase
 
   #   user = collaboration.user
   #   merchant_code = "1111111111"
-  #   Rails.application.secrets.redsys["code"] = merchant_code
-  #   Rails.application.secrets.redsys["terminal"] = "1"
-  #   Rails.application.secrets.redsys["secret_key"] = "1234567890"
+  #   Rails.application.secrets.redsys[:code] = merchant_code
+  #   Rails.application.secrets.redsys[:terminal] = "1"
+  #   Rails.application.secrets.redsys[:secret_key] = "1234567890"
   #
 
   #   sign_in user

@@ -74,7 +74,7 @@ class Proposal < ApplicationRecord
   end
 
   def self.frozen?
-    !Rails.application.secrets.icps["freeze_date"].nil?
+    !Rails.application.secrets.icps[:freeze_date].nil?
   end
 
   def self.now

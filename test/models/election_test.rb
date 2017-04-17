@@ -169,7 +169,7 @@ class ElectionTest < ActiveSupport::TestCase
   end
 
   test "should Election.available_servers work" do
-    assert_equal(["agora", "beta"], Election.available_servers)
+    assert_equal([:agora, :beta], Election.available_servers)
   end
 
   test "should server_shared_key work" do

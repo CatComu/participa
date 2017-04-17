@@ -145,9 +145,9 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "should .payment_day work" do
-    Rails.application.secrets.orders["payment_day"] = 10
+    Rails.application.secrets.orders[:payment_day] = 10
     assert_equal(Order.payment_day, 10)
-    Rails.application.secrets.orders["payment_day"] = "10"
+    Rails.application.secrets.orders[:payment_day] = "10"
     assert_equal(Order.payment_day, 10)
   end
 
@@ -267,7 +267,7 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "should .redsys_post_url work" do
-    assert_equal(@order.redsys_post_url, Rails.application.secrets.redsys["post_url"])
+    assert_equal(@order.redsys_post_url, Rails.application.secrets.redsys[:post_url])
   end
 
   test "should .redsys_merchant_url work" do

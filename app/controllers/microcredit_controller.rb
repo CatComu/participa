@@ -12,14 +12,14 @@ class MicrocreditController < ApplicationController
   end
 
   def init_env
-    default_brand = Rails.application.secrets.microcredits["default_brand"]
-    @brand = params[:brand]
-    @brand_config = Rails.application.secrets.microcredits["brands"][@brand]
+    default_brand = Rails.application.secrets.microcredits[:default_brand]
+    @brand = params[:brand]&.to_sym
+    @brand_config = Rails.application.secrets.microcredits[:brands][@brand]
     if @brand_config.blank?
       @brand = default_brand
-      @brand_config = Rails.application.secrets.microcredits["brands"][default_brand]
+      @brand_config = Rails.application.secrets.microcredits[:brands][default_brand.to_sym]
     end
-    @external = Rails.application.secrets.microcredits["brands"][@brand]["external"]
+    @external = Rails.application.secrets.microcredits[:brands][@brand.to_sym][:external]
     @url_params = @brand == default_brand ? {} : { brand: @brand }
   end
 

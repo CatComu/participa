@@ -119,7 +119,7 @@ class Order < ApplicationRecord
   end
 
   def self.payment_day
-    Rails.application.secrets.orders["payment_day"].to_i
+    Rails.application.secrets.orders[:payment_day].to_i
   end
 
   def self.by_month_count(date)
@@ -250,7 +250,7 @@ class Order < ApplicationRecord
   #### REDSYS CC PAYMENTS ####
 
   def redsys_secret(key)
-    Rails.application.secrets.redsys[key]
+    Rails.application.secrets.redsys[key.to_sym]
   end
 
   def redsys_expiration
