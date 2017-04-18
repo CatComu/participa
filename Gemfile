@@ -30,7 +30,9 @@ gem 'bootstrap-sass'
 gem 'formtastic'
 gem 'formtastic-bootstrap'
 gem 'spanish_vat_validators', github: 'javiertoledo/spanish_vat_validators'
-gem 'simple_captcha2', require: 'simple_captcha'
+gem 'simple_captcha2', github: 'deivid-rodriguez/simple-captcha',
+                       branch: 'reduce_monkey_patching',
+                       require: 'simple_captcha'
 gem 'carmen-rails'
 gem 'savon', '~> 2.11.0'
 

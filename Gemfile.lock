@@ -11,6 +11,14 @@ GIT
       unicode-display_width (~> 1.0, >= 1.0.1)
 
 GIT
+  remote: https://github.com/deivid-rodriguez/simple-captcha.git
+  revision: e3cf3b35efc1502a029e848f37c8013c22dd9113
+  branch: reduce_monkey_patching
+  specs:
+    simple_captcha2 (0.4.3)
+      rails (>= 4.1)
+
+GIT
   remote: https://github.com/javiertoledo/spanish_vat_validators.git
   revision: 76943427bd76717c3d64e1116c7b21c65d8d9ea7
   specs:
@@ -370,8 +378,6 @@ GEM
       activemodel (>= 3.0.0)
       builder
       iban-tools
-    simple_captcha2 (0.4.3)
-      rails (>= 4.1)
     simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -487,7 +493,7 @@ DEPENDENCIES
   savon (~> 2.11.0)
   sdoc (~> 0.4.0)
   sepa_king
-  simple_captcha2
+  simple_captcha2!
   simplecov
   sinatra (>= 2.0.0.beta2)
   spanish_vat_validators!
