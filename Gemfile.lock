@@ -19,11 +19,11 @@ GIT
       sprockets (< 4.1)
 
 GIT
-  remote: https://github.com/deivid-rodriguez/spanish_vat_validators.git
-  revision: d4d39a0bb656e9102ca67966580cb846b51ac343
-  branch: rails_5_deprecations
+  remote: https://github.com/javiertoledo/spanish_vat_validators.git
+  revision: 76943427bd76717c3d64e1116c7b21c65d8d9ea7
   specs:
     spanish_vat_validators (0.0.5)
+      activemodel (>= 3.2.0)
 
 GIT
   remote: https://github.com/podemos-info/norma43.git
