@@ -287,18 +287,24 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test ".can_change_phone? is false for recently added phones" do 
-    user = create(:user, sms_confirmed_at: Time.zone.now-1.month )
-    assert_not user.can_change_phone?
+    with_verifications(online: true) do
+      user = create(:user, sms_confirmed_at: Time.zone.now-1.month )
+      assert_not user.can_change_phone?
+    end
   end
 
   test ".can_change_phone? is true for not recently added phones" do
-    user = create(:user, sms_confirmed_at: Time.zone.now-7.month )
-    assert user.can_change_phone?
+    with_verifications(online: true) do
+      user = create(:user, sms_confirmed_at: Time.zone.now-7.month )
+      assert user.can_change_phone?
+    end
   end
 
   test ".can_change_phone? is false for users without a phone" do
-    user = create(:user, sms_confirmed_at: nil)
-    refute user.can_change_phone?
+    with_verifications(online: true) do
+      user = create(:user, sms_confirmed_at: nil)
+      refute user.can_change_phone?
+    end
   end
 
   test ".phone_normalize" do 

@@ -76,17 +76,19 @@ class VerifiableTest < ActiveSupport::TestCase
   end
 
   test "online verification process status" do
-    confirmed_by_sms_only = create(:user, :confirmed_by_sms)
-    assert_equal false, confirmed_by_sms_only.pending_docs?
-    assert_equal false, confirmed_by_sms_only.pending_moderation?
+    with_verifications(online: true) do
+      confirmed_by_sms_only = create(:user, :confirmed_by_sms)
+      assert_equal false, confirmed_by_sms_only.pending_docs?
+      assert_equal false, confirmed_by_sms_only.pending_moderation?
 
-    ready_for_review = create(:user, :pending_moderation)
-    assert_equal false, ready_for_review.pending_docs?
-    assert_equal true, ready_for_review.pending_moderation?
+      ready_for_review = create(:user, :pending_moderation)
+      assert_equal false, ready_for_review.pending_docs?
+      assert_equal true, ready_for_review.pending_moderation?
 
-    pending_doc_reupload = create(:user, :pending_docs)
-    assert_equal true, pending_doc_reupload.pending_docs?
-    assert_equal false, pending_doc_reupload.pending_moderation?
+      pending_doc_reupload = create(:user, :pending_docs)
+      assert_equal true, pending_doc_reupload.pending_docs?
+      assert_equal false, pending_doc_reupload.pending_moderation?
+    end
   end
 
   test "#verifying_online?" do
