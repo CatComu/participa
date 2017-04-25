@@ -34,11 +34,7 @@ gem 'simple_captcha2', require: 'simple_captcha'
 gem 'carmen-rails'
 gem 'savon', '~> 2.11.0'
 
-#
-# @todo: activeadmin/activeadmin#4477 broke our "new verification center" page,
-# so I'm pinning AA to the commit prior to that change. Report the bug to AA.
-#
-gem 'activeadmin', github: 'activeadmin', ref: 'e7c3d8cfc7ec3aeaf6893588068dbcd9bd2744f7'
+gem 'activeadmin', '~> 1.0'
 gem 'active_skin'
 
 gem 'resque', github: 'resque/resque', require: 'resque/server'
