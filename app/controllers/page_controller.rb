@@ -4,7 +4,7 @@ class PageController < ApplicationController
     votes = 0
     votes = @election.votes.count if @election
     render layout: 'minimal', locals: { votes: votes }
-    #render plain: "#{votes}"
+    # render plain: "#{votes}"
   end
 
   def privacy_policy

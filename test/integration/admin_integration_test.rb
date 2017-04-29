@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class AdminIntegrationTest < ActionDispatch::IntegrationTest
-
   setup do
     @user = create(:user)
     @admin = create(:user, :admin)
@@ -11,7 +10,7 @@ class AdminIntegrationTest < ActionDispatch::IntegrationTest
     get '/admin'
     assert_response :redirect
     assert_redirected_to root_path
-    assert_equal I18n.t('unauthorized.default'), flash[:error] 
+    assert_equal I18n.t('unauthorized.default'), flash[:error]
   end
 
   test "should not get /admin/resque as anon" do
@@ -25,7 +24,7 @@ class AdminIntegrationTest < ActionDispatch::IntegrationTest
     get '/admin'
     assert_response :redirect
     assert_redirected_to authenticated_root_path
-    assert_equal I18n.t('unauthorized.default'), flash[:error] 
+    assert_equal I18n.t('unauthorized.default'), flash[:error]
   end
 
   test "should not get /admin/resque as normal user" do
@@ -53,10 +52,10 @@ class AdminIntegrationTest < ActionDispatch::IntegrationTest
     get '/admin/users/download_newsletter_csv'
     assert_response :redirect
     assert_redirected_to root_path
-    assert_equal I18n.t('unauthorized.default'), flash[:error] 
+    assert_equal I18n.t('unauthorized.default'), flash[:error]
   end
-    
-  #test "should download newsletter CSV as admin and not download wants_newsletter = false" do
+
+  # test "should download newsletter CSV as admin and not download wants_newsletter = false" do
   #  login_as @admin
   #  get '/admin/users/download_newsletter_csv'
   #  assert_response :success
@@ -79,6 +78,5 @@ class AdminIntegrationTest < ActionDispatch::IntegrationTest
   #  assert response["Content-Type"].include? "text/csv"
   #  csv = CSV.parse response.body
   #  assert_equal 3, csv.count
-  #end
-
+  # end
 end

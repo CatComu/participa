@@ -32,13 +32,13 @@ class VerificationController < ApplicationController
         @user.send_confirmation_instructions
         flash.now[:alert] = unconfirmed_email_alert
         render :step1
-      elsif @user.is_verified_presentially? 
+      elsif @user.is_verified_presentially?
         flash.now[:notice] = already_verified_alert
         render :step1
       else
         render :step2
       end
-    else 
+    else
       flash.now[:error] = t('verification.alerts.not_found', query: search_params[:email])
       render :step1
     end

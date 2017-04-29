@@ -121,7 +121,7 @@ class RegistrationsController < Devise::RegistrationsController
     # See test/features/users_are_paranoid_test.rb
     #
     if resource.errors.added? type, :taken
-      resource.errors.messages[type] -= [ t('activerecord.errors.models.user.attributes.' + type.to_s + '.taken') ]
+      resource.errors.messages[type] -= [t('activerecord.errors.models.user.attributes.' + type.to_s + '.taken')]
       resource.errors.delete(type) if resource.errors.messages[type].empty?
       return true
     else

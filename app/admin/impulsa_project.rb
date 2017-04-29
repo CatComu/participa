@@ -2,10 +2,10 @@ ActiveAdmin.register ImpulsaProject do
   menu false
   belongs_to :impulsa_edition
 
-  permit_params ImpulsaProject::ALL_FIELDS + ImpulsaProject::ADMIN_REVIEWABLE_FIELDS.map {|f| "#{f}_review".to_sym }, impulsa_edition_topic_ids: []
+  permit_params ImpulsaProject::ALL_FIELDS + ImpulsaProject::ADMIN_REVIEWABLE_FIELDS.map { |f| "#{f}_review".to_sym }, impulsa_edition_topic_ids: []
 
-  filter :impulsa_edition_topics, as: :select, collection: -> { parent.impulsa_edition_topics}
-  filter :impulsa_edition_category, as: :select, collection: -> { parent.impulsa_edition_categories}
+  filter :impulsa_edition_topics, as: :select, collection: -> { parent.impulsa_edition_topics }
+  filter :impulsa_edition_category, as: :select, collection: -> { parent.impulsa_edition_categories }
   filter :name
   filter :user_id
   filter :id_in, as: :string, label: "Lista de IDs de proyectos", required: false
@@ -17,8 +17,8 @@ ActiveAdmin.register ImpulsaProject do
     selectable_column
     column :id
     column :logo do |impulsa_project|
-      ( impulsa_project.video_link.blank? ? status_tag("SIN VIDEO", :error) : a( status_tag("VER VIDEO", :ok), href: url_for(impulsa_project.video_link), target: "_blank" ) ) + br +
-      ( impulsa_project.logo.blank? ? status_tag("SIN FOTO", :error) : a( image_tag(impulsa_project.logo.url(:thumb)), href: impulsa_project.logo.url ) )
+      (impulsa_project.video_link.blank? ? status_tag("SIN VIDEO", :error) : a(status_tag("VER VIDEO", :ok), href: url_for(impulsa_project.video_link), target: "_blank")) + br +
+        (impulsa_project.logo.blank? ? status_tag("SIN FOTO", :error) : a(image_tag(impulsa_project.logo.url(:thumb)), href: impulsa_project.logo.url))
     end
     column :name do |impulsa_project|
       link_to impulsa_project.name, admin_impulsa_edition_impulsa_project_path(impulsa_edition, impulsa_project)
@@ -30,7 +30,7 @@ ActiveAdmin.register ImpulsaProject do
         number_to_currency impulsa_project.total_budget, :unit => "€"
       end
     end
-    #column :updated_at
+    # column :updated_at
     column :status_name do |impulsa_project|
       div t("podemos.impulsa.project_status.#{ImpulsaProject::PROJECT_STATUS.invert[impulsa_project.status]}")
       if impulsa_project.saveable?
@@ -46,33 +46,32 @@ ActiveAdmin.register ImpulsaProject do
     actions
   end
 
-  action_item(:reviews, only: [:show, :edit] ) do
+  action_item(:reviews, only: [:show, :edit]) do
     content_tag :script do
       "window.review_fields = #{impulsa_project.review_fields.to_json};".html_safe
     end
   end
 
-  action_item(:spam, only: :show ) do
+  action_item(:spam, only: :show) do
     link_to('Marcar como Spam', spam_admin_impulsa_edition_impulsa_project_path(impulsa_edition, impulsa_project), method: :post, data: { confirm: "¿Estas segura de querer marcar este proyecto como Spam?" }) if !impulsa_project.spam?
   end
 
   member_action :spam, :method => :post do
-    p = ImpulsaProject.find( params[:id] )
+    p = ImpulsaProject.find(params[:id])
     p.mark_as_spam
     p.save
     flash[:notice] = "El proyecto ha sido marcado como spam."
     redirect_to action: :index
   end
 
-  sidebar "Subir resultados de votación", 'data-panel' => :collapsed, :only => :index, priority: 1 do  
+  sidebar "Subir resultados de votación", 'data-panel' => :collapsed, :only => :index, priority: 1 do
     render("admin/upload_vote_results_form")
-  end 
+  end
 
-
-  def extraer_id ( json )
+  def extraer_id(json)
     id_proyecto = 0
     json.each do |url|
-      id_proyecto_aux = url["url"].gsub('https://participa.podemos.info/impulsa/proyecto/','').to_i
+      id_proyecto_aux = url["url"].gsub('https://participa.podemos.info/impulsa/proyecto/', '').to_i
       id_proyecto = id_proyecto_aux if id_proyecto_aux > 0
     end
     id_proyecto
@@ -90,7 +89,7 @@ ActiveAdmin.register ImpulsaProject do
     json.each do |answer|
       id_proyecto = 0
       answer["urls"].each do |url|
-        id_proyecto_aux = url["url"].gsub('https://participa.podemos.info/impulsa/proyecto/','').to_i
+        id_proyecto_aux = url["url"].gsub('https://participa.podemos.info/impulsa/proyecto/', '').to_i
         id_proyecto = id_proyecto_aux if id_proyecto_aux > 0
       end
       votes = answer["total_count"]
@@ -111,7 +110,7 @@ ActiveAdmin.register ImpulsaProject do
 
     flash[:notice] = "Projectos procesados: #{procesados.join(',')}. Total: #{procesados.count}"
     flash[:error] = "Projectos no encontrados: #{no_id_projects.join(',')}. Total: #{no_id_projects.count}" if no_id_projects.count > 0
-    redirect_to action: :index, "[q][id_in]": "#{procesados.join(' ')}", "order":"votes_desc"
+    redirect_to action: :index, "[q][id_in]": "#{procesados.join(' ')}", "order": "votes_desc"
   end
 
   show do
@@ -119,7 +118,7 @@ ActiveAdmin.register ImpulsaProject do
     impulsa_project.valid?
     panel t("podemos.impulsa.admin_section") do
       attributes_table_for impulsa_project do
-        row :edition do 
+        row :edition do
           link_to(impulsa_project.impulsa_edition.name, admin_impulsa_edition_path(impulsa_project.impulsa_edition))
         end
         row :category do
@@ -128,11 +127,11 @@ ActiveAdmin.register ImpulsaProject do
         row :user do
           attributes_table_for impulsa_project.user do
             row :status do
-                impulsa_project.user.deleted? ? status_tag("BORRADO", :error) : ""
+              impulsa_project.user.deleted? ? status_tag("BORRADO", :error) : ""
             end
             row :full_name do
               if can?(:read, impulsa_project.user)
-                link_to(impulsa_project.user.full_name,admin_user_path(impulsa_project.user))
+                link_to(impulsa_project.user.full_name, admin_user_path(impulsa_project.user))
               else
                 impulsa_project.user.full_name
               end
@@ -200,7 +199,7 @@ ActiveAdmin.register ImpulsaProject do
 
     panel t("podemos.impulsa.organization_data_section") do
       attributes_table_for impulsa_project do
-        row :organization_type, class: "row-organization_type " +  impulsa_project.field_class(:organization_type) do |impulsa_project|
+        row :organization_type, class: "row-organization_type " + impulsa_project.field_class(:organization_type) do |impulsa_project|
           t("podemos.impulsa.organization_type.#{impulsa_project.organization_type_name}") if impulsa_project.organization_type
         end
         row :organization_name, class: "row-organization_name " + impulsa_project.field_class(:organization_name)
@@ -320,12 +319,12 @@ ActiveAdmin.register ImpulsaProject do
         f.input :impulsa_edition_category
       end
       if impulsa_project.user
-        f.input :user_id, as: :number, hint: link_to(impulsa_project.user.full_name,admin_user_path(impulsa_project.user))
+        f.input :user_id, as: :number, hint: link_to(impulsa_project.user.full_name, admin_user_path(impulsa_project.user))
       else
         f.input :user_id, as: :number
       end
       if can? :admin, ImpulsaProject
-        f.input :status, as: :select, collection: ImpulsaProject::PROJECT_STATUS.map { |k,v| [ t("podemos.impulsa.project_status.#{k}"), v ]}
+        f.input :status, as: :select, collection: ImpulsaProject::PROJECT_STATUS.map { |k, v| [t("podemos.impulsa.project_status.#{k}"), v] }
       end
       f.input :additional_contact
       f.input :counterpart_information
@@ -335,7 +334,7 @@ ActiveAdmin.register ImpulsaProject do
       f.input :name
       f.input :impulsa_edition_topics, as: :check_boxes, wrapper_html: { class: f.object.field_class(:impulsa_edition_topic_ids) }
       f.input :short_description
-      f.input :logo, as: :file, hint: proc{ f.template.image_tag(f.object.logo.url(:thumb)) if f.object_has_logo?}
+      f.input :logo, as: :file, hint: proc { f.template.image_tag(f.object.logo.url(:thumb)) if f.object_has_logo? }
       f.input :video_link
     end
     f.inputs t("podemos.impulsa.authority_data_section"), class: f.object.saveable? ? "inputs reviewable" : "inputs" do
@@ -345,7 +344,7 @@ ActiveAdmin.register ImpulsaProject do
       f.input :authority_email, wrapper_html: { class: f.object.field_class(:authority_email) }
     end
     f.inputs t("podemos.impulsa.organization_data_section"), class: f.object.saveable? ? "inputs reviewable" : "inputs" do
-      f.input :organization_type, as: :select, collection: ImpulsaProject::ORGANIZATION_TYPES.map { |k,v| [ t("podemos.impulsa.organization_type.#{k}"), v ]}, wrapper_html: { class: f.object.field_class(:organization_type) }
+      f.input :organization_type, as: :select, collection: ImpulsaProject::ORGANIZATION_TYPES.map { |k, v| [t("podemos.impulsa.organization_type.#{k}"), v] }, wrapper_html: { class: f.object.field_class(:organization_type) }
       f.input :organization_name, wrapper_html: { class: f.object.field_class(:organization_name) }
       f.input :organization_address, wrapper_html: { class: f.object.field_class(:organization_address) }
       f.input :organization_web, wrapper_html: { class: f.object.field_class(:organization_web) }
@@ -399,9 +398,9 @@ ActiveAdmin.register ImpulsaProject do
     if impulsa_project.saveable?
       f.inputs "Revisión del proyecto" do
         li do
-          "Al utilizar esta casilla el proyecto cambiará de estado: si hay comentarios asociados a algún campo pasar al estado 'Correcciones' 
+          "Al utilizar esta casilla el proyecto cambiará de estado: si hay comentarios asociados a algún campo pasar al estado 'Correcciones'
           para que sea revisado por el usuario; en caso contrario pasará al estado 'Validar'. En cualquier caso, se enviará un correo al usuario
-          para informarle del progreso de su proyecto, por lo que es recomendable revisar el formulario antes de enviarlo." 
+          para informarle del progreso de su proyecto, por lo que es recomendable revisar el formulario antes de enviarlo."
         end
         f.input :mark_as_viewed, label: "Marcar como revisado", as: :boolean
       end
@@ -419,13 +418,13 @@ ActiveAdmin.register ImpulsaProject do
               "Al rellenar estos campos se almacenará su análisis del proyecto para que sea complementado con el de otro evaluador.
               Para marcar el proyecto como validado basta con dejar el campo 'Razones de invalidación' vacío."
             else
-              "Al rellenar estos campos se almacenará su análisis del proyecto. Para marcar el proyecto como validado basta con 
+              "Al rellenar estos campos se almacenará su análisis del proyecto. Para marcar el proyecto como validado basta con
               dejar el campo 'Razones de invalidación' vacío. Dado que otro evaluador ya ha analizado el proyecto, este cambiará de
               estado según el resultado de ambas evaluaciones: pasará a 'Validado' si ambos han aprobado el proyecto, a 'Invalidado'
               si ambos han rechazado el proyecto y a 'Disenso' si no hay acuerdo entre ambas opiniones. Salvo en el último caso, se
-              enviará un correo al usuario para indicar el resultado del proceso y las razones de invalidación, si hubieran, 
+              enviará un correo al usuario para indicar el resultado del proceso y las razones de invalidación, si hubieran,
               por lo que es importante revisar el formulario antes de enviarlo y asegurarse que las razones de invalidación de ambos
-              evaluadores no son contradictorias para no confundir al usuario." 
+              evaluadores no son contradictorias para no confundir al usuario."
             end
           end
           f.input :invalid_reasons, as: :text, label: "Razones de invalidación"
@@ -455,7 +454,7 @@ ActiveAdmin.register ImpulsaProject do
       ImpulsaProject::PROJECT_STATUS.each do |status, id|
         status_name = t("podemos.impulsa.project_status.#{status}")
         if !resource.scopes.any? { |scope| scope.name == status_name }
-          resource.scopes << ActiveAdmin::Scope.new( status_name ) do |projects| projects.by_status(id) end
+          resource.scopes << ActiveAdmin::Scope.new(status_name) do |projects| projects.by_status(id) end
         end
       end
     end
@@ -477,7 +476,7 @@ ActiveAdmin.register ImpulsaProject do
           resource.evaluator1_invalid_reasons = params[:impulsa_project][:invalid_reasons].strip
           resource.evaluator1_analysis = params[:impulsa_project][:evaluator_analysis]
           send_email = resource.save
-        elsif resource.evaluator1!=current_active_admin_user
+        elsif resource.evaluator1 != current_active_admin_user
           resource.evaluator2 = current_active_admin_user
           resource.evaluator2_invalid_reasons = params[:impulsa_project][:invalid_reasons].strip
           resource.evaluator2_analysis = params[:impulsa_project][:evaluator_analysis]
@@ -487,7 +486,7 @@ ActiveAdmin.register ImpulsaProject do
       elsif was_dissent
         send_email = resource.validated? || resource.invalidated?
       end
-      
+
       if send_email
         if resource.fixes?
           ImpulsaMailer.on_fixes(resource).deliver_now
@@ -517,7 +516,7 @@ ActiveAdmin.register ImpulsaProject do
     column(:town_name) { |project| project.user.town_name }
     column :total_budget
     column(:impulsa_edition_category) { |project| project.impulsa_edition_category.name }
-    column(:impulsa_edition_topics) { |project| project.impulsa_edition_topics.map{|t| t.name }.join("|") }
+    column(:impulsa_edition_topics) { |project| project.impulsa_edition_topics.map { |t| t.name }.join("|") }
     column :short_description
     column(:logo) { |project| "#{request.protocol}#{request.host}#{project.logo.url}" }
     column :video_link
@@ -533,5 +532,4 @@ ActiveAdmin.register ImpulsaProject do
     column :counterpart
     column :votes
   end
-
 end

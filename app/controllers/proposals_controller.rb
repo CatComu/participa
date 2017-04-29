@@ -1,5 +1,4 @@
 class ProposalsController < ApplicationController
-
   def index
     params[:filter] ||= "popular"
     @proposals = Proposal.filter(params[:filter])
@@ -12,5 +11,4 @@ class ProposalsController < ApplicationController
 
   def info
   end
-
 end

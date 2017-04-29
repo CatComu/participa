@@ -1,28 +1,27 @@
 class Order < ApplicationRecord
-
   include Rails.application.routes.url_helpers
 
   acts_as_paranoid
   has_paper_trail
 
   belongs_to :parent, -> { with_deleted }, polymorphic: true
-  belongs_to :collaboration, -> { with_deleted.joins(:order).where(orders: {parent_type: 'Collaboration'}) }, foreign_key: :parent_id
+  belongs_to :collaboration, -> { with_deleted.joins(:order).where(orders: { parent_type: 'Collaboration' }) }, foreign_key: :parent_id
   belongs_to :user, -> { with_deleted }
 
   attr_accessor :raw_xml
   validates :payment_type, :amount, :payable_at, presence: true
 
-  STATUS = {"Nueva" => 0, "Sin confirmar" => 1, "OK" => 2, "Alerta" => 3, "Error" => 4, "Devuelta" => 5}
+  STATUS = { "Nueva" => 0, "Sin confirmar" => 1, "OK" => 2, "Alerta" => 3, "Error" => 4, "Devuelta" => 5 }
   if Features.redsys_collaborations?
     PAYMENT_TYPES = {
-      I18n.t('podemos.collaboration.order.cc') => 1, 
-      I18n.t('podemos.collaboration.order.ccc') => 2, 
-      I18n.t('podemos.collaboration.order.iban') => 3 
+      I18n.t('podemos.collaboration.order.cc') => 1,
+      I18n.t('podemos.collaboration.order.ccc') => 2,
+      I18n.t('podemos.collaboration.order.iban') => 3
     }
   else
     PAYMENT_TYPES = {
-      I18n.t('podemos.collaboration.order.ccc') => 2, 
-      I18n.t('podemos.collaboration.order.iban') => 3 
+      I18n.t('podemos.collaboration.order.ccc') => 2,
+      I18n.t('podemos.collaboration.order.iban') => 3
     }
   end
 
@@ -33,16 +32,16 @@ class Order < ApplicationRecord
   REDSYS_SERVER_TIME_ZONE = ActiveSupport::TimeZone.new("Madrid")
 
   scope :created, -> { where(deleted_at: nil) }
-  scope :by_date, -> date_start, date_end { created.where(payable_at: date_start.beginning_of_month..date_end.end_of_month ) }
-  scope :credit_cards, -> { created.where(payment_type: 1)}
-  scope :banks, -> { created.where.not(payment_type: 1)}
-  scope :to_be_paid, -> { created.where(status:[0,1]) }
-  scope :to_be_charged, -> { created.where(status:0) }
-  scope :charging, -> { created.where(status:1) }
-  scope :paid, -> { created.where(status:[2,3]).where.not(payed_at:nil) }
-  scope :warnings, -> { created.where(status:3) }
-  scope :errors, -> { created.where(status:4) }
-  scope :returned, -> { created.where(status:5) }
+  scope :by_date, ->date_start, date_end { created.where(payable_at: date_start.beginning_of_month..date_end.end_of_month) }
+  scope :credit_cards, -> { created.where(payment_type: 1) }
+  scope :banks, -> { created.where.not(payment_type: 1) }
+  scope :to_be_paid, -> { created.where(status: [0, 1]) }
+  scope :to_be_charged, -> { created.where(status: 0) }
+  scope :charging, -> { created.where(status: 1) }
+  scope :paid, -> { created.where(status: [2, 3]).where.not(payed_at: nil) }
+  scope :warnings, -> { created.where(status: 3) }
+  scope :errors, -> { created.where(status: 4) }
+  scope :returned, -> { created.where(status: 5) }
   scope :deleted, -> { only_deleted }
 
   scope :full_view, -> { with_deleted.includes(:user) }
@@ -52,7 +51,7 @@ class Order < ApplicationRecord
   end
 
   def is_payable?
-    self.status<2
+    self.status < 2
   end
 
   def is_chargeable?
@@ -60,7 +59,7 @@ class Order < ApplicationRecord
   end
 
   def is_paid?
-    !self.payed_at.nil? and [2,3].include? self.status 
+    !self.payed_at.nil? and [2, 3].include? self.status
   end
 
   def has_warnings?
@@ -100,11 +99,11 @@ class Order < ApplicationRecord
   end
 
   def has_ccc_account?
-    self.payment_type==2
+    self.payment_type == 2
   end
 
   def has_iban_account?
-    self.payment_type==3
+    self.payment_type == 3
   end
 
   def error_message
@@ -124,11 +123,11 @@ class Order < ApplicationRecord
   end
 
   def self.by_month_count(date)
-    self.by_date(date,date).count
+    self.by_date(date, date).count
   end
 
   def self.by_month_amount(date)
-    self.by_date(date,date).sum(:amount) / 100.0
+    self.by_date(date, date).sum(:amount) / 100.0
   end
 
   def admin_permalink
@@ -138,44 +137,44 @@ class Order < ApplicationRecord
   #### BANK PAYMENTS ####
 
   # USAMOS order_id
-  #def receipt
-    # TODO order receipt
-    # Es el identificador del cargo a todos los efectos y no se ha de repetir en la remesa y en las remesas sucesivas. Es un nº correlativo
-  #end
+  # def receipt
+  # TODO order receipt
+  # Es el identificador del cargo a todos los efectos y no se ha de repetir en la remesa y en las remesas sucesivas. Es un nº correlativo
+  # end
 
   def due_code
-    # CÓDIGO DE ADEUDO  Se pondra FRST cuando sea el primer cargo desde la fecha de alta, y RCUR en los siguientes sucesivos
+    #  CÓDIGO DE ADEUDO  Se pondra FRST cuando sea el primer cargo desde la fecha de alta, y RCUR en los siguientes sucesivos
     # TODO codigo de adeudo
     self.first ? "FRST" : "RCUR"
   end
 
   def url_source
     # URL FUENTE  "Este campo no se si existira en el nuevo entorno. Si no es asi poner por defecto https://podemos.info/participa/colaboraciones/colabora/
-    # TODO url_source
+    #  TODO url_source
     new_collaboration_url
   end
 
   # USAMOS reference
-  #def concept
-    # COMPROBACIÓN  Es el texto que aparecefrá en el recibo. Sera "Colaboracion "mes x"
-    # TODO comprobación / concepto
+  # def concept
+  # COMPROBACIÓN  Es el texto que aparecefrá en el recibo. Sera "Colaboracion "mes x"
+  #  TODO comprobación / concepto
   #  "Colaboración mes de XXXX"
-  #end
+  # end
 
   def mark_as_charging
     self.status = 1
   end
-  
+
   def mark_as_paid! date
-    self.status = 2 
+    self.status = 2
     self.payed_at = date
     self.save
     if self.parent
       self.parent.payment_processed! self
-    end 
+    end
   end
 
-  def mark_as_returned! code=nil
+  def mark_as_returned! code = nil
     self.payment_response = code if code
     self.status = 5
     if self.save
@@ -193,40 +192,40 @@ class Order < ApplicationRecord
     end
   end
 
-  def self.mark_bank_orders_as_charged!(date=Date.current)
-    Order.banks.by_date(date, date).to_be_charged.update_all(status:1)
+  def self.mark_bank_orders_as_charged!(date = Date.current)
+    Order.banks.by_date(date, date).to_be_charged.update_all(status: 1)
   end
-  
-  def self.mark_bank_orders_as_paid!(date=Date.current)
+
+  def self.mark_bank_orders_as_paid!(date = Date.current)
     Collaboration.update_paid_unconfirmed_bank_collaborations(Order.banks.by_date(date, date).charging)
-    Order.banks.by_date(date, date).charging.update_all(status:2, payed_at: date)
+    Order.banks.by_date(date, date).charging.update_all(status: 2, payed_at: date)
   end
 
   SEPA_RETURNED_REASONS = {
-    "AC01" => { error: true, warn: true, text: "El IBAN o BIN son incorrectos."},
-    "AC04" => { error: true, text: "La cuenta ha sido cerrada."},
-    "AC06" => { error: true, text: "Cuenta bloqueada."},
-    "AC13" => { error: true, warn: true, text: "Cuenta de cliente no apta para operaciones entre comercios."},
-    "AG01" => { error: true, text: "Cuenta de ahorro, no admite recibos."},
-    "AG02" => { error: false, warn: true, text: "Código de pago incorrecto (ejemplo: RCUR sin FRST previo)."},
-    "AM04" => { error: false, text: "Fondos insuficientes."},
-    "AM05" => { error: false, warn: true, text: "Orden duplicada (ID repetido o dos operaciones FRST)."},
-    "BE01" => { error: true, text: "El nombre dado no coincide con el titular de la cuenta."},
-    "BE05" => { error: false, text: "Creditor Identifier incorrecto."},
-    "FF01" => { error: false, warn: true, text: "Código de transacción incorrecto o formato de fichero inválido."},
-    "FF05" => { error: false, warn: true, text: "Tipo de 'Direct Debit' incorrecto."},
-    "MD01" => { error: false, text: "Transacción no autorizada."},
-    "MD02" => { error: false, text: "Información del cliente incompleta o incorrecta."},
-    "MD06" => { error: false, text: "El cliente reclama no haber autorizado esta orden (hasta 8 semanas de plazo)."},
-    "MD07" => { error: true, text: "El titular de la cuenta ha muerto."},
-    "MS02" => { error: false, text: "El cliente ha devuelto esta orden."},
-    "MS03" => { error: false, text: "Razón no especificada por el banco."},
-    "RC01" => { error: true, warn: true, text: "El código BIC provisto es incorrecto."},
-    "RR01" => { error: true, warn: true, text: "La identificación del titular de la cuenta requerida legalmente es insuficiente o inexistente."},
-    "RR02" => { error: true, warn: true, text: "El nombre o la dirección del cliente requerida legalmente es insuficiente o inexistente."},
-    "RR03" => { error: false, warn: true, text: "El nombre o la dirección del cliente requerida legalmente es insuficiente o inexistente."},
-    "RR04" => { error: true, warn: true, text: "Motivos legales. Contactar al banco para más información."},
-    "SL01" => { error: true, text: "Cobro bloqueado a entidad por lista negra o ausencia en lista de cobros autorizados."}
+    "AC01" => { error: true, warn: true, text: "El IBAN o BIN son incorrectos." },
+    "AC04" => { error: true, text: "La cuenta ha sido cerrada." },
+    "AC06" => { error: true, text: "Cuenta bloqueada." },
+    "AC13" => { error: true, warn: true, text: "Cuenta de cliente no apta para operaciones entre comercios." },
+    "AG01" => { error: true, text: "Cuenta de ahorro, no admite recibos." },
+    "AG02" => { error: false, warn: true, text: "Código de pago incorrecto (ejemplo: RCUR sin FRST previo)." },
+    "AM04" => { error: false, text: "Fondos insuficientes." },
+    "AM05" => { error: false, warn: true, text: "Orden duplicada (ID repetido o dos operaciones FRST)." },
+    "BE01" => { error: true, text: "El nombre dado no coincide con el titular de la cuenta." },
+    "BE05" => { error: false, text: "Creditor Identifier incorrecto." },
+    "FF01" => { error: false, warn: true, text: "Código de transacción incorrecto o formato de fichero inválido." },
+    "FF05" => { error: false, warn: true, text: "Tipo de 'Direct Debit' incorrecto." },
+    "MD01" => { error: false, text: "Transacción no autorizada." },
+    "MD02" => { error: false, text: "Información del cliente incompleta o incorrecta." },
+    "MD06" => { error: false, text: "El cliente reclama no haber autorizado esta orden (hasta 8 semanas de plazo)." },
+    "MD07" => { error: true, text: "El titular de la cuenta ha muerto." },
+    "MS02" => { error: false, text: "El cliente ha devuelto esta orden." },
+    "MS03" => { error: false, text: "Razón no especificada por el banco." },
+    "RC01" => { error: true, warn: true, text: "El código BIC provisto es incorrecto." },
+    "RR01" => { error: true, warn: true, text: "La identificación del titular de la cuenta requerida legalmente es insuficiente o inexistente." },
+    "RR02" => { error: true, warn: true, text: "El nombre o la dirección del cliente requerida legalmente es insuficiente o inexistente." },
+    "RR03" => { error: false, warn: true, text: "El nombre o la dirección del cliente requerida legalmente es insuficiente o inexistente." },
+    "RR04" => { error: true, warn: true, text: "Motivos legales. Contactar al banco para más información." },
+    "SL01" => { error: true, text: "Cobro bloqueado a entidad por lista negra o ausencia en lista de cobros autorizados." }
   }
 
   def bank_text_status
@@ -260,7 +259,7 @@ class Order < ApplicationRecord
   end
 
   def redsys_order_id
-    @order_id ||= 
+    @order_id ||=
       if self.redsys_response and self.first
         self.redsys_response["Ds_Order"]
       else
@@ -271,7 +270,7 @@ class Order < ApplicationRecord
         end
       end
   end
-    
+
   def redsys_post_url
     redsys_secret "post_url"
   end
@@ -289,7 +288,7 @@ class Order < ApplicationRecord
     msg = if self.first
             "#{msg}#{self.redsys_secret "identifier"}#{self.redsys_secret "secret_key"}"
           else
-            "#{msg}#{self.payment_identifier}true#{self.redsys_secret "secret_key"}"   
+            "#{msg}#{self.payment_identifier}true#{self.redsys_secret "secret_key"}"
           end
 
     Digest::SHA1.hexdigest(msg).upcase
@@ -300,13 +299,13 @@ class Order < ApplicationRecord
     if self.raw_xml
       request_start = self.raw_xml.index "<Request"
       request_end = self.raw_xml.index "</Request>", request_start if request_start
-      msg = self.raw_xml[request_start..request_end+9] if request_start and request_end
+      msg = self.raw_xml[request_start..request_end + 9] if request_start and request_end
     end
 
     msg = "#{msg}#{self.redsys_secret "secret_key"}"
     Digest::SHA1.hexdigest(msg)
   end
-  
+
   def redsys_logger
     @@redsys_logger ||= Logger.new("#{Rails.root}/log/redsys.log")
   end
@@ -330,7 +329,7 @@ class Order < ApplicationRecord
       begin
         payment_date = REDSYS_SERVER_TIME_ZONE.parse "#{params["Fecha"] or params["Ds_Date"]} #{params["Hora"] or params["Ds_Hour"]}"
         redsys_logger.info("Validation data: #{payment_date}, #{Time.zone.now}, #{params["user_id"]}, #{self.user_id}, #{params["Ds_Signature"]}, #{self.redsys_merchant_response_signature}")
-        if (payment_date-1.hours) < Time.zone.now and Time.zone.now < (payment_date+1.hours) #and params["user_id"].to_i == self.user_id and params["Ds_Signature"] == self.redsys_merchant_response_signature
+        if (payment_date - 1.hours) < Time.zone.now and Time.zone.now < (payment_date + 1.hours) # and params["user_id"].to_i == self.user_id and params["Ds_Signature"] == self.redsys_merchant_response_signature
           redsys_logger.info("Status: OK")
           self.status = 2
         else
@@ -352,21 +351,21 @@ class Order < ApplicationRecord
 
     if self.parent
       self.parent.payment_processed! self
-    end    
+    end
   end
 
   def redsys_params
-    extra = if self.first 
-            {
-              "Ds_Merchant_Identifier"        => self.redsys_secret("identifier"),
-              "Ds_Merchant_UrlOK"             => self.parent.ok_url,
-              "Ds_Merchant_UrlKO"             => self.parent.ko_url
-            }
+    extra = if self.first
+              {
+                "Ds_Merchant_Identifier"        => self.redsys_secret("identifier"),
+                "Ds_Merchant_UrlOK"             => self.parent.ok_url,
+                "Ds_Merchant_UrlKO"             => self.parent.ko_url
+              }
             else
-            {
-              "Ds_Merchant_Identifier"        => self.payment_identifier,
-              'Ds_Merchant_DirectPayment'     => 'true'
-            }
+              {
+                "Ds_Merchant_Identifier"        => self.payment_identifier,
+                'Ds_Merchant_DirectPayment'     => 'true'
+              }
             end
 
     {
@@ -395,7 +394,7 @@ class Order < ApplicationRecord
       else
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
-      #http.ssl_options = OpenSSL::SSL::OP_NO_SSLv2 + OpenSSL::SSL::OP_NO_SSLv3 + OpenSSL::SSL::OP_NO_COMPRESSION
+      # http.ssl_options = OpenSSL::SSL::OP_NO_SSLv2 + OpenSSL::SSL::OP_NO_SSLv3 + OpenSSL::SSL::OP_NO_COMPRESSION
       http.ssl_version = :TLSv1
     end
 
@@ -410,7 +409,7 @@ class Order < ApplicationRecord
       self.status = 4
     end
     self.save
-    
+
     if self.parent
       self.parent.payment_processed! self
     end
@@ -421,41 +420,41 @@ class Order < ApplicationRecord
     when 5
       "Orden devuelta"
     else
-      code =  if self.redsys_response 
-                if self.first
-                  self.redsys_response["Ds_Response"]
-                else
-                  self.redsys_response[-1]
-                end
-              else
-                nil
+      code = if self.redsys_response
+               if self.first
+                 self.redsys_response["Ds_Response"]
+               else
+                 self.redsys_response[-1]
+               end
+             else
+               nil
               end
 
       if code
         code = code.to_i if code.is_a? String and not code.start_with? "SIS"
-          # Given a status code, returns the status message
+        # Given a status code, returns the status message
         message = case code
-          when "SIS0298"  then "El comercio no permite realizar operaciones de Tarjeta en Archivo."
-          when "SIS0319"  then "El comercio no pertenece al grupo especificado en Ds_Merchant_Group."
-          when "SIS0321"  then "La referencia indicada en Ds_Merchant_Identifier no está asociada al comercio."
-          when "SIS0322"  then "Error de formato en Ds_Merchant_Group."
-          when "SIS0325"  then "Se ha pedido no mostrar pantallas pero no se ha enviado ninguna referencia de tarjeta."
-          when 0..99      then "Transacción autorizada para pagos y preautorizaciones"
-          when 900        then "Transacción autorizada para devoluciones y confirmaciones"
-          when 101        then "Tarjeta caducada"
-          when 102        then "Tarjeta en excepción transitoria o bajo sospecha de fraude"
-          when 104, 9104  then "Operación no permitida para esa tarjeta o terminal"
-          when 116        then "Disponible insuficiente"
-          when 118        then "Tarjeta no registrada"
-          when 129        then "Código de seguridad (CVV2/CVC2) incorrecto"
-          when 180        then "Tarjeta ajena al servicio"
-          when 184        then "Error en la autenticación del titular"
-          when 190        then "Denegación sin especificar Motivo"
-          when 191        then "Fecha de caducidad errónea"
-          when 202        then "Tarjeta en excepción transitoria o bajo sospecha de fraude con retirada de tarjeta"
-          when 912, 9912  then "Emisor no disponible"
-          else
-            "Transacción denegada"
+                  when "SIS0298" then "El comercio no permite realizar operaciones de Tarjeta en Archivo."
+                  when "SIS0319" then "El comercio no pertenece al grupo especificado en Ds_Merchant_Group."
+                  when "SIS0321" then "La referencia indicada en Ds_Merchant_Identifier no está asociada al comercio."
+                  when "SIS0322" then "Error de formato en Ds_Merchant_Group."
+                  when "SIS0325" then "Se ha pedido no mostrar pantallas pero no se ha enviado ninguna referencia de tarjeta."
+                  when 0..99 then "Transacción autorizada para pagos y preautorizaciones"
+                  when 900 then "Transacción autorizada para devoluciones y confirmaciones"
+                  when 101 then "Tarjeta caducada"
+                  when 102 then "Tarjeta en excepción transitoria o bajo sospecha de fraude"
+                  when 104, 9104 then "Operación no permitida para esa tarjeta o terminal"
+                  when 116 then "Disponible insuficiente"
+                  when 118 then "Tarjeta no registrada"
+                  when 129 then "Código de seguridad (CVV2/CVC2) incorrecto"
+                  when 180 then "Tarjeta ajena al servicio"
+                  when 184 then "Error en la autenticación del titular"
+                  when 190 then "Denegación sin especificar Motivo"
+                  when 191 then "Fecha de caducidad errónea"
+                  when 202 then "Tarjeta en excepción transitoria o bajo sospecha de fraude con retirada de tarjeta"
+                  when 912, 9912 then "Emisor no disponible"
+                  else
+                    "Transacción denegada"
         end
         "#{code}: #{message}"
       else
@@ -465,7 +464,7 @@ class Order < ApplicationRecord
   end
 
   def redsys_callback_response
-    response = "<Response Ds_Version='0.0'><Ds_Response_Merchant>#{self.is_paid? ? "OK" : "KO" }</Ds_Response_Merchant></Response>"
+    response = "<Response Ds_Version='0.0'><Ds_Response_Merchant>#{self.is_paid? ? "OK" : "KO"}</Ds_Response_Merchant></Response>"
     signature = Digest::SHA1.hexdigest("#{response}#{self.redsys_secret "secret_key"}")
 
     soap = []

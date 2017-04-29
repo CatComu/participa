@@ -12,7 +12,7 @@ ActiveAdmin.register Post do
     id_column
     column :title
     column :categories do |post|
-      (post.categories.map {|c| link_to(c.name, admin_category_path(c)).html_safe } .join ", ").html_safe
+      (post.categories.map { |c| link_to(c.name, admin_category_path(c)).html_safe } .join ", ").html_safe
     end
     column :created_at
     column :status do |post|
@@ -38,7 +38,7 @@ ActiveAdmin.register Post do
 
       row :slug
       row :categories do
-        (post.categories.map {|c| link_to(c.name, admin_category_path(c)).html_safe } .join ", ").html_safe
+        (post.categories.map { |c| link_to(c.name, admin_category_path(c)).html_safe } .join ", ").html_safe
       end
       row :created_at
       row :updated_at
@@ -59,7 +59,7 @@ ActiveAdmin.register Post do
         - Las direcciones de YouTube, Vimeo y Twitter permiten embeber en la página videos o tuits.<br/>
         - También es posible dar formato básico al texto utilizando <a href='http://es.wikipedia.org/wiki/Markdown' target='_blank'>Markdown</a>.""".html_safe
     end
-    
+
     f.actions
   end
 

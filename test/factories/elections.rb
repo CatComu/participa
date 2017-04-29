@@ -7,7 +7,7 @@ FactoryGirl.define do
     scope 0
     closed
     server "agora"
-    
+
     after(:build) { |election| election.election_locations << create(:election_location, election: election) }
   end
 
@@ -23,15 +23,15 @@ FactoryGirl.define do
 
   trait :autonomy do
     scope 1
-    after(:build) do |election| 
+    after(:build) do |election|
       election.election_locations.clear
       election.election_locations << create(:election_location, :autonomy_location, election: election)
     end
   end
-  
+
   trait :province do
     scope 2
-    after(:build) do |election| 
+    after(:build) do |election|
       election.election_locations.clear
       election.election_locations << create(:election_location, :province_location, election: election)
     end
@@ -39,7 +39,7 @@ FactoryGirl.define do
 
   trait :town do
     scope 3
-    after(:build) do |election| 
+    after(:build) do |election|
       election.election_locations.clear
       election.election_locations << create(:election_location, :town_location, election: election)
     end
@@ -47,7 +47,7 @@ FactoryGirl.define do
 
   trait :island_election do
     scope 4
-    after(:build) do |election| 
+    after(:build) do |election|
       election.election_locations.clear
       election.election_locations << create(:election_location, :island_location, election: election)
     end
@@ -57,8 +57,7 @@ FactoryGirl.define do
     scope 5
   end
 
-  trait :beta_server do 
+  trait :beta_server do
     server "beta"
   end
-
 end

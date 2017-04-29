@@ -1,6 +1,6 @@
 ActiveAdmin.register Report do
   menu :parent => "Users"
-  permit_params  :title, :query, :main_group, :groups, :version_at
+  permit_params :title, :query, :main_group, :groups, :version_at
 
   index do
     selectable_column
@@ -26,10 +26,10 @@ ActiveAdmin.register Report do
         @groups.each do |group|
           panel "#{main_group} - #{group.title}", 'data-panel' => :collapsed, 'data-panel-id' => group.id, 'data-panel-parent' => main_group do
             results = @results[:data][main_group][group.id]
-            if results.length>200
+            if results.length > 200
               new_results = results.first(200)
               has_rest_row = results[-1][:count] > results[-2][:count]
-              new_results << { name: "(#{results.length-(has_rest_row ? 201 : 200)} más)", count: (results[200..(has_rest_row ? -2 : -1)].map {|r| r[:count]} .sum)}
+              new_results << { name: "(#{results.length - (has_rest_row ? 201 : 200)} más)", count: (results[200..(has_rest_row ? -2 : -1)].map { |r| r[:count] } .sum) }
               new_results << results[-1] if has_rest_row
               results = new_results
             end
@@ -41,7 +41,7 @@ ActiveAdmin.register Report do
                 div r[:count]
               end
               column group.data_label do |r|
-                div(r[:samples].map {|k,v| if k=="+" then "y #{v} más" elsif v>1 then "#{k}(#{if v>100 then "+100" else v end})" else k end } .join(", ")) if r[:samples]
+                div(r[:samples].map { |k, v| if k == "+" then "y #{v} más" elsif v > 1 then "#{k}(#{if v > 100 then "+100" else v end})" else k end } .join(", ")) if r[:samples]
               end
               column :users do |r|
                 div(r[:users][0..20].map do |u| link_to(u, admin_user_path(u)).html_safe end .join(" ").html_safe) if r[:users]
@@ -82,5 +82,4 @@ ActiveAdmin.register Report do
       link_to 'Regenerar', run_admin_report_path(id: resource.id), data: { confirm: "Se perderán los resultados actuales del informe. ¿Deseas continuar?" }
     end
   end
-
 end

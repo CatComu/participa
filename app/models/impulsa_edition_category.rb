@@ -9,20 +9,20 @@ class ImpulsaEditionCategory < ApplicationRecord
   has_attached_file :requested_budget_model_override
   has_attached_file :monitoring_evaluation_model_override
 
-  validates_attachment_content_type :schedule_model_override, content_type: [ "application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet" ]
-  validates_attachment_content_type :activities_resources_model_override, content_type: [  "application/vnd.ms-word", "application/msword", "application/x-msword", "application/x-ms-word", "application/x-word", "application/x-dos_ms_word", "application/doc", "application/x-doc", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.oasis.opendocument.text" ]
-  validates_attachment_content_type :requested_budget_model_override, content_type: [ "application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet" ]
-  validates_attachment_content_type :monitoring_evaluation_model_override, content_type: [ "application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet" ]
+  validates_attachment_content_type :schedule_model_override, content_type: ["application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet"]
+  validates_attachment_content_type :activities_resources_model_override, content_type: ["application/vnd.ms-word", "application/msword", "application/x-msword", "application/x-ms-word", "application/x-word", "application/x-dos_ms_word", "application/doc", "application/x-doc", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.oasis.opendocument.text"]
+  validates_attachment_content_type :requested_budget_model_override, content_type: ["application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet"]
+  validates_attachment_content_type :monitoring_evaluation_model_override, content_type: ["application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet"]
 
-  scope :non_authors, -> { where.not only_authors:true }
+  scope :non_authors, -> { where.not only_authors: true }
   scope :state, -> { where category_type: CATEGORY_TYPES[:state] }
   scope :territorial, -> { where category_type: CATEGORY_TYPES[:territorial] }
   scope :internal, -> { where category_type: CATEGORY_TYPES[:internal] }
-  
+
   CATEGORY_TYPES = {
-    internal: 0, 
-    state: 1, 
-    territorial: 2 
+    internal: 0,
+    state: 1,
+    territorial: 2
   }
 
   def category_type_name
@@ -74,28 +74,28 @@ class ImpulsaEditionCategory < ApplicationRecord
   end
 
   def coofficial_language_name
-     I18n.name_for_locale(self[:coofficial_language].to_sym) if self[:coofficial_language]
+    I18n.name_for_locale(self[:coofficial_language].to_sym) if self[:coofficial_language]
   end
 
   def territories
     if self[:territories]
-      self[:territories].split("|").compact 
+      self[:territories].split("|").compact
     else
       []
     end
   end
 
   def territories= values
-    self[:territories] = values.select {|x| !x.blank? } .join("|")
+    self[:territories] = values.select { |x| !x.blank? } .join("|")
   end
 
   def territories_names
     names = Hash[Podemos::GeoExtra::AUTONOMIES.values]
-    self.territories.map {|t| names[t]}
+    self.territories.map { |t| names[t] }
   end
 
   def prewinners
-    self.winners*2
+    self.winners * 2
   end
 
   def options base_url
@@ -107,7 +107,7 @@ class ImpulsaEditionCategory < ApplicationRecord
                   else
                     ""
                   end
-      [ project.name, image_url, URI.join(base_url, Rails.application.routes.url_helpers.impulsa_project_path(id: project.id)).to_s, project.short_description.gsub("\r\n"," ").gsub("\n"," ").gsub("\t"," ") ].join("\t")
+      [project.name, image_url, URI.join(base_url, Rails.application.routes.url_helpers.impulsa_project_path(id: project.id)).to_s, project.short_description.gsub("\r\n", " ").gsub("\n", " ").gsub("\t", " ")].join("\t")
     end .join "\n"
   end
 end

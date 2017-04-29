@@ -47,11 +47,9 @@ ActiveAdmin.register User, as: "VerifierProfile" do
       end
     end
 
-
     f.actions do
       f.action :submit
       cancel_link admin_user_path(resource)
     end
   end
-
 end

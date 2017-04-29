@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class VerificationSlotTest < ActiveSupport::TestCase
-
   test "validates presence of start time" do
     assert_equal false, build(:verification_slot, starts_at: nil).valid?
   end
@@ -18,5 +17,4 @@ class VerificationSlotTest < ActiveSupport::TestCase
 
     assert_equal false, verification_slot.valid?
   end
-
 end

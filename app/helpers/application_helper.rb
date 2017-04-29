@@ -34,7 +34,7 @@ module ApplicationHelper
   # Generalization from render_alert and render_error
   def render_flash partial_name, title, &block
     content = with_output_buffer(&block)
-    render partial: partial_name, locals: {title: title, content: content}
+    render partial: partial_name, locals: { title: title, content: content }
   end
 
   def field_notice_box
@@ -42,7 +42,7 @@ module ApplicationHelper
   end
 
   def errors_in_form resource
-    render partial: 'application/errors_in_form', locals: {resource: resource}
+    render partial: 'application/errors_in_form', locals: { resource: resource }
   end
 
   def steps_nav current_step, *steps_text

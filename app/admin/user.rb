@@ -58,7 +58,7 @@ ActiveAdmin.register User do
     end
     column :created_at
     column :verified_at
-    #column :verificated_users_count
+    # column :verificated_users_count
     column :verified_by
 
     column :validations do |user|
@@ -108,10 +108,10 @@ ActiveAdmin.register User do
           status_tag("El usuario supera todas las validaciones", :ok)
         else
           status_tag("El usuario no supera alguna validación", :error)
-          ul 
-            user.errors.full_messages.each do |mes|
-              li mes
-            end
+          ul
+          user.errors.full_messages.each do |mes|
+            li mes
+          end
         end
       end
       row :full_name
@@ -126,7 +126,7 @@ ActiveAdmin.register User do
       row :vote_town_name
       row :address
       row :postal_code
-      
+
       row :country do
         user.country_name
       end
@@ -198,7 +198,7 @@ ActiveAdmin.register User do
       else
         "No hay votos asociados a este usuario."
       end
-    end    
+    end
 
     if !user.participation_team_at.nil?
 
@@ -233,7 +233,7 @@ ActiveAdmin.register User do
   filter :country
   filter :circle
   filter :vote_autonomy_in, as: :select, collection: Podemos::GeoExtra::AUTONOMIES.values.uniq.map(&:reverse), label: "Vote autonomy"
-  filter :vote_province_in, as: :select, collection: Carmen::Country.coded("ES").subregions.map{|x|[x.name, "p_#{(x.index+1).to_s.rjust(2,"0")}"]}, label: "Vote province"
+  filter :vote_province_in, as: :select, collection: Carmen::Country.coded("ES").subregions.map { |x| [x.name, "p_#{(x.index + 1).to_s.rjust(2, "0")}"] }, label: "Vote province"
   filter :vote_island_in, as: :select, collection: Podemos::GeoExtra::ISLANDS.values.uniq.map(&:reverse), label: "Vote island"
   filter :vote_town
   filter :current_sign_in_ip
@@ -302,26 +302,26 @@ ActiveAdmin.register User do
   action_item(:ban, only: :show) do
     if can? :ban, User
       if user.banned?
-        link_to('Readmitir usuario', ban_admin_user_path(user), method: :delete) 
+        link_to('Readmitir usuario', ban_admin_user_path(user), method: :delete)
       else
-        link_to('Expulsar usuario', ban_admin_user_path(user), method: :post, data: { confirm: "¿Estas segura de querer expulsar a este usuario?" }) 
+        link_to('Expulsar usuario', ban_admin_user_path(user), method: :post, data: { confirm: "¿Estas segura de querer expulsar a este usuario?" })
       end
     end
   end
 
-  batch_action :ban, if: proc{ can? :ban, User } do |ids|
+  batch_action :ban, if: proc { can? :ban, User } do |ids|
     User.ban_users(ids, true)
     redirect_to collection_path, alert: "Los usuarios han sido expulsados."
   end
 
-  member_action :ban, if: proc{ can? :ban, User }, :method => [:post, :delete] do
-    User.ban_users([ params[:id] ], request.post?)
+  member_action :ban, if: proc { can? :ban, User }, :method => [:post, :delete] do
+    User.ban_users([params[:id]], request.post?)
     flash[:notice] = "El usuario ha sido modificado"
     redirect_to action: :show
   end
 
   member_action :verify, :method => [:post] do
-    u = User.find( params[:id] )
+    u = User.find(params[:id])
     u.verify! current_user
     u.update(banned: false)
     flash[:notice] = "El usuario ha sido modificado"
@@ -337,7 +337,7 @@ ActiveAdmin.register User do
   end
 
   member_action :impulsa_author, :method => [:post, :delete] do
-    u = User.find( params[:id] )
+    u = User.find(params[:id])
     u.update(impulsa_author: request.post?)
     flash[:notice] = "El usuario ya #{"no" if request.delete?} puede crear proyectos especiales en Impulsa"
     redirect_to action: :show
@@ -357,7 +357,7 @@ ActiveAdmin.register User do
           link_to "Ver ficha", admin_collaboration_path(user.collaboration)
         end
         row :amount do |collaboration|
-          number_to_currency ( collaboration.amount / 100.0 )
+          number_to_currency ( collaboration.amount / 100.0)
         end
         row :frequency_name
         row :payment_type_name
@@ -369,7 +369,7 @@ ActiveAdmin.register User do
   end
 
   sidebar "Usuario verificados", only: :show do
-    user = User.find( params[:id] )
+    user = User.find(params[:id])
     table_for user.verificated_users.each do
       column "Usuarios verificados: #{user.verificated_users.count}" do |u|
         span link_to(u.full_name, admin_user_path(u))
@@ -384,7 +384,7 @@ ActiveAdmin.register User do
   sidebar "Control de IPs", only: :show do
     ips = [user.last_sign_in_ip, user.current_sign_in_ip]
     t = User.arel_table
-    users = User.where.not(id:user.id).where(t[:last_sign_in_ip].in(ips).or(t[:current_sign_in_ip].in(ips)))
+    users = User.where.not(id: user.id).where(t[:last_sign_in_ip].in(ips).or(t[:current_sign_in_ip].in(ips)))
     table_for users.first(25) do
       column "Usuarios con la misma IP: #{users.count}" do |u|
         span link_to(u.full_name, admin_user_path(u))
@@ -397,9 +397,9 @@ ActiveAdmin.register User do
     end
   end
 
-  #sidebar "CRUZAR DATOS", 'data-panel' => :collapsed, :only => :index, priority: 100 do  
+  # sidebar "CRUZAR DATOS", 'data-panel' => :collapsed, :only => :index, priority: 100 do
   #  render("admin/fill_csv_form")
-  #end
+  # end
 
   collection_action :fill_csv, :method => :post do
     require 'podemos_export'
@@ -408,8 +408,8 @@ ActiveAdmin.register User do
     csv = fill_data file.read.force_encoding('utf-8'), User
     if subaction == "Descargar CSV"
       send_data csv["results"],
-        type: 'text/csv; charset=utf-8; header=present',
-        disposition: "attachment; filename=participa.podemos.#{Date.current.to_s}.csv"
+                type: 'text/csv; charset=utf-8; header=present',
+                disposition: "attachment; filename=participa.podemos.#{Date.current.to_s}.csv"
     else
       flash[:notice] = "Usuarios procesados: #{csv['processed'].join(',')}. Total: #{csv['processed'].count}"
       redirect_to action: :index, "[q][id_in]": "#{csv['processed'].join(' ')}"
@@ -425,14 +425,15 @@ ActiveAdmin.register User do
       @user = User.with_deleted.find(params[:id])
       @versions = @user.versions
       @user = @user.versions[params[:version].to_i].reify if params[:version]
-      show! #it seems to need this
+      show! # it seems to need this
     end
 
     before_action :multi_values_filter, :only => :index
+
     private
 
     def multi_values_filter
-      #params[:q][:document_vatid_cont_any] = params[:q][:document_vatid_cont_any].split unless params[:q].nil? or params[:q][:document_vatid_cont_any].nil?
+      # params[:q][:document_vatid_cont_any] = params[:q][:document_vatid_cont_any].split unless params[:q].nil? or params[:q][:document_vatid_cont_any].nil?
       params[:q][:id_in] = params[:q][:id_in].split unless params[:q].nil? or params[:q][:id_in].nil?
       params[:q][:document_vatid_in] = params[:q][:document_vatid_in].split unless params[:q].nil? or params[:q][:document_vatid_in].nil?
       params[:q][:email_in] = params[:q][:email_in].split unless params[:q].nil? or params[:q][:email_in].nil?
@@ -444,7 +445,7 @@ ActiveAdmin.register User do
       input :name => :authenticity_token, :type => :hidden, :value => form_authenticity_token.to_s
       div class: :filter_form_field do
         label "Fecha de inicio"
-        input name: :date, type: :date, placeholder:"dd/mm/aaaa", pattern:'\d{1,2}/\d{1,2}/\d{4}'
+        input name: :date, type: :date, placeholder: "dd/mm/aaaa", pattern: '\d{1,2}/\d{1,2}/\d{4}'
       end
       div class: :buttons do
         input :type => :submit, value: "Descargar"
@@ -454,21 +455,21 @@ ActiveAdmin.register User do
 
   collection_action :download_participation_teams, :method => :post do
     if params[:date].nil? or params[:date].empty?
-      date = DateTime.civil(1900,1,1)
-    else  
+      date = DateTime.civil(1900, 1, 1)
+    else
       date = Time.zone.parse(params[:date])
     end
 
     csv = CSV.generate(encoding: 'utf-8', col_sep: "\t") do |csv|
       csv << ["ID", "Código de identificacion", "Nombre", "País", "Comunidad Autónoma", "Municipio", "Código postal", "Teléfono", "Círculo", "Email", "Equipos"]
-      User.participation_team.where("participation_team_at>?", date).each do |user| 
-        csv << [ user.id, "#{user.postal_code}#{user.phone}", user.first_name, user.country_name, user.autonomy_name, user.town_name, user.postal_code, user.phone, user.circle, user.email, user.participation_team.map { |team| team.name }.join(",") ]
+      User.participation_team.where("participation_team_at>?", date).each do |user|
+        csv << [user.id, "#{user.postal_code}#{user.phone}", user.first_name, user.country_name, user.autonomy_name, user.town_name, user.postal_code, user.phone, user.circle, user.email, user.participation_team.map { |team| team.name }.join(",")]
       end
     end
 
     send_data csv.encode('utf-8'),
-      type: 'text/tsv; charset=utf-8; header=present',
-      disposition: "attachment; filename=podemos.participationteams.#{Date.current.to_s}.csv"
+              type: 'text/tsv; charset=utf-8; header=present',
+              disposition: "attachment; filename=podemos.participationteams.#{Date.current.to_s}.csv"
   end
 
   sidebar :report, only: :index do
@@ -511,12 +512,11 @@ ActiveAdmin.register User do
     Report.create do |r|
       r.title = params[:title]
       r.query = params[:query]
-      #r.version_at = params[:version_at]
-      r.main_group = ReportGroup.find(params[:main_group].to_i).to_yaml if params[:main_group].to_i>0
-      r.groups = ReportGroup.where(id: params[:groups].map {|g| g.to_i} ).to_yaml
+      # r.version_at = params[:version_at]
+      r.main_group = ReportGroup.find(params[:main_group].to_i).to_yaml if params[:main_group].to_i > 0
+      r.groups = ReportGroup.where(id: params[:groups].map { |g| g.to_i }).to_yaml
     end
     flash[:notice] = "El informe ha sido generado"
     redirect_to action: :index
   end
-
 end

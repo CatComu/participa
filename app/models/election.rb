@@ -2,22 +2,22 @@ class Election < ApplicationRecord
   include FlagShihTzu
 
   SCOPE = [["Estatal", 0], ["Comunidad", 1], ["Provincial", 2], ["Municipal", 3], ["Insular", 4], ["Extranjeros", 5]]
-  
+
   has_flags 1 => :requires_sms_check, check_for_column: false
 
   validates :title, :starts_at, :ends_at, :agora_election_id, :scope, presence: true
   has_many :votes
   has_many :election_locations, dependent: :destroy
- 
-  scope :active, -> { where("? BETWEEN starts_at AND ends_at", Time.zone.now).order(priority: :asc)}
-  scope :upcoming_finished, -> { where("ends_at > ? AND starts_at < ?", 2.days.ago, 12.hours.from_now).order(priority: :asc)}
+
+  scope :active, -> { where("? BETWEEN starts_at AND ends_at", Time.zone.now).order(priority: :asc) }
+  scope :upcoming_finished, -> { where("ends_at > ? AND starts_at < ?", 2.days.ago, 12.hours.from_now).order(priority: :asc) }
 
   def to_s
     "#{title}"
   end
 
   def is_active?
-    ( self.starts_at .. self.ends_at ).cover? Time.zone.now
+    (self.starts_at..self.ends_at).cover? Time.zone.now
   end
 
   def is_upcoming?
@@ -25,41 +25,41 @@ class Election < ApplicationRecord
   end
 
   def recently_finished?
-    self.ends_at > 2.days.ago and self.ends_at < Time.zone.now 
+    self.ends_at > 2.days.ago and self.ends_at < Time.zone.now
   end
 
   def scope_name
-    SCOPE.select{|v| v[1] == self.scope }[0][0]
+    SCOPE.select { |v| v[1] == self.scope }[0][0]
   end
 
   def full_title_for user
     if multiple_territories?
-      suffix =  case self.scope
-                  when 1 then " en #{user.vote_autonomy_name}"
-                  when 2 then " en #{user.vote_province_name}"
-                  when 3 then " en #{user.vote_town_name}"
-                  when 4 then " en #{user.vote_island_name}"      
+      suffix = case self.scope
+               when 1 then " en #{user.vote_autonomy_name}"
+               when 2 then " en #{user.vote_province_name}"
+               when 3 then " en #{user.vote_town_name}"
+               when 4 then " en #{user.vote_island_name}"
                 end
       if not has_valid_location_for? user
         suffix = " (no hay votación#{suffix})"
       end
     end
-    #"#{self.title}#{suffix}"
-  "#{self.title}"
+    # "#{self.title}#{suffix}"
+    "#{self.title}"
   end
 
   def has_location_for? user
-    not ((self.scope==5 and user.country=="ES") or (self.scope==4 and not user.vote_in_spanish_island?))
+    not ((self.scope == 5 and user.country == "ES") or (self.scope == 4 and not user.vote_in_spanish_island?))
   end
 
   def has_valid_location_for? user
     case self.scope
-      when 0 then true
-      when 1 then user.has_vote_town? and self.election_locations.any? {|l| l.location == user.vote_autonomy_numeric}
-      when 2 then user.has_vote_town? and self.election_locations.any? {|l| l.location == user.vote_province_numeric}
-      when 3 then user.has_vote_town? and self.election_locations.any? {|l| l.location == user.vote_town_numeric}
-      when 4 then user.has_vote_town? and self.election_locations.any? {|l| l.location == user.vote_island_numeric}
-      when 5 then user.country!="ES"
+    when 0 then true
+    when 1 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_autonomy_numeric }
+    when 2 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_province_numeric }
+    when 3 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_town_numeric }
+    when 4 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_island_numeric }
+    when 5 then user.country != "ES"
     end
   end
 
@@ -69,31 +69,31 @@ class Election < ApplicationRecord
 
   def current_total_census
     case self.scope
-      when 0 then User.voting_right.count
-      when 1 then User.voting_right.ransack( {vote_autonomy_in: self.election_locations.map {|l| "c_#{l.location}" }}).result.count
-      when 2 then User.voting_right.ransack( {vote_province_in: self.election_locations.map {|l| "p_#{l.location}" }}).result.count
-      when 3 then User.voting_right.where(vote_town: self.election_locations.map {|l| "m_#{l.location[0..1]}_#{l.location[2..4]}_#{l.location[5]}" }).count
-      when 4 then User.voting_right.ransack( {vote_island_in: self.election_locations.map {|l| "i_#{l.location}" }}).result.count
-      when 5 then User.voting_right.where.not(country:"ES").count
+    when 0 then User.voting_right.count
+    when 1 then User.voting_right.ransack({ vote_autonomy_in: self.election_locations.map { |l| "c_#{l.location}" } }).result.count
+    when 2 then User.voting_right.ransack({ vote_province_in: self.election_locations.map { |l| "p_#{l.location}" } }).result.count
+    when 3 then User.voting_right.where(vote_town: self.election_locations.map { |l| "m_#{l.location[0..1]}_#{l.location[2..4]}_#{l.location[5]}" }).count
+    when 4 then User.voting_right.ransack({ vote_island_in: self.election_locations.map { |l| "i_#{l.location}" } }).result.count
+    when 5 then User.voting_right.where.not(country: "ES").count
     end
   end
 
   def multiple_territories?
-    [1,2,3,4,6].member? self.scope
+    [1, 2, 3, 4, 6].member? self.scope
   end
 
   def scoped_agora_election_id user
     user_location = case self.scope
-      when 1
-        user.vote_autonomy_numeric
-      when 2
-        user.vote_province_numeric
-      when 3
-        user.vote_town_numeric
-      when 4
-        user.vote_island_numeric
-      else
-        "00"
+                    when 1
+                      user.vote_autonomy_numeric
+                    when 2
+                      user.vote_province_numeric
+                    when 3
+                      user.vote_town_numeric
+                    when 4
+                      user.vote_island_numeric
+                    else
+                      "00"
     end
     Rails.logger.info "user_location: #{user_location}"
     election_location = self.election_locations.find_by_location user_location
@@ -101,7 +101,7 @@ class Election < ApplicationRecord
   end
 
   def locations
-    self.election_locations.map{|l| "#{l.location},#{l.agora_version}#{",#{l.override}" if l.override}"}.join "\n"
+    self.election_locations.map { |l| "#{l.location},#{l.agora_version}#{",#{l.override}" if l.override}" }.join "\n"
   end
 
   def locations= value
@@ -133,6 +133,6 @@ class Election < ApplicationRecord
   end
 
   def duration
-    ((ends_at-starts_at)/60/60).to_i
+    ((ends_at - starts_at) / 60 / 60).to_i
   end
 end

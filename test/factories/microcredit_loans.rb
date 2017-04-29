@@ -1,8 +1,6 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-
-
   sequence :ip do |n|
     "1.2.3.#{n}"
   end
@@ -13,5 +11,4 @@ FactoryGirl.define do
     amount 100
     ip
   end
-
 end

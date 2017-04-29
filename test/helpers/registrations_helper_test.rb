@@ -4,7 +4,6 @@ require 'test_helper'
 # Tests countries, provinces & regions through Carmen
 #
 class RegistrationsHelperTest < ActionView::TestCase
-
   test "get_countries gets us all countries" do
     assert_equal 249, get_countries.size
   end
@@ -36,5 +35,4 @@ class RegistrationsHelperTest < ActionView::TestCase
     assert_includes barna_towns, "Terrassa"
     assert_includes barna_towns, "Sabadell"
   end
-
 end

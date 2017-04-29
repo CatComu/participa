@@ -1,20 +1,20 @@
 require 'open-uri'
 class Reddit
   attr_accessor :base_url, :filter, :limit
-  
+
   def initialize(name)
     @base_url = "http://api.reddit.com/r/#{name}"
-    @filter   = 'top'
-    @limit    = 100
+    @filter = 'top'
+    @limit = 100
   end
 
   def extract
-    proposals(url).each {|proposal| create_or_update(proposal) }
+    proposals(url).each { |proposal| create_or_update(proposal) }
   end
 
   def url
-    "#{@base_url}/search?q=flair%3APropuestas&sort=#{@filter}" + 
-    "&restrict_sr=on&t=all&limit=#{@limit}"
+    "#{@base_url}/search?q=flair%3APropuestas&sort=#{@filter}" +
+      "&restrict_sr=on&t=all&limit=#{@limit}"
   end
 
   def proposals(url)

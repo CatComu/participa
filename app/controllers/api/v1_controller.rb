@@ -1,7 +1,6 @@
 module Api
   class V1Controller < ApplicationController
-
-    skip_before_action :verify_authenticity_token 
+    skip_before_action :verify_authenticity_token
 
     def gcm_registrate
       NoticeRegistrar.find_or_create_by(gcm_params)
@@ -18,11 +17,10 @@ module Api
       end
     end
 
-    private 
+    private
 
     def gcm_params
       params.require(:v1).permit(:registration_id)
     end
-
   end
 end

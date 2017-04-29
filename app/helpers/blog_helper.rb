@@ -1,17 +1,17 @@
 module BlogHelper
   include AutoHtml
-  def formatted_content(post, max_paraphs=nil)
+  def formatted_content(post, max_paraphs = nil)
     read_more = nil
     content = post.content
     if max_paraphs
-      paraphs = content.split("\n", max_paraphs+1)
-      if paraphs.length>max_paraphs
-        content = paraphs[0..(max_paraphs-1)].join("\n")
-        read_more = content_tag(:p, link_to(fa_icon("plus-circle", text:'Seguir leyendo'), post))
+      paraphs = content.split("\n", max_paraphs + 1)
+      if paraphs.length > max_paraphs
+        content = paraphs[0..(max_paraphs - 1)].join("\n")
+        read_more = content_tag(:p, link_to(fa_icon("plus-circle", text: 'Seguir leyendo'), post))
       end
     end
 
-    [ auto_html(content) do
+    [auto_html(content) do
       twitter
       youtube
       vimeo
@@ -19,7 +19,7 @@ module BlogHelper
       image
       link target: "_blank"
       simple_format
-    end, read_more ].compact.sum
+    end, read_more].compact.sum
   end
 
   def main_media post

@@ -15,7 +15,7 @@ class ParticipationTeamsController < InheritedResources::Base
     else
       current_user.update_attribute(:participation_team_at, Time.zone.now)
       flash[:notice] = "Te damos la bienvienida a los Equipos de Acción Participativa. En los próximos días nos pondremos en contacto contigo."
-    end      
+    end
     redirect_to participation_teams_path
   end
 
@@ -29,7 +29,7 @@ class ParticipationTeamsController < InheritedResources::Base
     else
       current_user.update_attribute(:participation_team_at, nil)
       flash[:notice] = "Te has dado de baja de los Equipos de Acción Participativa"
-    end 
+    end
     redirect_to participation_teams_path
   end
 

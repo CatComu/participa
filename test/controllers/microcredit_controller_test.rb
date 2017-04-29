@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MicrocreditControllerTest < ActionController::TestCase
-
   around do |&block|
     @microcredit = create(:microcredit)
     @user = create(:user)
@@ -29,7 +28,7 @@ class MicrocreditControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # FIXME: review 
+  # FIXME: review
   # test "should post create_loan" do
   #   params = {
   #     first_name: "juan",
@@ -73,5 +72,4 @@ class MicrocreditControllerTest < ActionController::TestCase
   #   assert_equal loan.user.id, @user.id
   #
   # end
-
 end

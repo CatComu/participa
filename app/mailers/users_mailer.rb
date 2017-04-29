@@ -28,4 +28,3 @@ class UsersMailer < ActionMailer::Base
     )
   end
 end
-  

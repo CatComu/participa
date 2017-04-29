@@ -35,7 +35,7 @@ ActiveAdmin.register Notice do
   member_action :broadcast, :method => :post do
     notice = Notice.find(params[:id])
     notice.broadcast!
-    redirect_to({action: :show }, {:notice => "Se ha enviado el Aviso"})
+    redirect_to({ action: :show }, { :notice => "Se ha enviado el Aviso" })
   end
 
   form do |f|
@@ -46,5 +46,4 @@ ActiveAdmin.register Notice do
     end
     f.actions
   end
-
 end

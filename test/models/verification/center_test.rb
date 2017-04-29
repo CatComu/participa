@@ -20,5 +20,4 @@ class VerificationCenterTest < ActiveSupport::TestCase
     assert_equal 1, center.verification_slots.count
     refute_includes center.verification_slots, user.verification_slots.first
   end
-
 end

@@ -1,4 +1,4 @@
-require 'savon' 
+require 'savon'
 
 module SMS
   module Sender
@@ -10,7 +10,7 @@ module SMS
           user: Rails.application.secrets.sms["user"],
           pass: Rails.application.secrets.sms["pass"],
           src: Rails.application.secrets.sms["src"],
-          dst: dst, 
+          dst: dst,
           msg: "El teu codi d'activació per a Un País en Comú és #{code}"
         }
         response = client.call(:send_sms, message: message)

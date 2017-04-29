@@ -9,7 +9,6 @@ module Verification
     scope :active, -> { all }
 
     def periods
-
     end
 
     def address

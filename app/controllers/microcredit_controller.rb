@@ -4,11 +4,11 @@ class MicrocreditController < ApplicationController
   layout :external_layout
 
   def provinces
-    render partial: 'subregion_select', locals:{ country: (params[:microcredit_loan_country] or "ES"), province: params[:microcredit_loan_province], disabled: false, required: true, title:"Provincia"}
+    render partial: 'subregion_select', locals: { country: (params[:microcredit_loan_country] or "ES"), province: params[:microcredit_loan_province], disabled: false, required: true, title: "Provincia" }
   end
 
   def towns
-    render partial: 'municipies_select', locals:{ country: (params[:microcredit_loan_country] or "ES"), province: params[:microcredit_loan_province], town: params[:microcredit_loan_town], disabled: false, required: true, title:"Municipio"}
+    render partial: 'municipies_select', locals: { country: (params[:microcredit_loan_country] or "ES"), province: params[:microcredit_loan_province], town: params[:microcredit_loan_town], disabled: false, required: true, title: "Municipio" }
   end
 
   def init_env
@@ -40,21 +40,21 @@ class MicrocreditController < ApplicationController
 
   def login
     authenticate_user!
-    redirect_to new_microcredit_loan_path(params[:id], brand:@brand)
+    redirect_to new_microcredit_loan_path(params[:id], brand: @brand)
   end
 
   def new_loan
     @microcredit = Microcredit.find(params[:id])
-    redirect_to microcredit_path(brand:@brand) and return unless @microcredit and @microcredit.is_active?
+    redirect_to microcredit_path(brand: @brand) and return unless @microcredit and @microcredit.is_active?
 
     @loan = MicrocreditLoan.new
-    @user_loans = current_user ? @microcredit.loans.where(user:current_user) : []
+    @user_loans = current_user ? @microcredit.loans.where(user: current_user) : []
   end
 
   def create_loan
     @microcredit = Microcredit.find(params[:id])
-    redirect_to microcredit_path(brand:@brand) and return unless @microcredit and @microcredit.is_active?
-    @user_loans = current_user ? @microcredit.loans.where(user:current_user) : []
+    redirect_to microcredit_path(brand: @brand) and return unless @microcredit and @microcredit.is_active?
+    @user_loans = current_user ? @microcredit.loans.where(user: current_user) : []
 
     @loan = MicrocreditLoan.new(loan_params) do |loan|
       loan.microcredit = @microcredit
@@ -64,18 +64,18 @@ class MicrocreditController < ApplicationController
 
     if not current_user
       @loan.set_user_data loan_params
-    end 
+    end
 
     @loan.transaction do
       if (current_user or @loan.valid_with_captcha?) and @loan.save
         @loan.update_counted_at
         UsersMailer.microcredit_email(@microcredit, @loan, @brand_config).deliver_now
-         
+
         notice = t('microcredit.new_loan.will_receive_email', name: @brand_config["name"])
         notice += "<br/>" + t('microcredit.new_loan.tweet_campaign', main_url: @brand_config["main_url"], twitter_account: @brand_config["twitter_account"]) if @brand_config["twitter_account"]
         flash[:notice] = notice
 
-        redirect_to microcredit_path(brand:@brand) and return if !params[:reload]
+        redirect_to microcredit_path(brand: @brand) and return if !params[:reload]
       end
     end
     render :new_loan
@@ -97,8 +97,8 @@ class MicrocreditController < ApplicationController
           total_amount += l.amount
         end
       end
-      if total_amount>0
-        redirect_to loans_renewal_microcredit_loan_path(@microcredit.id, @renewal.loan.id, @renewal.loan.unique_hash), notice: t('microcredit.loans_renewal.renewal_success', name: @brand_config["name"], amount: number_to_euro(total_amount*100), campaign: @microcredit.title)
+      if total_amount > 0
+        redirect_to loans_renewal_microcredit_loan_path(@microcredit.id, @renewal.loan.id, @renewal.loan.unique_hash), notice: t('microcredit.loans_renewal.renewal_success', name: @brand_config["name"], amount: number_to_euro(total_amount * 100), campaign: @microcredit.title)
         return
       end
     end
@@ -121,37 +121,36 @@ class MicrocreditController < ApplicationController
            else
              MicrocreditLoan.where(document_vatid: current_user.document_vatid).first
            end
-    return nil unless @microcredit && !@microcredit.has_finished? && loan && loan.microcredit.renewable? && (current_user || loan.unique_hash==params[:hash])
+    return nil unless @microcredit && !@microcredit.has_finished? && loan && loan.microcredit.renewable? && (current_user || loan.unique_hash == params[:hash])
 
-    loans = MicrocreditLoan.renewables.not_renewed.where(microcredit_id:loan.microcredit_id, document_vatid: loan.document_vatid)
-    other_loans = MicrocreditLoan.renewables.where.not(microcredit_id:loan.microcredit_id).where(document_vatid: loan.document_vatid).to_a.uniq(&:microcredit_id)
-    recently_renewed_loans = MicrocreditLoan.recently_renewed.where(microcredit_id:loan.microcredit_id, document_vatid: loan.document_vatid)
+    loans = MicrocreditLoan.renewables.not_renewed.where(microcredit_id: loan.microcredit_id, document_vatid: loan.document_vatid)
+    other_loans = MicrocreditLoan.renewables.where.not(microcredit_id: loan.microcredit_id).where(document_vatid: loan.document_vatid).to_a.uniq(&:microcredit_id)
+    recently_renewed_loans = MicrocreditLoan.recently_renewed.where(microcredit_id: loan.microcredit_id, document_vatid: loan.document_vatid)
 
     require 'ostruct'
     renewal = if validate
-                OpenStruct.new( params.require(:renewals).permit(:renewal_terms, :terms_of_service, loan_renewals: []))
+                OpenStruct.new(params.require(:renewals).permit(:renewal_terms, :terms_of_service, loan_renewals: []))
               else
-                OpenStruct.new( renewal_terms: false, terms_of_service: false, loan_renewals: [])
+                OpenStruct.new(renewal_terms: false, terms_of_service: false, loan_renewals: [])
               end
     renewal.loans = loans
-    renewal.loan_renewals = renewal.loans.select {|l| renewal.loan_renewals.member? l.id.to_s }
+    renewal.loan_renewals = renewal.loans.select { |l| renewal.loan_renewals.member? l.id.to_s }
     renewal.other_loans = other_loans
     renewal.recently_renewed_loans = recently_renewed_loans
     renewal.loan = loans.first || recently_renewed_loans.first
     renewal.errors = {}
     if validate
-      renewal.errors[:renewal_terms] = t("errors.messages.accepted") if renewal.renewal_terms=="0"
-      renewal.errors[:terms_of_service] = t("errors.messages.accepted") if renewal.terms_of_service=="0"
-      renewal.errors[:loan_renewals] = t("microcredit.loans_renewal.none_selected") if renewal.loan_renewals.length==0
+      renewal.errors[:renewal_terms] = t("errors.messages.accepted") if renewal.renewal_terms == "0"
+      renewal.errors[:terms_of_service] = t("errors.messages.accepted") if renewal.terms_of_service == "0"
+      renewal.errors[:loan_renewals] = t("microcredit.loans_renewal.none_selected") if renewal.loan_renewals.length == 0
     end
-    renewal.valid = renewal.errors.length==0
+    renewal.valid = renewal.errors.length == 0
     renewal
   end
-
 end
 
-class OpenStruct                                                                                                                    
-  def self.human_attribute_name(name)                                                                                               
+class OpenStruct
+  def self.human_attribute_name(name)
     I18n::t("formtastic.labels.#{name}")
-  end                                                                                                                               
+  end
 end

@@ -19,7 +19,7 @@ ActiveAdmin.register Election do
   filter :agora_election_id
   filter :user_created_at_max
 
-  show do 
+  show do
     attributes_table do
       row :requires_sms_check do
         status_tag("SMS CHECK", :ok)
@@ -34,7 +34,7 @@ ActiveAdmin.register Election do
       row :starts_at
       row :ends_at
       row :user_created_at_max
-      row :close_message do 
+      row :close_message do
         raw election.close_message
       end
       row "Crear Aviso" do
@@ -57,7 +57,7 @@ ActiveAdmin.register Election do
           status_tag("VERSION NUEVA", :error) if el.new_version_pending
         end
       end
-      
+
       span link_to "Añadir ubicación", new_admin_election_election_location_path(election)
     end
     active_admin_comments
@@ -66,7 +66,7 @@ ActiveAdmin.register Election do
   member_action :download_voting_definition do
     election_location = ElectionLocation.find(params[:id])
     headers["Content-Type"] ||= 'text/csv'
-    headers["Content-Disposition"] = "attachment; filename=\"#{election_location.new_vote_id}.tsv\"" 
+    headers["Content-Disposition"] = "attachment; filename=\"#{election_location.new_vote_id}.tsv\""
     render "election_location.tsv", layout: false, locals: { election_location: election_location }
   end
 
@@ -79,7 +79,7 @@ ActiveAdmin.register Election do
       f.input :server, as: :select, collection: Election.available_servers
       f.input :agora_election_id
       f.input :scope, as: :select, collection: Election::SCOPE
-      f.input :locations, as: :text, :input_html => { :class => 'autogrow', :rows => 10, :cols => 10  } if !resource.persisted?
+      f.input :locations, as: :text, :input_html => { :class => 'autogrow', :rows => 10, :cols => 10 } if !resource.persisted?
       f.input :starts_at
       f.input :ends_at
       f.input :close_message
@@ -93,14 +93,14 @@ ActiveAdmin.register Election do
     election_id = params[:id]
     csv = CSV.generate(encoding: 'utf-8', col_sep: "\t") do |csv|
       prev_user_id = nil
-      Vote.joins(:user).merge!(User.verified).where(election_id: election_id).select(:user_id, :voter_id).order(user_id: :asc, created_at: :desc).each do |vote| 
-        csv << [ vote.voter_id ] if prev_user_id != vote.user_id
+      Vote.joins(:user).merge!(User.verified).where(election_id: election_id).select(:user_id, :voter_id).order(user_id: :asc, created_at: :desc).each do |vote|
+        csv << [vote.voter_id] if prev_user_id != vote.user_id
         prev_user_id = vote.user_id
       end
     end
     send_data csv.encode('utf-8'),
-      type: 'text/tsv; charset=utf-8; header=present',
-      disposition: "attachment; filename=voter_ids.#{election_id}.tsv"
+              type: 'text/tsv; charset=utf-8; header=present',
+              disposition: "attachment; filename=voter_ids.#{election_id}.tsv"
   end
 
   sidebar "Progreso", only: :show, priority: 0 do
@@ -117,9 +117,9 @@ ActiveAdmin.register ElectionLocation do
   menu false
   belongs_to :election
   navigation_menu :election
-    
+
   permit_params :election_id, :location, :agora_version, :new_agora_version, :override, :title, :layout, :description, :share_text, :theme, :has_voting_info,
-                election_location_questions_attributes: [ :id, :_destroy, :title, :description, :voting_system, :layout, :winners, :minimum, :maximum, :random_order, :totals, :options, options_headers: [] ]
+                election_location_questions_attributes: [:id, :_destroy, :title, :description, :voting_system, :layout, :winners, :minimum, :maximum, :random_order, :totals, :options, options_headers: []]
 
   form partial: "election_location", locals: { spain: Carmen::Country.coded("ES") }
 
@@ -136,5 +136,4 @@ ActiveAdmin.register ElectionLocation do
       end
     end
   end
-
 end

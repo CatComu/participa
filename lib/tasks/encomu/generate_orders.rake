@@ -1,5 +1,4 @@
 namespace :encomu do
-
   desc "[encomu] Generate orders for collaborations for a specific month"
   task :generate_orders, [:month, :year] => :environment do |t, args|
     args.with_defaults(:month => Date.current.month, :year => Date.current.year)
@@ -10,9 +9,6 @@ namespace :encomu do
   end
 end
 
-#colaboraciones mensuales/trimestrales/anuales
-# - traerse ultima orden 
+# colaboraciones mensuales/trimestrales/anuales
+# - traerse ultima orden
 # - generar nueva, si corresponde
-
-
-

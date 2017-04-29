@@ -17,11 +17,11 @@ class ApplicationController < ActionController::Base
         tracking.info "** Anonymous ** #{request.method()} #{request.path}"
       end
       tracking.info params.to_s
-      #tracking.info request
+      # tracking.info request
     end
   end
 
-  def default_url_options(options={})
+  def default_url_options(options = {})
     { locale: I18n.locale }
   end
 
@@ -32,9 +32,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(user)
     cookies.permanent[:cookiepolicy] = 'hide'
 
-    super    
+    super
   end
-  
+
   def banned_user
     if current_user and current_user.banned?
       name = current_user.full_name
@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
     unless signed_in? && (current_user.is_admin? || current_user.finances_admin? || current_user.impulsa_admin?)
       redirect_to root_url, flash: { error: t('unauthorized.default') }
     end
-  end 
+  end
 
   def user_for_papertrail
     user_signed_in? ? current_user : "Unknown user"

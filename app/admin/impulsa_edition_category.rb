@@ -29,11 +29,11 @@ ActiveAdmin.register ImpulsaEditionCategory do
         div class: :readonly do link_to(resource.impulsa_edition.name, admin_impulsa_edition_path(resource.impulsa_edition)) end
       end
       f.input :name
-      f.input :category_type, as: :select, collection: ImpulsaEditionCategory::CATEGORY_TYPES.map{|k,v| [t("podemos.impulsa.category_type_name.#{k}"), v]}
+      f.input :category_type, as: :select, collection: ImpulsaEditionCategory::CATEGORY_TYPES.map { |k, v| [t("podemos.impulsa.category_type_name.#{k}"), v] }
       f.input :winners, min: 1
       f.input :prize, min: 0
       f.input :only_authors
-      f.input :coofficial_language, as: :select, collection: I18n.available_locales.map {|l| [I18n.name_for_locale(l),l] if l!=I18n.default_locale }
+      f.input :coofficial_language, as: :select, collection: I18n.available_locales.map { |l| [I18n.name_for_locale(l), l] if l != I18n.default_locale }
       f.input :territories, as: :check_boxes, collection: Podemos::GeoExtra::AUTONOMIES.values.uniq.map(&:reverse).sort if resource.has_territory?
       f.input :schedule_model_override, as: :file
       f.input :activities_resources_model_override, as: :file

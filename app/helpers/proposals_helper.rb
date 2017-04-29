@@ -1,5 +1,4 @@
 module ProposalsHelper
-
   def time_left(proposal)
     distance_of_time_in_words_to_now(proposal.finishes_at)
   end
@@ -13,12 +12,12 @@ module ProposalsHelper
   end
 
   def formatted_support_count(proposal)
-    number_with_delimiter(@proposal.supports.count) + 
-    " de " +
-    number_with_delimiter(proposal.agoravoting_required_votes)
+    number_with_delimiter(@proposal.supports.count) +
+      " de " +
+      number_with_delimiter(proposal.agoravoting_required_votes)
   end
 
-  def formatted_support_percentage(proposal, options={})
+  def formatted_support_percentage(proposal, options = {})
     number_to_percentage(proposal.support_percentage, options)
   end
 
@@ -37,5 +36,4 @@ module ProposalsHelper
   def active?(filter)
     params[:filter] == filter ? 'active' : ''
   end
-
 end

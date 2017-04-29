@@ -11,7 +11,7 @@ FactoryGirl.define do
     location "11"
     agora_version 1
   end
-  
+
   trait :province_location do
     location "28"
   end

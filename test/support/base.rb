@@ -16,7 +16,6 @@ module ActiveSupport
       Rails.application.reload_routes!
 
       yield
-
     ensure
       features.each do |name, value|
         Rails.application.secrets.features[name.to_s] = prev[name]

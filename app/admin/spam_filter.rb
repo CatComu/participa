@@ -33,8 +33,8 @@ ActiveAdmin.register SpamFilter do
       end
 
       h3 "Usuarios afectados"
-      para id:"js-spam-filter-users"
-      a 'Volver', class:"button", href:admin_spam_filter_path(id: id)
+      para id: "js-spam-filter-users"
+      a 'Volver', class: "button", href: admin_spam_filter_path(id: id)
     end
 
     render inline: html.to_s, layout: true
@@ -49,13 +49,13 @@ ActiveAdmin.register SpamFilter do
     html = Arbre::Context.new({}, self) do
       users.each do |u|
         para do
-          a u.full_name, href:admin_user_path(u)
+          a u.full_name, href: admin_user_path(u)
           span " - #{u.email} - #{u.phone} - #{u.vote_town_name} (#{u.vote_autonomy_name})"
         end
       end
-      if users.length>0
+      if users.length > 0
         para do
-          a 'Expulsar bloque',  href: ban_admin_spam_filter_path(id: id, users: users, data: {confirm:"¿Estas segura de querer expulsar a estos usuarios?"})
+          a 'Expulsar bloque', href: ban_admin_spam_filter_path(id: id, users: users, data: { confirm: "¿Estas segura de querer expulsar a estos usuarios?" })
         end
       end
     end
@@ -68,8 +68,8 @@ ActiveAdmin.register SpamFilter do
 
     filter = SpamFilter.find(id)
     User.ban_users(users, true)
-    User.where(id:users).each do |user|
-      ActiveAdmin::Comment.create(author:current_user,resource:user,namespace:'admin',body:"Usuario expulsado en bloque por el filtro: #{filter.name}")
+    User.where(id: users).each do |user|
+      ActiveAdmin::Comment.create(author: current_user, resource: user, namespace: 'admin', body: "Usuario expulsado en bloque por el filtro: #{filter.name}")
     end
     redirect_to admin_spam_filter_path(id: id)
   end

@@ -10,6 +10,5 @@ module OnlineVerifications
     def images
       documents.select(&:image?)
     end
-
   end
 end

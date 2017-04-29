@@ -76,10 +76,10 @@ ActiveAdmin.register Verification::Center do
           f.has_many :verification_slots, allow_destroy: true, heading: false do |slot|
             %i(starts_at ends_at).each do |datetime|
               slot.input datetime,
-                required: true,
-                as: :string,
-                input_html: { class: "js-datetime-picker",
-                              data: { locale: I18n.t("meta.flatpickr_code") } }
+                         required: true,
+                         as: :string,
+                         input_html: { class: "js-datetime-picker",
+                                       data: { locale: I18n.t("meta.flatpickr_code") } }
             end
           end
         end
@@ -87,5 +87,4 @@ ActiveAdmin.register Verification::Center do
     end
     f.actions
   end
-
 end

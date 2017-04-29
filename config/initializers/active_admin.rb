@@ -1,5 +1,4 @@
 ActiveAdmin.setup do |config|
-
   # == Site Title
   #
   # Set the title that is displayed on the main layout
@@ -77,7 +76,6 @@ ActiveAdmin.setup do |config|
   # (within the application controller) to return the currently logged in user.
   config.current_user_method = :current_user
 
-
   # == Logging Out
   #
   # Active Admin displays a logout link on each screen. These
@@ -96,7 +94,6 @@ ActiveAdmin.setup do |config|
   # Default:
   config.logout_link_method = :delete
 
-
   # == Root
   #
   # Set the action to call for the root path. You can set different
@@ -104,7 +101,6 @@ ActiveAdmin.setup do |config|
   #
   # Default:
   # config.root_to = 'dashboard#index'
-
 
   # == Admin Comments
   #
@@ -114,18 +110,16 @@ ActiveAdmin.setup do |config|
   # config.allow_comments = false
   #
   # You can disable the menu item for the comments index page:
-  #config.show_comments_in_menu = false
+  # config.show_comments_in_menu = false
   #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
-
 
   # == Batch Actions
   #
   # Enable and disable Batch Actions
   #
   config.batch_actions = true
-
 
   # == Controller Filters
   #
@@ -134,11 +128,9 @@ ActiveAdmin.setup do |config|
   #
   # config.before_action :do_something_awesome
 
-
   # == Setting a Favicon
   #
   config.favicon = '/assets/favicon.png'
-
 
   # == Removing Breadcrumbs
   #
@@ -146,7 +138,6 @@ ActiveAdmin.setup do |config|
   # resources or you can disable them globally from here.
   #
   # config.breadcrumb = false
-
 
   # == Register Stylesheets & Javascripts
   #
@@ -213,7 +204,6 @@ ActiveAdmin.setup do |config|
   #
   # config.default_per_page = 30
 
-
   # == Filters
   #
   # By default the index screen includes a “Filters” sidebar on the right
@@ -221,7 +211,6 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
-
 end
 
 ActiveAdmin::Views::SidebarSection.class_eval do

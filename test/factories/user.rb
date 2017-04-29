@@ -1,11 +1,10 @@
 FactoryGirl.define do
-
   sequence :email do |n|
     "foo#{n}@example.com"
   end
 
   sequence :document_vatid do |n|
-    "#{n.to_s.rjust(8,'0')}#{'TRWAGMYFPDXBNJZSQVHLCKE'[n % 23].chr}"
+    "#{n.to_s.rjust(8, '0')}#{'TRWAGMYFPDXBNJZSQVHLCKE'[n % 23].chr}"
   end
 
   sequence :phone do |n|
@@ -15,16 +14,16 @@ FactoryGirl.define do
   factory :user do
     last_name "Perez"
     first_name "Pepito"
-    email 
+    email
     password '123456789'
     confirmed_at Time.zone.now
-    born_at Date.civil(1983, 2, 1) 
+    born_at Date.civil(1983, 2, 1)
     wants_newsletter true
     document_type 1
-    document_vatid 
+    document_vatid
     admin false
     spanish
-    address "C/ Inventada, 123" 
+    address "C/ Inventada, 123"
     vote_town "m_28_079_6"
     phone
     flags 0

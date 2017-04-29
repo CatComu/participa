@@ -78,7 +78,7 @@ class MunicipyExtractor
     raw = CSV.read("db/ine/16codmun.csv")
     raw.each do |a|
       if a[0] == @ine_code
-        municipies << [ "m_#{a[0]}_#{a[1]}_#{a[2]}" , a[3] ]
+        municipies << ["m_#{a[0]}_#{a[1]}_#{a[2]}", a[3]]
       end
     end
     municipies

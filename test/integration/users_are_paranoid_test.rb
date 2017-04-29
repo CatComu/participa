@@ -40,5 +40,4 @@ class UsersAreParanoidTest < JsFeatureTest
     assert_content I18n.t("devise.registrations.signed_up_but_unconfirmed")
     assert_equal 1, User.all.count
   end
-
 end
