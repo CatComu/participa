@@ -59,7 +59,8 @@ class SmsValidatorControllerTest < ActionController::TestCase
       'image/png'
     )
 
-    online_verifications_upload = { documents_attributes: {
+    online_verifications_upload = {
+      documents_attributes: {
         "0" => {
           scanned_picture: image
         }
@@ -108,7 +109,8 @@ class SmsValidatorControllerTest < ActionController::TestCase
       'image/png'
     )
 
-    online_verifications_upload = { documents_attributes: {
+    online_verifications_upload = {
+      documents_attributes: {
         "0" => {
           scanned_picture: image
         }

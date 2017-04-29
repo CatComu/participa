@@ -5,7 +5,8 @@ class PodemosImportCollaborations
   end
 
   def self.process_row(row)
-    params = { document_vatid: row["DNI / NIE"].strip.upcase,
+    params = {
+      document_vatid: row["DNI / NIE"].strip.upcase,
       full_name: row["Apellidos"] ? "#{row['Nombre']} #{row['Apellidos']}" : row['Nombre'],
       email: row["Email"],
       ccc_1: row["Entidad"],

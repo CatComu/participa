@@ -31,5 +31,6 @@ SimpleCaptcha.setup do |sc|
       "-background '#716e6b'",
       "-fill '#FFFFFF'",
       "-border 2",
-      "-bordercolor '#eb5a59'"])
+      "-bordercolor '#eb5a59'"
+  ])
 end

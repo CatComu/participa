@@ -30,14 +30,15 @@ ActiveAdmin.register Microcredit do
       end).join("<br/>").html_safe
     end
     column :progress do |m|
-        ["<strong>Objetivo: #{number_to_euro m.total_goal*100, 0}",
+        [
+          "<strong>Objetivo: #{number_to_euro m.total_goal*100, 0}",
           "#{m.campaign_created_count}:&nbsp;#{number_to_euro(m.campaign_created_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*m.campaign_created_amount/m.total_goal, precision:2)})</strong>",
           "#{m.campaign_confirmed_count}&check;:&nbsp;#{number_to_euro(m.campaign_confirmed_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*m.campaign_confirmed_amount/m.campaign_created_amount, precision:2)})",
           "#{m.campaign_unconfirmed_count}&cross;:&nbsp;#{number_to_euro(m.campaign_unconfirmed_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*m.campaign_unconfirmed_amount/m.campaign_created_amount, precision:2)})",
           "#{m.campaign_counted_count}&oplus;:&nbsp;#{number_to_euro(m.campaign_counted_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*m.campaign_counted_amount/m.campaign_created_amount, precision:2)})",
           "#{m.campaign_not_counted_count}&ominus;:&nbsp;#{number_to_euro(m.campaign_not_counted_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*m.campaign_not_counted_amount/m.campaign_created_amount, precision:2)})",
           "#{m.campaign_discarded_count}&#9785;:&nbsp;#{number_to_euro(m.campaign_discarded_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*m.campaign_discarded_amount/m.campaign_created_amount, precision:2)})"
-          ].join("<br/>").html_safe
+        ].join("<br/>").html_safe
     end
     actions
   end
@@ -101,14 +102,15 @@ ActiveAdmin.register Microcredit do
         end).join("<br/>").html_safe
       end
       row :progress do
-        ["<strong>Objetivo: #{number_to_euro microcredit.total_goal*100, 0}",
+        [
+          "<strong>Objetivo: #{number_to_euro microcredit.total_goal*100, 0}",
           "#{microcredit.campaign_created_count}:&nbsp;#{number_to_euro(microcredit.campaign_created_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*microcredit.campaign_created_amount/microcredit.total_goal, precision:2)})</strong>",
           "#{microcredit.campaign_confirmed_count}&check;:&nbsp;#{number_to_euro(microcredit.campaign_confirmed_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*microcredit.campaign_confirmed_amount/microcredit.campaign_created_amount, precision:2)})",
           "#{microcredit.campaign_unconfirmed_count}&cross;:&nbsp;#{number_to_euro(microcredit.campaign_unconfirmed_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*microcredit.campaign_unconfirmed_amount/microcredit.campaign_created_amount, precision:2)})",
           "#{microcredit.campaign_counted_count}&oplus;:&nbsp;#{number_to_euro(microcredit.campaign_counted_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*microcredit.campaign_counted_amount/microcredit.campaign_created_amount, precision:2)})",
           "#{microcredit.campaign_not_counted_count}&ominus;:&nbsp;#{number_to_euro(microcredit.campaign_not_counted_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*microcredit.campaign_not_counted_amount/microcredit.campaign_created_amount, precision:2)})",
           "#{microcredit.campaign_discarded_count}&#9785;:&nbsp;#{number_to_euro(microcredit.campaign_discarded_amount*100, 0)}&nbsp;(#{number_to_percentage(100.0*microcredit.campaign_discarded_amount/microcredit.campaign_created_amount, precision:2)})"
-          ].join("<br/>").html_safe
+        ].join("<br/>").html_safe
       end
       row :reset_at
       row :created_at

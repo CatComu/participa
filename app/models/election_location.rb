@@ -6,11 +6,12 @@ class ElectionLocation < ApplicationRecord
 
   validates :title, :layout, :theme, presence: true, if: -> { self.has_voting_info }
 
-  LAYOUTS = { "simple" => "Listado de respuestas simple", 
-              "accordion" => "Listado de respuestas agrupadas por categoría",
-              "pcandidates-election" => "Listado respuestas agrupadas por categoría y pregunta", 
-              "2questions-conditional" => "Pregunta con 2 respuestas, si se elige la segunda puede aparecer otra con hasta 4 respuestas"
-            }
+  LAYOUTS = {
+    "simple" => "Listado de respuestas simple",
+    "accordion" => "Listado de respuestas agrupadas por categoría",
+    "pcandidates-election" => "Listado respuestas agrupadas por categoría y pregunta",
+    "2questions-conditional" => "Pregunta con 2 respuestas, si se elige la segunda puede aparecer otra con hasta 4 respuestas"
+  }
   ELECTION_LAYOUTS = [ "pcandidates-election", "2questions-conditional" ]
   
   def self.themes
