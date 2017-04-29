@@ -51,13 +51,13 @@ class CollaborationsControllerTest < ActionController::TestCase
 
   test "should get OK" do
     sign_in @user
-    get :OK
+    get :ok
     assert_response :success
   end
 
   test "should get KO" do
     sign_in @user
-    get :KO
+    get :ko
     assert_response :success
   end
 

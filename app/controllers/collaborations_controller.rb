@@ -1,7 +1,7 @@
 class CollaborationsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_collaboration, only: [:confirm, :confirm_bank, :edit, :modify, :destroy, :OK, :KO]
+  before_action :set_collaboration, only: [:confirm, :confirm_bank, :edit, :modify, :destroy, :ok, :ko]
  
   def new
     redirect_to edit_collaboration_path and return if current_user.collaboration 
@@ -59,7 +59,7 @@ class CollaborationsController < ApplicationController
     @order = @collaboration.create_order Time.zone.now, true if @collaboration.is_credit_card?
   end
 
-  def OK
+  def ok
     redirect_to new_collaboration_path and return unless @collaboration
     if not @collaboration.is_active?
       if @collaboration.is_credit_card?
@@ -70,7 +70,7 @@ class CollaborationsController < ApplicationController
     end
   end
 
-  def KO
+  def ko
   end
 
   private
