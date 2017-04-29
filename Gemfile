@@ -73,7 +73,7 @@ group :development, :test do
   gem 'capistrano-passenger'
   gem 'factory_girl_rails'
   gem 'byebug'
-  gem 'rubocop'
+  gem 'rubocop', github: 'bbatsov/rubocop'
   gem 'ruby-prof'
   gem 'simplecov'
 end
