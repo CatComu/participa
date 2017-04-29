@@ -4,7 +4,7 @@ namespace :deploy do
 
   namespace :pending do
     def git(command, from:, to:)
-      run_locally { execute("git #{command} #{from}..#{to}") }
+      ::Kernel.exec 'git', command, "#{from}..#{to}"
     end
 
     def ensure_revision
@@ -21,7 +21,7 @@ namespace :deploy do
       of the changes that have occurred since the last deploy.
     DESC
     task log: :capture_revision do
-      git(:log, from: fetch(:revision), to: fetch(:branch))
+      git('log', from: fetch(:revision), to: fetch(:branch))
     end
 
     desc <<-DESC
@@ -29,7 +29,7 @@ namespace :deploy do
       examine what changes are about to be deployed.
     DESC
     task diff: :capture_revision do
-      git(:diff, from: fetch(:revision), to: fetch(:branch))
+      git('diff', from: fetch(:revision), to: fetch(:branch))
     end
 
     task :capture_revision do
