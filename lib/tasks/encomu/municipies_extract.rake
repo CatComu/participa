@@ -63,13 +63,12 @@ namespace :encomu do
       FileUtils.mkdir_p("tmp/sendy") unless File.directory?("tmp/sendy")
       @sendy_lists_file = File.open("tmp/sendy/update_lists.sql", 'w')
 
-      @INSERT_TEMPLATE = ERB.new <<-END
-INSERT INTO lists (app, userID, name, thankyou_message, goodbye_message, confirmation_email, custom_fields)
-SELECT <%= @appID %>, <%= @userID %>, "<%= name %> - <%= code %>", <%= @EMPTY_PAGE %>, <%= @EMPTY_PAGE %>, <%= @EMPTY_PAGE %>, NULL
-FROM lists WHERE NOT EXISTS(
-  SELECT * FROM lists l WHERE l.name LIKE '% - <%= code %>'
-) LIMIT 1;
-
+      @INSERT_TEMPLATE = ERB.new <<~END
+        INSERT INTO lists (app, userID, name, thankyou_message, goodbye_message, confirmation_email, custom_fields)
+        SELECT <%= @appID %>, <%= @userID %>, "<%= name %> - <%= code %>", <%= @EMPTY_PAGE %>, <%= @EMPTY_PAGE %>, <%= @EMPTY_PAGE %>, NULL
+        FROM lists WHERE NOT EXISTS(
+          SELECT * FROM lists l WHERE l.name LIKE '% - <%= code %>'
+        ) LIMIT 1;
       END
       @EMPTY_PAGE = "'<html><head></head><body></body></html>'"
     end

@@ -8,14 +8,9 @@ namespace :encomu do
              end
 
     if target.none?
-      STDOUT.print <<~MSG
-
-        No users left to be resent a confirmation email.
-
-      MSG
+      STDOUT.print "\nNo users left to be resent a confirmation email.\n\n"
     else
       STDOUT.print <<~MSG.strip
-
         About to resend confirmation email to the following #{target.size} users:
 
         #{target.pluck(:email).join("\n")}

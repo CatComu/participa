@@ -159,12 +159,12 @@ class OpenIdController < ApplicationController
       return
     end
     # content negotiation failed, so just render the user page
-    identity_page = <<EOS
+    identity_page = <<~EOS
       <html><head>
       <meta http-equiv="X-XRDS-Location" content="#{open_id_xrds_url}" />
       <link rel="openid.server" href="#{open_id_create_url}" />
       </head><body></body></html>
-EOS
+    EOS
     # Also add the Yadis location header, so that they don't have
     # to parse the html unless absolutely necessary.
     response.headers['X-XRDS-Location'] = open_id_xrds_url
@@ -202,19 +202,19 @@ EOS
       type_str += "<Type>#{uri}</Type>\n      "
     }
 
-    yadis = <<EOS
-<?xml version="1.0" encoding="UTF-8"?>
-<xrds:XRDS
-    xmlns:xrds="xri://$xrds"
-    xmlns="xri://$xrd*($v*2.0)">
-  <XRD>
-    <Service priority="0">
-      #{type_str}
-      <URI>#{open_id_create_url}</URI>
-    </Service>
-  </XRD>
-</xrds:XRDS>
-EOS
+    yadis = <<~EOS
+      <?xml version="1.0" encoding="UTF-8"?>
+      <xrds:XRDS
+          xmlns:xrds="xri://$xrds"
+          xmlns="xri://$xrd*($v*2.0)">
+        <XRD>
+          <Service priority="0">
+            #{type_str}
+            <URI>#{open_id_create_url}</URI>
+          </Service>
+        </XRD>
+      </xrds:XRDS>
+    EOS
 
     render :text => yadis, :content_type => 'application/xrds+xml'
   end
