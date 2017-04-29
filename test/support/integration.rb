@@ -1,13 +1,15 @@
 require 'capybara/rails'
 require 'capybara/minitest'
 
-class ActionDispatch::IntegrationTest
-  include Warden::Test::Helpers
-  include Capybara::DSL
-  include Capybara::Minitest::Assertions
+module ActionDispatch
+  class IntegrationTest
+    include Warden::Test::Helpers
+    include Capybara::DSL
+    include Capybara::Minitest::Assertions
 
-  teardown do
-    Capybara.reset_sessions!
+    teardown do
+      Capybara.reset_sessions!
+    end
   end
 end
 
