@@ -2,7 +2,6 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
   include ApplicationHelper
-  include FontAwesome::Rails::IconHelper
 
   attr_reader :request
 

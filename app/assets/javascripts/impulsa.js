@@ -49,7 +49,6 @@
 			$proyectos.isotope({filter:""});
 			$("#botonera a").removeClass("active");
 		});
-		$('#cargando').fadeOut('slow', function() {  });
 	});
 })(jQuery);
 

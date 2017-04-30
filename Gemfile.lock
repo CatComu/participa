@@ -184,8 +184,6 @@ GEM
     ffi-icu (0.1.10)
       ffi (~> 1.0, >= 1.0.9)
     flag_shih_tzu (0.3.16)
-    font-awesome-rails (4.7.0.1)
-      railties (>= 3.2, < 5.1)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic-bootstrap (3.1.1)
@@ -452,7 +450,6 @@ DEPENDENCIES
   factory_girl_rails
   ffi-icu
   flag_shih_tzu
-  font-awesome-rails
   formtastic
   formtastic-bootstrap
   friendly_id (~> 5.1.0)

@@ -7,7 +7,7 @@ module BlogHelper
       paraphs = content.split("\n", max_paraphs + 1)
       if paraphs.length > max_paraphs
         content = paraphs[0..(max_paraphs - 1)].join("\n")
-        read_more = content_tag(:p, link_to(fa_icon("plus-circle", text: 'Seguir leyendo'), post))
+        read_more = content_tag(:p, link_to('Seguir leyendo', post))
       end
     end
 
