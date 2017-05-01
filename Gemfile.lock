@@ -196,7 +196,7 @@ GEM
     ffi (1.9.14)
     ffi-icu (0.1.10)
       ffi (~> 1.0, >= 1.0.9)
-    flag_shih_tzu (0.3.16)
+    flag_shih_tzu (0.3.18)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic-bootstrap (3.1.1)
