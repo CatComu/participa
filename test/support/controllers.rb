@@ -1,3 +1,5 @@
-class ActionController::TestCase
-  include Devise::Test::ControllerHelpers
+module ActionController
+  class TestCase
+    include Devise::Test::ControllerHelpers
+  end
 end

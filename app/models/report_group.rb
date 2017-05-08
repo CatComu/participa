@@ -3,16 +3,16 @@ class ReportGroup < ApplicationRecord
     begin
       get_proc.call row
     rescue
-      [[ "ERROR", "ERROR" ]]
+      [["ERROR", "ERROR"]]
     end
   end
 
   def format_group_name name
-    name.ljust(width)[0..width-1]
+    name.ljust(width)[0..width - 1]
   end
 
   def create_temp_file folder
-    @file = File.open( "#{folder}/#{self.id}.dat", 'w:UTF-8' )
+    @file = File.open("#{folder}/#{self.id}.dat", 'w:UTF-8')
   end
 
   def write data
@@ -34,7 +34,7 @@ class ReportGroup < ApplicationRecord
   def get_blacklist
     @blacklist ||= self[:blacklist].split("\r\n")
   end
-  
+
   def proc= value
     @proc = nil
     self[:proc] = value
@@ -53,14 +53,14 @@ class ReportGroup < ApplicationRecord
     @blacklist = nil
     self[:blacklist] = value
   end
-  
+
   def blacklist? value
     get_blacklist.include? value
   end
 
   def self.serialize data
     if data.is_a? Array
-      data.map {|d| d.attributes.to_yaml } .to_yaml
+      data.map { |d| d.attributes.to_yaml } .to_yaml
     else
       data.attributes.to_yaml
     end

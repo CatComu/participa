@@ -141,7 +141,7 @@ class UserRegistrationsTest < JsFeatureTest
       I18n.t("devise.registrations.signed_up_but_unconfirmed")
   end
 
-  def assert_location(user, town: nil, province:,  country:)
+  def assert_location(user, town: nil, province:, country:)
     assert_equal town, user.town_name if town
     assert_equal province, user.province_name
     assert_equal country, user.country_name

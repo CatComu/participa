@@ -42,7 +42,7 @@ class Ability
         can [:show, :read], ImpulsaEdition
         can [:show, :read, :update], ImpulsaProject
       end
-      
+
       if user.finances_admin? || user.impulsa_admin?
         can [:read, :create], ActiveAdmin::Comment
       end
@@ -82,6 +82,5 @@ class Ability
 
       cannot :admin, :all
     end
-
   end
 end

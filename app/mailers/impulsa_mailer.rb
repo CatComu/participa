@@ -52,4 +52,3 @@ class ImpulsaMailer < ActionMailer::Base
     )
   end
 end
-  

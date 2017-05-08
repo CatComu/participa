@@ -18,7 +18,7 @@ ActiveAdmin.register Proposal do
 
   filter :title
 
-  show do 
+  show do
     attributes_table do
       row :title
       row :description do
@@ -37,5 +37,4 @@ ActiveAdmin.register Proposal do
     end
     f.actions
   end
-  
 end

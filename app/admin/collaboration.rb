@@ -1,16 +1,16 @@
 def show_order o, html_output = true
-  otext  = if o.has_errors?
-              "x"
-            elsif o.has_warnings?
-              "!"
-            elsif o.is_paid?
-              "o"
-            elsif o.was_returned?
-              "d"
-            elsif o.is_chargeable? or not o.persisted?
-              "_"
-            else
-              "~"
+  otext = if o.has_errors?
+            "x"
+          elsif o.has_warnings?
+            "!"
+          elsif o.is_paid?
+            "o"
+          elsif o.was_returned?
+            "d"
+          elsif o.is_chargeable? or not o.persisted?
+            "_"
+          else
+            "~"
             end
   otext = link_to(otext, admin_order_path(o)).html_safe if o.persisted? and html_output
   otext
@@ -18,11 +18,11 @@ end
 
 def show_collaboration_orders(collaboration, html_output = true)
   today = Date.current.unique_month
-  output = (collaboration.get_orders(Date.current-6.months, Date.current+6.months).map do |orders|
+  output = (collaboration.get_orders(Date.current - 6.months, Date.current + 6.months).map do |orders|
     odate = orders[0].payable_at
     month = odate.month.to_s
-    month = (html_output ? content_tag(:strong, month).html_safe : "|"+month+"|") if odate.unique_month==today
-    month_orders = orders.sort_by {|o| o.created_at or Date.civil(2100,1,1) }.map {|o| show_order o, html_output } .join("")
+    month = (html_output ? content_tag(:strong, month).html_safe : "|" + month + "|") if odate.unique_month == today
+    month_orders = orders.sort_by { |o| o.created_at or Date.civil(2100, 1, 1) }.map { |o| show_order o, html_output } .join("")
     if html_output
       month + month_orders.html_safe
     else
@@ -39,14 +39,14 @@ ActiveAdmin.register Collaboration do
   else
     menu false
   end
-  
+
   scope_to Collaboration, association_method: :full_view
   config.sort_order = 'updated_at_desc'
 
   menu :parent => "Colaboraciones"
 
-  permit_params  :user_id, :status, :amount, :frequency, :payment_type, :ccc_entity, :ccc_office, :ccc_dc, :ccc_account, :iban_account, :iban_bic, 
-    :redsys_identifier, :redsys_expiration, :for_autonomy_cc, :for_town_cc, :for_island_cc
+  permit_params :user_id, :status, :amount, :frequency, :payment_type, :ccc_entity, :ccc_office, :ccc_dc, :ccc_account, :iban_account, :iban_bic,
+                :redsys_identifier, :redsys_expiration, :for_autonomy_cc, :for_town_cc, :for_island_cc
 
   actions :all, :except => [:new]
 
@@ -87,7 +87,7 @@ ActiveAdmin.register Collaboration do
       collaboration.created_at.strftime "%d-%m-%y %H-%M"
     end
     column :method, sortable: 'payment_type' do |collaboration|
-      collaboration.payment_type==1 ? "Tarjeta" : "Recibo"
+      collaboration.payment_type == 1 ? "Tarjeta" : "Recibo"
     end
     column :territorial do |collaboration|
       status_tag("Cca") if collaboration.for_autonomy_cc
@@ -101,10 +101,10 @@ ActiveAdmin.register Collaboration do
       status_tag("Errores", :error) if collaboration.has_errors?
       collaboration.deleted? ? status_tag("Borrado", :error) : ""
       if collaboration.redsys_expiration
-        if collaboration.redsys_expiration<Date.current
+        if collaboration.redsys_expiration < Date.current
           status_tag("Caducada", :error)
-        elsif collaboration.redsys_expiration<Date.current+1.month
-          status_tag("Caducará", :warn) 
+        elsif collaboration.redsys_expiration < Date.current + 1.month
+          status_tag("Caducará", :warn)
         end
       end
     end
@@ -114,7 +114,7 @@ ActiveAdmin.register Collaboration do
   sidebar "Acciones", 'data-panel' => :collapsed, only: :index, priority: 0 do
     status = Collaboration.has_bank_file? Date.current
 
-    h4 "Pagos con tarjeta" 
+    h4 "Pagos con tarjeta"
     ul do
       li link_to 'Cobrar tarjetas', params.merge(:action => :charge), data: { confirm: "Se enviarán los datos de todas las órdenes para que estas sean cobradas. ¿Deseas continuar?" }
     end
@@ -122,27 +122,27 @@ ActiveAdmin.register Collaboration do
     h4 "Recibos"
     ul do
       li link_to 'Crear órdenes de este mes', params.merge(:action => :generate_orders), data: { confirm: "Este carga el sistema, por lo que debe ser lanzado lo menos posible, idealmente una vez al mes. ¿Deseas continuar?" }
-      #li link_to("Generar fichero para el banco", params.merge(:action => :generate_csv))
-      #if status[1]
+      # li link_to("Generar fichero para el banco", params.merge(:action => :generate_csv))
+      # if status[1]
       #  active = status[0] ? " (en progreso)" : ""
       #  li link_to("Descargar fichero para el banco#{active}", params.merge(:action => :download_csv))
-      #end
-      li link_to 'Generar fichero en formato SEPA (xml)', params.merge(:action => :generate_sepa_xml) 
+      # end
+      li link_to 'Generar fichero en formato SEPA (xml)', params.merge(:action => :generate_sepa_xml)
       li link_to 'Generar fichero en formato SEPA (xls)', params.merge(:action => :generate_sepa_xls)
       li do
         this_month = Order.banks.by_date(Date.current, Date.current).to_be_charged.count
-        prev_month = Order.banks.by_date(Date.current-1.month, Date.current-1.month).to_be_charged.count
+        prev_month = Order.banks.by_date(Date.current - 1.month, Date.current - 1.month).to_be_charged.count
         """Marcar como enviadas:
-        #{link_to Date.current.strftime("%b (#{this_month})").downcase, params.merge(action: :mark_as_charged, date: Date.current), data: { confirm: "Esta acción no se puede deshacer. ¿Deseas continuar?" } }
-        #{link_to (Date.current-1.month).strftime("%b (#{prev_month})").downcase, params.merge(action: :mark_as_charged, date: Date.current-1.month), data: { confirm: "Esta acción no se puede deshacer. ¿Deseas continuar?" } }
+        #{link_to Date.current.strftime("%b (#{this_month})").downcase, params.merge(action: :mark_as_charged, date: Date.current), data: { confirm: "Esta acción no se puede deshacer. ¿Deseas continuar?" }}
+        #{link_to (Date.current - 1.month).strftime("%b (#{prev_month})").downcase, params.merge(action: :mark_as_charged, date: Date.current - 1.month), data: { confirm: "Esta acción no se puede deshacer. ¿Deseas continuar?" }}
         """.html_safe
       end
       li do
         this_month = Order.banks.by_date(Date.current, Date.current).charging.count
-        prev_month = Order.banks.by_date(Date.current-1.month, Date.current-1.month).charging.count
+        prev_month = Order.banks.by_date(Date.current - 1.month, Date.current - 1.month).charging.count
         """Marcar como pagadas:
-        #{link_to Date.current.strftime("%b (#{this_month})").downcase, params.merge(action: :mark_as_paid, date: Date.current), data: { confirm: "Esta acción no se puede deshacer. ¿Deseas continuar?" } }
-        #{link_to (Date.current-1.month).strftime("%b (#{prev_month})").downcase, params.merge(action: :mark_as_paid, date: Date.current-1.month), data: { confirm: "Esta acción no se puede deshacer. ¿Deseas continuar?" } }
+        #{link_to Date.current.strftime("%b (#{this_month})").downcase, params.merge(action: :mark_as_paid, date: Date.current), data: { confirm: "Esta acción no se puede deshacer. ¿Deseas continuar?" }}
+        #{link_to (Date.current - 1.month).strftime("%b (#{prev_month})").downcase, params.merge(action: :mark_as_paid, date: Date.current - 1.month), data: { confirm: "Esta acción no se puede deshacer. ¿Deseas continuar?" }}
         """.html_safe
       end
     end
@@ -151,28 +151,28 @@ ActiveAdmin.register Collaboration do
     ul do
       li do
         """Autonómica:
-        #{link_to Date.current.strftime("%b").downcase, params.merge(action: :download_for_autonomy, date: Date.current) }
-        #{link_to (Date.current-1.month).strftime("%b").downcase, params.merge(action: :download_for_autonomy, date: Date.current-1.month) }
+        #{link_to Date.current.strftime("%b").downcase, params.merge(action: :download_for_autonomy, date: Date.current)}
+        #{link_to (Date.current - 1.month).strftime("%b").downcase, params.merge(action: :download_for_autonomy, date: Date.current - 1.month)}
         """.html_safe
       end
       li do
         """Municipal:
-        #{link_to Date.current.strftime("%b").downcase, params.merge(action: :download_for_town, date: Date.current) }
-        #{link_to (Date.current-1.month).strftime("%b").downcase, params.merge(action: :download_for_town, date: Date.current-1.month) }
+        #{link_to Date.current.strftime("%b").downcase, params.merge(action: :download_for_town, date: Date.current)}
+        #{link_to (Date.current - 1.month).strftime("%b").downcase, params.merge(action: :download_for_town, date: Date.current - 1.month)}
         """.html_safe
       end
       li do
         """Insular:
-        #{link_to Date.current.strftime("%b").downcase, params.merge(action: :download_for_island, date: Date.current) }
-        #{link_to (Date.current-1.month).strftime("%b").downcase, params.merge(action: :download_for_island, date: Date.current-1.month) }
+        #{link_to Date.current.strftime("%b").downcase, params.merge(action: :download_for_island, date: Date.current)}
+        #{link_to (Date.current - 1.month).strftime("%b").downcase, params.merge(action: :download_for_island, date: Date.current - 1.month)}
         """.html_safe
       end
     end
   end
-  
-  sidebar "Procesar respuestas del banco", 'data-panel' => :collapsed, :only => :index, priority: 1 do  
+
+  sidebar "Procesar respuestas del banco", 'data-panel' => :collapsed, :only => :index, priority: 1 do
     render("admin/process_bank_response")
-  end 
+  end
 
   sidebar "Ayuda", 'data-panel' => :collapsed, only: :index, priority: 2 do
     h4 "Nomenclatura de las órdenes"
@@ -214,10 +214,10 @@ ActiveAdmin.register Collaboration do
       row :created_at
       row :updated_at
       row :deleted_at
-      
+
       if collaboration.is_bank?
         if collaboration.has_iban_account?
-          row :iban_account 
+          row :iban_account
           row :iban_bic do
             status_tag(t("active_admin.empty"), :error) if collaboration.calculate_bic.nil?
             collaboration.calculate_bic
@@ -246,10 +246,10 @@ ActiveAdmin.register Collaboration do
         status_tag("Errores", :error) if collaboration.has_errors?
         collaboration.deleted? ? status_tag("Borrado", :error) : ""
         if collaboration.redsys_expiration
-          if collaboration.redsys_expiration<Date.current
+          if collaboration.redsys_expiration < Date.current
             status_tag("Caducada", :error)
-          elsif collaboration.redsys_expiration<Date.current+1.month
-            status_tag("Caducará", :warn) 
+          elsif collaboration.redsys_expiration < Date.current + 1.month
+            status_tag("Caducará", :warn)
           end
         end
       end
@@ -257,7 +257,7 @@ ActiveAdmin.register Collaboration do
     if collaboration.get_non_user
       panel "Colaboración antigua" do
         attributes_table_for collaboration.get_non_user do
-          row :legacy_id 
+          row :legacy_id
           row :full_name
           row :document_vatid
           row :email
@@ -266,12 +266,12 @@ ActiveAdmin.register Collaboration do
           row :postal_code
           row :country
           row :province
-          row :phone 
+          row :phone
         end
       end
     end
     panel "Órdenes de pago" do
-      table_for collaboration.order.sort { |a,b| b.payable_at <=> a.payable_at } do
+      table_for collaboration.order.sort { |a, b| b.payable_at <=> a.payable_at } do
         column :id do |order|
           link_to order.id, admin_order_path(order.id)
         end
@@ -281,7 +281,7 @@ ActiveAdmin.register Collaboration do
         column :amount do |order|
           number_to_euro order.amount
         end
-        column :payable_at  
+        column :payable_at
         column :payed_at
       end
     end
@@ -292,9 +292,9 @@ ActiveAdmin.register Collaboration do
     f.inputs "Colaboración" do
       f.input :user_id
       f.input :status, as: :select, collection: Collaboration::STATUS.to_a
-      f.input :amount, as: :radio, collection: Collaboration::AMOUNTS.to_a #, input_html: {disabled: true}
-      f.input :frequency, as: :radio, collection: Collaboration::FREQUENCIES.to_a #, input_html: {disabled: true}
-      f.input :payment_type, as: :radio, collection: Order::PAYMENT_TYPES.to_a #, input_html: {disabled: true}
+      f.input :amount, as: :radio, collection: Collaboration::AMOUNTS.to_a # , input_html: {disabled: true}
+      f.input :frequency, as: :radio, collection: Collaboration::FREQUENCIES.to_a # , input_html: {disabled: true}
+      f.input :payment_type, as: :radio, collection: Order::PAYMENT_TYPES.to_a # , input_html: {disabled: true}
       f.input :ccc_entity
       f.input :ccc_office
       f.input :ccc_dc
@@ -309,8 +309,7 @@ ActiveAdmin.register Collaboration do
     end
     f.actions
   end
-  
-  
+
   collection_action :charge, :method => :get do
     Collaboration.credit_cards.pluck(:id).each do |cid|
       if Features.background_jobs?
@@ -322,7 +321,7 @@ ActiveAdmin.register Collaboration do
     redirect_to :admin_collaborations
   end
 
-  collection_action :generate_orders, :method => :get do 
+  collection_action :generate_orders, :method => :get do
     Collaboration.banks.pluck(:id).each do |cid|
       if Features.background_jobs?
         Resque.enqueue(PodemosCollaborationWorker, cid)
@@ -343,31 +342,31 @@ ActiveAdmin.register Collaboration do
     end
     redirect_to :admin_collaborations
   end
-  
+
   collection_action :generate_sepa, :method => :get do
     # FIXME No me queda claro el motivo de este lock
-    #Collaboration.bank_file_lock true
+    # Collaboration.bank_file_lock true
     Rails.logger.info "=================================\n generate_sepa\n=================================\n"
     filename = "triodos_orders"
-    
+
     respond_to do |format|
-        format.xml {
-          response.headers['Content-Disposition'] = 'attachment; filename="' + filename + '.xml"'
-          s = PodemosCollaborationSepaWorker.perform
-          render text: s
-        }
-        format.xls {
-          response.headers['Content-Disposition'] = 'attachment; filename="' + filename + '.xls"'
-          render "collaborations/generate_sepa.xls.erb"
-        }
+      format.xml {
+        response.headers['Content-Disposition'] = 'attachment; filename="' + filename + '.xml"'
+        s = PodemosCollaborationSepaWorker.perform
+        render text: s
+      }
+      format.xls {
+        response.headers['Content-Disposition'] = 'attachment; filename="' + filename + '.xls"'
+        render "collaborations/generate_sepa.xls.erb"
+      }
     end
-    #redirect_to :admin_collaborations, flash: { notice: 'Generado fichero xml para Triodos' }
+    # redirect_to :admin_collaborations, flash: { notice: 'Generado fichero xml para Triodos' }
   end
-  
+
   collection_action :generate_sepa_xls, :method => :get do
     redirect_to "/admin/collaborations/generate_sepa.xls"
   end
-  
+
   collection_action :generate_sepa_xml, :method => :get do
     redirect_to "/admin/collaborations/generate_sepa.xml"
   end
@@ -403,12 +402,12 @@ ActiveAdmin.register Collaboration do
       begin
         code = item.at_xpath("StsRsnInf/Rsn/Cd").text
         order_id = item.at_xpath("OrgnlTxRef/MndtRltdInf/MndtId").text[4..-1].to_i
-        #date = item.at_xpath("OrgnlTxRef/MndtRltdInf/DtOfSgntr").text.to_date
+        # date = item.at_xpath("OrgnlTxRef/MndtRltdInf/DtOfSgntr").text.to_date
         iban = item.at_xpath("OrgnlTxRef/DbtrAcct/Id/IBAN").text.upcase
         bic = item.at_xpath("OrgnlTxRef/DbtrAgt/FinInstnId/BIC").text.upcase
         fullname = item.at_xpath("OrgnlTxRef/Dbtr/Nm").text
 
-        order= Order.find(order_id)
+        order = Order.find(order_id)
         if order
           if order.payment_identifier.upcase == "#{iban}/#{bic}"
             if order.is_paid?
@@ -427,13 +426,13 @@ ActiveAdmin.register Collaboration do
           result = :no_collaboration
         end
 
-          messages << { result: result, order: (order), ret_code: code, account: "#{iban}/#{bic}", fullname:                   fullname }
+        messages << { result: result, order: (order), ret_code: code, account: "#{iban}/#{bic}", fullname: fullname }
       rescue
         messages << { result: :error, info: item, message: $!.message }
       end
     end
-    render "admin/process_bank_response_results", locals: {messages: messages}
-  end  
+    render "admin/process_bank_response_results", locals: { messages: messages }
+  end
 
   member_action :charge_order do
     resource.charge!
@@ -441,7 +440,7 @@ ActiveAdmin.register Collaboration do
   end
 
   action_item(:charge_collaboration, only: :show) do
-    if resource.is_credit_card? 
+    if resource.is_credit_card?
       link_to 'Cobrar', charge_order_admin_collaboration_path(id: resource.id), data: { confirm: "Se enviarán los datos de la orden para que esta sea cobrada. ¿Deseas continuar?" }
     else
       link_to 'Generar orden', charge_order_admin_collaboration_path(id: resource.id)
@@ -511,7 +510,7 @@ ActiveAdmin.register Collaboration do
     column :amount_current do |collaboration|
       collaboration.skip_queries_validations = true
       if collaboration.is_payable? and collaboration.must_have_order? Date.current
-        (collaboration.amount/100 * collaboration.frequency) 
+        (collaboration.amount / 100 * collaboration.frequency)
       else
         0
       end
@@ -520,83 +519,83 @@ ActiveAdmin.register Collaboration do
 
   collection_action :download_for_autonomy, :method => :get do
     date = Date.parse params[:date]
-    months = Hash[(0..3).map{|i| [(date-i.months).unique_month, (date-i.months).strftime("%b").downcase]}.reverse]
+    months = Hash[(0..3).map { |i| [(date - i.months).unique_month, (date - i.months).strftime("%b").downcase] }.reverse]
 
     autonomies = Hash[Podemos::GeoExtra::AUTONOMIES.values]
     autonomies["~"] = "Sin asignación"
-    autonomies_data = Hash.new {|h,k| h[k] = Hash.new 0 }
-    Order.paid.where(town_code:nil, island_code:nil).group(:autonomy_code, Order.unique_month("payable_at")).sum(:amount).each do |k,v|
-      autonomies_data[k[0]||"~"][k[1].to_i] = v
+    autonomies_data = Hash.new { |h, k| h[k] = Hash.new 0 }
+    Order.paid.where(town_code: nil, island_code: nil).group(:autonomy_code, Order.unique_month("payable_at")).sum(:amount).each do |k, v|
+      autonomies_data[k[0] || "~"][k[1].to_i] = v
     end
 
     csv = CSV.generate(encoding: 'utf-8', col_sep: "\t") do |csv|
       csv << ["Comunidad Autónoma"] + months.values
-      autonomies.sort.each do |autonomy_code,autonomy|
-        csv << [autonomy] + months.keys.map{|month| autonomies_data[autonomy_code][month]/100}
+      autonomies.sort.each do |autonomy_code, autonomy|
+        csv << [autonomy] + months.keys.map { |month| autonomies_data[autonomy_code][month] / 100 }
       end
     end
 
     send_data csv.encode('utf-8'),
-      type: 'text/tsv; charset=utf-8; header=present',
-      disposition: "attachment; filename=podemos.for_autonomy_cc.#{Date.current.to_s}.csv"
+              type: 'text/tsv; charset=utf-8; header=present',
+              disposition: "attachment; filename=podemos.for_autonomy_cc.#{Date.current.to_s}.csv"
   end
 
   collection_action :download_for_town, :method => :get do
     date = Date.parse params[:date]
-    months = Hash[(0..3).map{|i| [(date-i.months).unique_month, (date-i.months).strftime("%b").downcase]}.reverse]
+    months = Hash[(0..3).map { |i| [(date - i.months).unique_month, (date - i.months).strftime("%b").downcase] }.reverse]
 
     provinces = Carmen::Country.coded("ES").subregions
-    towns_data = Hash.new {|h,k| h[k] = Hash.new 0 }
-    Order.paid.where(island_code:nil).group(:town_code, Order.unique_month("payable_at")).sum(:amount).each do |k,v|
+    towns_data = Hash.new { |h, k| h[k] = Hash.new 0 }
+    Order.paid.where(island_code: nil).group(:town_code, Order.unique_month("payable_at")).sum(:amount).each do |k, v|
       towns_data[k[0]][k[1].to_i] = v
     end
 
     csv = CSV.generate(encoding: 'utf-8', col_sep: "\t") do |csv|
       csv << ["Comunidad Autónoma", "Provincia", "Municipio"] + months.values
-      provinces.each_with_index do |province,i|
-        prov_code = "p_#{(i+1).to_s.rjust(2, "0")}"
+      provinces.each_with_index do |province, i|
+        prov_code = "p_#{(i + 1).to_s.rjust(2, "0")}"
         province.subregions.each do |town|
-          csv << [ Podemos::GeoExtra::AUTONOMIES[prov_code][1], province.name, town.name ] + months.keys.map{|k| towns_data[town.code][k]/100}
+          csv << [Podemos::GeoExtra::AUTONOMIES[prov_code][1], province.name, town.name] + months.keys.map { |k| towns_data[town.code][k] / 100 }
         end
       end
     end
 
     send_data csv.encode('utf-8'),
-      type: 'text/tsv; charset=utf-8; header=present',
-      disposition: "attachment; filename=podemos.for_town_cc.#{Date.current.to_s}.csv"
+              type: 'text/tsv; charset=utf-8; header=present',
+              disposition: "attachment; filename=podemos.for_town_cc.#{Date.current.to_s}.csv"
   end
 
   collection_action :download_for_island, :method => :get do
     date = Date.parse params[:date]
-    months = Hash[(0..3).map{|i| [(date-i.months).unique_month, (date-i.months).strftime("%b").downcase]}.reverse]
+    months = Hash[(0..3).map { |i| [(date - i.months).unique_month, (date - i.months).strftime("%b").downcase] }.reverse]
 
     provinces = Carmen::Country.coded("ES").subregions
-    towns_data = Hash.new {|h,k| h[k] = Hash.new 0 }
-    Order.paid.where.not(island_code:nil).group(:town_code, Order.unique_month("payable_at")).sum(:amount).each do |k,v|
+    towns_data = Hash.new { |h, k| h[k] = Hash.new 0 }
+    Order.paid.where.not(island_code: nil).group(:town_code, Order.unique_month("payable_at")).sum(:amount).each do |k, v|
       towns_data[k[0]][k[1].to_i] = v
     end
 
     csv = CSV.generate(encoding: 'utf-8', col_sep: "\t") do |csv|
       csv << ["Comunidad Autónoma", "Provincia", "Municipio", "Isla"] + months.values
-      provinces.each_with_index do |province,i|
-        prov_code = "p_#{(i+1).to_s.rjust(2, "0")}"
+      provinces.each_with_index do |province, i|
+        prov_code = "p_#{(i + 1).to_s.rjust(2, "0")}"
         province.subregions.each do |town|
           if Podemos::GeoExtra::ISLANDS.member? town.code
-            csv << [ Podemos::GeoExtra::AUTONOMIES[prov_code][1], province.name, town.name, Podemos::GeoExtra::ISLANDS[town.code][1] ] + months.keys.map{|k| towns_data[town.code][k]/100}
+            csv << [Podemos::GeoExtra::AUTONOMIES[prov_code][1], province.name, town.name, Podemos::GeoExtra::ISLANDS[town.code][1]] + months.keys.map { |k| towns_data[town.code][k] / 100 }
           end
         end
       end
     end
 
     send_data csv.encode('utf-8'),
-      type: 'text/tsv; charset=utf-8; header=present',
-      disposition: "attachment; filename=podemos.for_island_cc.#{Date.current.to_s}.csv"
+              type: 'text/tsv; charset=utf-8; header=present',
+              disposition: "attachment; filename=podemos.for_island_cc.#{Date.current.to_s}.csv"
   end
 
-  batch_action :error_batch, if: proc{ params[:scope]=="suspects" } do |ids|
+  batch_action :error_batch, if: proc { params[:scope] == "suspects" } do |ids|
     ok = true
     Collaboration.transaction do
-      Collaboration.where(id:ids).each do |c|
+      Collaboration.where(id: ids).each do |c|
         ok &&= c.set_error! "Colaboración sospechosa marcada como errónea en masa"
       end
       redirect_to(collection_path, notice: "Las colaboraciones han sido marcadas como erróneas.") if ok

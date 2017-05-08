@@ -68,5 +68,4 @@ class ActiveAdminTest < ActionDispatch::IntegrationTest
     assert_content "Usuario"
     assert_content "Pepito Perez"
   end
-
-end 
+end

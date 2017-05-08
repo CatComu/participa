@@ -1,13 +1,12 @@
 class Vote < ApplicationRecord
-
   acts_as_paranoid
 
   belongs_to :user
   belongs_to :election
 
   validates :user_id, :election_id, :voter_id, presence: true
-  #validates :user_id, uniqueness: {scope: :election_id}
-  validates :voter_id, uniqueness: {scope: :user_id}
+  # validates :user_id, uniqueness: {scope: :election_id}
+  validates :voter_id, uniqueness: { scope: :user_id }
 
   before_validation :save_voter_id, on: :create
 
@@ -30,14 +29,14 @@ class Vote < ApplicationRecord
 
   def url
     key = self.election.server_shared_key
-    message =  self.generate_message
+    message = self.generate_message
     hash = self.generate_hash message
     "#{self.election.server_url}#/booth/#{self.scoped_agora_election_id}/vote/#{hash}/#{message}"
   end
 
   def test_url
     key = self.election.server_shared_key
-    message =  self.generate_message
+    message = self.generate_message
     hash = self.generate_hash message
     "#{self.election.server_url}#/test_hmac/#{key}/#{hash}/#{message}"
   end
@@ -51,5 +50,4 @@ class Vote < ApplicationRecord
       self.errors.add(:voter_id, "No se pudo generar")
     end
   end
-
 end

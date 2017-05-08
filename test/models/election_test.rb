@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class ElectionTest < ActiveSupport::TestCase
-
   test "should validate presence on election" do
     e = Election.new
     e1 = Election.new(title: "hola mundo", agora_election_id: 1, starts_at: Time.zone.now, ends_at: Time.zone.now + 2.weeks, scope: 0)
@@ -24,41 +23,41 @@ class ElectionTest < ActiveSupport::TestCase
   end
 
   test "should .is_active? work" do
-    # votacion ya cerrada
-    e1 = create(:election, starts_at: Time.zone.now-30.days, ends_at: Time.zone.now-7.days)
+    #  votacion ya cerrada
+    e1 = create(:election, starts_at: Time.zone.now - 30.days, ends_at: Time.zone.now - 7.days)
     assert_not e1.is_active?
 
-    # votacion activa
-    e2 = create(:election, starts_at: Time.zone.now-30.days, ends_at: Time.zone.now+7.days)
+    #  votacion activa
+    e2 = create(:election, starts_at: Time.zone.now - 30.days, ends_at: Time.zone.now + 7.days)
     assert e2.is_active?
 
     # votacion del futuro, todavia no esta activada
-    e3 = create(:election, starts_at: Time.zone.now+30.days, ends_at: Time.zone.now+90.days)
+    e3 = create(:election, starts_at: Time.zone.now + 30.days, ends_at: Time.zone.now + 90.days)
     assert_not e3.is_active?
   end
 
   test "should recently_finished? work" do
     e = create(:election)
-    e.update_attributes(starts_at: Time.zone.now-90.days, ends_at: Time.zone.now+7.days)
+    e.update_attributes(starts_at: Time.zone.now - 90.days, ends_at: Time.zone.now + 7.days)
     assert_not e.recently_finished?
-    e.update_attributes(ends_at: Time.zone.now-30.days)
+    e.update_attributes(ends_at: Time.zone.now - 30.days)
     assert_not e.recently_finished?
-    e.update_attributes(ends_at: Time.zone.now-36.hours)
+    e.update_attributes(ends_at: Time.zone.now - 36.hours)
     assert e.recently_finished?
   end
 
   test "should .has_valid_location_for? work" do
-    # Si es una eleccion estatal todos participan
+    #  Si es una eleccion estatal todos participan
     election = create(:election)
 
     user = create(:user, vote_town: "m_28_079_6")
     assert election.has_valid_location_for? user
 
-    # si es municipal solo los que esten en ese municipio
+    #  si es municipal solo los que esten en ese municipio
     election = create(:election, :town)
     assert election.has_valid_location_for? user
 
-    # si es municipal no permitir a los que no esten en ese municipio
+    #  si es municipal no permitir a los que no esten en ese municipio
     election.election_locations[0].location = "222222"
     assert_not election.has_valid_location_for? user
   end
@@ -150,16 +149,15 @@ class ElectionTest < ActiveSupport::TestCase
     # FIXME: full_title_for is not working
     assert_equal("Hola mundo", election.full_title_for(user))
     assert_equal("Hola mundo", election.full_title_for(user2))
-    #assert_equal("Hola mundo en Comunidad de Madrid", election.full_title_for(user))
-    #assert_equal("Hola mundo (no hay votación en País Vasco/Euskadi)", election.full_title_for(user2))
+    # assert_equal("Hola mundo en Comunidad de Madrid", election.full_title_for(user))
+    # assert_equal("Hola mundo (no hay votación en País Vasco/Euskadi)", election.full_title_for(user2))
 
     election = create(:election, :town)
     # FIXME: full_title_for is not working
     assert_equal("Hola mundo", election.full_title_for(user))
     assert_equal("Hola mundo", election.full_title_for(user2))
-    #assert_equal("Hola mundo en Madrid", election.full_title_for(user))
-    #assert_equal("Hola mundo (no hay votación en Alegría-Dulantzi)", election.full_title_for(user2))
-
+    # assert_equal("Hola mundo en Madrid", election.full_title_for(user))
+    # assert_equal("Hola mundo (no hay votación en Alegría-Dulantzi)", election.full_title_for(user2))
   end
 
   test "should locations work" do
@@ -171,19 +169,18 @@ class ElectionTest < ActiveSupport::TestCase
   end
 
   test "should Election.available_servers work" do
-    assert_equal( ["agora", "beta"], Election.available_servers )
+    assert_equal(["agora", "beta"], Election.available_servers)
   end
 
   test "should server_shared_key work" do
     election = create(:election)
-    assert_equal( "changeme", election.server_shared_key )
+    assert_equal("changeme", election.server_shared_key)
   end
 
   test "should server_url work" do
     election = create(:election)
     beta_election = create(:election, :beta_server)
-    assert_equal( "https://example.com/", election.server_url )
-    assert_equal( "https://beta.example.com/", beta_election.server_url )
+    assert_equal("https://example.com/", election.server_url)
+    assert_equal("https://beta.example.com/", beta_election.server_url)
   end
-
 end

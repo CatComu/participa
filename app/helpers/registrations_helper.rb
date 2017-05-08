@@ -1,9 +1,9 @@
 module RegistrationsHelper
   require "ffi-icu"
-  
+
   def self.region_comparer
     @collator ||= ICU::Collation::Collator.new("es_ES")
-    @comparer ||= lambda {|a, b| @collator.compare(a.name, b.name)}
+    @comparer ||= lambda { |a, b| @collator.compare(a.name, b.name) }
   end
 
   # lists of countries, current country provinces and current province towns, sorted with spanish collation
@@ -27,8 +27,8 @@ module RegistrationsHelper
   end
 
   def get_towns country, province
-    p = if province && country =="ES" then 
-          Carmen::Country.coded("ES").subregions.coded(province) 
+    p = if province && country == "ES" then
+          Carmen::Country.coded("ES").subregions.coded(province)
         end
 
     if not (p and p.subregions)

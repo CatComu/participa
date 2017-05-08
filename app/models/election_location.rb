@@ -6,13 +6,14 @@ class ElectionLocation < ApplicationRecord
 
   validates :title, :layout, :theme, presence: true, if: -> { self.has_voting_info }
 
-  LAYOUTS = { "simple" => "Listado de respuestas simple", 
-              "accordion" => "Listado de respuestas agrupadas por categoría",
-              "pcandidates-election" => "Listado respuestas agrupadas por categoría y pregunta", 
-              "2questions-conditional" => "Pregunta con 2 respuestas, si se elige la segunda puede aparecer otra con hasta 4 respuestas"
-            }
-  ELECTION_LAYOUTS = [ "pcandidates-election", "2questions-conditional" ]
-  
+  LAYOUTS = {
+    "simple" => "Listado de respuestas simple",
+    "accordion" => "Listado de respuestas agrupadas por categoría",
+    "pcandidates-election" => "Listado respuestas agrupadas por categoría y pregunta",
+    "2questions-conditional" => "Pregunta con 2 respuestas, si se elige la segunda puede aparecer otra con hasta 4 respuestas"
+  }
+  ELECTION_LAYOUTS = ["pcandidates-election", "2questions-conditional"]
+
   def self.themes
     @@themes ||= Rails.application.secrets.agora["themes"]
   end
@@ -34,7 +35,7 @@ class ElectionLocation < ApplicationRecord
   end
 
   def has_voting_info= value
-    @has_voting_info = ( value==true || value=="true" || value=="1" )
+    @has_voting_info = (value == true || value == "true" || value == "1")
   end
 
   before_save do
@@ -52,22 +53,22 @@ class ElectionLocation < ApplicationRecord
     begin
       spain = Carmen::Country.coded("ES")
       case election.scope
-        when 0 then 
-          "Estatal"
-        when 1 then 
-          autonomy = Podemos::GeoExtra::AUTONOMIES.values.uniq.select {|a| a[0][2..-1]==location } .first
-          autonomy[1]
-        when 2 then 
-          province = spain.subregions[location.to_i-1]
-          province.name
-        when 3 then
-          town = spain.subregions[location[0..1].to_i-1].subregions.coded("m_%s_%s_%s" % [location[0..1], location[2..4], location[5]]) 
-          town.name
-        when 4 then
-          island = Podemos::GeoExtra::ISLANDS.values.uniq.select {|i| i[0][2..-1]==location } .first
-          island[1]
-        when 5 then 
-          "Exterior"
+      when 0 then
+        "Estatal"
+      when 1 then
+        autonomy = Podemos::GeoExtra::AUTONOMIES.values.uniq.select { |a| a[0][2..-1] == location } .first
+        autonomy[1]
+      when 2 then
+        province = spain.subregions[location.to_i - 1]
+        province.name
+      when 3 then
+        town = spain.subregions[location[0..1].to_i - 1].subregions.coded("m_%s_%s_%s" % [location[0..1], location[2..4], location[5]])
+        town.name
+      when 4 then
+        island = Podemos::GeoExtra::ISLANDS.values.uniq.select { |i| i[0][2..-1] == location } .first
+        island[1]
+      when 5 then
+        "Exterior"
       end + " (#{location})"
     rescue
       location

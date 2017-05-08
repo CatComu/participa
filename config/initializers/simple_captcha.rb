@@ -16,7 +16,7 @@ SimpleCaptcha.setup do |sc|
   # 'charcoal_grey',
   # 'almost_invisible'
   # 'random'
-  #sc.image_style = 'simply_green'
+  # sc.image_style = 'simply_green'
 
   # default: low
   # possible values: 'low', 'medium', 'high', 'random'
@@ -28,8 +28,9 @@ SimpleCaptcha.setup do |sc|
 
   sc.image_style = 'podemos'
   sc.add_image_style('podemos', [
-      "-background '#716e6b'",
-      "-fill '#FFFFFF'",
-      "-border 2",
-      "-bordercolor '#eb5a59'"])
+                       "-background '#716e6b'",
+                       "-fill '#FFFFFF'",
+                       "-border 2",
+                       "-bordercolor '#eb5a59'"
+                     ])
 end

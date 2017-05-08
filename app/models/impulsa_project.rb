@@ -28,13 +28,13 @@ class ImpulsaProject < ApplicationRecord
   has_attached_file :evaluator1_analysis, url: '/impulsa/:id/attachment/:field/:style/:filename', path: ":rails_root/non-public/system/:class/:id/:field/:style/:basename.:extension"
   has_attached_file :evaluator2_analysis, url: '/impulsa/:id/attachment/:field/:style/:filename', path: ":rails_root/non-public/system/:class/:id/:field/:style/:basename.:extension"
 
-  validates :user, uniqueness: {scope: :impulsa_edition_category}, allow_blank: false, allow_nil: false, unless: Proc.new { |project| project.user.nil? || project.user.impulsa_author? }
+  validates :user, uniqueness: { scope: :impulsa_edition_category }, allow_blank: false, allow_nil: false, unless: Proc.new { |project| project.user.nil? || project.user.impulsa_author? }
   validates :name, :impulsa_edition_category_id, :status, presence: true
 
   attr_accessor :check_validation, :mark_as_reviewed
   validate if: -> { self.check_validation || self.should_be_valid? } do |project|
     project.user_editable_fields.each do |field|
-      if [ :terms_of_service, :data_truthfulness, :content_rights ].member?(field)
+      if [:terms_of_service, :data_truthfulness, :content_rights].member?(field)
         next
       elsif FIELDS[:translation].member?(field)
         next if !project.translated? || !project.user_view_field?(field.to_s.sub("coofficial_", "").to_sym)
@@ -57,54 +57,54 @@ class ImpulsaProject < ApplicationRecord
     project.errors[:impulsa_edition_topics] << "hay demasiadas temáticas para el proyecto" if project.impulsa_edition_topics.size > 2
   end
 
-  validates_attachment :logo, content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"]}, size: { less_than: 2.megabyte }
-  validates_attachment :scanned_nif, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :endorsement, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :register_entry, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :statutes, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :responsible_nif, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :fiscal_obligations_certificate, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :labor_obligations_certificate, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :home_certificate, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :bank_certificate, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :last_fiscal_year_report_of_activities, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :last_fiscal_year_annual_accounts, content_type: { content_type: ["application/pdf", "application/x-pdf"]}, size: { less_than: 2.megabyte }
-  validates_attachment :schedule, content_type: { content_type: [ "application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet" ]}, size: { less_than: 2.megabyte }
-  validates_attachment :activities_resources, content_type: { content_type: [ "application/vnd.ms-word", "application/msword", "application/x-msword", "application/x-ms-word", "application/x-word", "application/x-dos_ms_word", "application/doc", "application/x-doc", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.oasis.opendocument.text" ]}, size: { less_than: 2.megabyte }
-  validates_attachment :requested_budget, content_type: { content_type: [ "application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet" ]}, size: { less_than: 2.megabyte }
-  validates_attachment :evaluator1_analysis, content_type: { content_type: [ "application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet" ]}, size: { less_than: 2.megabyte }
-  validates_attachment :evaluator2_analysis, content_type: { content_type: [ "application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet" ]}, size: { less_than: 2.megabyte }
-  
+  validates_attachment :logo, content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] }, size: { less_than: 2.megabyte }
+  validates_attachment :scanned_nif, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :endorsement, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :register_entry, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :statutes, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :responsible_nif, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :fiscal_obligations_certificate, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :labor_obligations_certificate, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :home_certificate, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :bank_certificate, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :last_fiscal_year_report_of_activities, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :last_fiscal_year_annual_accounts, content_type: { content_type: ["application/pdf", "application/x-pdf"] }, size: { less_than: 2.megabyte }
+  validates_attachment :schedule, content_type: { content_type: ["application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet"] }, size: { less_than: 2.megabyte }
+  validates_attachment :activities_resources, content_type: { content_type: ["application/vnd.ms-word", "application/msword", "application/x-msword", "application/x-ms-word", "application/x-word", "application/x-dos_ms_word", "application/doc", "application/x-doc", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.oasis.opendocument.text"] }, size: { less_than: 2.megabyte }
+  validates_attachment :requested_budget, content_type: { content_type: ["application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet"] }, size: { less_than: 2.megabyte }
+  validates_attachment :evaluator1_analysis, content_type: { content_type: ["application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet"] }, size: { less_than: 2.megabyte }
+  validates_attachment :evaluator2_analysis, content_type: { content_type: ["application/vnd.ms-excel", "application/msexcel", "application/x-msexcel", "application/x-ms-excel", "application/x-excel", "application/x-dos_ms_excel", "application/xls", "application/x-xls", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet"] }, size: { less_than: 2.megabyte }
+
   attr_accessor :mark_as_viewed, :invalid_reasons, :evaluator_analysis
 
   attr_accessor :logo_cache, :scanned_nif_cache, :endorsement_cache, :register_entry_cache, :statutes_cache, :responsible_nif_cache, :fiscal_obligations_certificate_cache, :labor_obligations_certificate_cache, :home_certificate_cache, :bank_certificate_cache, :last_fiscal_year_report_of_activities_cache, :last_fiscal_year_annual_accounts_cache, :schedule_cache, :activities_resources_cache, :requested_budget_cache, :monitoring_evaluation_cache
 
   def cache_project_files
-    @logo_cache = cache_files( logo, @logo_cache, lambda {|f| assign_attributes(logo: f)} )
-    @scanned_nif_cache = cache_files( scanned_nif, @scanned_nif_cache, lambda {|f| assign_attributes(scanned_nif: f)} )
-    @endorsement_cache = cache_files( endorsement, @endorsement_cache, lambda {|f| assign_attributes(endorsement: f)} )
-    @register_entry_cache = cache_files( register_entry, @register_entry_cache, lambda {|f| assign_attributes(register_entry: f)} )
-    @statutes_cache = cache_files( statutes, @statutes_cache, lambda {|f| assign_attributes(statutes: f)} )
-    @responsible_nif_cache = cache_files( responsible_nif, @responsible_nif_cache, lambda {|f| assign_attributes(responsible_nif: f)} )
-    @fiscal_obligations_certificate_cache = cache_files( fiscal_obligations_certificate, @fiscal_obligations_certificate_cache, lambda {|f| assign_attributes(fiscal_obligations_certificate: f)} )
-    @labor_obligations_certificate_cache = cache_files( labor_obligations_certificate, @labor_obligations_certificate_cache, lambda {|f| assign_attributes(labor_obligations_certificate: f)} )
-    @home_certificate_cache = cache_files( home_certificate, @home_certificate_cache, lambda {|f| assign_attributes(home_certificate: f)} )
-    @bank_certificate_cache = cache_files( bank_certificate, @bank_certificate_cache, lambda {|f| assign_attributes(bank_certificate: f)} )
-    @last_fiscal_year_report_of_activities_cache = cache_files( last_fiscal_year_report_of_activities, @last_fiscal_year_report_of_activities_cache, lambda {|f| assign_attributes(last_fiscal_year_report_of_activities: f)} )
-    @last_fiscal_year_annual_accounts_cache = cache_files( last_fiscal_year_annual_accounts, @last_fiscal_year_annual_accounts_cache, lambda {|f| assign_attributes(last_fiscal_year_annual_accounts: f)} )
-    @schedule_cache = cache_files( schedule, @schedule_cache, lambda {|f| assign_attributes(schedule: f)} )
-    @activities_resources_cache = cache_files( activities_resources, @activities_resources_cache, lambda {|f| assign_attributes(activities_resources: f)} )
-    @requested_budget_cache = cache_files( requested_budget, @requested_budget_cache, lambda {|f| assign_attributes(requested_budget: f)} )
-    @monitoring_evaluation_cache = cache_files( monitoring_evaluation, @monitoring_evaluation_cache, lambda {|f| assign_attributes(monitoring_evaluation: f)} )
+    @logo_cache = cache_files(logo, @logo_cache, lambda { |f| assign_attributes(logo: f) })
+    @scanned_nif_cache = cache_files(scanned_nif, @scanned_nif_cache, lambda { |f| assign_attributes(scanned_nif: f) })
+    @endorsement_cache = cache_files(endorsement, @endorsement_cache, lambda { |f| assign_attributes(endorsement: f) })
+    @register_entry_cache = cache_files(register_entry, @register_entry_cache, lambda { |f| assign_attributes(register_entry: f) })
+    @statutes_cache = cache_files(statutes, @statutes_cache, lambda { |f| assign_attributes(statutes: f) })
+    @responsible_nif_cache = cache_files(responsible_nif, @responsible_nif_cache, lambda { |f| assign_attributes(responsible_nif: f) })
+    @fiscal_obligations_certificate_cache = cache_files(fiscal_obligations_certificate, @fiscal_obligations_certificate_cache, lambda { |f| assign_attributes(fiscal_obligations_certificate: f) })
+    @labor_obligations_certificate_cache = cache_files(labor_obligations_certificate, @labor_obligations_certificate_cache, lambda { |f| assign_attributes(labor_obligations_certificate: f) })
+    @home_certificate_cache = cache_files(home_certificate, @home_certificate_cache, lambda { |f| assign_attributes(home_certificate: f) })
+    @bank_certificate_cache = cache_files(bank_certificate, @bank_certificate_cache, lambda { |f| assign_attributes(bank_certificate: f) })
+    @last_fiscal_year_report_of_activities_cache = cache_files(last_fiscal_year_report_of_activities, @last_fiscal_year_report_of_activities_cache, lambda { |f| assign_attributes(last_fiscal_year_report_of_activities: f) })
+    @last_fiscal_year_annual_accounts_cache = cache_files(last_fiscal_year_annual_accounts, @last_fiscal_year_annual_accounts_cache, lambda { |f| assign_attributes(last_fiscal_year_annual_accounts: f) })
+    @schedule_cache = cache_files(schedule, @schedule_cache, lambda { |f| assign_attributes(schedule: f) })
+    @activities_resources_cache = cache_files(activities_resources, @activities_resources_cache, lambda { |f| assign_attributes(activities_resources: f) })
+    @requested_budget_cache = cache_files(requested_budget, @requested_budget_cache, lambda { |f| assign_attributes(requested_budget: f) })
+    @monitoring_evaluation_cache = cache_files(monitoring_evaluation, @monitoring_evaluation_cache, lambda { |f| assign_attributes(monitoring_evaluation: f) })
   end
-  
-  scope :by_status, ->(status) { where( status: status ) }
 
-  scope :first_phase, -> { where( status: [ 0, 1, 2, 3 ] ) }
-  scope :second_phase, -> { where( status: [ 4, 6 ]) }
-  scope :no_phase, -> { where status: [ 5, 7, 10 ] }
+  scope :by_status, ->(status) { where(status: status) }
+
+  scope :first_phase, -> { where(status: [0, 1, 2, 3]) }
+  scope :second_phase, -> { where(status: [4, 6]) }
+  scope :no_phase, -> { where status: [5, 7, 10] }
   scope :votable, -> { where status: 6 }
-  scope :public_visible, -> { where status: [ 9, 6, 7 ]}
+  scope :public_visible, -> { where status: [9, 6, 7] }
 
   PROJECT_STATUS = {
     new: 0,
@@ -122,27 +122,26 @@ class ImpulsaProject < ApplicationRecord
   }
 
   FIELDS = {
-    admin: [ :user_id, :status, :review_fields, :counterpart_information, :additional_contact, :evaluator1_invalid_reasons, :evaluator2_invalid_reasons , :votes],
-    impulsa_admin: [ :user_id, :review_fields, :counterpart_information, :additional_contact ],
-    always: [ :impulsa_edition_category_id, :name ],
-    with_category: [ :short_description, :logo, :video_link ],
-    authority: [ :authority, :authority_name, :authority_phone, :authority_email ],
-    organization_types: [ :organization_type ],
-    full_organization: [ :organization_name, :organization_address, :organization_web, :organization_nif, :scanned_nif, :organization_year, :organization_legal_name, :organization_legal_nif, :organization_mission, :register_entry, :statutes ],
-    non_organization: [ :career ],
-    not_in_spain: [ :home_certificate, :bank_certificate ],
-    non_project_details: [ :additional_contact, :total_budget ],
-    project_details: [ :impulsa_edition_topics, :territorial_context, :long_description, :aim, :metodology, :population_segment, :schedule, :activities_resources, :requested_budget, :counterpart, :impulsa_edition_topic_ids, :endorsement, :responsible_nif, :fiscal_obligations_certificate, :labor_obligations_certificate, :total_budget],
-    additional_details: [ :last_fiscal_year_report_of_activities, :last_fiscal_year_annual_accounts, :monitoring_evaluation ], 
-    translation: [ :coofficial_translation, :coofficial_name, :coofficial_short_description, :coofficial_video_link, :coofficial_territorial_context, :coofficial_long_description, :coofficial_aim, :coofficial_metodology, :coofficial_population_segment, :coofficial_career, :coofficial_organization_mission ],
-    update: [ :terms_of_service, :data_truthfulness, :content_rights ],
+    admin: [:user_id, :status, :review_fields, :counterpart_information, :additional_contact, :evaluator1_invalid_reasons, :evaluator2_invalid_reasons, :votes],
+    impulsa_admin: [:user_id, :review_fields, :counterpart_information, :additional_contact],
+    always: [:impulsa_edition_category_id, :name],
+    with_category: [:short_description, :logo, :video_link],
+    authority: [:authority, :authority_name, :authority_phone, :authority_email],
+    organization_types: [:organization_type],
+    full_organization: [:organization_name, :organization_address, :organization_web, :organization_nif, :scanned_nif, :organization_year, :organization_legal_name, :organization_legal_nif, :organization_mission, :register_entry, :statutes],
+    non_organization: [:career],
+    not_in_spain: [:home_certificate, :bank_certificate],
+    non_project_details: [:additional_contact, :total_budget],
+    project_details: [:impulsa_edition_topics, :territorial_context, :long_description, :aim, :metodology, :population_segment, :schedule, :activities_resources, :requested_budget, :counterpart, :impulsa_edition_topic_ids, :endorsement, :responsible_nif, :fiscal_obligations_certificate, :labor_obligations_certificate, :total_budget],
+    additional_details: [:last_fiscal_year_report_of_activities, :last_fiscal_year_annual_accounts, :monitoring_evaluation],
+    translation: [:coofficial_translation, :coofficial_name, :coofficial_short_description, :coofficial_video_link, :coofficial_territorial_context, :coofficial_long_description, :coofficial_aim, :coofficial_metodology, :coofficial_population_segment, :coofficial_career, :coofficial_organization_mission],
+    update: [:terms_of_service, :data_truthfulness, :content_rights],
 
-    optional: [ :counterpart, :last_fiscal_year_report_of_activities, :last_fiscal_year_annual_accounts, :video_link ],
-    optional_certificates: [ :fiscal_obligations_certificate, :labor_obligations_certificate ]
+    optional: [:counterpart, :last_fiscal_year_report_of_activities, :last_fiscal_year_annual_accounts, :video_link],
+    optional_certificates: [:fiscal_obligations_certificate, :labor_obligations_certificate]
   }
 
-
-  ALL_FIELDS = FIELDS.map {|k,v| v} .flatten.uniq
+  ALL_FIELDS = FIELDS.map { |k, v| v } .flatten.uniq
   ADMIN_REVIEWABLE_FIELDS = FIELDS[:always] + FIELDS[:with_category] + FIELDS[:authority] + FIELDS[:organization_types] + FIELDS[:full_organization] + FIELDS[:non_organization] + FIELDS[:not_in_spain] + FIELDS[:non_project_details] + FIELDS[:project_details] + FIELDS[:additional_details] + FIELDS[:translation]
 
   ORGANIZATION_TYPES = {
@@ -152,19 +151,19 @@ class ImpulsaProject < ApplicationRecord
   }
 
   def new?
-    self.status==PROJECT_STATUS[:new]
+    self.status == PROJECT_STATUS[:new]
   end
 
   def review?
-    self.status==PROJECT_STATUS[:review]
+    self.status == PROJECT_STATUS[:review]
   end
 
   def fixes?
-    self.status==PROJECT_STATUS[:fixes]
+    self.status == PROJECT_STATUS[:fixes]
   end
 
   def spam?
-    self.status==PROJECT_STATUS[:spam]
+    self.status == PROJECT_STATUS[:spam]
   end
 
   def allow_save_draft?
@@ -172,11 +171,11 @@ class ImpulsaProject < ApplicationRecord
   end
 
   def marked_for_review?
-    self.status==PROJECT_STATUS[:review] || self.status==PROJECT_STATUS[:review_fixes]
+    self.status == PROJECT_STATUS[:review] || self.status == PROJECT_STATUS[:review_fixes]
   end
 
   def marked_as_validable?
-    self.status==PROJECT_STATUS[:validate]
+    self.status == PROJECT_STATUS[:validate]
   end
 
   def should_be_valid?
@@ -184,32 +183,32 @@ class ImpulsaProject < ApplicationRecord
   end
 
   def mark_as_new
-    self.status=PROJECT_STATUS[:new] if self.review? || self.spam?
+    self.status = PROJECT_STATUS[:new] if self.review? || self.spam?
   end
 
   def mark_as_spam
-    self.status=PROJECT_STATUS[:spam] if self.new?
+    self.status = PROJECT_STATUS[:spam] if self.new?
   end
 
   def mark_for_review
     if self.new? || self.spam?
-      self.status=PROJECT_STATUS[:review]
+      self.status = PROJECT_STATUS[:review]
     elsif self.fixes?
-      self.status=PROJECT_STATUS[:review_fixes]
+      self.status = PROJECT_STATUS[:review_fixes]
     end
   end
 
   def mark_as_fixable
-    self.status=PROJECT_STATUS[:fixes]
+    self.status = PROJECT_STATUS[:fixes]
   end
 
   def mark_as_validable
-    self.status=PROJECT_STATUS[:validate]
-  end   
+    self.status = PROJECT_STATUS[:validate]
+  end
 
   def mark_as_winner
-    self.status=PROJECT_STATUS[:winner]
-  end 
+    self.status = PROJECT_STATUS[:winner]
+  end
 
   def editable?
     !persisted? || (self.impulsa_edition.allow_edition? && (self.status < PROJECT_STATUS[:fixes] || self.spam?))
@@ -224,27 +223,27 @@ class ImpulsaProject < ApplicationRecord
   end
 
   def validable?
-    self.status==PROJECT_STATUS[:validate] && self.impulsa_edition.allow_validation?
+    self.status == PROJECT_STATUS[:validate] && self.impulsa_edition.allow_validation?
   end
 
   def invalidated?
-    self.status==PROJECT_STATUS[:invalidated]
+    self.status == PROJECT_STATUS[:invalidated]
   end
 
   def validated?
-    self.status==PROJECT_STATUS[:validated]
+    self.status == PROJECT_STATUS[:validated]
   end
 
   def discarded?
-    self.status==PROJECT_STATUS[:discarded]
+    self.status == PROJECT_STATUS[:discarded]
   end
 
   def winner?
-    self.status==PROJECT_STATUS[:winner]
+    self.status == PROJECT_STATUS[:winner]
   end
 
   def dissent?
-    self.status==PROJECT_STATUS[:dissent]
+    self.status == PROJECT_STATUS[:dissent]
   end
 
   def check_evaluators_validation
@@ -257,7 +256,7 @@ class ImpulsaProject < ApplicationRecord
       self.status = PROJECT_STATUS[:invalidated]
     else
       self.status = PROJECT_STATUS[:dissent]
-    end 
+    end
   end
 
   def preload params
@@ -298,14 +297,14 @@ class ImpulsaProject < ApplicationRecord
       else
         fields += FIELDS[:non_organization]
       end
-      
+
       if self.needs_project_details?
-        fields += FIELDS[:project_details] 
+        fields += FIELDS[:project_details]
         fields += FIELDS[:organization_types] if self.allows_organization_types?
         fields += FIELDS[:not_in_spain] if self.not_in_spain?
         fields += FIELDS[:additional_details] if self.needs_additional_details?
       else
-        fields += FIELDS[:non_project_details] 
+        fields += FIELDS[:non_project_details]
       end
       fields += FIELDS[:update] if self.saveable?
     end
@@ -315,7 +314,7 @@ class ImpulsaProject < ApplicationRecord
   def user_edit_field? field
     user_editable_fields.member? field
   end
-  
+
   def user_editable_fields
     if self.editable?
       self.user_viewable_fields
@@ -386,7 +385,7 @@ class ImpulsaProject < ApplicationRecord
   def method_missing(method_sym, *arguments, &block)
     method = method_sym.to_s
     if method =~ /^(.*)_review=?$/
-      if method.last=="="
+      if method.last == "="
         if arguments.first.blank?
           review_fields.delete method[0..-9].to_sym
         else

@@ -13,7 +13,7 @@ AllCops:
 Rails:
   Enabled: true
 
-Style/ExtraSpacing:
+Layout/ExtraSpacing:
   AllowForAlignment: false
 
 Style/StringLiterals:

@@ -56,15 +56,15 @@ class User < ApplicationRecord
   validates :document_type, inclusion: { in: [1, 2, 3] }, allow_blank: true
   validates :document_vatid, valid_nif: true, if: :is_document_dni?
   validates :document_vatid, valid_nie: true, if: :is_document_nie?
-  validates :born_at, date: true, allow_blank: true # gem date_validator
-  validates :born_at, inclusion: { in: Date.civil(1900, 1, 1)..Date.current-16.years }, allow_blank: true
+  validates :born_at, date: true, allow_blank: true #  gem date_validator
+  validates :born_at, inclusion: { in: Date.civil(1900, 1, 1)..Date.current - 16.years }, allow_blank: true
   validates :phone, numericality: true, allow_blank: true
   validates :unconfirmed_phone, numericality: true, allow_blank: true
 
-  validates :email, uniqueness: {case_sensitive: false, scope: :deleted_at }, allow_blank: true, if: :email_changed?
-  validates :document_vatid, uniqueness: {case_sensitive: false, scope: :deleted_at }
-  validates :phone, uniqueness: {scope: :deleted_at}, allow_blank: true, allow_nil: true
-  validates :unconfirmed_phone, uniqueness: {scope: :deleted_at}, allow_blank: true, allow_nil: true
+  validates :email, uniqueness: { case_sensitive: false, scope: :deleted_at }, allow_blank: true, if: :email_changed?
+  validates :document_vatid, uniqueness: { case_sensitive: false, scope: :deleted_at }
+  validates :phone, uniqueness: { scope: :deleted_at }, allow_blank: true, allow_nil: true
+  validates :unconfirmed_phone, uniqueness: { scope: :deleted_at }, allow_blank: true, allow_nil: true
 
   validate :validates_postal_code, if: -> { self.postal_code.present? }
   validate :validates_phone_format, if: -> { self.phone.present? }
@@ -113,7 +113,7 @@ class User < ApplicationRecord
   attr_accessor :sms_user_token_given
   attr_accessor :login
 
-  scope :wants_newsletter, -> {where(wants_newsletter: true)}
+  scope :wants_newsletter, -> { where(wants_newsletter: true) }
   scope :created, -> { not_banned }
   scope :deleted, -> { only_deleted }
   scope :admins, -> { where(admin: true) }
@@ -127,26 +127,26 @@ class User < ApplicationRecord
   scope :has_collaboration_bank_international, -> { joins(:collaboration).where(collaborations: { payment_type: 3 }) }
 
   ransacker :vote_province, formatter: proc { |value|
-    spanish_subregion_for(value).subregions.map {|r| r.code }
+    spanish_subregion_for(value).subregions.map { |r| r.code }
   } do |parent|
     parent.table[:vote_town]
   end
 
   ransacker :vote_autonomy, formatter: proc { |value|
-    Podemos::GeoExtra::AUTONOMIES.map { |k,v| spanish_subregion_for(k).subregions.map {|r| r.code } if v[0]==value } .compact.flatten
+    Podemos::GeoExtra::AUTONOMIES.map { |k, v| spanish_subregion_for(k).subregions.map { |r| r.code } if v[0] == value } .compact.flatten
   } do |parent|
     parent.table[:vote_town]
   end
 
   ransacker :vote_island, formatter: proc { |value|
-    Podemos::GeoExtra::ISLANDS.map {|k,v| k if v[0]==value} .compact
+    Podemos::GeoExtra::ISLANDS.map { |k, v| k if v[0] == value } .compact
   } do |parent|
     parent.table[:vote_town]
   end
 
   DOCUMENTS_TYPE = [["DNI", 1], ["NIE", 2], ["Pasaporte", 3]]
 
-  # Based on
+  #  Based on
   # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
   # Check if login is email or document_vatid to use the DB indexes
   #
@@ -161,8 +161,8 @@ class User < ApplicationRecord
   end
 
   def get_or_create_vote election_id
-    v = Vote.new({election_id: election_id, user_id: self.id})
-    if Vote.find_by_voter_id( v.generate_message )
+    v = Vote.new({ election_id: election_id, user_id: self.id })
+    if Vote.find_by_voter_id(v.generate_message)
       return v
     else
       v.save
@@ -170,11 +170,11 @@ class User < ApplicationRecord
     end
   end
 
-  def previous_user(force_refresh=false)
+  def previous_user(force_refresh = false)
     remove_instance_variable :@previous_user if force_refresh and @previous_user
     @previous_user ||= User.with_deleted.where("lower(email) = ?", self.email.downcase).where("deleted_at > ?", 3.months.ago).last ||
-                      User.with_deleted.where("lower(document_vatid) = ?", self.document_vatid.downcase).where("deleted_at > ?", 3.months.ago).last
-                      User.with_deleted.where("phone = ?", self.phone).where("deleted_at > ?", 3.months.ago).last
+                       User.with_deleted.where("lower(document_vatid) = ?", self.document_vatid.downcase).where("deleted_at > ?", 3.months.ago).last
+    User.with_deleted.where("phone = ?", self.phone).where("deleted_at > ?", 3.months.ago).last
     @previous_user
   end
 
@@ -227,7 +227,7 @@ class User < ApplicationRecord
   # Region in Spain whose code matches xx in a +code+ of the form ..xx.*
   #
   def self.spanish_subregion_for(code)
-    spanish_regions[code[2..3].to_i-1]
+    spanish_regions[code[2..3].to_i - 1]
   end
 
   delegate :spanish_subregion_for, to: :class
@@ -238,7 +238,7 @@ class User < ApplicationRecord
       (Rails.application.secrets.users["allows_location_change"] and !User.blocked_provinces.member?(vote_province_persisted))
   end
 
-  def phone_normalize(phone_number, country_iso=nil)
+  def phone_normalize(phone_number, country_iso = nil)
     Phoner::Country.load
     cc = country_iso.nil? ? self.country : country_iso
     country = Phoner::Country.find_by_country_isocode(cc.downcase)
@@ -286,7 +286,7 @@ class User < ApplicationRecord
   end
 
   def document_type_name
-    User::DOCUMENTS_TYPE.select{|v| v[1] == self.document_type }[0][0]
+    User::DOCUMENTS_TYPE.select { |v| v[1] == self.document_type }[0][0]
   end
 
   def self.spanish_regions
@@ -296,7 +296,7 @@ class User < ApplicationRecord
   delegate :spanish_regions, to: :class
 
   def in_spain?
-    self.country=="ES"
+    self.country == "ES"
   end
 
   def in_catalonia?
@@ -384,7 +384,7 @@ class User < ApplicationRecord
   end
 
   def has_verified_vote_town?
-    self.has_vote_town? and self.vote_town[0]=="m"
+    self.has_vote_town? and self.vote_town[0] == "m"
   end
 
   def vote_autonomy_code
@@ -428,7 +428,7 @@ class User < ApplicationRecord
     if value.nil? or value.empty? or value == "-"
       self.vote_town = nil
     else
-      prefix = "m_%02d_"% (spanish_regions.coded(value).index)
+      prefix = "m_%02d_" % (spanish_regions.coded(value).index)
       if self.vote_town.nil? or not self.vote_town.starts_with? prefix then
         self.vote_town = prefix
       end
@@ -468,7 +468,7 @@ class User < ApplicationRecord
   end
 
   def vote_town_numeric
-    _vote_town ? _vote_town.code.split("_")[1,3].join : ""
+    _vote_town ? _vote_town.code.split("_")[1, 3].join : ""
   end
 
   def vote_island_numeric
@@ -477,7 +477,7 @@ class User < ApplicationRecord
 
   def self.ban_users ids, value
     t = User.arel_table
-    User.where(id:ids).where(t[:admin].eq(false).or(t[:admin].eq(nil))).update_all User.set_flag_sql(:banned, value)
+    User.where(id: ids).where(t[:admin].eq(false).or(t[:admin].eq(nil))).update_all User.set_flag_sql(:banned, value)
   end
 
   def before_save
@@ -534,7 +534,7 @@ class User < ApplicationRecord
   def can_request_sms_check?
     Time.zone.now > next_sms_check_request_at
   end
-  
+
   def can_check_sms_check?
     sms_check_at.present? && (Time.zone.now < (sms_check_at + eval(Rails.application.secrets.users["sms_check_valid_interval"])))
   end
@@ -546,7 +546,7 @@ class User < ApplicationRecord
       Time.zone.now - 1.second
     end
   end
-  
+
   def send_sms_check!
     require 'sms'
     if can_request_sms_check?
@@ -563,6 +563,6 @@ class User < ApplicationRecord
   end
 
   def sms_check_token
-    Digest::SHA1.digest("#{sms_check_at}#{id}#{Rails.application.secrets.users['sms_secret_key'] }")[0..3].codepoints.map { |c| "%02X" % c }.join if sms_check_at
+    Digest::SHA1.digest("#{sms_check_at}#{id}#{Rails.application.secrets.users['sms_secret_key']}")[0..3].codepoints.map { |c| "%02X" % c }.join if sms_check_at
   end
 end

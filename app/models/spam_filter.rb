@@ -1,5 +1,5 @@
 class SpamFilter < ApplicationRecord
-  scope :active, -> { where(active:true) }
+  scope :active, -> { where(active: true) }
 
   after_initialize do |filter|
     if persisted?
@@ -11,7 +11,6 @@ class SpamFilter < ApplicationRecord
   def process user
     @proc.call user, @data
   end
-
 
   def query_count
     User.verified_online.unverified_presentially.where(query).count

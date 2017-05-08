@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class AbilityTest < ActiveSupport::TestCase
-
-  setup do 
+  setup do
     @user1 = create(:user)
     @user2 = create(:user, document_type: 3, document_vatid: "22222D")
     @admin = create(:user, :admin)
@@ -45,5 +44,4 @@ class AbilityTest < ActiveSupport::TestCase
     assert ability.can?(:edit, @notice)
     assert ability.can?(:manage, @notice)
   end
-
 end

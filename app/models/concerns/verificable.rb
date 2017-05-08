@@ -28,7 +28,7 @@ module Verificable
       joins(:verification_slots).merge(Verification::Slot.presential.past_or_current)
     end
 
-    scope :unconfirmed_mail, -> { not_banned.where(confirmed_at: nil)  }
+    scope :unconfirmed_mail, -> { not_banned.where(confirmed_at: nil) }
     scope :confirmed_mail, -> { not_banned.where.not(confirmed_at: nil) }
 
     scope :confirmed_by_sms, -> { not_banned.where.not(sms_confirmed_at: nil) }
@@ -87,7 +87,7 @@ module Verificable
 
   def can_change_phone?
     confirmed_by_sms? &&
-      sms_confirmed_at < Time.zone.now-self.class.sms_confirmation_period
+      sms_confirmed_at < Time.zone.now - self.class.sms_confirmation_period
   end
 
   def generate_sms_token

@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class RegistrationsControllerTest < ActionController::TestCase
-
-  setup do 
+  setup do
     @request.env["devise.mapping"] = Devise.mappings[:user]
     @user = create(:user)
   end
@@ -14,7 +13,7 @@ class RegistrationsControllerTest < ActionController::TestCase
 
   test "should success when visits profile" do
     sign_in @user
-    
+
     get :edit
     assert_response :success
   end
@@ -23,7 +22,7 @@ class RegistrationsControllerTest < ActionController::TestCase
     @user.update_attribute(:confirmed_at, Date.civil(2014, 1, 1))
     @user.update_attribute(:sms_confirmed_at, Date.civil(2014, 1, 1))
     sign_in @user
-    
+
     get :edit
     assert_response :success
   end
@@ -48,7 +47,7 @@ class RegistrationsControllerTest < ActionController::TestCase
       old_user = create(:user)
       old_user.confirm
       old_user.delete
-      
+
       post :create, { "user" => attributes_for(:user, document_vatid: old_user.document_vatid, town: "m_03_003_6") }
       new_user = User.where(document_vatid: old_user.document_vatid).last
       assert_equal old_user.vote_town, new_user.vote_town, "New user vote location should be the same of the old user."
@@ -61,12 +60,11 @@ class RegistrationsControllerTest < ActionController::TestCase
       old_user = create(:user)
       old_user.delete
       old_user.update_attributes vote_town: "m_01_001_4"
-      
+
       post :create, { "user" => attributes_for(:user, document_vatid: old_user.document_vatid, town: "m_03_003_6") }
       new_user = User.where(document_vatid: old_user.document_vatid).last
       assert_not_equal old_user.vote_town, new_user.vote_town, "New user vote location should be keep"
     end
   end
 =end
-
 end

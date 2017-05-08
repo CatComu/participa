@@ -9,13 +9,13 @@ admin = FactoryGirl.create(:user,
                            :admin,
                            :verifying_presentially,
                            password: pw,
-                           email: "admin@example.com") 
+                           email: "admin@example.com")
 puts "Creating admin user with email #{admin.email}"
 
 presential_verifier = FactoryGirl.create(:user, :verifying_presentially)
 puts "Creating presential verifier with email #{presential_verifier.email}"
 
-superadmin = FactoryGirl.create(:user, :superadmin, password: pw, email: "superadmin@example.com") 
+superadmin = FactoryGirl.create(:user, :superadmin, password: pw, email: "superadmin@example.com")
 puts "Creating superadmin user with email #{superadmin.email}"
 
 (0..5).each do |i|

@@ -17,8 +17,8 @@ class OpenIdController < ApplicationController
 
   def discover
     types = [
-             OpenID::OPENID_IDP_2_0_TYPE,
-            ]
+      OpenID::OPENID_IDP_2_0_TYPE,
+    ]
 
     render_xrds(types)
   end
@@ -67,7 +67,7 @@ class OpenIdController < ApplicationController
         # ditto pape
         add_pape(oidreq, oidresp)
         # add the attribute exchange request if requested
-        #add_ax(oidreq, oidresp)
+        # add_ax(oidreq, oidresp)
 
       else
         oidresp = oidreq.answer(false, open_id_create_url)
@@ -124,7 +124,7 @@ class OpenIdController < ApplicationController
         # ditto pape
         add_pape(oidreq, oidresp)
         # add the attribute exchange request if requested
-        #add_ax(oidreq, oidresp)
+        # add_ax(oidreq, oidresp)
 
       else
         oidresp = oidreq.answer(false, open_id_create_url)
@@ -137,13 +137,12 @@ class OpenIdController < ApplicationController
     self.render_response(oidresp)
   end
 
-
   def xrds
     types = [
-             OpenID::OPENID_2_0_TYPE,
-             OpenID::OPENID_1_0_TYPE,
-             OpenID::SREG_URI,
-            ]
+      OpenID::OPENID_2_0_TYPE,
+      OpenID::OPENID_1_0_TYPE,
+      OpenID::SREG_URI,
+    ]
 
     render_xrds(types)
   end
@@ -159,12 +158,12 @@ class OpenIdController < ApplicationController
       return
     end
     # content negotiation failed, so just render the user page
-    identity_page = <<EOS
+    identity_page = <<~EOS
       <html><head>
       <meta http-equiv="X-XRDS-Location" content="#{open_id_xrds_url}" />
       <link rel="openid.server" href="#{open_id_create_url}" />
       </head><body></body></html>
-EOS
+    EOS
     # Also add the Yadis location header, so that they don't have
     # to parse the html unless absolutely necessary.
     response.headers['X-XRDS-Location'] = open_id_xrds_url
@@ -188,7 +187,7 @@ EOS
 
   def approved(trust_root)
     true
-    #return SERVER_APPROVALS.member?(trust_root)
+    # return SERVER_APPROVALS.member?(trust_root)
   end
 
   def is_authorized(identity_url, trust_root)
@@ -202,19 +201,19 @@ EOS
       type_str += "<Type>#{uri}</Type>\n      "
     }
 
-    yadis = <<EOS
-<?xml version="1.0" encoding="UTF-8"?>
-<xrds:XRDS
-    xmlns:xrds="xri://$xrds"
-    xmlns="xri://$xrd*($v*2.0)">
-  <XRD>
-    <Service priority="0">
-      #{type_str}
-      <URI>#{open_id_create_url}</URI>
-    </Service>
-  </XRD>
-</xrds:XRDS>
-EOS
+    yadis = <<~EOS
+      <?xml version="1.0" encoding="UTF-8"?>
+      <xrds:XRDS
+          xmlns:xrds="xri://$xrds"
+          xmlns="xri://$xrd*($v*2.0)">
+        <XRD>
+          <Service priority="0">
+            #{type_str}
+            <URI>#{open_id_create_url}</URI>
+          </Service>
+        </XRD>
+      </xrds:XRDS>
+    EOS
 
     render :text => yadis, :content_type => 'application/xrds+xml'
   end
@@ -226,7 +225,7 @@ EOS
     return if sregreq.nil?
 
     sreg_data = { 'email' => current_user.email, 'fullname' => current_user.full_name, 'remote_id' => current_user.id.to_s,
-                  'first_name' => current_user.first_name, 'last_name' => current_user.last_name, 'dob'=> current_user.born_at.to_s,
+                  'first_name' => current_user.first_name, 'last_name' => current_user.last_name, 'dob' => current_user.born_at.to_s,
                   'guid' => current_user.document_vatid, 'address' => current_user.address, 'postcode' => current_user.postal_code }
 
     sreg_data["phone"] = current_user.phone if current_user.phone
@@ -265,5 +264,4 @@ EOS
       render :text => web_response.body, :status => 400
     end
   end
-
 end

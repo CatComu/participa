@@ -29,7 +29,7 @@ class CollaborationsTest < ActionDispatch::IntegrationTest
 
   test "a user should be able to add and destroy a new collaboration" do
     user = create(:user)
-    assert_equal 0, Collaboration.all.count 
+    assert_equal 0, Collaboration.all.count
 
     # logged in user, fill collaboration
     login_as(user)
@@ -40,17 +40,17 @@ class CollaborationsTest < ActionDispatch::IntegrationTest
       proyecto cuyas únicas lealtades van a estar del lado de la gente.
     MSG
 
-    select('500', :from=>'Importe mensual') 
-    select('Trimestral', :from=>'Frecuencia de pago') 
-    select('Domiciliación en cuenta bancaria (formato IBAN)', :from=>'Método de pago') 
+    select('500', :from => 'Importe mensual')
+    select('Trimestral', :from => 'Frecuencia de pago')
+    select('Domiciliación en cuenta bancaria (formato IBAN)', :from => 'Método de pago')
     fill_in('collaboration_iban_account', :with => "ES0690000001210123456789")
     fill_in('collaboration_iban_bic', :with => "ESPBESMMXXX")
     check('collaboration_terms_of_service')
-    check('collaboration_minimal_year_old') 
+    check('collaboration_minimal_year_old')
 
     click_button "Guardar Colaboración económica"
     assert_content "6.000,00€"
-    assert_equal 1, Collaboration.all.count 
+    assert_equal 1, Collaboration.all.count
 
     # confirm collaboration
     click_link "Confirmar"
@@ -63,12 +63,12 @@ class CollaborationsTest < ActionDispatch::IntegrationTest
     # destroy collaboration
     click_link "Dar de baja colaboración"
     assert_content "Hemos dado de baja tu colaboración."
-    assert_equal 0, Collaboration.all.count 
+    assert_equal 0, Collaboration.all.count
   end
 
   test "a user should be able to add and destroy a new collaboration with orders" do
     user = create(:user)
-    assert_equal 0, Collaboration.all.count 
+    assert_equal 0, Collaboration.all.count
 
     login_as(user)
     visit new_collaboration_path
@@ -78,17 +78,17 @@ class CollaborationsTest < ActionDispatch::IntegrationTest
       proyecto cuyas únicas lealtades van a estar del lado de la gente.
     MSG
 
-    select('500', :from=>'Importe mensual') 
-    select('Trimestral', :from=>'Frecuencia de pago') 
-    select('Domiciliación en cuenta bancaria (formato IBAN)', :from=>'Método de pago') 
+    select('500', :from => 'Importe mensual')
+    select('Trimestral', :from => 'Frecuencia de pago')
+    select('Domiciliación en cuenta bancaria (formato IBAN)', :from => 'Método de pago')
     fill_in('collaboration_iban_account', :with => "ES0690000001210123456789")
     fill_in('collaboration_iban_bic', :with => "ESPBESMMXXX")
     check('collaboration_terms_of_service')
-    check('collaboration_minimal_year_old') 
+    check('collaboration_minimal_year_old')
 
     click_button "Guardar Colaboración económica"
     assert_content "6.000,00€"
-    assert_equal 1, Collaboration.all.count 
+    assert_equal 1, Collaboration.all.count
 
     click_link "Confirmar"
     assert_content "Tu donación se ha dado de alta correctamente."
@@ -98,7 +98,7 @@ class CollaborationsTest < ActionDispatch::IntegrationTest
     assert_content "Ya tienes una colaboración"
 
     collaboration = Collaboration.all.last
-    order = collaboration.create_order Date.current+1.day
+    order = collaboration.create_order Date.current + 1.day
     assert order.save
     assert_equal 1, Order.all.count
 
@@ -106,8 +106,7 @@ class CollaborationsTest < ActionDispatch::IntegrationTest
     click_link "Dar de baja colaboración"
     assert_content "Hemos dado de baja tu colaboración."
 
-    assert_equal 0, Collaboration.all.count 
+    assert_equal 0, Collaboration.all.count
     assert_equal 1, Order.all.count
   end
-
 end

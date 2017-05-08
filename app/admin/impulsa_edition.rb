@@ -78,7 +78,7 @@ ActiveAdmin.register ImpulsaEdition do
         column :name
         column :actions do |topic|
           span link_to(t('active_admin.edit'), edit_admin_impulsa_edition_impulsa_edition_topic_path(resource, topic))
-          span link_to(t('active_admin.delete'),  admin_impulsa_edition_impulsa_edition_topic_path(resource, topic), method: :delete, data: { confirm: "¿Estas segura de querer borrar esta temática?" })
+          span link_to(t('active_admin.delete'), admin_impulsa_edition_impulsa_edition_topic_path(resource, topic), method: :delete, data: { confirm: "¿Estas segura de querer borrar esta temática?" })
         end
       end
       div link_to(t('active_admin.has_many_new', model: t("activerecord.models.impulsa_edition_topic")), new_admin_impulsa_edition_impulsa_edition_topic_path(resource))
@@ -115,7 +115,7 @@ ActiveAdmin.register ImpulsaEdition do
   end
 
   member_action :create_election do
-    p = ImpulsaEdition.find( params[:id] )  
+    p = ImpulsaEdition.find(params[:id])
     if p.create_election request.base_url
       flash[:notice] = "Se han creado las votaciones para la edición de IMPULSA."
     else
@@ -123,7 +123,6 @@ ActiveAdmin.register ImpulsaEdition do
     end
     redirect_to action: :index
   end
-
 end
 
 ActiveAdmin.register ImpulsaEditionTopic do

@@ -21,12 +21,11 @@ class OrdersController < ApplicationController
     if order.first and order.is_payable?
       order.redsys_parse_response! request_params, raw_xml
     end
-    
+
     if soap
       render :text => order.redsys_callback_response, :content_type => "text/xml"
     else
       render text: order.is_paid? ? "OK" : "KO"
     end
   end
-
 end

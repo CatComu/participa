@@ -8,14 +8,14 @@ namespace :encomu do
     sendy_lists.add_list "A - España", "m_"
     sendy_lists.add_list "A - Extranjero", "e_"
 
-    # 50 provinces + 2 autonomous cities
-    (01..52).each {|n| sendy_province "%02d" % n, sendy_lists}
+    #  50 provinces + 2 autonomous cities
+    (01..52).each { |n| sendy_province "%02d" % n, sendy_lists }
 
     sendy_lists.close
   end
 
   desc "[encomu] Extract municipies information from INE"
-  # http://www.ine.es/jaxi/menu.do?type=pcaxis&path=/t20/e245/codmun&file=inebase 
+  # http://www.ine.es/jaxi/menu.do?type=pcaxis&path=/t20/e245/codmun&file=inebase
   #    Relación de municipios y códigos por provincias a 01-01-2014
   #    http://www.ine.es/daco/daco42/codmun/codmunmapa.htm
   #
@@ -27,12 +27,12 @@ namespace :encomu do
   task :municipies_extract => :environment do
     require 'municipy_extractor'
 
-    # 50 provinces + 2 autonomous cities
-    (01..52).each {|n| carmen_province "%02d" % n}
+    #  50 provinces + 2 autonomous cities
+    (01..52).each { |n| carmen_province "%02d" % n }
   end
 
   def sendy_province number_province, sendy_lists
-    # Given a number (first column) like 01 or 52 parse the CSV file and
+    #  Given a number (first column) like 01 or 52 parse the CSV file and
     # extract all the municipalities for that province.
 
     municipy_extractor = MunicipyExtractor.new(number_province)
@@ -50,7 +50,7 @@ namespace :encomu do
   end
 
   def carmen_province number_province
-    # Given a number (first column) like 01 or 52 parse the CSV file and
+    #  Given a number (first column) like 01 or 52 parse the CSV file and
     # extract all the municipalities for that province.
     MunicipyExtractor.new(number_province).extract
   end
@@ -63,13 +63,12 @@ namespace :encomu do
       FileUtils.mkdir_p("tmp/sendy") unless File.directory?("tmp/sendy")
       @sendy_lists_file = File.open("tmp/sendy/update_lists.sql", 'w')
 
-      @INSERT_TEMPLATE = ERB.new <<-END
-INSERT INTO lists (app, userID, name, thankyou_message, goodbye_message, confirmation_email, custom_fields)
-SELECT <%= @appID %>, <%= @userID %>, "<%= name %> - <%= code %>", <%= @EMPTY_PAGE %>, <%= @EMPTY_PAGE %>, <%= @EMPTY_PAGE %>, NULL
-FROM lists WHERE NOT EXISTS(
-  SELECT * FROM lists l WHERE l.name LIKE '% - <%= code %>'
-) LIMIT 1;
-
+      @INSERT_TEMPLATE = ERB.new <<~END
+        INSERT INTO lists (app, userID, name, thankyou_message, goodbye_message, confirmation_email, custom_fields)
+        SELECT <%= @appID %>, <%= @userID %>, "<%= name %> - <%= code %>", <%= @EMPTY_PAGE %>, <%= @EMPTY_PAGE %>, <%= @EMPTY_PAGE %>, NULL
+        FROM lists WHERE NOT EXISTS(
+          SELECT * FROM lists l WHERE l.name LIKE '% - <%= code %>'
+        ) LIMIT 1;
       END
       @EMPTY_PAGE = "'<html><head></head><body></body></html>'"
     end

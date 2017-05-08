@@ -6,7 +6,7 @@ ActiveAdmin.register MicrocreditLoan do
   config.sort_order = 'updated_at_desc'
   menu :parent => "Microcredits"
 
-  batch_action :destroy, if: proc{can? :admin, MicrocreditLoan}
+  batch_action :destroy, if: proc { can? :admin, MicrocreditLoan }
 
   index download_links: -> { current_user.is_admin? && current_user.finances_admin? } do
     selectable_column
@@ -27,7 +27,7 @@ ActiveAdmin.register MicrocreditLoan do
     end
     column :document_vatid
     column :amount, sortable: :amount do |loan|
-      number_to_euro loan.amount*100
+      number_to_euro loan.amount * 100
     end
     column :created_at
     column :confirmed_at
@@ -42,7 +42,7 @@ ActiveAdmin.register MicrocreditLoan do
         link_to(l.microcredit.title, admin_microcredit_loan_path(l))
       end.join(" ").html_safe
     end
-    actions defaults: true do |loan|    
+    actions defaults: true do |loan|
       if loan.confirmed_at.nil?
         link_to('Confirmar', confirm_admin_microcredit_loan_path(loan), method: :post, data: { confirm: "Por favor, no utilices este botón antes de aparezca el ingreso en la cuenta bancaria. ¿Estas segura de querer confirmar la recepción de este microcrédito?" })
       else
@@ -62,7 +62,7 @@ ActiveAdmin.register MicrocreditLoan do
         end
       end
       row :amount do
-        number_to_euro microcredit_loan.amount*100
+        number_to_euro microcredit_loan.amount * 100
       end
       row :document_vatid
       row :user do
@@ -149,7 +149,7 @@ ActiveAdmin.register MicrocreditLoan do
   scope :not_returned
   scope :transferred
   scope :renewal
-  
+
   filter :id
   filter :id_in, as: :string, label: "Lista de IDs"
   filter :id_not_in, as: :string, label: "Lista de IDs (excluídos)"
@@ -186,10 +186,10 @@ ActiveAdmin.register MicrocreditLoan do
     link_to('Descargar PDF', download_pdf_admin_microcredit_loan_path(resource))
   end
 
-  batch_action :return_batch, if: proc{ params[:scope]=="confirmed" } do |ids|
+  batch_action :return_batch, if: proc { params[:scope] == "confirmed" } do |ids|
     ok = true
     MicrocreditLoan.transaction do
-      MicrocreditLoan.where(id:ids).each do |ml|
+      MicrocreditLoan.where(id: ids).each do |ml|
         ok &&= ml.return!
       end
       redirect_to(collection_path, notice: "Las suscripciones han sido marcadas como devueltas.") if ok
@@ -198,10 +198,10 @@ ActiveAdmin.register MicrocreditLoan do
     redirect_to(collection_path, warning: "Ha ocurrido un error y las suscripciones no han sido marcadas como devueltas.") if !ok
   end
 
-  batch_action :confirm_batch, if: proc{ params[:scope]=="not_confirmed" } do |ids|
+  batch_action :confirm_batch, if: proc { params[:scope] == "not_confirmed" } do |ids|
     ok = true
     MicrocreditLoan.transaction do
-      MicrocreditLoan.where(id:ids).each do |ml|
+      MicrocreditLoan.where(id: ids).each do |ml|
         ok &&= ml.confirm!
       end
       redirect_to(collection_path, notice: "Las suscripciones han sido marcadas como confirmadas.") if ok
@@ -209,10 +209,10 @@ ActiveAdmin.register MicrocreditLoan do
     redirect_to(collection_path, warning: "Ha ocurrido un error y las suscripciones no han sido marcadas como confirmadas.") if !ok
   end
 
-  batch_action :discard_batch, if: proc{ params[:scope]=="not_discarded" } do |ids|
+  batch_action :discard_batch, if: proc { params[:scope] == "not_discarded" } do |ids|
     ok = true
     MicrocreditLoan.transaction do
-      MicrocreditLoan.where(id:ids).each do |ml|
+      MicrocreditLoan.where(id: ids).each do |ml|
         ok &&= ml.discard!
       end
       redirect_to(collection_path, notice: "Las suscripciones han sido marcadas como descartadas.") if ok
@@ -224,7 +224,7 @@ ActiveAdmin.register MicrocreditLoan do
     m = MicrocreditLoan.find(params[:id])
     if request.post? and m.counted_at.nil?
       m.counted_at = Time.zone.now
-    
+
       if m.save
         flash[:notice] = "El microcrédito ha sido modificado y ahora se cuenta en la web."
       else
@@ -237,12 +237,12 @@ ActiveAdmin.register MicrocreditLoan do
   member_action :confirm, :method => [:post, :delete] do
     m = MicrocreditLoan.find(params[:id])
     res = false
-    if request.post? 
+    if request.post?
       res = m.confirm!
     elsif request.delete?
       res = m.unconfirm!
     end
-    
+
     if res
       flash[:notice] = "La recepción del microcrédito ha sido confirmada."
     else

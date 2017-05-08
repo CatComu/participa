@@ -5,18 +5,18 @@ class Post < ApplicationRecord
 
   has_and_belongs_to_many :categories
 
-  STATUS = {"Borrador" => 0, "Publicado" => 1}
+  STATUS = { "Borrador" => 0, "Publicado" => 1 }
 
-  scope :index, -> { order(created_at: :desc)}
+  scope :index, -> { order(created_at: :desc) }
   scope :created, -> { where(deleted_at: nil) }
-  scope :drafts,  -> { where(status: 0) }
-  scope :published,  -> { where(status: 1) }
+  scope :drafts, -> { where(status: 0) }
+  scope :published, -> { where(status: 1) }
   scope :deleted, -> { only_deleted }
 
   validates :title, :status, presence: true
 
   def published?
-    status>0
+    status > 0
   end
 
   def slug_candidates

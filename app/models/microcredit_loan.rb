@@ -25,21 +25,21 @@ class MicrocreditLoan < ApplicationRecord
   validate :validates_not_passport
   validate :validates_age_over
 
-  scope :not_counted, -> { where(counted_at:nil) }
-  scope :counted, -> { where.not(counted_at:nil) }
-  scope :not_confirmed, -> { where(confirmed_at:nil) }
-  scope :confirmed, -> { where.not(confirmed_at:nil) }
-  scope :not_discarded, -> { where(discarded_at:nil) }
-  scope :discarded, -> { where.not(discarded_at:nil) }
-  scope :not_returned, -> { confirmed.where(returned_at:nil) }
-  scope :returned, -> { where.not(returned_at:nil) }
-  scope :transferred, -> { where.not(transferred_to_id:nil)}
-  scope :renewal, -> { joins(:original_loans).distinct(:microcredit_id)}
+  scope :not_counted, -> { where(counted_at: nil) }
+  scope :counted, -> { where.not(counted_at: nil) }
+  scope :not_confirmed, -> { where(confirmed_at: nil) }
+  scope :confirmed, -> { where.not(confirmed_at: nil) }
+  scope :not_discarded, -> { where(discarded_at: nil) }
+  scope :discarded, -> { where.not(discarded_at: nil) }
+  scope :not_returned, -> { confirmed.where(returned_at: nil) }
+  scope :returned, -> { where.not(returned_at: nil) }
+  scope :transferred, -> { where.not(transferred_to_id: nil) }
+  scope :renewal, -> { joins(:original_loans).distinct(:microcredit_id) }
 
   scope :renewables, -> { confirmed.joins(:microcredit).merge(Microcredit.renewables).distinct }
   scope :not_renewed, -> { renewables.not_returned }
 
-  scope :recently_renewed, -> { confirmed.where.not(transferred_to:nil).where("returned_at>?",30.days.ago) }
+  scope :recently_renewed, -> { confirmed.where.not(transferred_to: nil).where("returned_at>?", 30.days.ago) }
   scope :ignore_discarded, -> { where("discarded_at is null or counted_at is not null") }
 
   scope :phase, -> { joins(:microcredit).where("microcredits.reset_at is null or (microcredit_loans.counted_at IS NULL and microcredit_loans.created_at>microcredits.reset_at) or microcredit_loans.counted_at>microcredits.reset_at") }
@@ -101,7 +101,7 @@ class MicrocreditLoan < ApplicationRecord
     self.user_data = if user
                        nil
                      else
-                       {first_name: first_name, last_name: last_name, email: email, address: address, postal_code: postal_code, town: town, province: province, country: country}.to_yaml
+                       { first_name: first_name, last_name: last_name, email: email, address: address, postal_code: postal_code, town: town, province: province, country: country }.to_yaml
                      end
     if self.document_vatid
       self.document_vatid.upcase!
@@ -143,13 +143,13 @@ class MicrocreditLoan < ApplicationRecord
   end
 
   def validates_not_passport
-    if self.user and self.user.is_passport? 
+    if self.user and self.user.is_passport?
       self.errors.add(:user, "No puedes suscribir un microcrédito si no dispones de DNI o NIE.")
     end
   end
 
   def validates_age_over
-    if self.user and self.user.born_at > Date.current-18.years
+    if self.user and self.user.born_at > Date.current - 18.years
       self.errors.add(:user, "No puedes suscribir un microcrédito si eres menor de edad.")
     end
   end
@@ -161,10 +161,10 @@ class MicrocreditLoan < ApplicationRecord
   end
 
   def check_user_limits
-    limit = self.microcredit.loans.where(ip:self.ip).count>50
+    limit = self.microcredit.loans.where(ip: self.ip).count > 50
     if not limit
-      loans = self.microcredit.loans.where(document_vatid:self.document_vatid).pluck(:amount)
-      limit = ((loans.length>=15) or (loans.sum + self.amount>10000)) if not limit and self.amount
+      loans = self.microcredit.loans.where(document_vatid: self.document_vatid).pluck(:amount)
+      limit = ((loans.length >= 15) or (loans.sum + self.amount > 10000)) if not limit and self.amount
     end
 
     self.errors.add(:user, "Lamentablemente, no es posible suscribir este microcrédito.") if limit
@@ -229,7 +229,7 @@ class MicrocreditLoan < ApplicationRecord
   end
 
   def unique_hash
-     Digest::SHA1.hexdigest "#{id}-#{created_at}-#{document_vatid.upcase}"
+    Digest::SHA1.hexdigest "#{id}-#{created_at}-#{document_vatid.upcase}"
   end
 
   def renew! new_campaign

@@ -1,5 +1,4 @@
 ActiveAdmin.register Page do
-
   permit_params :id_form, :title, :slug, :link, :require_login
 
   action_item(:reload_routes, only: :show) do
@@ -14,7 +13,7 @@ ActiveAdmin.register Page do
   form do |f|
     f.semantic_errors
     f.inputs 'Formulario de gravity' do
-      #div "Creado en #{f.object.created_at}" unless f.object.new_record?
+      # div "Creado en #{f.object.created_at}" unless f.object.new_record?
       f.input :title, label: "Título de la página"
       f.input :slug, label: "Slug (dirección de la página)", placeholder: "direccion-sin-barra-inicial"
       f.input :id_form, label: "Número de formulario en gravity"
@@ -23,5 +22,4 @@ ActiveAdmin.register Page do
     end
     f.actions
   end
-
 end

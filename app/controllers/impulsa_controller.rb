@@ -1,8 +1,8 @@
 class ImpulsaController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :categories, :category, :project, :attachment ]
+  before_action :authenticate_user!, except: [:index, :categories, :category, :project, :attachment]
   before_action :set_current_edition
   before_action :set_user_project
- 
+
   def index
     @upcoming = ImpulsaEdition.upcoming.first if @edition.nil?
   end
@@ -34,8 +34,8 @@ class ImpulsaController < ApplicationController
     cache_files
 
     if params[:commit]
-      @project.mark_as_new if params[:commit]==t("podemos.impulsa.save_draft")
-      @project.mark_for_review if params[:commit]==t("podemos.impulsa.mark_for_review")
+      @project.mark_as_new if params[:commit] == t("podemos.impulsa.save_draft")
+      @project.mark_for_review if params[:commit] == t("podemos.impulsa.mark_for_review")
       if @project.save
         flash[:notice] = "Los cambios han sido guardados"
         redirect_to edit_impulsa_path
@@ -66,9 +66,9 @@ class ImpulsaController < ApplicationController
   end
 
   def categories
-    @categories_state = @edition.impulsa_edition_categories.state.select {|c| c.impulsa_projects.public_visible.count>0}
-    @categories_territorial = @edition.impulsa_edition_categories.territorial.select {|c| c.impulsa_projects.public_visible.count>0}
-    @categories_internal = @edition.impulsa_edition_categories.internal.select {|c| c.impulsa_projects.public_visible.count>0}
+    @categories_state = @edition.impulsa_edition_categories.state.select { |c| c.impulsa_projects.public_visible.count > 0 }
+    @categories_territorial = @edition.impulsa_edition_categories.territorial.select { |c| c.impulsa_projects.public_visible.count > 0 }
+    @categories_internal = @edition.impulsa_edition_categories.internal.select { |c| c.impulsa_projects.public_visible.count > 0 }
   end
 
   def category
@@ -78,7 +78,7 @@ class ImpulsaController < ApplicationController
   end
 
   def project
-    @project = ImpulsaProject.public_visible.where(id:params[:id]).first
+    @project = ImpulsaProject.public_visible.where(id: params[:id]).first
     redirect_to impulsa_categories_path and return if @project.nil?
   end
 
@@ -94,7 +94,7 @@ class ImpulsaController < ApplicationController
 
   def set_user_project
     return if @edition.nil? || !current_user
-    @project = @edition.impulsa_projects.where(user:current_user).first
+    @project = @edition.impulsa_projects.where(user: current_user).first
 
     @available_categories = @edition.impulsa_edition_categories
     @available_categories = @available_categories.non_authors if !current_user.impulsa_author?
@@ -109,7 +109,7 @@ class ImpulsaController < ApplicationController
 
   def project_params
     if @project.user_edit_field?(:impulsa_edition_topics) || @project.user_edit_field?(:impulsa_edition_topic_ids)
-      params.require(:impulsa_project).permit(@project.user_editable_fields + @project.user_editable_cache_fields, impulsa_edition_topic_ids:[])
+      params.require(:impulsa_project).permit(@project.user_editable_fields + @project.user_editable_cache_fields, impulsa_edition_topic_ids: [])
     else
       params.require(:impulsa_project).permit(@project.user_editable_fields + @project.user_editable_cache_fields)
     end

@@ -17,8 +17,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
+gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'spring', group: :development
 gem 'sprockets-rails'
 
 gem 'pg'
@@ -73,7 +73,7 @@ group :development, :test do
   gem 'capistrano-passenger'
   gem 'factory_girl_rails'
   gem 'byebug'
-  gem 'rubocop'
+  gem 'rubocop', github: 'bbatsov/rubocop'
   gem 'ruby-prof'
   gem 'simplecov'
 end

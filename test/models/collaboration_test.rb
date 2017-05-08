@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class CollaborationTest < ActiveSupport::TestCase
-
   around do |&block|
     @collaboration = create(:collaboration, :ccc)
 
@@ -18,12 +17,12 @@ class CollaborationTest < ActiveSupport::TestCase
     assert(c.errors[:non_user_document_vatid].include? "no puede estar en blanco")
     assert(c.errors[:non_user_data].include? "no puede estar en blanco")
     assert(c.errors[:user].include? "La colaboración debe tener un usuario asociado.")
-    #assert(c.errors[:terms_of_service].include? "debe ser aceptado")
-    #assert(c.errors[:minimal_year_old].include? "debe ser aceptado")
+    # assert(c.errors[:terms_of_service].include? "debe ser aceptado")
+    # assert(c.errors[:minimal_year_old].include? "debe ser aceptado")
   end
 
   test "should set_initial_status work" do
-    assert_equal( @collaboration.status, 0 )
+    assert_equal(@collaboration.status, 0)
     c = Collaboration.new
     c.save
     assert_equal c.status, 0
@@ -44,22 +43,21 @@ class CollaborationTest < ActiveSupport::TestCase
     assert_equal 4, Collaboration.all.count
     assert_equal 3, Collaboration.bank_nationals.count
     assert_equal 1, Collaboration.bank_internationals.count
-
   end
 
   test "should .set_active work" do
     @collaboration.update_attribute(:status, 0)
     @collaboration.set_active!
-    assert_equal( 2, @collaboration.status)
+    assert_equal(2, @collaboration.status)
     @collaboration.update_attribute(:status, 1)
     @collaboration.set_active!
-    assert_equal( 2, @collaboration.status)
+    assert_equal(2, @collaboration.status)
     @collaboration.update_attribute(:status, 3)
     @collaboration.set_active!
-    assert_equal( 3, @collaboration.status)
+    assert_equal(3, @collaboration.status)
     @collaboration.update_attribute(:status, 4)
     @collaboration.set_active!
-    assert_equal( 4, @collaboration.status)
+    assert_equal(4, @collaboration.status)
   end
 
   test "should .validates_not_passport work" do
@@ -70,7 +68,7 @@ class CollaborationTest < ActiveSupport::TestCase
 
   test "should .validates_age_over work" do
     user = build(:user)
-    user.update_attribute(:born_at, Time.zone.now-10.years)
+    user.update_attribute(:born_at, Time.zone.now - 10.years)
     @collaboration.user = user
     assert_not @collaboration.valid?
     assert(@collaboration.errors[:user].include? "No puedes colaborar si eres menor de edad.")
@@ -158,34 +156,34 @@ class CollaborationTest < ActiveSupport::TestCase
   test "should .payment_type_name work" do
     if Features.redsys_collaborations?
       @collaboration.update_attribute(:payment_type, 1)
-      assert_equal( "Suscripción con Tarjeta de Crédito/Débito", @collaboration.payment_type_name )
+      assert_equal("Suscripción con Tarjeta de Crédito/Débito", @collaboration.payment_type_name)
     end
     @collaboration.update_attribute(:payment_type, 2)
-    assert_equal( "Domiciliación en cuenta bancaria (formato CCC)", @collaboration.payment_type_name )
+    assert_equal("Domiciliación en cuenta bancaria (formato CCC)", @collaboration.payment_type_name)
     @collaboration.update_attribute(:payment_type, 3)
-    assert_equal( "Domiciliación en cuenta bancaria (formato IBAN)", @collaboration.payment_type_name )
+    assert_equal("Domiciliación en cuenta bancaria (formato IBAN)", @collaboration.payment_type_name)
   end
 
   test "should .frequency_name work" do
     @collaboration.update_attribute(:frequency, 1)
-    assert_equal( "Mensual", @collaboration.frequency_name )
+    assert_equal("Mensual", @collaboration.frequency_name)
     @collaboration.update_attribute(:frequency, 3)
-    assert_equal( "Trimestral", @collaboration.frequency_name )
+    assert_equal("Trimestral", @collaboration.frequency_name)
     @collaboration.update_attribute(:frequency, 12)
-    assert_equal( "Anual", @collaboration.frequency_name )
+    assert_equal("Anual", @collaboration.frequency_name)
   end
 
   test "should .status_name work" do
     @collaboration.update_attribute(:status, 0)
-    assert_equal( "Sin pago", @collaboration.status_name )
+    assert_equal("Sin pago", @collaboration.status_name)
     @collaboration.update_attribute(:status, 1)
-    assert_equal( "Error", @collaboration.status_name )
+    assert_equal("Error", @collaboration.status_name)
     @collaboration.update_attribute(:status, 2)
-    assert_equal( "Sin confirmar", @collaboration.status_name )
+    assert_equal("Sin confirmar", @collaboration.status_name)
     @collaboration.update_attribute(:status, 3)
-    assert_equal( "OK", @collaboration.status_name )
+    assert_equal("OK", @collaboration.status_name)
     @collaboration.update_attribute(:status, 4)
-    assert_equal( "Alerta", @collaboration.status_name )
+    assert_equal("Alerta", @collaboration.status_name)
   end
 
   test "should .ccc_full work" do
@@ -270,13 +268,13 @@ class CollaborationTest < ActiveSupport::TestCase
   end
 
   test "should .first_order work" do
-    order1 = @collaboration.create_order Time.zone.now-6.months, true
+    order1 = @collaboration.create_order Time.zone.now - 6.months, true
     order1.save
     @collaboration.reload
-    order2 = @collaboration.create_order Time.zone.now-5.months, true
-    order3 = @collaboration.create_order Time.zone.now-4.months, true
-    order4 = @collaboration.create_order Time.zone.now-3.months, true
-    order5 = @collaboration.create_order Time.zone.now+3.months, true
+    order2 = @collaboration.create_order Time.zone.now - 5.months, true
+    order3 = @collaboration.create_order Time.zone.now - 4.months, true
+    order4 = @collaboration.create_order Time.zone.now - 3.months, true
+    order5 = @collaboration.create_order Time.zone.now + 3.months, true
     order2.save
     order3.save
     order4.save
@@ -287,7 +285,7 @@ class CollaborationTest < ActiveSupport::TestCase
   end
 
   test "should .create_order work" do
-    order1 = @collaboration.create_order Time.zone.now-1.month
+    order1 = @collaboration.create_order Time.zone.now - 1.month
     assert order1.save
     assert_equal(order1, @collaboration.first_order)
     assert_equal "Domiciliación en cuenta bancaria (formato IBAN)", order1.payment_type_name
@@ -372,10 +370,10 @@ class CollaborationTest < ActiveSupport::TestCase
   end
 
   test "should .must_have_order? work" do
-    assert_not @collaboration.must_have_order? Date.current-1.year
-    assert_not @collaboration.must_have_order? Date.current-1.month
-    assert @collaboration.must_have_order? Date.current+1.month
-    assert @collaboration.must_have_order? Date.current+1.year
+    assert_not @collaboration.must_have_order? Date.current - 1.year
+    assert_not @collaboration.must_have_order? Date.current - 1.month
+    assert @collaboration.must_have_order? Date.current + 1.month
+    assert @collaboration.must_have_order? Date.current + 1.year
 
     date = @collaboration.created_at
     date = date.change(day: Order.payment_day)
@@ -385,7 +383,6 @@ class CollaborationTest < ActiveSupport::TestCase
 
     @collaboration.created_at = date + 1.day
     assert_not @collaboration.must_have_order? Date.current
-
   end
 
   test "should .must_have_order? work for trimestral" do
@@ -394,19 +391,19 @@ class CollaborationTest < ActiveSupport::TestCase
     assert @collaboration.must_have_order? Date.current
     order = @collaboration.create_order Date.current
     assert order.valid?
-    # FIXME: check another time on trimestral basis                                                 
-    #skip "Should not have collaboration another time on a trimestral basis"
-    #assert_not @collaboration.must_have_order? Date.current+15.days
+    # FIXME: check another time on trimestral basis
+    # skip "Should not have collaboration another time on a trimestral basis"
+    # assert_not @collaboration.must_have_order? Date.current+15.days
   end
 
   test "should .get_orders work" do
-    order1 = @collaboration.create_order Time.zone.now-1.month
+    order1 = @collaboration.create_order Time.zone.now - 1.month
     order1.save
     order2 = @collaboration.create_order Time.zone.now
     order2.save
-    order3 = @collaboration.create_order Time.zone.now+1.month
+    order3 = @collaboration.create_order Time.zone.now + 1.month
     order3.save
-    orders = @collaboration.get_orders(Time.zone.now-2.month, Time.zone.now)
+    orders = @collaboration.get_orders(Time.zone.now - 2.month, Time.zone.now)
     assert_equal(2, orders.count)
   end
 
@@ -437,47 +434,47 @@ class CollaborationTest < ActiveSupport::TestCase
   end
 
   test "should .get_bank_data work" do
-    order = @collaboration.create_order Date.civil(2015,03,20)
+    order = @collaboration.create_order Date.civil(2015, 03, 20)
     user = @collaboration.user
     order.save
-      date = Date.civil(2015,03,20)
-      id = "%02d%02d%06d" % [ date.year%100, date.month, order.id%1000000 ]
-      response = [id, 
-      	"PEPITO PEREZ", 
-      	user.document_vatid, 
-      	user.email, 
-      	"C/ INVENTADA, 123", 
-      	"MADRID", 
-      	"28021", 
-      	"ES", 
-      	"ES0690000001210123456789", 
-      	"90000001210123456789", 
-      	"ESPBESMMXXX", 
-      	10, 
-      	"RCUR", 
-      	"http://localhost/colabora", 
-      	@collaboration.id, 
-      	order.created_at.strftime("%d-%m-%Y"), 
-      	"Colaboración marzo 2015", 
-      	"10-03-2015", 
-      	"Mensual", 
-      	"PEPITO PEREZ"]
-    assert_equal( response, @collaboration.get_bank_data(Date.civil(2015,03,20)) )
+    date = Date.civil(2015, 03, 20)
+    id = "%02d%02d%06d" % [date.year % 100, date.month, order.id % 1000000]
+    response = [id,
+                "PEPITO PEREZ",
+                user.document_vatid,
+                user.email,
+                "C/ INVENTADA, 123",
+                "MADRID",
+                "28021",
+                "ES",
+                "ES0690000001210123456789",
+                "90000001210123456789",
+                "ESPBESMMXXX",
+                10,
+                "RCUR",
+                "http://localhost/colabora",
+                @collaboration.id,
+                order.created_at.strftime("%d-%m-%Y"),
+                "Colaboración marzo 2015",
+                "10-03-2015",
+                "Mensual",
+                "PEPITO PEREZ"]
+    assert_equal(response, @collaboration.get_bank_data(Date.civil(2015, 03, 20)))
   end
 
   test "should Collaboration::NonUser work" do
     non_user = Collaboration::NonUser.new({
-      legacy_id: 2,
-      full_name: "Pepito Perez",
-      document_vatid: "XXXXXX",
-      email: "foo@example.com",
-      invalid_field: "do not save"
-    })
+                                            legacy_id: 2,
+                                            full_name: "Pepito Perez",
+                                            document_vatid: "XXXXXX",
+                                            email: "foo@example.com",
+                                            invalid_field: "do not save"
+                                          })
     assert_equal non_user.legacy_id, 2
     assert_equal non_user.full_name, "Pepito Perez"
     assert_equal non_user.document_vatid, "XXXXXX"
     assert_equal non_user.email, "foo@example.com"
-    #assert_equal non_user.invalid_field, nil
+    # assert_equal non_user.invalid_field, nil
     assert_equal non_user.to_s, "Pepito Perez (XXXXXX - foo@example.com)"
   end
 
@@ -620,41 +617,41 @@ phone: '666666'"
 
   test "should Collaboration.has_bank_file? work" do
     assert Collaboration.has_bank_file? Date.current
-    #@collaboration.BANK_FILE_LOCK
+    # @collaboration.BANK_FILE_LOCK
   end
 
   test "should update_paid_unconfirmed_bank_collaborations orders work" do
     date = Date.current
     start_date = Date.current - 4.month
-    @collaboration.create_order(date - 1.month ).save
-    @collaboration.create_order(date - 2.month ).save
-    @collaboration.create_order(date - 3.month ).save
-    @collaboration.create_order(date - 4.month ).save
+    @collaboration.create_order(date - 1.month).save
+    @collaboration.create_order(date - 2.month).save
+    @collaboration.create_order(date - 3.month).save
+    @collaboration.create_order(date - 4.month).save
 
     assert_equal 4, Order.banks.count
 
-    Order.where(collaboration: @collaboration).each {|o| o.update_attribute(:status, 0) }
+    Order.where(collaboration: @collaboration).each { |o| o.update_attribute(:status, 0) }
     Collaboration.update_paid_unconfirmed_bank_collaborations(Order.banks.by_date(start_date, date).charging)
     @collaboration.reload
     assert_equal 0, @collaboration.status
 
-    Order.where(collaboration: @collaboration).each {|o| o.update_attribute(:status, 1) }
+    Order.where(collaboration: @collaboration).each { |o| o.update_attribute(:status, 1) }
     Collaboration.update_paid_unconfirmed_bank_collaborations(Order.banks.by_date(start_date, date).charging)
     @collaboration.reload
     assert_equal 0, @collaboration.status
 
-    Order.where(collaboration: @collaboration).each {|o| o.update_attribute(:status, 1) }
+    Order.where(collaboration: @collaboration).each { |o| o.update_attribute(:status, 1) }
     @collaboration.update_attribute(:status, 2)
     Collaboration.update_paid_unconfirmed_bank_collaborations(Order.banks.by_date(start_date, date).charging)
     @collaboration.reload
     assert_equal 3, @collaboration.status
 
-    Order.where(collaboration: @collaboration).each {|o| o.update_attribute(:status, 3) }
+    Order.where(collaboration: @collaboration).each { |o| o.update_attribute(:status, 3) }
     Collaboration.update_paid_unconfirmed_bank_collaborations(Order.banks.by_date(start_date, date).charging)
     @collaboration.reload
     assert_equal 3, @collaboration.status
 
-    Order.where(collaboration: @collaboration).each {|o| o.update_attribute(:status, 4) }
+    Order.where(collaboration: @collaboration).each { |o| o.update_attribute(:status, 4) }
     Collaboration.update_paid_unconfirmed_bank_collaborations(Order.banks.by_date(start_date, date).charging)
     @collaboration.reload
     assert_equal 3, @collaboration.status
@@ -664,7 +661,7 @@ phone: '666666'"
 
   test "should not save collaboration if userr is not over legal age (18 years old)" do
     user = build(:user)
-    user.update_attribute(:born_at, Time.zone.now-10.years)
+    user.update_attribute(:born_at, Time.zone.now - 10.years)
     @collaboration.user = user
     assert_not @collaboration.valid?
     assert(@collaboration.errors[:user].include? "No puedes colaborar si eres menor de edad.")
@@ -678,7 +675,7 @@ phone: '666666'"
     @collaboration.ccc_account = '2366217197'
     assert @collaboration.valid?
 
-    # it should fail, DC is invalid
+    #  it should fail, DC is invalid
     @collaboration.ccc_entity = '2188'
     @collaboration.ccc_office = '0994'
     @collaboration.ccc_dc = '11'
@@ -700,22 +697,21 @@ phone: '666666'"
     assert(@collaboration.errors[:ccc_account].include? "no es un número")
   end
 
-  #test "should .get_orders work with collaboration created but not paid the same month" do
+  # test "should .get_orders work with collaboration created but not paid the same month" do
   #  @collaboration.update_attribute(:created_at, Date.current)
   #  order = @collaboration.get_orders
   #  assert_equal "order", order
-  #end
+  # end
 
-  #test "should .get_orders work after and before payment day." do
+  # test "should .get_orders work after and before payment day." do
   #  @collaboration.update_attribute(:created_at, Date.current)
   #  orders = @collaboration.get_orders(Date.current-2.month, Date.current-1.month)
   #  assert_equal 0, orders.count
   #  orders = @collaboration.get_orders(Date.current, Date.current+1.month)
   #  assert_equal 1, orders.count
-  #end
+  # end
 
-  #test "should .get_orders work with paid and unpaid collaborations." do
+  # test "should .get_orders work with paid and unpaid collaborations." do
   #  assert false
-  #end
-
+  # end
 end

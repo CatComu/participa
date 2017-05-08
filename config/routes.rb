@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-
   if Features.redsys_collaborations?
-    # redsys MerchantURL 
+    # redsys MerchantURL
     post '/orders/callback/redsys', to: 'orders#callback_redsys', as: 'orders_callback_redsys'
   end
 
   if Features.notifications?
     namespace :api do
-      scope :v1 do 
-        scope :gcm do 
+      scope :v1 do
+        scope :gcm do
           post 'registrars', to: 'v1#gcm_registrate'
           delete 'registrars/:registrar_id', to: 'v1#gcm_unregister'
         end
@@ -16,8 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope "/(:locale)", locale: /#{I18n.available_locales.join("|")}/ do 
-
+  scope "/(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     if Features.openid?
       get '/openid/discover', to: 'open_id#discover', as: "open_id_discover"
       get '/openid', to: 'open_id#index', as: "open_id_index"
@@ -53,10 +51,10 @@ Rails.application.routes.draw do
     get '/vote/create/:election_id', to: 'vote#create', as: :create_vote
     get '/vote/create_token/:election_id', to: 'vote#create_token', as: :create_token_vote
     get '/vote/check/:election_id', to: 'vote#check', as: :check_vote
-    
+
     get '/vote/sms_check/:election_id', to: 'vote#sms_check', as: :sms_check_vote
     get '/vote/send_sms_check/:election_id', to: 'vote#send_sms_check', as: :send_sms_check_vote
-    
+
     devise_for :users, controllers: { registrations: 'registrations',
                                       confirmations: 'confirmations' }
 
@@ -82,7 +80,7 @@ Rails.application.routes.draw do
         post :phone, to: 'sms_validator#phone', as: 'sms_validator_phone'
         post :valid, to: 'sms_validator#valid', as: 'sms_validator_valid'
       end
-      
+
       if Features.collaborations?
         scope :colabora do
           delete 'baja', to: 'collaborations#destroy', as: 'destroy_collaboration'
@@ -91,12 +89,12 @@ Rails.application.routes.draw do
           get 'confirmar', to: 'collaborations#confirm', as: 'confirm_collaboration'
           post 'crear', to: 'collaborations#create', as: 'create_collaboration'
           post 'modificar', to: 'collaborations#modify', as: 'modify_collaboration'
-          get 'OK', to: 'collaborations#OK', as: 'ok_collaboration'
-          get 'KO', to: 'collaborations#KO', as: 'ko_collaboration'
+          get 'OK', to: 'collaborations#ok', as: 'ok_collaboration'
+          get 'KO', to: 'collaborations#ko', as: 'ko_collaboration'
         end
       end
     end
-    
+
     if Features.blog?
       scope :brujula do
         get '', to: 'blog#index', as: 'blog'
@@ -104,8 +102,8 @@ Rails.application.routes.draw do
         get 'categoria/:id', to: 'blog#category', as: 'category'
       end
     end
-    
-    # http://stackoverflow.com/a/8884605/319241 
+
+    # http://stackoverflow.com/a/8884605/319241
     devise_scope :user do
       get '/registrations/regions/provinces', to: 'registrations#regions_provinces'
       get '/registrations/regions/municipies', to: 'registrations#regions_municipies'
@@ -118,8 +116,8 @@ Rails.application.routes.draw do
         root 'devise/sessions#new', as: :root
       end
     end
-    
-    scope '/verificadores' do 
+
+    scope '/verificadores' do
       get '/', to: 'verification#step1', as: :verification_step1
       get '/confirmar', to: 'verification#step2', as: :verification_step2
       post '/search', to: 'verification#search', as: :verification_search
@@ -137,7 +135,7 @@ Rails.application.routes.draw do
       post '/:user_id/report', to: 'online_verifications#report', as: :report_online_verification
     end
 
-    scope '/verificaciones' do 
+    scope '/verificaciones' do
       get '/', to: 'verification#show', as: :verification_show
     end
 
@@ -151,5 +149,4 @@ Rails.application.routes.draw do
   constraints CanAccessResque.new do
     mount Resque::Server.new, at: '/admin/resque', as: :resque
   end
-
 end

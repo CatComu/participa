@@ -1,10 +1,9 @@
 class CollaborationsController < ApplicationController
-
   before_action :authenticate_user!
-  before_action :set_collaboration, only: [:confirm, :confirm_bank, :edit, :modify, :destroy, :OK, :KO]
- 
+  before_action :set_collaboration, only: [:confirm, :confirm_bank, :edit, :modify, :destroy, :ok, :ko]
+
   def new
-    redirect_to edit_collaboration_path and return if current_user.collaboration 
+    redirect_to edit_collaboration_path and return if current_user.collaboration
     @collaboration = Collaboration.new
   end
 
@@ -59,7 +58,7 @@ class CollaborationsController < ApplicationController
     @order = @collaboration.create_order Time.zone.now, true if @collaboration.is_credit_card?
   end
 
-  def OK
+  def ok
     redirect_to new_collaboration_path and return unless @collaboration
     if not @collaboration.is_active?
       if @collaboration.is_credit_card?
@@ -70,17 +69,18 @@ class CollaborationsController < ApplicationController
     end
   end
 
-  def KO
+  def ko
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_collaboration
     @collaboration = current_user.collaboration
 
     if @collaboration
       start_date = [@collaboration.created_at, Date.current - 6.months].max
-      @orders = @collaboration.get_orders(start_date, start_date + 12.months)[0..(12/@collaboration.frequency-1)]
+      @orders = @collaboration.get_orders(start_date, start_date + 12.months)[0..(12 / @collaboration.frequency - 1)]
       @order = @orders[0][-1]
     end
   end

@@ -9,8 +9,8 @@ class VerificationOnlineManagerTest < JsFeatureTest
   around do |&block|
     with_verifications(online: true) do
       @user = create(:user, :pending_moderation,
-                            first_name: "Miguel",
-                            last_name: "Miguelez")
+                     first_name: "Miguel",
+                     last_name: "Miguelez")
 
       super(&block)
     end

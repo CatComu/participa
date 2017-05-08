@@ -13,7 +13,7 @@ class OnlineVerificationMailer < ActionMailer::Base
     #
     I18n.with_locale(I18n.default_locale) do
       mail to: event.verified.email,
-         subject: t('online_verifications.mailer.subject')
+           subject: t('online_verifications.mailer.subject')
     end
   end
 end

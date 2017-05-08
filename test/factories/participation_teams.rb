@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :participation_team do
     name "Super team"
-    description "Very very long description "*100
+    description "Very very long description " * 100
     active true
   end
 end

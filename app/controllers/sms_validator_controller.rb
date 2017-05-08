@@ -1,8 +1,8 @@
 class SmsValidatorController < ApplicationController
-  before_action :authenticate_user! 
+  before_action :authenticate_user!
   before_action :can_change_phone, except: [:step1, :documents]
 
-  def step1 
+  def step1
     authorize! :step1, :sms_validator
 
     if current_user.uploads.any?
@@ -17,7 +17,7 @@ class SmsValidatorController < ApplicationController
 
   def step3
     authorize! :step3, :sms_validator
-    if current_user.unconfirmed_phone.nil? || current_user.sms_confirmation_token.nil? 
+    if current_user.unconfirmed_phone.nil? || current_user.sms_confirmation_token.nil?
       redirect_to sms_validator_step2_path
       return
     end
@@ -45,7 +45,7 @@ class SmsValidatorController < ApplicationController
     end
   end
 
-  def documents 
+  def documents
     authorize! :documents, :sms_validator
 
     event = OnlineVerifications::Upload.new(upload_params)
@@ -65,16 +65,16 @@ class SmsValidatorController < ApplicationController
 
   def valid
     authorize! :valid, :sms_validator
-    #if current_user.check_sms_token(params[:sms_token][:sms_user_token])
+    # if current_user.check_sms_token(params[:sms_token][:sms_user_token])
     if current_user.check_sms_token(sms_token_params[:sms_user_token_given])
       flash[:notice] = t('sms_validator.phone.valid')
 
       if current_user.apply_previous_user_vote_location
-        flash[:alert] = t('registration.message.existing_user_location')        
+        flash[:alert] = t('registration.message.existing_user_location')
       end
       redirect_to authenticated_root_path
     else
-      flash.now[:error] = t('sms_validator.phone.invalid') 
+      flash.now[:error] = t('sms_validator.phone.invalid')
       render action: "step3"
     end
   end

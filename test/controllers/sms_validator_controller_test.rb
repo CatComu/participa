@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class SmsValidatorControllerTest < ActionController::TestCase
-
   around do |&block|
     @user = create(:user, :not_confirmed_by_sms)
 
@@ -59,7 +58,8 @@ class SmsValidatorControllerTest < ActionController::TestCase
       'image/png'
     )
 
-    online_verifications_upload = { documents_attributes: {
+    online_verifications_upload = {
+      documents_attributes: {
         "0" => {
           scanned_picture: image
         }
@@ -82,7 +82,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
     sign_in user
     get :step2
     assert_response :redirect
-    assert_redirected_to root_url 
+    assert_redirected_to root_url
     assert_equal "Ya has confirmado tu número en los últimos meses.", flash[:alert]
   end
 
@@ -108,7 +108,8 @@ class SmsValidatorControllerTest < ActionController::TestCase
       'image/png'
     )
 
-    online_verifications_upload = { documents_attributes: {
+    online_verifications_upload = {
+      documents_attributes: {
         "0" => {
           scanned_picture: image
         }
@@ -137,7 +138,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
   test "allows step2 directly when phone is set" do
     @user.update_attribute(:unconfirmed_phone, "0034666888999")
     sign_in @user
-    get :step2 
+    get :step2
     assert_response :success
   end
 
@@ -145,7 +146,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
     @user.update_attribute(:phone, nil)
     @user.update_attribute(:unconfirmed_phone, nil)
     sign_in @user
-    get :step3 
+    get :step3
     assert_response :redirect
     assert_redirected_to sms_validator_step2_path
   end
@@ -153,7 +154,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
   test "does not allow step3 directly when unconfirmed phone not set yet" do
     @user.update_attribute(:unconfirmed_phone, nil)
     sign_in @user
-    get :step3 
+    get :step3
     assert_response :redirect
     assert_redirected_to sms_validator_step2_path
   end
@@ -162,7 +163,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
     @user.update_attribute(:unconfirmed_phone, '0034666888999')
     @user.update_attribute(:sms_confirmation_token, nil)
     sign_in @user
-    get :step3 
+    get :step3
     assert_response :redirect
     assert_redirected_to sms_validator_step2_path
   end
@@ -171,7 +172,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
     token = 'AAA123'
     @user.update_attribute(:sms_confirmation_token, token)
     sign_in @user
-    post :valid, params: { user: { sms_user_token_given: token } } 
+    post :valid, params: { user: { sms_user_token_given: token } }
     assert_response :redirect
     assert_redirected_to root_path
   end
@@ -180,7 +181,7 @@ class SmsValidatorControllerTest < ActionController::TestCase
     token = 'AAA123'
     @user.update_attribute(:sms_confirmation_token, 'BBB123')
     sign_in @user
-    post :valid, params: { user: { sms_user_token_given: token } } 
+    post :valid, params: { user: { sms_user_token_given: token } }
     assert_response :success
     assert_equal "El código que has puesto no corresponde con el que te enviamos por SMS.", flash[:error]
   end
@@ -190,16 +191,16 @@ class SmsValidatorControllerTest < ActionController::TestCase
       old_user = create(:user)
       old_user.confirm
       old_user.delete
-      
+
       token = 'AAA123'
-      new_user = create(:user, :not_confirmed_by_sms, town: "m_03_003_6", document_vatid: old_user.document_vatid, 
+      new_user = create(:user, :not_confirmed_by_sms, town: "m_03_003_6", document_vatid: old_user.document_vatid,
                                                       sms_confirmation_token: token, unconfirmed_phone: old_user.phone)
       sign_in new_user
       post :valid, params: { user: { sms_user_token_given: token } }
       new_user = User.where(phone: old_user.phone).last
       assert_equal old_user.vote_town, new_user.vote_town, "New user vote location should be the same of the old user"
       # XXX pasca - comento linea para saltar de momento validacion. Asegurar
-      # que funcione 
+      # que funcione
       # assert_equal I18n.t("registration.message.existing_user_location"), flash[:alert]
       assert_response :redirect
       assert_redirected_to root_path

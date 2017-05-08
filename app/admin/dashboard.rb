@@ -1,11 +1,10 @@
 ActiveAdmin.register_page "Dashboard" do
+  menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
 
-  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
-
-  content title: proc{ I18n.t("active_admin.dashboard") } do
+  content title: proc { I18n.t("active_admin.dashboard") } do
     columns do
       column do
-        panel "Información importante" do 
+        panel "Información importante" do
           div "Condiciones de uso y aviso legal"
           div "Manual de uso de la aplicación"
           div do
@@ -33,11 +32,11 @@ ActiveAdmin.register_page "Dashboard" do
           panel "Avisos" do
             ul do
               Notice.limit(5).map do |notice|
-                li link_to(notice.title, admin_notice_path(notice)) +  "- #{notice.created_at}"
+                li link_to(notice.title, admin_notice_path(notice)) + "- #{notice.created_at}"
               end
             end
             div do
-              link_to("Enviar aviso a todos", new_admin_notice_path, class: "button") 
+              link_to("Enviar aviso a todos", new_admin_notice_path, class: "button")
             end
           end
         end
@@ -45,21 +44,21 @@ ActiveAdmin.register_page "Dashboard" do
           panel "Elecciones" do
             ul do
               Election.limit(5).map do |election|
-                li link_to(election.title, admin_election_path(election)) +  "- #{election.created_at}"
+                li link_to(election.title, admin_election_path(election)) + "- #{election.created_at}"
               end
             end
             div do
-              link_to("Dar de alta nueva elección", new_admin_election_path, class: "button") 
+              link_to("Dar de alta nueva elección", new_admin_election_path, class: "button")
             end
           end
-          #panel "Cambios" do 
+          # panel "Cambios" do
           #  table_for PaperTrail::Version.order('id desc').limit(20) do # Use PaperTrail::Version if this throws an error
           #    column "Item" do |v| link_to v.item, v.item.admin_permalink end
           #    # column ("Item") { |v| link_to v.item, [:admin, v.item] } # Uncomment to display as link
           #    column ("Type") { |v| v.item_type.underscore.humanize }
           #    column ("Modified at") { |v| v.created_at.to_s :long }
           #  end
-          #end
+          # end
         end
       end
     end
