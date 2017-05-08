@@ -173,8 +173,8 @@ class User < ApplicationRecord
   def previous_user(force_refresh = false)
     remove_instance_variable :@previous_user if force_refresh and @previous_user
     @previous_user ||= User.with_deleted.where("lower(email) = ?", self.email.downcase).where("deleted_at > ?", 3.months.ago).last ||
-                       User.with_deleted.where("lower(document_vatid) = ?", self.document_vatid.downcase).where("deleted_at > ?", 3.months.ago).last
-    User.with_deleted.where("phone = ?", self.phone).where("deleted_at > ?", 3.months.ago).last
+                       User.with_deleted.where("lower(document_vatid) = ?", self.document_vatid.downcase).where("deleted_at > ?", 3.months.ago).last ||
+                       User.with_deleted.where("phone = ?", self.phone).where("deleted_at > ?", 3.months.ago).last
     @previous_user
   end
 
