@@ -175,7 +175,6 @@ class User < ApplicationRecord
     @previous_user ||= User.with_deleted.where("lower(email) = ?", self.email.downcase).where("deleted_at > ?", 3.months.ago).last ||
                        User.with_deleted.where("lower(document_vatid) = ?", self.document_vatid.downcase).where("deleted_at > ?", 3.months.ago).last ||
                        User.with_deleted.where("phone = ?", self.phone).where("deleted_at > ?", 3.months.ago).last
-    @previous_user
   end
 
   def apply_previous_user_vote_location
