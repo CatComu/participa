@@ -11,7 +11,7 @@ def show_order o, html_output = true
             "_"
           else
             "~"
-            end
+          end
   otext = link_to(otext, admin_order_path(o)).html_safe if o.persisted? and html_output
   otext
 end

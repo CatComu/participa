@@ -428,7 +428,7 @@ class Order < ApplicationRecord
                end
              else
                nil
-              end
+             end
 
       if code
         code = code.to_i if code.is_a? String and not code.start_with? "SIS"
@@ -455,7 +455,7 @@ class Order < ApplicationRecord
                   when 912, 9912 then "Emisor no disponible"
                   else
                     "Transacción denegada"
-        end
+                  end
         "#{code}: #{message}"
       else
         "Transacción no procesada"

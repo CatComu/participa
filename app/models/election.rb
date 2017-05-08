@@ -39,7 +39,7 @@ class Election < ApplicationRecord
                when 2 then " en #{user.vote_province_name}"
                when 3 then " en #{user.vote_town_name}"
                when 4 then " en #{user.vote_island_name}"
-                end
+               end
       if not has_valid_location_for? user
         suffix = " (no hay votación#{suffix})"
       end
@@ -94,7 +94,7 @@ class Election < ApplicationRecord
                       user.vote_island_numeric
                     else
                       "00"
-    end
+                    end
     Rails.logger.info "user_location: #{user_location}"
     election_location = self.election_locations.find_by_location user_location
     "#{self.agora_election_id}#{election_location.override or election_location.location}#{election_location.agora_version}".to_i
