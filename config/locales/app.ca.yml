@@ -23,7 +23,7 @@ ca:
         escriure't per assegurar-nos que has rebut el correu de confirmació.
       instructions: >-
         Confirma el teu correu clicant al link següent per poder seguir amb el
-        procés de votació d'Un País en Comú, així com per poder accedir a
+        procés de votació de Catalunya en Comú, així com per poder accedir a
         l'Assemblea d'aquest cap de setmana!
       apologize: >-
         Si no ha sigut el teu cas, et demanem disculpes per aquest correu.
@@ -254,11 +254,11 @@ ca:
       p1: "BComú és una plataforma ciutadana que, per garantir la seva autonomia financera, necessita d'una petita aportació econòmica de cadascú de nosaltres ajudant així a garantir la independència i coherència del projecte. Fem-ho possible entre tots i totes! Apunta't a les donacions periódiques de BComú!"
       ok:
         p1: "La teva donació s'ha donat d'alta correctament."
-        p2: "Gràcies per col·laborar amb Barcelona En Comú."
+        p2: "Gràcies per col·laborar amb Catalunya En Comú."
       ko:
         title: Hi ha hagut un error amb la teva col·laboració.
         contact: "Sisplau intenta realitzar el pagament un altre cop. Si tornes a tenir problemes contacta tresoreria@bcnencomu.cat "
-      passport_message_html: "<p>Segons la nostra base de dades estàs inscrit amb un nombre de passaport. Atès que la Llei Orgànica 8/2007, de 4 de juliol, sobre finançament dels  partits polítics, exigeix la identificació fiscal dels donants, per poder col·laborar econòmicament amb Barcelona En Comú i poder emplenar el formulari d'alta com a col·laborador és imprescindible disposar de DNI o NIE.</p><p>Si ets espanyol o estranger amb NIE envia'ns una còpia del teu DNI o document on consti el teu nombre d'identificació d'estranger a l'adreça xxxxx@xxxx.xxx perquè puguem actualitzar les dades de la teva inscripció.</p>"
+      passport_message_html: "<p>Segons la nostra base de dades estàs inscrit amb un nombre de passaport. Atès que la Llei Orgànica 8/2007, de 4 de juliol, sobre finançament dels  partits polítics, exigeix la identificació fiscal dels donants, per poder col·laborar econòmicament amb Catalunya En Comú i poder emplenar el formulari d'alta com a col·laborador és imprescindible disposar de DNI o NIE.</p><p>Si ets espanyol o estranger amb NIE envia'ns una còpia del teu DNI o document on consti el teu nombre d'identificació d'estranger a l'adreça xxxxx@xxxx.xxx perquè puguem actualitzar les dades de la teva inscripció.</p>"
       over: Declaro ser major de 18 anys.
       total_amount: Aportació económica
       next: "Ja tens una col·laboració. És la següent:"
@@ -275,8 +275,8 @@ ca:
       terms_of_service:
         accept: Accepto les condicions generals.
         title: "Condicions Generals"
-        p1_title: "Relació entre Barcelona En Comú i el col·laborador"
-        p1: "La realització de donacions econòmiques no implica la vinculació del col·laborador amb Barcelona En Comú, ni li confereix la condició legal de soci, afiliat o simpatitzant, ni li atorga drets davant el partit, ni queda obligat pels seus estatuts i resta de normes internes. D’acord amb el que s'estableix a la Llei orgànica 8/2007, de 4 de juliol, de finançament de partits polítics, el vostre donatiu tindrà la consideració de ”donació privada”, diferent de les quotes de socis, afiliats o simpatitzants.
+        p1_title: "Relació entre Catalunya En Comú i el col·laborador"
+        p1: "La realització de donacions econòmiques no implica la vinculació del col·laborador amb Catalunya En Comú, ni li confereix la condició legal de soci, afiliat o simpatitzant, ni li atorga drets davant el partit, ni queda obligat pels seus estatuts i resta de normes internes. D’acord amb el que s'estableix a la Llei orgànica 8/2007, de 4 de juliol, de finançament de partits polítics, el vostre donatiu tindrà la consideració de ”donació privada”, diferent de les quotes de socis, afiliats o simpatitzants.
 
 Al confirmar aquest formulari accepteu que:
 
@@ -288,9 +288,9 @@ Aquesta donació no es fa des de governs, organismes, entitats o empreses públi
 
 La quantitat que vós doneu no us ha sigut lliurada per part d’alguna persona o entitat amb l’objectiu que aquesta donació es pugui fer."
         p2_title: "Protecció de dades de caràcter personal"
-        p2: "Barcelona En Comú, d’acord amb la Llei orgànica 15/1999, de protecció de dades de caràcter personal, us informa que les vostres dades seran incorporades al fitxer “donacions”, del qual és responsable Barcelona En Comú, que les emprarà per tramitar la vostra col·laboració, gestionar els càrrecs bancaris i complir amb la normativa de finançament de partits polítics, així com amb finalitats estadístiques i fer-vos arribar periòdicament informació de les seves activitats. Concediu el consentiment exprés perquè aquestes dades passin a formar part de Barcelona En Comú. Per exercir els vostres drets d’accés, rectificació, cancel·lació o oposició, com ara cancel·lar la subscripció, modificar les dades bancàries o l’import i freqüència de la vostra donació, podeu enviar un correu electrònic a tresoreria@bcnencomu.cat, indicant la referència “modificació de la donació” o per correu postal a la seu social sítia al carrer Castillejos, 233, baixos, de Barcelona, adjuntant còpia del vostre document nacional d’identitat."
+        p2: "Catalunya En Comú, d’acord amb la Llei orgànica 15/1999, de protecció de dades de caràcter personal, us informa que les vostres dades seran incorporades al fitxer “donacions”, del qual és responsable Catalunya En Comú, que les emprarà per tramitar la vostra col·laboració, gestionar els càrrecs bancaris i complir amb la normativa de finançament de partits polítics, així com amb finalitats estadístiques i fer-vos arribar periòdicament informació de les seves activitats. Concediu el consentiment exprés perquè aquestes dades passin a formar part de Catalunya En Comú. Per exercir els vostres drets d’accés, rectificació, cancel·lació o oposició, com ara cancel·lar la subscripció, modificar les dades bancàries o l’import i freqüència de la vostra donació, podeu enviar un correu electrònic a tresoreria@bcnencomu.cat, indicant la referència “modificació de la donació” o per correu postal a la seu social sítia al carrer Castillejos, 233, baixos, de Catalunya, adjuntant còpia del vostre document nacional d’identitat."
         p3_title: "Consentiment de l'ordre de domiciliació"
-        p3: "Autoritzeu a Barcelona En Comú i a la vostra entitat bancària a efectuar les operacions de cobrament mitjançant càrrecs al compte bancari que ens heu facilitat, per l’import i amb la freqüència que ens heu indicat al formulari. Els càrrecs domiciliats es realitzaran entre els dies 10 i 15 de cada mes."
+        p3: "Autoritzeu a Catalunya En Comú i a la vostra entitat bancària a efectuar les operacions de cobrament mitjançant càrrecs al compte bancari que ens heu facilitat, per l’import i amb la freqüència que ens heu indicat al formulari. Els càrrecs domiciliats es realitzaran entre els dies 10 i 15 de cada mes."
       freq:
         first: "Mensual"
         second: "Trimestral"
@@ -321,8 +321,8 @@ La quantitat que vós doneu no us ha sigut lliurada per part d’alguna persona 
       manca qualsevol document, aquí pots carregar les imatges que necessitis.
     change_password: "Canvia contrasenya"
     cancel_account: "Dóna'm de baixa"
-    cancel_account_explain_html: "<p>Si cliques \"Dóna'm de baixa\" deixaràs de ser membre de Un País En Comú i cancel·larem les teves dades personals conforme a allò convingut a la Llei Orgànica 15/1999 de Protecció de Dades de Caràcter Personal.</p>
-<p> A partir d'aquest moment el teu compte d'accés al portal de participació de Un País En Comú quedarà eliminat.</p>
+    cancel_account_explain_html: "<p>Si cliques \"Dóna'm de baixa\" deixaràs de ser membre de Catalunya En Comú i cancel·larem les teves dades personals conforme a allò convingut a la Llei Orgànica 15/1999 de Protecció de Dades de Caràcter Personal.</p>
+<p> A partir d'aquest moment el teu compte d'accés al portal de participació de Catalunya En Comú quedarà eliminat.</p>
 <p>
 Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció de Dades, la cancel•lació donarà lloc al bloqueig de les dades, es conservaran únicament a disposició de les Administracions Públiques, Jutges i Tribunals, per a l'atenció de les possibles responsabilitats nascudes del tractament, durant el termini de prescripció d'aquestes possibles responsabilitats. Complert el citat termini es procedirà a la supressió de les dades.
 </p>
@@ -381,7 +381,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
     phone:
       p1: "Introdueix el teu nou número de telèfon mòbil."
       p2: "Rebràs el codi de verificació per validar el nou número en uns segons."
-      p3: "Si ja has participat en alguna votació de Un País En Comú, t'enviarem el codi per correu electrònic."
+      p3: "Si ja has participat en alguna votació de Catalunya En Comú, t'enviarem el codi per correu electrònic."
       p5: "Introdueix el codi que hagis rebut per SMS per confirmar-lo"
       valid: "T'hem verificat correctament. Si els teus documents són correctes, tindràs l'autorització per votar."
       invalid: "El codi que has posat no correspon amb el que t'hem enviar per SMS."
@@ -480,7 +480,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
         necessitem que adjuntis les dues 
     mailer:
       subject: >-
-        Revisa la teva sol·licitud de verificació digital en Un País en Comú
+        Revisa la teva sol·licitud de verificació digital en Catalunya en Comú
       introduction: >
         Hola, hem revisat la teva sol·licitud de verificació digital i hem
         detectat els següents problemes amb els documents que hi has carregat.
@@ -563,7 +563,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       verification: "VERIFICACIÓ"
       faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. Què em cal per accedir a participa.unpaisencomu.cat?</a>
             <div class="cd-faq-content">
-    <p> Es necessari residir a la ciutat de Barcelona.
+    <p> Es necessari residir a la ciutat de Catalunya.
     </p>
   <p>&nbsp;&nbsp;&nbsp;&nbsp; 1. <strong> DNI / NIF / Passaport </strong>. Per seguretat, ha de ser únic i no es podrà canviar. </p>
  <p>&nbsp;&nbsp;&nbsp;&nbsp; 2. <strong> Correu electrònic </strong>: Per seguretat, ha de ser únic. </p>
@@ -614,7 +614,7 @@ Descripció del problema: </ p>
         <p>Amb tres passos molt senzills:<br/>
 Amb tres passos molt senzills:
  1r.  Entra al web participa.unpaisencomu.cat, accedeix al portal de participació i introdueix el DNI / correu electrònic i la contrasenya.  Si no estàs inscrit/a, fes-ho aquí: https://participa.unpaisencomu.cat. És molt senzill.
- 2n.  Accedeix a la cabina de votació: un cop hagis entrat a l'aplicació  de  Barcelona En Comú, veuràs un botó per votar. Fes-hi clic i se’t redirigirà a la cabina de votació,
+ 2n.  Accedeix a la cabina de votació: un cop hagis entrat a l'aplicació  de  Catalunya En Comú, veuràs un botó per votar. Fes-hi clic i se’t redirigirà a la cabina de votació,
  3r. Vota: respon la pregunta de la votació.
 </p>
       </div> <!-- cd-faq-content -->
@@ -622,7 +622,7 @@ Amb tres passos molt senzills:
       <li>
       <a class='cd-faq-trigger' href='#0'>10. Qui pot votar?</a>
       <div class='cd-faq-content'>
-        <p>Qualsevol  persona inscrita a Barcelona En Comú a través de  http://participa.unpaisencomu.cat que tingui més de 16 anys i visqui a  Barcelona i hagi realitzat la verificació presencial.</p>
+        <p>Qualsevol  persona inscrita a Catalunya En Comú a través de  http://participa.unpaisencomu.cat que tingui més de 16 anys i visqui a  Catalunya i hagi realitzat la verificació presencial.</p>
       </div> <!-- cd-faq-content -->
       </li>
       <li>
@@ -634,7 +634,7 @@ Amb tres passos molt senzills:
       <li>
       <a class='cd-faq-trigger' href='#0'>12. Puc votar sense tenir ordinador?</a>
       <div class='cd-faq-content'>
-        <p>Sí. Barcelona En Comú ha habilitat diversos punts de votació digital assistida
+        <p>Sí. Catalunya En Comú ha habilitat diversos punts de votació digital assistida
       </div> <!-- cd-faq-content -->
       </li>
         <li>
@@ -700,7 +700,7 @@ Amb tres passos molt senzills:
       <li>
       <a class='cd-faq-trigger' href='#0'>23. Com s'assegura que cada persona vota una sola vegada i que només voten les persones amb dret a fer-ho?</a>
       <div class='cd-faq-content'>
-        <p>Gràcies al sistema d'autenticació al portal de participació de Barcelona En Comú s'assegura que només aquelles persones que figurin en el cens de Barcelona En Comú poden votar i es controla que només hi hagi un vot per persona.</p>
+        <p>Gràcies al sistema d'autenticació al portal de participació de Catalunya En Comú s'assegura que només aquelles persones que figurin en el cens de Catalunya En Comú poden votar i es controla que només hi hagi un vot per persona.</p>
       </div> <!-- cd-faq-content -->
       </li>
       <li>
@@ -784,21 +784,21 @@ Amb tres passos molt senzills:
       hello: "Hola %{user},"
       bye: Salutacions.
       verified:
-        subject: Un País en Comú - Has estat verificat correctament
-        message: "Has sigut verificat i ja formes part de la comunitat d'Un País en Comú.
+        subject: Catalunya en Comú - Has estat verificat correctament
+        message: "Has sigut verificat i ja formes part de la comunitat de Catalunya en Comú.
 
 A partir d'ara ja no necessites verificar-te més i podràs participar a les consultes futures.
 
 Cada cop que hi hagi una consulta t'avisarem per correu electrònic perquè puguis participar.
 
-Recorda que ara formes part de la comunitat d'Un País en Comú."
-        message_html: "<p>Has sigut verificat i ja formes part de la comunitat d'Un País en Comú.</p>
+Recorda que ara formes part de la comunitat de Catalunya en Comú."
+        message_html: "<p>Has sigut verificat i ja formes part de la comunitat de Catalunya en Comú.</p>
 
 <p>A partir d'ara ja no necessites verificar-te més i podràs participar a les consultes futures.</p>
 
 <p>Cada cop que hi hagi una consulta t'avisarem per correu electrònic perquè puguis participar.</p>
 
-<p>Recorda que ara formes part de la comunitat d'Un País en Comú.</p>"
+<p>Recorda que ara formes part de la comunitat de Catalunya en Comú.</p>"
     identity: >-
       Les dades dels documents aportats coincideixen amb les dades associades
       a l'email introduït.
