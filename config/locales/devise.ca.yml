@@ -30,11 +30,11 @@ aquest missatge. Si ho reps diverses vegades, avisa'ns a %{mail}."
         here: aquí
       confirm:
         p1: "T'has donat d'alta o has canviat el teu correu electrònic a l'entorn Catalunya en Comú. Si no és així, no facis cas d'aquest missatge. Pots confirmar que aquesta és la teva adreça de correu a través de l'enllaç següent:"
-        p2: "Si tens qualsevol problema amb el registre, si us plau, contacta amb contacte@unpaisencomu.cat"
+        p2: "Si tens qualsevol problema amb el registre, si us plau, contacta amb contacte@catalunyaencomu.cat"
         text_only_instructions: "O copia la següent adreça i enganxa-la en el teu navegador:"
       password:
         p1: "Algú ha demanat que canviïs la teva contrasenya. Pots fer-ho a través de l'enllaç següent:"
-        p2: "Si tens qualsevol problema amb el registre, si et plau, contacta amb contacte@unpaisencomu.cat"
+        p2: "Si tens qualsevol problema amb el registre, si et plau, contacta amb contacte@catalunyaencomu.cat"
         p3: "Si no has estat tu, si et plau, no facis cas d'aquest missatge. La teva contrasenya no canviarà fins que validis aquest enllaç i en creïs una de nova."
         link: 'Canvia contrasenya'
       confirmation_instructions:

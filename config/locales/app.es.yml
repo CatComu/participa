@@ -43,7 +43,7 @@ es:
         message_html: "No pudimos encontrar esa página. Vuelvelo a intentarlo más tarde o <a href='/'>prueba desde la página principal</a>."
       "500":
         title: "Error en el servidor"
-        message_html: "Hubo un error en el servidor. Puedes avisarnos en <a href='mailto:contacte@unpaisencomu.cat'>contacte@unpaisencomu.cat</a>"
+        message_html: "Hubo un error en el servidor. Puedes avisarnos en <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
     messages:
       not_valid_spanish_vat: El número de identificación fiscal no es válido
       not_valid_nif: El DNI no es válido
@@ -424,7 +424,7 @@ es:
         p2: Gracias por colaborar con Catalunya en Comú.
       ko:
         title: Hubo un error con tu colaboración.
-        contact: Por favor intenta realizar el pago nuevamente. Si continúas teniendo problemas contacta a contacte@unpaisencomu.cat
+        contact: Por favor intenta realizar el pago nuevamente. Si continúas teniendo problemas contacta a contacte@catalunyaencomu.cat
       passport_message_html: "<p>Según nuestra base de datos estás inscrito con un número de pasaporte.</p> <p>Dado que la Ley Orgánica 8/2007, de 4 de julio, sobre financiación de los partidos políticos, exige la identificación fiscal de los donantes, para poder colaborar económicamente con PODEMOS y poder cumplimentar el formulario de alta como colaborador es imprescindible disponer de DNI o NIE.</p> <p>Si eres español o extranjero con NIE envíanos una copia de tu DNI o documento donde conste tu número de identificación de extranjero a la dirección colaboraciones@podemos.info para que podamos actualizar los datos de tu inscripción.</p>"
       over: Declaro ser mayor de 18 años.
       next: "Ya tienes una colaboración. Es la siguiente:"
@@ -512,7 +512,7 @@ Al confirmar este formulario aceptáis que:
       fixes_text: "Hemos revisado el proyecto que has presentado a IMPULSA y hemos detectado algunos puntos que necesitan subsanación."
       non_fixes_text: "No hemos recibido, en plazo, la subsanación de los errores indicados en el proyecto que has presentado a esta edición de IMPULSA. El plazo de subsanación ha finalizado, por lo que lamentamos comunicarte que tu proyecto no pasa a la fase de validación."
       mark_for_review_text: "Cuando hayas completado todos los datos del proyecto y consideres que son correctos utiliza el botón '%{mark_for_review}' para indicarnos que podemos revisarlo (aunque podrás seguir haciendo correcciones hasta que lo hagamos)."
-      spam_text: "Después de realizar la revisión de los proyectos presentados, hemos detectado que tu proyecto está prácticamente vacío. Por esta razón, lo hemos marcado como desestimado. Si tienes alguna consulta al respecto, por favor ponte en contacto con nosotros en el correo contacte@unpaisencomu.cat"
+      spam_text: "Después de realizar la revisión de los proyectos presentados, hemos detectado que tu proyecto está prácticamente vacío. Por esta razón, lo hemos marcado como desestimado. Si tienes alguna consulta al respecto, por favor ponte en contacto con nosotros en el correo contacte@catalunyaencomu.cat"
       reviewing_text: "Hemos recibido tu proyecto y estamos revisando que todos los datos sean correctos. En cuanto terminemos este proceso te avisaremos."
       validable_text: "Hemos recibido correctamente el proyecto que has presentado, está completo y pasa a la fase de revisión."
       invalidated_text: "Lamentamos comunicarte que el proyecto que has presentado a IMPULSA ha sido invalidado por las siguientes razones: %{invalid_reasons}"
@@ -767,14 +767,14 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           Para votar en las próximas votaciones te tienes que registrar
           rellenando este formulario. Te llegará un correo para validarte. Si
           no recibes el correo ponte en contacto con nosotros
-          <a href='http://unpaisencomu.cat/es/contact'>aquí</a>.
+          <a href='http://catalunyaencomu.cat/es/contact'>aquí</a>.
         </p>
         "
   unauthorized:
     default: "No tienes permisos para acceder a esa sección"
     banned: >
       Gracias, %{full_name}. Para poder participar es necesario que nos escribas
-      un correo electrónico a soporte@unpaisencomu.cat.
+      un correo electrónico a soporte@catalunyaencomu.cat.
   online_verifications:
     menu_link: Verifícate aquí
     admin: Gestor de verificaciones digitales
@@ -895,7 +895,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       voting: "VOTACIÓN"
       inscription_errors: 'ERRORES INSCRIPCIÓN'
       verification: "VERIFICACIÓN"
-      faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. ¿Qué necesito para entrar en participa.unpaisencomu.cat?</a>
+      faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. ¿Qué necesito para entrar en participa.catalunyaencomu.cat?</a>
             <div class="cd-faq-content">
     <p> Es necesario residir en Catalunya.
     </p>
@@ -906,7 +906,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <li>
           <a class="cd-faq-trigger" href="#0">2. ¿Qué hago si no recuerdo mi contraseña?</a>
           <div class="cd-faq-content">
-            <p>Puedes solicitar una nueva <a href="https://participa.unpaisencomu.cat/es/users/password/new" target="_blank" title="¿Has olvidado tu contraseña?">aquí</a>.</p>
+            <p>Puedes solicitar una nueva <a href="https://participa.catalunyaencomu.cat/es/users/password/new" target="_blank" title="¿Has olvidado tu contraseña?">aquí</a>.</p>
           </div> <!-- cd-faq-content --></li>
        '
       faq2_html: '<li><a class="cd-faq-trigger" href="#0">3. No me acuerdo del correo electrónico ¿Qué hago?</a>
@@ -923,7 +923,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <li>
           <a class="cd-faq-trigger" href="#0">5.  Sigo sin poder acceder al portal de participación. ¿Cómo puedo comunicarme con el equipo de soporte?</a>
           <div class="cd-faq-content">
-            <p>Si tienes algún problema puedes comunicarte con nosotros en <a href="mailto:contacte@unpaisencomu.cat">contacte@unpaisencomu.cat</a> indicando si procede los siguientes datos:</p>
+            <p>Si tienes algún problema puedes comunicarte con nosotros en <a href="mailto:contacte@catalunyaencomu.cat">contacte@catalunyaencomu.cat</a> indicando si procede los siguientes datos:</p>
             <p>Nombre y apellidos:<br />
             Correo electrónico:<br />
             DNI:<br />
@@ -932,7 +932,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       faq3_html: "<li><a class='cd-faq-trigger' href='#0'>6. Correo electrónico, número de documento o contraseña inválida.</a>
           <div class='cd-faq-content'>
             <p> Si no recuerdas el correo electrónico que utilizaste para inscribirte, prueba con el DNI. </p>
-             <p> Si no recuerdas la contraseña, haz clic <a href='https://participa.unpaisencomu.cat/es/users/password/new' target='_blank' title='¿Has olvidado tu contraseña? '> Aquí </a> para sollicitar una nueva. </p>
+             <p> Si no recuerdas la contraseña, haz clic <a href='https://participa.catalunyaencomu.cat/es/users/password/new' target='_blank' title='¿Has olvidado tu contraseña? '> Aquí </a> para sollicitar una nueva. </p>
              <p> Si no recibes tu contraseña, mira el error 2, que aparece mas abajo.</p>
           </div> <!-- cd-faq-content -->
           </li>
@@ -940,7 +940,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <a class='cd-faq-trigger' href='#0'>7. No me llegan correos a ninguna de mis cuentas. Creo que me he equivocado de correo electrónico. </a>
           <div class='cd-faq-content'>
             <p><strong>Causa:</strong><br />Puede que escribieras mal el correo en el proceso de registro o el registro fue incompleto. </p>
-             <p> <strong> Solución:</strong><br />Escribe un correo a <a href='mailto:contacte@unpaisencomu.cat'>contacte@unpaisencomu.cat</a>indicando tus datos personales y adjuntando fotocopia de tu DNI o pasaporte y te daremos de baja para que vuelvas a inscribirte.</p>
+             <p> <strong> Solución:</strong><br />Escribe un correo a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>indicando tus datos personales y adjuntando fotocopia de tu DNI o pasaporte y te daremos de baja para que vuelvas a inscribirte.</p>
      </div> <!-- cd-faq-content -->
           </li>"
 
@@ -953,7 +953,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       faq5_html: '<li><a class="cd-faq-trigger" href="#0">9. ¿Cómo puedo votar?</a>
           <div class="cd-faq-content">
             <p>En tres sencillos pasos:<br/>
-    1ª. Entra en la web <a href="https://participa.unpaisencomu.cat" target="_blank">participa.unpaisencomu.cat</a>, accede al Portal de Participación, e introduce tu DNI/Correo electrónico y tu contraseña. Si no estas inscrito, hazlo aquí <a href="https://participa.unpaisencomu.cat" target="_blank">participa.unpaisencomu.cat</a>, es muy sencillo.<br/>
+    1ª. Entra en la web <a href="https://participa.catalunyaencomu.cat" target="_blank">participa.catalunyaencomu.cat</a>, accede al Portal de Participación, e introduce tu DNI/Correo electrónico y tu contraseña. Si no estas inscrito, hazlo aquí <a href="https://participa.catalunyaencomu.cat" target="_blank">participa.catalunyaencomu.cat</a>, es muy sencillo.<br/>
     2ª. Accede a la cabina de votación: Una vez hayas entrado en la aplicación de Catalunya en Comú, verás un botón para votar. Pincha y serás redirigido a la cabina de votación, donde estarán las 3 votaciones que hay abiertas.<br/>
     3ª. Vota: Responde a las preguntas de la votación. Antes de emitir tu voto, podrás confirmar las respuestas que has elegido y tendrás oportunidad de modificarlas. Una vez hayas hecho esto, podrás confirmar y emitir tu voto.</p>
           </div> <!-- cd-faq-content -->
@@ -961,13 +961,13 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <li>
           <a class="cd-faq-trigger" href="#0">10. ¿Quién puede votar?</a>
           <div class="cd-faq-content">
-            <p>Cualquier persona que haya realizado la inscripción en <a href="https://participa.unpaisencomu.cat" target="_blank">participa.unpaisencomu.cat</a>, y se haya verificado presencialmente aportando los documentos que se solicitan y tenga más de 16 años.</p>
+            <p>Cualquier persona que haya realizado la inscripción en <a href="https://participa.catalunyaencomu.cat" target="_blank">participa.catalunyaencomu.cat</a>, y se haya verificado presencialmente aportando los documentos que se solicitan y tenga más de 16 años.</p>
           </div> <!-- cd-faq-content -->
           </li>
           <li>
           <a class="cd-faq-trigger" href="#0">11. ¿Qué necesito para votar?</a>
           <div class="cd-faq-content">
-            <p>Necesitas un ordenador o cualquier otro dispositivo (android/iphone) con acceso a internet para acceder a participa.unpaisencomu.cat y estar inscrito/a en participa.unpaisencomu.cat.</p>
+            <p>Necesitas un ordenador o cualquier otro dispositivo (android/iphone) con acceso a internet para acceder a participa.catalunyaencomu.cat y estar inscrito/a en participa.catalunyaencomu.cat.</p>
           </div> <!-- cd-faq-content -->
           </li>
           <li>
@@ -978,7 +978,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <li>
           <a class="cd-faq-trigger" href="#0">13. No tengo un dispositivo móvil (teléfono inteligente/tableta), ¿puedo votar?</a>
           <div class="cd-faq-content">
-            <p>Si, puedes votar también desde un ordenador con acceso a internet en participa.unpaisencomu.cat .</p>
+            <p>Si, puedes votar también desde un ordenador con acceso a internet en participa.catalunyaencomu.cat .</p>
           </div> <!-- cd-faq-content -->
           </li>
           <li>
@@ -1050,7 +1050,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <li>
           <a class="cd-faq-trigger" href="#0">25. Tengo más preguntas</a>
           <div class="cd-faq-content">
-            <p>En ese caso, puedes contactar con nosotros e intentaremos resolver tus dudas, preguntas, o comentarios enviando un mail a contacte@unpaisencomu.cat.</p>
+            <p>En ese caso, puedes contactar con nosotros e intentaremos resolver tus dudas, preguntas, o comentarios enviando un mail a contacte@catalunyaencomu.cat.</p>
           </div> <!-- cd-faq-content --></li>'
   verification:
     from: de

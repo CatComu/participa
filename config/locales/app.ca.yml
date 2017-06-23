@@ -38,7 +38,7 @@ ca:
         message_html: "No hem pogut trobar aquesta pàgina. Torna-ho a provar més tard o <a href='/'>prova-ho des de la pàgina principal</a>."
       "500":
         title: "Error en el servidor"
-        message_html: "Hi ha hagut un error en el servidor. Pots avisar-nos a <a href='mailto:contacte@unpaisencomu.cat'>contacte@unpaisencomu.cat</a>"
+        message_html: "Hi ha hagut un error en el servidor. Pots avisar-nos a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
     messages:
       not_valid_spanish_vat: El número d'identificació fiscal no és vàlid
       not_valid_nif: El DNI no és vàlid
@@ -428,14 +428,14 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
           Per poder votar en les properes votacions t'has d'enregistrar
           omplint aquest formulari. T'arribarà un correu per validar-te. Si no
           reps el correu posa't en contacte amb nosaltres
-          <a href='http://unpaisencomu.cat/contact'>aquí</a>.
+          <a href='http://catalunyaencomu.cat/contact'>aquí</a>.
         </p>
         "
   unauthorized:
     default: "No tens permisos per accedir a aquesta secció"
     banned: >
       Gràcies, %{full_name}. Per poder participar-hi cal que ens escriguis un
-      correu electrònic a soporte@unpaisencomu.cat
+      correu electrònic a soporte@catalunyaencomu.cat
   online_verifications:
     menu_link: Verifica't aquí
     admin: Gestor de verificacions digitals
@@ -561,7 +561,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       voting: "VOTACIÓ"
       inscription_errors: "ERRORS D'INSCRIPCIÓ"
       verification: "VERIFICACIÓ"
-      faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. Què em cal per accedir a participa.unpaisencomu.cat?</a>
+      faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. Què em cal per accedir a participa.catalunyaencomu.cat?</a>
             <div class="cd-faq-content">
     <p> Es necessari residir a la ciutat de Catalunya.
     </p>
@@ -572,7 +572,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
           <li>
           <a class="cd-faq-trigger" href="#0">2. Què faig si he perdut la contrassenya?</a>
           <div class="cd-faq-content">
-           <p> Si no recordes la contrasenya, fes clic <a href="https://participa.unpaisencomu.cat/ca/users/password/new" target="_blank" title="Has oblidat la teva contrasenya?"> Aquí </a> per sol·licitar-ne una de nova. </p>
+           <p> Si no recordes la contrasenya, fes clic <a href="https://participa.catalunyaencomu.cat/ca/users/password/new" target="_blank" title="Has oblidat la teva contrasenya?"> Aquí </a> per sol·licitar-ne una de nova. </p>
           </div> <!-- cd-faq-content --></li>'
       faq2_html: "<li><a class='cd-faq-trigger' href='#0'>3. No arecordo del correu electrònc. Què faig?</a>
           <div class='cd-faq-content'>
@@ -588,7 +588,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
           <li>
            <a class='cd-faq-trigger' href='#0'>5. Continuo sense poder accedir al portal de participació. Com puc comunicar-me amb l'equip de suport?</a>
           <div class='cd-faq-content'>
-<p> Si tens algun problema pots comunicar-te amb nosaltres a <a href='mailto:contacte@unpaisencomu.cat'> contacte@unpaisencomu.cat </a> indicant si escau les dades següents: </ p>
+<p> Si tens algun problema pots comunicar-te amb nosaltres a <a href='mailto:contacte@catalunyaencomu.cat'> contacte@catalunyaencomu.cat </a> indicant si escau les dades següents: </ p>
 <p> Nom i cognoms: <br />
 Correu electrònic: <br />
 DNI: <br />
@@ -597,7 +597,7 @@ Descripció del problema: </ p>
       faq3_html: "<li><a class='cd-faq-trigger' href='#0'>6. Correu  electrònic, número de document o contrasenya invàlida.</a>
           <div class='cd-faq-content'>
             <p> Si no recordes el correu electrònic que vas fer servir per inscriure't, prova-ho amb el teu DNI. </p>
-             <p> Si no recordes la contrasenyaa, fes clic <a href='https://participa.unpaisencomu.cat/es/users/password/new' target='_blank' title='Has olblidat la teva contrasenya? '> Aquí </a> per sol·licitar-ne una de nova. </p>
+             <p> Si no recordes la contrasenyaa, fes clic <a href='https://participa.catalunyaencomu.cat/es/users/password/new' target='_blank' title='Has olblidat la teva contrasenya? '> Aquí </a> per sol·licitar-ne una de nova. </p>
              <p> Si no reps la teva contrasenya, mira l'error núm. 2, que apareix més avall.</p>
           </div> <!-- cd-faq-content -->
           </li>
@@ -605,7 +605,7 @@ Descripció del problema: </ p>
            <a class='cd-faq-trigger' href='#0'>7. No m'arriben correus a cap dels meus comptes. Em sembla que m'he equivocat a l'hora d'escriure el meu correu electrònic.  </a>
           <div class='cd-faq-content'>
              <p><strong>Causa:</strong><br />Potser vas escriure malament el teu correu durant el procés de registre o el registre ha estat incomplet.</p>
-             <p> <strong> Solució:</strong><br />Escriu un correu a <a href='mailto:contacte@unpaisencomu.cat'>contacte@unpaisencomu.cat</a>indica-hi les teves dades personals i adjunta-hi una fotocòpia del teu DNI o passaport per donar-te de baixa i així podràs tornar a inscriure-t'hi.</p>
+             <p> <strong> Solució:</strong><br />Escriu un correu a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>indica-hi les teves dades personals i adjunta-hi una fotocòpia del teu DNI o passaport per donar-te de baixa i així podràs tornar a inscriure-t'hi.</p>
      </div> <!-- cd-faq-content -->
           </li>"
       faq4_html: "<li> <a class='cd-faq-trigger' href='#0'>8. Quins mètodes de verificació s'han habilitat?</a> <div class='cd-faq-content'> <p>Hem habilitat <a href='%{verifications_url}'>punts presencials per a la verificació</a>.</p> </div> <!-- cd-faq-content --> </li>"
@@ -613,7 +613,7 @@ Descripció del problema: </ p>
       <div class='cd-faq-content'>
         <p>Amb tres passos molt senzills:<br/>
 Amb tres passos molt senzills:
- 1r.  Entra al web participa.unpaisencomu.cat, accedeix al portal de participació i introdueix el DNI / correu electrònic i la contrasenya.  Si no estàs inscrit/a, fes-ho aquí: https://participa.unpaisencomu.cat. És molt senzill.
+ 1r.  Entra al web participa.catalunyaencomu.cat, accedeix al portal de participació i introdueix el DNI / correu electrònic i la contrasenya.  Si no estàs inscrit/a, fes-ho aquí: https://participa.catalunyaencomu.cat. És molt senzill.
  2n.  Accedeix a la cabina de votació: un cop hagis entrat a l'aplicació  de  Catalunya En Comú, veuràs un botó per votar. Fes-hi clic i se’t redirigirà a la cabina de votació,
  3r. Vota: respon la pregunta de la votació.
 </p>
@@ -622,13 +622,13 @@ Amb tres passos molt senzills:
       <li>
       <a class='cd-faq-trigger' href='#0'>10. Qui pot votar?</a>
       <div class='cd-faq-content'>
-        <p>Qualsevol  persona inscrita a Catalunya En Comú a través de  http://participa.unpaisencomu.cat que tingui més de 16 anys i visqui a  Catalunya i hagi realitzat la verificació presencial.</p>
+        <p>Qualsevol  persona inscrita a Catalunya En Comú a través de  http://participa.catalunyaencomu.cat que tingui més de 16 anys i visqui a  Catalunya i hagi realitzat la verificació presencial.</p>
       </div> <!-- cd-faq-content -->
       </li>
       <li>
       <a class='cd-faq-trigger' href='#0'>11. Què necessito per votar?</a>
       <div class='cd-faq-content'>
-        <p>Necessites un ordinador o qualsevol altre dispositiu (android / iphone) amb  accés a la xarxa per accedir a <a href='https://participa.unpaisencomu.cat' target='_blank' >https://participa.unpaisencomu.cat</a> i estar inscrit/a a <a href='https://participa.unpaisencomu.cat' target='_blank'>https://participa.unpaisencomu.cat</a>.</p>
+        <p>Necessites un ordinador o qualsevol altre dispositiu (android / iphone) amb  accés a la xarxa per accedir a <a href='https://participa.catalunyaencomu.cat' target='_blank' >https://participa.catalunyaencomu.cat</a> i estar inscrit/a a <a href='https://participa.catalunyaencomu.cat' target='_blank'>https://participa.catalunyaencomu.cat</a>.</p>
       </div> <!-- cd-faq-content -->
       </li>
       <li>
@@ -640,7 +640,7 @@ Amb tres passos molt senzills:
         <li>
       <a class='cd-faq-trigger' href='#0'>13. Si no tinc un dispositiu mòbil (telèfon intel•ligent/tàblet), puc votar?</a>
       <div class='cd-faq-content'>
-        <p>Sí, pots votar també des d'un ordinador amb accés a Internet a participa.unpaisencomu.cat. El mòbil només cal per registrar-se.</p>
+        <p>Sí, pots votar també des d'un ordinador amb accés a Internet a participa.catalunyaencomu.cat. El mòbil només cal per registrar-se.</p>
       </div> <!-- cd-faq-content -->
       </li>
       <li>
@@ -712,7 +712,7 @@ Amb tres passos molt senzills:
        <li>
       <a class='cd-faq-trigger' href='#0'>25. Tinc més preguntes.</a>
       <div class='cd-faq-content'>
-        <p>En aquest cas, pots contactar amb nosaltres i intentarem resoldre els teus dubtes, preguntes o comentaris enviant un mail a contacte@unpaisencomu.cat.</p>
+        <p>En aquest cas, pots contactar amb nosaltres i intentarem resoldre els teus dubtes, preguntes o comentaris enviant un mail a contacte@catalunyaencomu.cat.</p>
       </div> <!-- cd-faq-content --></li>"
   verification:
     from: de

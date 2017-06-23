@@ -11,7 +11,7 @@ module SMS
           pass: Rails.application.secrets.sms["pass"],
           src: Rails.application.secrets.sms["src"],
           dst: dst,
-          msg: "El teu codi d'activació per a Un País en Comú és #{code}"
+          msg: "El teu codi d'activació per a Catalunya en Comú és #{code}"
         }
         response = client.call(:send_sms, message: message)
         Rails.logger.debug response.to_s
