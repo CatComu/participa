@@ -47,7 +47,14 @@ box info & alerts
     margin: 0;
   }
 }
-.box-info img{
+.box-info h1{
+  font-family: "Stag-Stencil-Bold";
+  font-size: 8em;
+  line-height: 78.4px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.box-info .logo{
   display: block; 
   width: 100%;
 }
@@ -71,6 +78,12 @@ box info & alerts
 }
 .box-info-static{
   @extend .box-info;
+
+  h1{
+    font-family: "Stag-Stencil-Bold";
+    font-size: 6em;
+    margin: 0 0 .5em 0;
+  }
 
   h2{
     font-family: "Stag-Sans-Bold";
