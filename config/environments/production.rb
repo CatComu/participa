@@ -76,8 +76,8 @@ Rails.application.configure do
   # Use mailer caching
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.asset_host = 'https://participa.unpaisencomu.cat'
-  config.action_mailer.default_url_options = { host: 'participa.unpaisencomu.cat' }
+  config.action_mailer.asset_host = 'https://participa.catalunyaencomu.cat'
+  config.action_mailer.default_url_options = { host: 'participa.catalunyaencomu.cat' }
 
   # config.action_mailer.delivery_method = :sendmail
   config.action_mailer.delivery_method = :smtp

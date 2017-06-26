@@ -14,7 +14,7 @@ class OnlineVerificationMailerTest < ActionMailer::TestCase
     mail = OnlineVerificationMailer.report(@report)
 
     assert_equal \
-      "Revisa tu solicitud de verificación digital en Un País En Comú",
+      "Revisa tu solicitud de verificación digital en Catalunya En Comú",
       mail.subject
 
     assert_equal ["pep@example.org"], mail.to

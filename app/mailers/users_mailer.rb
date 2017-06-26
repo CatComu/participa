@@ -24,7 +24,7 @@ class UsersMailer < ActionMailer::Base
     mail(
       from: Rails.application.secrets["default_from_email"],
       to: @user.email,
-      subject: "Un País En Comú - #{t('devise.mailer.remember_email.title')}"
+      subject: "Catalunya En Comú - #{t('devise.mailer.remember_email.title')}"
     )
   end
 end

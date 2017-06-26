@@ -35,7 +35,7 @@ class CollaborationsTest < ActionDispatch::IntegrationTest
     login_as(user)
     visit new_collaboration_path
     assert_content <<~MSG.squish
-      Colaborando con Un País en Comú conseguirás que este proyecto siga
+      Colaborando con Catalunya en Comú conseguirás que este proyecto siga
       creciendo mes a mes y garantizarás la independencia necesaria para un
       proyecto cuyas únicas lealtades van a estar del lado de la gente.
     MSG
@@ -73,7 +73,7 @@ class CollaborationsTest < ActionDispatch::IntegrationTest
     login_as(user)
     visit new_collaboration_path
     assert_content <<~MSG.squish
-      Colaborando con Un País en Comú conseguirás que este proyecto siga
+      Colaborando con Catalunya en Comú conseguirás que este proyecto siga
       creciendo mes a mes y garantizarás la independencia necesaria para un
       proyecto cuyas únicas lealtades van a estar del lado de la gente.
     MSG

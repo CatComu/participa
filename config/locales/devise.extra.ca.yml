@@ -35,7 +35,7 @@ ca:
       waiting_confirmation: "Actualment esperant instruccions per %{email}"
     titles:
       sign_in: "Iniciar sessió"
-      sign_up: "Inscripció a Un País En Comú"
+      sign_up: "Inscripció a Catalunya En Comú"
       cancel_account: "Cancel·la el meu compte"
       forgot_password: "No recordes la teva contrasenya?"
       change_password: "Canvia la teva contrasenya"

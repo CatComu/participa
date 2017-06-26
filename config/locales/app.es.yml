@@ -28,7 +28,7 @@ es:
         escribirte para asegurarnos de que recibes el correo de confirmación.
       instructions: >-
         Confirma tu correo clicando en el enlace siguiente para poder seguir con
-        el proceso de votación de Un País en común, así como para poder acceder
+        el proceso de votación de Cataluña en Común, así como para poder acceder
         a la Asamblea de este fin de semana!
       apologize: >-
         Si no ha sido tu caso, te pedimos disculpas por este correo.
@@ -43,7 +43,7 @@ es:
         message_html: "No pudimos encontrar esa página. Vuelvelo a intentarlo más tarde o <a href='/'>prueba desde la página principal</a>."
       "500":
         title: "Error en el servidor"
-        message_html: "Hubo un error en el servidor. Puedes avisarnos en <a href='mailto:contacte@unpaisencomu.cat'>contacte@unpaisencomu.cat</a>"
+        message_html: "Hubo un error en el servidor. Puedes avisarnos en <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
     messages:
       not_valid_spanish_vat: El número de identificación fiscal no es válido
       not_valid_nif: El DNI no es válido
@@ -418,13 +418,13 @@ es:
         age_over: "No puedes colaborar si eres menor de edad."
         valid: "Cuenta corriente inválida. Dígito de control erroneo. Por favor revísala."
       title: "Colaboración económica"
-      p1: "Colaborando con Un País en Comú conseguirás que este proyecto siga creciendo mes a mes y garantizarás la independencia necesaria para un proyecto cuyas únicas lealtades van a estar del lado de la gente. Convirtamos la indignación en cambio. Es el momento, estamos preparados: Hagámoslo posible."
+      p1: "Colaborando con Catalunya en Comú conseguirás que este proyecto siga creciendo mes a mes y garantizarás la independencia necesaria para un proyecto cuyas únicas lealtades van a estar del lado de la gente. Convirtamos la indignación en cambio. Es el momento, estamos preparados: Hagámoslo posible."
       ok: 
         p1: Tu donación se ha dado de alta correctamente.
-        p2: Gracias por colaborar con Un País en Comú.
+        p2: Gracias por colaborar con Catalunya en Comú.
       ko:
         title: Hubo un error con tu colaboración.
-        contact: Por favor intenta realizar el pago nuevamente. Si continúas teniendo problemas contacta a contacte@unpaisencomu.cat
+        contact: Por favor intenta realizar el pago nuevamente. Si continúas teniendo problemas contacta a contacte@catalunyaencomu.cat
       passport_message_html: "<p>Según nuestra base de datos estás inscrito con un número de pasaporte.</p> <p>Dado que la Ley Orgánica 8/2007, de 4 de julio, sobre financiación de los partidos políticos, exige la identificación fiscal de los donantes, para poder colaborar económicamente con PODEMOS y poder cumplimentar el formulario de alta como colaborador es imprescindible disponer de DNI o NIE.</p> <p>Si eres español o extranjero con NIE envíanos una copia de tu DNI o documento donde conste tu número de identificación de extranjero a la dirección colaboraciones@podemos.info para que podamos actualizar los datos de tu inscripción.</p>"
       over: Declaro ser mayor de 18 años.
       next: "Ya tienes una colaboración. Es la siguiente:"
@@ -442,8 +442,8 @@ es:
       terms_of_service:
         accept: Acepto las condiciones generales.
         title: Condiciones Generales
-        p1_title: "Relación entre Barcelona En Común y el colaborador."
-        p1: 'La realización de donaciones económicas no implica la vinculación del colaborador con Barcelona En Común, ni le confiere la condición legal de socio, afiliado o simpatizante, ni le otorga derechos ante el partido, ni queda obligado por sus estatutos y resto de normas internas. De acuerdo con el que se establece a la Ley orgánica 8/2007, de 4 de julio, de financiación de partidos políticos, vuestro donativo tendrá la consideración de "donación privada”, diferente de las cuotas de socios, afiliados o simpatizantes.
+        p1_title: "Relación entre Catalunya En Común y el colaborador."
+        p1: 'La realización de donaciones económicas no implica la vinculación del colaborador con Catalunya En Común, ni le confiere la condición legal de socio, afiliado o simpatizante, ni le otorga derechos ante el partido, ni queda obligado por sus estatutos y resto de normas internas. De acuerdo con el que se establece a la Ley orgánica 8/2007, de 4 de julio, de financiación de partidos políticos, vuestro donativo tendrá la consideración de "donación privada”, diferente de las cuotas de socios, afiliados o simpatizantes.
 Al confirmar este formulario aceptáis que:
 
     Esta donación no se realiza desde organismos, entidades o empresas públicas.
@@ -454,9 +454,9 @@ Al confirmar este formulario aceptáis que:
 
     La cantidad que dáis no os ha sido entregada por parte de alguna persona o entidad con el objetivo que esta donación se pueda hacer.'
         p2_title: "Protección de datos de carácter personal."
-        p2: 'Barcelona En Común, de acuerdo con la Ley orgánica 15/1999, de protección de datos de carácter personal, os informa que vuestros datos serán incorporados al fichero “donaciones”, del cual es responsable Barcelona En Común, que las empleará para tramitar vuestra colaboración, gestionar los cargos bancarios y cumplir con la normativa de financiación de partidos políticos, así como con finalidades estadísticas y haceros llegar periódicamente información de sus actividades. Concedéis el consentimiento expreso para que estos datos pasen a formar parte de Barcelona En Común. Para ejercer vuestros derechos de acceso, rectificación, cancelación u oposición, como por ejemplo cancelar la suscripción, modificar los datos bancarios o el importe y frecuencia de vuestra donación, podéis enviar un correo electrónico a tresoreria@bcnencomu.cat, indicando la referencia “modificación de la donación” o por correo postal a la sede social sita en la calle *Castillejos, 233, bajos, de Barcelona, adjuntando copia de vuestro documento nacional de identidad.  '
+        p2: 'Catalunya En Común, de acuerdo con la Ley orgánica 15/1999, de protección de datos de carácter personal, os informa que vuestros datos serán incorporados al fichero “donaciones”, del cual es responsable Catalunya En Común, que las empleará para tramitar vuestra colaboración, gestionar los cargos bancarios y cumplir con la normativa de financiación de partidos políticos, así como con finalidades estadísticas y haceros llegar periódicamente información de sus actividades. Concedéis el consentimiento expreso para que estos datos pasen a formar parte de Catalunya En Común. Para ejercer vuestros derechos de acceso, rectificación, cancelación u oposición, como por ejemplo cancelar la suscripción, modificar los datos bancarios o el importe y frecuencia de vuestra donación, podéis enviar un correo electrónico a tresoreria@bcnencomu.cat, indicando la referencia “modificación de la donación” o por correo postal a la sede social sita en la calle *Castillejos, 233, bajos, de Catalunya, adjuntando copia de vuestro documento nacional de identidad.  '
         p3_title: "Consentimiento de la orden de domiciliación"
-        p3: 'Autorizáis a Barcelona En Común y a vuestra entidad bancaria a efectuar las operaciones de cobro mediante cargos a la cuenta bancaria que nos habéis facilitado, por el importe y con la frecuencia que nos habéis indicado en el formulario. Los cargos domiciliados se realizarán entre los días 10 y 15 de cada mes.'
+        p3: 'Autorizáis a Catalunya En Común y a vuestra entidad bancaria a efectuar las operaciones de cobro mediante cargos a la cuenta bancaria que nos habéis facilitado, por el importe y con la frecuencia que nos habéis indicado en el formulario. Los cargos domiciliados se realizarán entre los días 10 y 15 de cada mes.'
       freq:
         first: "Mensual"
         second: "Trimestral"
@@ -512,15 +512,15 @@ Al confirmar este formulario aceptáis que:
       fixes_text: "Hemos revisado el proyecto que has presentado a IMPULSA y hemos detectado algunos puntos que necesitan subsanación."
       non_fixes_text: "No hemos recibido, en plazo, la subsanación de los errores indicados en el proyecto que has presentado a esta edición de IMPULSA. El plazo de subsanación ha finalizado, por lo que lamentamos comunicarte que tu proyecto no pasa a la fase de validación."
       mark_for_review_text: "Cuando hayas completado todos los datos del proyecto y consideres que son correctos utiliza el botón '%{mark_for_review}' para indicarnos que podemos revisarlo (aunque podrás seguir haciendo correcciones hasta que lo hagamos)."
-      spam_text: "Después de realizar la revisión de los proyectos presentados, hemos detectado que tu proyecto está prácticamente vacío. Por esta razón, lo hemos marcado como desestimado. Si tienes alguna consulta al respecto, por favor ponte en contacto con nosotros en el correo contacte@unpaisencomu.cat"
+      spam_text: "Después de realizar la revisión de los proyectos presentados, hemos detectado que tu proyecto está prácticamente vacío. Por esta razón, lo hemos marcado como desestimado. Si tienes alguna consulta al respecto, por favor ponte en contacto con nosotros en el correo contacte@catalunyaencomu.cat"
       reviewing_text: "Hemos recibido tu proyecto y estamos revisando que todos los datos sean correctos. En cuanto terminemos este proceso te avisaremos."
       validable_text: "Hemos recibido correctamente el proyecto que has presentado, está completo y pasa a la fase de revisión."
       invalidated_text: "Lamentamos comunicarte que el proyecto que has presentado a IMPULSA ha sido invalidado por las siguientes razones: %{invalid_reasons}"
-      validated1_text: "Una vez realizada la revisión de los proyectos presentados a la edición actual de IMPULSA, tenemos el placer de informarte de que tu proyecto ha sido validado. Esto implica que participarás en la fase de pre-selección en la que un Jurado compuesto por el Equipo técnico de IMPULSA, miembros de la Comisión de Garantías Democráticas, miembros del Consejo Ciudadano Estatal, y las Senadoras de Un País , valorarán los proyectos validados en función de los criterios establecidos en las bases de la convocatoria y preseleccionarán un máximo de %{prewinners} proyectos. Los resultados de la preselección se harán públicos en la página web: <XXX. En el caso de que tu proyecto sea preseleccionado, te informaremos por correo electrónico. Del %{voting_dates}, se abrirá un proceso de votaciones en el que las personas inscritas en XXXXXX podrán elegir %{winners} proyectos ganadores entre los %{prewinners} preseleccionados."
+      validated1_text: "Una vez realizada la revisión de los proyectos presentados a la edición actual de IMPULSA, tenemos el placer de informarte de que tu proyecto ha sido validado. Esto implica que participarás en la fase de pre-selección en la que un Jurado compuesto por el Equipo técnico de IMPULSA, miembros de la Comisión de Garantías Democráticas, miembros del Consejo Ciudadano Estatal, y las Senadoras de Catalunya , valorarán los proyectos validados en función de los criterios establecidos en las bases de la convocatoria y preseleccionarán un máximo de %{prewinners} proyectos. Los resultados de la preselección se harán públicos en la página web: <XXX. En el caso de que tu proyecto sea preseleccionado, te informaremos por correo electrónico. Del %{voting_dates}, se abrirá un proceso de votaciones en el que las personas inscritas en XXXXXX podrán elegir %{winners} proyectos ganadores entre los %{prewinners} preseleccionados."
       validated2_text: "Una vez realizada la valoración de los proyectos presentados a esta edición de IMPULSA, tenemos el placer de informarte de que tu proyecto ha sido validado. Esto implica que participarás, del %{voting_dates}, en la fase de votaciones con los demás proyectos validados de tu territorio, dependiendo de la categoría donde te hayas presentado."
       terms_of_service: "He leído y acepto <a href='%{link}'>las condiciones generales del proyecto IMPULSA y la política de privacidad</a>."
       data_truthfulness: "Declaro la veracidad de los datos facilitados y de los documentos aportados en la solicitud de la presente convocatoria."
-      content_rights: "Declaro ser titular de todos los derechos de propiedad intelectual, industrial y derechos de imagen, de las obras, textos, imágenes, vídeos, música, logotipos e ideas incluidos en este formulario y que forman parte del proyecto, eximiendo a Un País en Comú de cualquier responsabilidad que pudiera derivarse de las infracciones de estos derechos."
+      content_rights: "Declaro ser titular de todos los derechos de propiedad intelectual, industrial y derechos de imagen, de las obras, textos, imágenes, vídeos, música, logotipos e ideas incluidos en este formulario y que forman parte del proyecto, eximiendo a Catalunya en Comú de cualquier responsabilidad que pudiera derivarse de las infracciones de estos derechos."
       translated: "en %{lang}"
       save_draft: "Guardar borrador"
       mark_for_review: "Marcar para revisión"
@@ -589,8 +589,8 @@ Al confirmar este formulario aceptáis que:
       algún documento, aquí puedes subir las imágenes que necesites.
     change_password: "Cambiar contraseña"
     cancel_account: "Darme de baja"
-    cancel_account_explain_html: "<p>Al pulsar el botón \"Darme de baja\" dejarás de ser miembro de Un País En Comú y cancelaremos tus datos personales de conformidad con lo dispuesto en la Ley Orgánica 15/1999 de Protección de Datos de Carácter Personal.</p>
-<p> A partir de este momento tu cuenta de acceso al portal de participación de Un País En Comú quedará eliminada.</p>
+    cancel_account_explain_html: "<p>Al pulsar el botón \"Darme de baja\" dejarás de ser miembro de Catalunya En Comú y cancelaremos tus datos personales de conformidad con lo dispuesto en la Ley Orgánica 15/1999 de Protección de Datos de Carácter Personal.</p>
+<p> A partir de este momento tu cuenta de acceso al portal de participación de Catalunya En Comú quedará eliminada.</p>
 <p>
 De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Protección de Datos, la cancelación dará lugar al bloqueo de los datos, conservándose únicamente a disposición de las Administraciones Públicas, Jueces y Tribunales, para la atención de las posibles responsabilidades nacidas del tratamiento, durante el plazo de prescripción de las mismas. Cumplido el citado plazo se procederá a la supresión de los datos.
 </p>
@@ -719,7 +719,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     phone:
       p1: "Introduce tu nuevo número de teléfono móvil."
       p2: "Recibirás el código de verificación para validar el nuevo número en unos segundos."
-      p3: "Si ya has participado en alguna votación de Un País en Comú, te enviaremos el código por correo electrónico."
+      p3: "Si ya has participado en alguna votación de Catalunya en Comú, te enviaremos el código por correo electrónico."
       p5: "Introduce el código que hayas recibido por SMS para confirmarlo"
       valid: "Has sido verificado correctamente. Si tus documentos están bien, estás autorizado para votar."
       invalid: "El código que has puesto no corresponde con el que te enviamos por SMS."
@@ -767,14 +767,14 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           Para votar en las próximas votaciones te tienes que registrar
           rellenando este formulario. Te llegará un correo para validarte. Si
           no recibes el correo ponte en contacto con nosotros
-          <a href='http://unpaisencomu.cat/es/contact'>aquí</a>.
+          <a href='http://catalunyaencomu.cat/es/contact'>aquí</a>.
         </p>
         "
   unauthorized:
     default: "No tienes permisos para acceder a esa sección"
     banned: >
       Gracias, %{full_name}. Para poder participar es necesario que nos escribas
-      un correo electrónico a soporte@unpaisencomu.cat.
+      un correo electrónico a soporte@catalunyaencomu.cat.
   online_verifications:
     menu_link: Verifícate aquí
     admin: Gestor de verificaciones digitales
@@ -818,7 +818,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
         Has adjuntado sólo una de las caras del documento de identidad, 
         necesitamos que adjuntes las dos
     mailer:
-      subject: Revisa tu solicitud de verificación digital en Un País En Comú
+      subject: Revisa tu solicitud de verificación digital en Catalunya En Comú
       introduction: >
         Hola, hemos revisado tu solicitud de verificación digital y hemos
         detectado los siguientes problemas con los documentos que has subido.
@@ -895,9 +895,9 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       voting: "VOTACIÓN"
       inscription_errors: 'ERRORES INSCRIPCIÓN'
       verification: "VERIFICACIÓN"
-      faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. ¿Qué necesito para entrar en participa.unpaisencomu.cat?</a>
+      faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. ¿Qué necesito para entrar en participa.catalunyaencomu.cat?</a>
             <div class="cd-faq-content">
-    <p> Es necesario residir en la ciudad de Barcelona.
+    <p> Es necesario residir en Catalunya.
     </p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;1. <strong>DNI/NIF/Pasaporte</strong>. Por seguridad, debe ser único y no se podrá cambiar. </p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;2. <strong>Correo electrónico</strong>: Por seguridad, debe ser único.</p>
@@ -906,7 +906,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <li>
           <a class="cd-faq-trigger" href="#0">2. ¿Qué hago si no recuerdo mi contraseña?</a>
           <div class="cd-faq-content">
-            <p>Puedes solicitar una nueva <a href="https://participa.unpaisencomu.cat/es/users/password/new" target="_blank" title="¿Has olvidado tu contraseña?">aquí</a>.</p>
+            <p>Puedes solicitar una nueva <a href="https://participa.catalunyaencomu.cat/es/users/password/new" target="_blank" title="¿Has olvidado tu contraseña?">aquí</a>.</p>
           </div> <!-- cd-faq-content --></li>
        '
       faq2_html: '<li><a class="cd-faq-trigger" href="#0">3. No me acuerdo del correo electrónico ¿Qué hago?</a>
@@ -923,7 +923,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <li>
           <a class="cd-faq-trigger" href="#0">5.  Sigo sin poder acceder al portal de participación. ¿Cómo puedo comunicarme con el equipo de soporte?</a>
           <div class="cd-faq-content">
-            <p>Si tienes algún problema puedes comunicarte con nosotros en <a href="mailto:contacte@unpaisencomu.cat">contacte@unpaisencomu.cat</a> indicando si procede los siguientes datos:</p>
+            <p>Si tienes algún problema puedes comunicarte con nosotros en <a href="mailto:contacte@catalunyaencomu.cat">contacte@catalunyaencomu.cat</a> indicando si procede los siguientes datos:</p>
             <p>Nombre y apellidos:<br />
             Correo electrónico:<br />
             DNI:<br />
@@ -932,7 +932,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       faq3_html: "<li><a class='cd-faq-trigger' href='#0'>6. Correo electrónico, número de documento o contraseña inválida.</a>
           <div class='cd-faq-content'>
             <p> Si no recuerdas el correo electrónico que utilizaste para inscribirte, prueba con el DNI. </p>
-             <p> Si no recuerdas la contraseña, haz clic <a href='https://participa.unpaisencomu.cat/es/users/password/new' target='_blank' title='¿Has olvidado tu contraseña? '> Aquí </a> para sollicitar una nueva. </p>
+             <p> Si no recuerdas la contraseña, haz clic <a href='https://participa.catalunyaencomu.cat/es/users/password/new' target='_blank' title='¿Has olvidado tu contraseña? '> Aquí </a> para sollicitar una nueva. </p>
              <p> Si no recibes tu contraseña, mira el error 2, que aparece mas abajo.</p>
           </div> <!-- cd-faq-content -->
           </li>
@@ -940,7 +940,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <a class='cd-faq-trigger' href='#0'>7. No me llegan correos a ninguna de mis cuentas. Creo que me he equivocado de correo electrónico. </a>
           <div class='cd-faq-content'>
             <p><strong>Causa:</strong><br />Puede que escribieras mal el correo en el proceso de registro o el registro fue incompleto. </p>
-             <p> <strong> Solución:</strong><br />Escribe un correo a <a href='mailto:contacte@unpaisencomu.cat'>contacte@unpaisencomu.cat</a>indicando tus datos personales y adjuntando fotocopia de tu DNI o pasaporte y te daremos de baja para que vuelvas a inscribirte.</p>
+             <p> <strong> Solución:</strong><br />Escribe un correo a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>indicando tus datos personales y adjuntando fotocopia de tu DNI o pasaporte y te daremos de baja para que vuelvas a inscribirte.</p>
      </div> <!-- cd-faq-content -->
           </li>"
 
@@ -953,32 +953,32 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       faq5_html: '<li><a class="cd-faq-trigger" href="#0">9. ¿Cómo puedo votar?</a>
           <div class="cd-faq-content">
             <p>En tres sencillos pasos:<br/>
-    1ª. Entra en la web <a href="https://participa.unpaisencomu.cat" target="_blank">participa.unpaisencomu.cat</a>, accede al Portal de Participación, e introduce tu DNI/Correo electrónico y tu contraseña. Si no estas inscrito, hazlo aquí <a href="https://participa.unpaisencomu.cat" target="_blank">participa.unpaisencomu.cat</a>, es muy sencillo.<br/>
-    2ª. Accede a la cabina de votación: Una vez hayas entrado en la aplicación de Un País en Comú, verás un botón para votar. Pincha y serás redirigido a la cabina de votación, donde estarán las 3 votaciones que hay abiertas.<br/>
+    1ª. Entra en la web <a href="https://participa.catalunyaencomu.cat" target="_blank">participa.catalunyaencomu.cat</a>, accede al Portal de Participación, e introduce tu DNI/Correo electrónico y tu contraseña. Si no estas inscrito, hazlo aquí <a href="https://participa.catalunyaencomu.cat" target="_blank">participa.catalunyaencomu.cat</a>, es muy sencillo.<br/>
+    2ª. Accede a la cabina de votación: Una vez hayas entrado en la aplicación de Catalunya en Comú, verás un botón para votar. Pincha y serás redirigido a la cabina de votación, donde estarán las 3 votaciones que hay abiertas.<br/>
     3ª. Vota: Responde a las preguntas de la votación. Antes de emitir tu voto, podrás confirmar las respuestas que has elegido y tendrás oportunidad de modificarlas. Una vez hayas hecho esto, podrás confirmar y emitir tu voto.</p>
           </div> <!-- cd-faq-content -->
           </li>
           <li>
           <a class="cd-faq-trigger" href="#0">10. ¿Quién puede votar?</a>
           <div class="cd-faq-content">
-            <p>Cualquier persona que haya realizado la inscripción en <a href="https://participa.unpaisencomu.cat" target="_blank">participa.unpaisencomu.cat</a>, y se haya verificado presencialmente aportando los documentos que se solicitan y tenga más de 16 años.</p>
+            <p>Cualquier persona que haya realizado la inscripción en <a href="https://participa.catalunyaencomu.cat" target="_blank">participa.catalunyaencomu.cat</a>, y se haya verificado presencialmente aportando los documentos que se solicitan y tenga más de 16 años.</p>
           </div> <!-- cd-faq-content -->
           </li>
           <li>
           <a class="cd-faq-trigger" href="#0">11. ¿Qué necesito para votar?</a>
           <div class="cd-faq-content">
-            <p>Necesitas un ordenador o cualquier otro dispositivo (android/iphone) con acceso a internet para acceder a participa.unpaisencomu.cat y estar inscrito/a en participa.unpaisencomu.cat.</p>
+            <p>Necesitas un ordenador o cualquier otro dispositivo (android/iphone) con acceso a internet para acceder a participa.catalunyaencomu.cat y estar inscrito/a en participa.catalunyaencomu.cat.</p>
           </div> <!-- cd-faq-content -->
           </li>
           <li>
           <a class="cd-faq-trigger" href="#0">12. ¿Puedo votar sin tener ordenador?</a>
           <div class="cd-faq-content">
-        <p>Si. Un País en Comú ha habilitado varios puntos presenciales donde poder ayudarte a realizar el proceso.</p>      </div> <!-- cd-faq-content -->
+        <p>Si. Catalunya en Comú ha habilitado varios puntos presenciales donde poder ayudarte a realizar el proceso.</p>      </div> <!-- cd-faq-content -->
           </li>
           <li>
           <a class="cd-faq-trigger" href="#0">13. No tengo un dispositivo móvil (teléfono inteligente/tableta), ¿puedo votar?</a>
           <div class="cd-faq-content">
-            <p>Si, puedes votar también desde un ordenador con acceso a internet en participa.unpaisencomu.cat .</p>
+            <p>Si, puedes votar también desde un ordenador con acceso a internet en participa.catalunyaencomu.cat .</p>
           </div> <!-- cd-faq-content -->
           </li>
           <li>
@@ -1038,7 +1038,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <li>
           <a class="cd-faq-trigger" href="#0">23. ¿Cómo se asegura que cada votante vota una sola vez, y que sólo votan las personas con derecho a ello?</a>
           <div class="cd-faq-content">
-            <p>Gracias al sistema de autenticación en el portal de participación de Un País en Comú se asegura que sólo aquellas personas que figuren en el censo de Un País en Comú pueden votar. Se controla que se efectúe sólo un voto asociado a cada persona en dicho censo.</p>
+            <p>Gracias al sistema de autenticación en el portal de participación de Catalunya en Comú se asegura que sólo aquellas personas que figuren en el censo de Catalunya en Comú pueden votar. Se controla que se efectúe sólo un voto asociado a cada persona en dicho censo.</p>
           </div> <!-- cd-faq-content -->
           </li>
           <li>
@@ -1050,7 +1050,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           <li>
           <a class="cd-faq-trigger" href="#0">25. Tengo más preguntas</a>
           <div class="cd-faq-content">
-            <p>En ese caso, puedes contactar con nosotros e intentaremos resolver tus dudas, preguntas, o comentarios enviando un mail a contacte@unpaisencomu.cat.</p>
+            <p>En ese caso, puedes contactar con nosotros e intentaremos resolver tus dudas, preguntas, o comentarios enviando un mail a contacte@catalunyaencomu.cat.</p>
           </div> <!-- cd-faq-content --></li>'
   verification:
     from: de
@@ -1123,21 +1123,21 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       hello: "Hola %{user},"
       bye: Saludos.
       verified:
-        subject: Un País en Comú - Has sido verificado correctamente
-        message: "Enhorabuena!! Ya has sido verificado/a y formas parte de la comunidad de Un País en Comú.
+        subject: Catalunya en Comú - Has sido verificado correctamente
+        message: "Enhorabuena!! Ya has sido verificado/a y formas parte de la comunidad de Catalunya en Comú.
 
 A partir de ahora ya no necesitas verificarte más y podrás participar de las futuras consultas.
 
 Cada vez que haya una votación te avisaremos por correo para que puedas participar. Recuerda, ahora formas parte de la comunidad y podrás participar en la toma colectiva de decisiones.
 
-Gracias por inscribirte en Un País en Comú."
-        message_html: "<p>Enhorabuena!! Ya has sido verificado/a y formas parte de la comunidad de Un País en Comú.</p>
+Gracias por inscribirte en Catalunya en Comú."
+        message_html: "<p>Enhorabuena!! Ya has sido verificado/a y formas parte de la comunidad de Catalunya en Comú.</p>
 
 <p>A partir de ahora ya no necesitas verificarte más y podrás participar de las futuras consultas. </p>
 
 <p>Cada vez que haya una consulta te avisaremos por correo electrónico para que puedas ejercer tu derecho a voto. Recuerda, ahora formas parte de la comunidad y podrás  participar en la toma colectiva de decisiones. </p>
 
-<p>Gracias por inscribirte en Un País en Comú.</p>"
+<p>Gracias por inscribirte en Catalunya en Comú.</p>"
     identity: >-
       Los datos de los documentos aportados coinciden con los datos asociados al
       email introducido.

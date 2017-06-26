@@ -29,20 +29,20 @@ una y que puedes cambiar tu contraseña %{here}."
 este mensaje. Si lo recibes varias veces, avísanos a %{mail}."
         here: aquí
       confirm:
-        p1: "Te has dado de alta o has cambiado tu correo electrónico en el entorno Un País en Comú. Si no es ese el caso, ignora este correo. Puedes confirmar que esta es tu dirección de correo a través del siguiente enlace:"
-        p2: "Si tienes cualquier problema con el registro, por favor, contacta con contacte@unpaisencomu.cat"
+        p1: "Te has dado de alta o has cambiado tu correo electrónico en el entorno Catalunya en Comú. Si no es ese el caso, ignora este correo. Puedes confirmar que esta es tu dirección de correo a través del siguiente enlace:"
+        p2: "Si tienes cualquier problema con el registro, por favor, contacta con contacte@catalunyaencomu.cat"
         text_only_instructions: "O copia la siguiente dirección y pégala en tu navegador:"
       password:
         p1: "Alguien ha pedido que cambies tu contraseña. Puedes hacerlo mediante el siguiente enlace:"
-        p2: "Si tienes cualquier problema con el registro, por favor, contacta con contacte@unpaisencomu.cat"
+        p2: "Si tienes cualquier problema con el registro, por favor, contacta con contacte@catalunyaencomu.cat"
         p3: "Si no has sido tú, por favor, no hagas caso de este mensaje. Tu contraseña no cambiará hasta que valides este enlace y crees una nueva."
         link: 'Cambiar contraseña'
       confirmation_instructions:
-        subject: "Un País en Comú - Instrucciones de confirmación"
+        subject: "Catalunya en Comú - Instrucciones de confirmación"
       reset_password_instructions:
-        subject: "Un País en Comú - Instrucciones para restablecer tu contraseña"
+        subject: "Catalunya en Comú - Instrucciones para restablecer tu contraseña"
       unlock_instructions:
-        subject: "Un País en Comú - Instrucciones de desbloqueo"
+        subject: "Catalunya en Comú - Instrucciones de desbloqueo"
     omniauth_callbacks:
       failure: "No se te pudo autorizar de %{kind} debido a \"%{reason}\"."
       success: "Identificado correctamente de %{kind}."
