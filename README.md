@@ -90,7 +90,7 @@ mayor de 16 años y con domicilio en Barcelona).
 ### Verificación digital
 
 Método de verificación utilizado por Podemos (en su versión simplificada que
-sólo require confirmar el teléfono) y por EnComu. Cuando un usuario se inscribe
+sólo require confirmar el teléfono) y por CatComu. Cuando un usuario se inscribe
 debe confirmar su correo electrónico y su teléfono móvil con un código que se
 le envía. Así mismo, debe subir a la aplicación para probar su identidad, y que
 luego serán verificados para poder confirmar el voto. Esto supone un compromiso
