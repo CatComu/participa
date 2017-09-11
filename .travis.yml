@@ -29,7 +29,7 @@ before_script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
 
-script: bundle exec rake
+script: bundle exec rake test
 
 branches:
   only:
