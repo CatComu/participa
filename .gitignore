@@ -39,3 +39,5 @@ app/assets/fonts/StagStencil-Bold-Web.woff2
 
 # Ignore file uploads
 /public/system
+
+db/*.sqlite3

@@ -394,6 +394,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.3.13)
     sshkit (1.14.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
@@ -498,6 +499,7 @@ DEPENDENCIES
   spanish_vat_validators!
   spring
   sprockets-rails
+  sqlite3
   transactional_capybara
   turbolinks
   uglifier (>= 1.3.0)
