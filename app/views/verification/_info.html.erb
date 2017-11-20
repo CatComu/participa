@@ -1,35 +1,9 @@
 <p>
-  <% if Features.online_verifications? %>
-    <% link = link_to t('verification.online_name').downcase,
+  <% link = link_to t('verification.online_name').downcase,
                       sms_validator_step1_path %>
 
-    <%= t('verification.reasons_both_html', form: link) %>
-  <% else %>
-    <%= t('verification.reasons_presential') %>
-  <% end %>
+  <%= t('verification.reasons_online_html', form: link) %>
 </p>
-
-<div class="how-to">
-  <% if Features.online_verifications? %>
-    <p class="title"><%= t('verification.how_to.header') %></p>
-
-    <ol class="numbered">
-      <li>
-        <strong><%= t('verification.presential_name') %>:</strong><br />
-        <%= t('verification.how_to.presential') %>
-      </li>
-
-      <li>
-        <strong><%= t('verification.online_name') %>:</strong><br />
-        <%= t('verification.how_to.online') %>
-      </li>
-    </ol>
-  <% else %>
-    <p>
-      <%= t('verification.how_to.presential') %>
-    </p>
-  <% end %>
-</div>
 
 <div class="requirements">
   <p class="title"><%= t('verification.requirements.header') %></p>
@@ -40,6 +14,7 @@
   </ol>
 </div>
 
-<p class="title"><%= t('verification.bring_your_documents_to') %></p>
+<div class="center">
+  <%= link_to t('verification.online_cta'), link, class: "button" %>
+</div>
 
-<%= render partial: "verification/map" %>

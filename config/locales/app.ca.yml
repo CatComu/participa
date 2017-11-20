@@ -428,7 +428,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
           Per poder votar en les properes votacions t'has d'enregistrar
           omplint aquest formulari. T'arribarà un correu per validar-te. Si no
           reps el correu posa't en contacte amb nosaltres
-          <a href='http://catalunyaencomu.cat/ca/contacte'>aquí</a>.
+          <a href='http://catalunyaencomu.cat/contacte'>aquí</a>.
         </p>
         "
   unauthorized:
@@ -728,6 +728,9 @@ Amb tres passos molt senzills:
     reasons_presential: >
       Perquè els nostres processos de votació resultin tan democràtics com sigui
       possible ens cal que hi aportis la teva documentació de manera presencial.
+    reasons_online_html: >
+      Perquè els nostres processos de votació resultin tan democràtics com sigui
+      possible ens cal que hi aportis la teva documentació mitjançant la %{form}.
     reasons_both_html: >
       Perquè els nostres processos de votació resultin tan democràtics com sigui
       possible ens cal que hi aportis la teva documentació de manera presencial
@@ -738,6 +741,7 @@ Amb tres passos molt senzills:
       presential: >
         Al mapa trobaràs tots els punts per verificar-te a tot Catalunya.
       online: Un equip de persones comprovaran després que tot està correcte.
+    online_cta: "Verificar-me"
     presential_name: Verificació presencial
     online_name: Verificació digital
     requirements:

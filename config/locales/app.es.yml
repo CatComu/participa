@@ -1066,6 +1066,9 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     reasons_presential: >
       Para que nuestros procesos de votación sean lo más democráticos posible
       necesitamos que aportes tu documentación de manera presencial.
+    reasons_online_html: >
+      Para que nuestros procesos de votación sean lo más democráticos posible
+      necesitamos que aportes tu documentación mediante %{form}.
     reasons_both_html: >
       Para que nuestros procesos de votación sean lo más democráticos posible
       necesitamos que aportes tu documentación de manera presencial o mediante
@@ -1076,6 +1079,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
         En el mapa encontrarás todos los puntos para verificarte en toda
         Cataluña.
       online: Un equipo de personas comprobarán después que todo esté correcto.
+    online_cta: "Verificarme"
     presential_name: Verificación presencial
     online_name: Verificación digital
     requirements:
