@@ -459,6 +459,12 @@ class User < ApplicationRecord
     end
   end
 
+  def vote_vegueria_name
+    if in_catalonia?
+      vegueria_name == "Metropolità" ? comarca_name : vegueria_name
+    end
+  end
+
   def vote_autonomy_numeric
     _vote_province ? self.vote_autonomy_code[2..-1] : "-"
   end
@@ -473,6 +479,17 @@ class User < ApplicationRecord
 
   def vote_island_numeric
     self.vote_in_spanish_island? ? self.vote_island_code[2..-1] : ""
+  end
+
+  def vote_vegueria_numeric
+    if in_catalonia?
+      numeric_code = vegueria_code[2..3]
+      # On Barcelona, we also use the Comarca
+      numeric_code = numeric_code == "01" ? comarca_code : numeric_code
+      "6" + numeric_code.to_s
+    else
+      ""
+    end
   end
 
   def self.ban_users ids, value

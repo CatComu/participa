@@ -1,7 +1,7 @@
 class Election < ApplicationRecord
   include FlagShihTzu
 
-  SCOPE = [["Estatal", 0], ["Comunidad", 1], ["Provincial", 2], ["Municipal", 3], ["Insular", 4], ["Extranjeros", 5]]
+  SCOPE = [["Estatal", 0], ["Comunidad", 1], ["Provincial", 2], ["Municipal", 3], ["Insular", 4], ["Extranjeros", 5], ["Veguerías", 6]]
 
   has_flags 1 => :requires_sms_check, check_for_column: false
 
@@ -39,6 +39,7 @@ class Election < ApplicationRecord
                when 2 then " en #{user.vote_province_name}"
                when 3 then " en #{user.vote_town_name}"
                when 4 then " en #{user.vote_island_name}"
+               when 6 then " en #{user.vote_vegueria_name}"
                 end
       if not has_valid_location_for? user
         suffix = " (no hay votación#{suffix})"
@@ -49,7 +50,7 @@ class Election < ApplicationRecord
   end
 
   def has_location_for? user
-    not ((self.scope == 5 and user.country == "ES") or (self.scope == 4 and not user.vote_in_spanish_island?))
+    not ((self.scope == 5 and user.country == "ES") or (self.scope == 4 and not user.vote_in_spanish_island?) or (self.scope == 6 and user.in_catalonia?))
   end
 
   def has_valid_location_for? user
@@ -60,6 +61,7 @@ class Election < ApplicationRecord
     when 3 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_town_numeric }
     when 4 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_island_numeric }
     when 5 then user.country != "ES"
+    when 6 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_vegueria_numeric }
     end
   end
 
@@ -75,6 +77,7 @@ class Election < ApplicationRecord
     when 3 then User.voting_right.where(vote_town: self.election_locations.map { |l| "m_#{l.location[0..1]}_#{l.location[2..4]}_#{l.location[5]}" }).count
     when 4 then User.voting_right.ransack({ vote_island_in: self.election_locations.map { |l| "i_#{l.location}" } }).result.count
     when 5 then User.voting_right.where.not(country: "ES").count
+    when 6 then User.voting_right.ransack({ vote_vegueria_in: self.election_locations.map { |l| "i_#{l.location}" } }).result.count
     end
   end
 
@@ -92,6 +95,8 @@ class Election < ApplicationRecord
                       user.vote_town_numeric
                     when 4
                       user.vote_island_numeric
+                    when 6
+                      user.vote_vegueria_numeric
                     else
                       "00"
     end
