@@ -817,8 +817,7 @@ Recorda que ara formes part de la comunitat de Catalunya en Comú."
     title: "Benvingut a Participa!"
     election_one: Hi ha una votació en curs.
     election_none: No hi ha cap votació en curs. Quan hi hagi cap votació t'avisarem per correu electrònic.
-    election_mul_html: "Hi ha 3 votacions. Cada votació és independent. No oblidis votar a totes 3.<br/><br/>
-  Pots canviar el vot al llarg del procés (votant de nou en la mateixa opció). El nou vot reemplaçarà l'emès anteriorment de forma automàtica. Només l'últim és vàlid.<br/>"
+    election_mul_html: "Hi ha 2 votacions. Cada votació és independent. No oblidis votar a totes 2.<br/><br/> Pots canviar el vot al llarg del procés (votant de nou en la mateixa opció). El nou vot reemplaçarà l'emès anteriorment de forma automàtica. Només l'últim és vàlid.<br/>"
     election_use_one: La votació utilitza
     election_use_mul: Les votacions utilitzen
     secure_system: el sistema segur de

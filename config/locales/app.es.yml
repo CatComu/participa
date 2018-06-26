@@ -1156,6 +1156,7 @@ Gracias por inscribirte en Catalunya en Comú."
     title: "Bienvenido a Participa"
     election_one: Hay una votación en curso.
     election_none: No hay ninguna votación en curso. Cuando exista una votación te avisaremos por correo electrónico.
+    election_mul_html: "Hay 2 votaciones. Cada votación es independiente. No olvides votar a las 2.<br/><br/>Puedes cambiar el voto a lo largo del proceso (votante de nuevo en la misma opción). El nuevo voto reemplazará el emitido anteriormente de forma automática. Sólo el último es válido.<br/> "
     election_use_one: La votación utiliza
     election_use_mul: Las votaciones utilizan
     secure_system: el sistema seguro de
