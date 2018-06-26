@@ -8,6 +8,24 @@ Entre las funcionalidades en las que consiste ahora mismo es con elecciones
 periódicas), Microcréditos (sistema de prestamos distribuidos), Notificaciones
 móviles (para dispositivos Android),
 
+En el caso de este *fork* se ha hecho un cambio importante en la lógica de locations, agregando
+la escala de Veguería. En el caso de Barcelona también se baja al territorio de Comarca,
+de cara a tener un reparto proporcional de la población.
+
+Para las votaciones, los códigos serán:
+* 613	Barcelonès	Metropolità
+* 611	Baix Llobregat -	Metropolità
+* 640	Vallès Occidental -	Metropolità
+* 641	Vallès Oriental	- Metropolità
+* 621	Maresme	- Metropolità
+* 602	Comarques Gironines
+* 603	Camp de Tarragona
+* 608	Penedès
+* 606	Comarques Centrals
+* 605	Ponent
+* 604	Terres de l’Ebre
+* 607	Alt Pirineu i Aran
+
 ![Home](doc/images/home.png)
 
 ![Verification](doc/images/verification.png)

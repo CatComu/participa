@@ -147,7 +147,7 @@ ActiveAdmin.register User do
         end
       end
       row :vote_place do
-        "#{user.vote_autonomy_name} / #{user.vote_province_name} / #{user.vote_town_name}"
+        "#{user.vote_autonomy_name} / #{user.vote_province_name} / #{user.vote_vegueria_name} / #{user.vote_town_name}"
       end
       row :vote_in_spanish_island? do
         if user.vote_in_spanish_island?
