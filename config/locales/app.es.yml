@@ -1156,7 +1156,7 @@ Gracias por inscribirte en Catalunya en Comú."
     title: "Bienvenido a Participa"
     election_one: Hay una votación en curso.
     election_none: No hay ninguna votación en curso. Cuando exista una votación te avisaremos por correo electrónico.
-    election_mul_html: "Hay diferentes votaciones agrupadas en 2 circunscripciones (la de toda Cataluña y la de tu ámbito territorial). Una vez que finalices la votación en una de las circunscripciones, recuerda volver a la portada para votar en la otra circunscripción.<br/>Puedes cambiar el voto a lo largo del proceso (votante de nuevo en la misma opción). El nuevo voto reemplazará el emitido anteriormente de forma automática. Sólo el último es válido.<br/> "
+    election_mul_html: "Hay diferentes votaciones agrupadas en 2 circunscripciones (la de toda Cataluña y la de tu ámbito territorial). Una vez que finalices la votación en una de las circunscripciones, recuerda volver a la portada para votar en la otra circunscripción.<br/><br/>Puedes cambiar el voto a lo largo del proceso (votante de nuevo en la misma opción). El nuevo voto reemplazará el emitido anteriormente de forma automática. Sólo el último es válido.<br/> "
     election_use_one: La votación utiliza
     election_use_mul: Las votaciones utilizan
     secure_system: el sistema seguro de
