@@ -710,6 +710,10 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
         empadronamiento o recibo de un suministro básico (agua, luz o gas) que
         no tenga más de tres meses de antigüedad y en el cual aparezca tu
         identidad y un domicilio en Cataluña.
+      foreign_cera_id: >
+        O también un DNI o NIE con domicilio de fuera de Cataluña y copia del
+        certificado de inscripción en el CERA (Censo de Electores Residentes
+        Ausentes) en el cual figure un municipio de inscripción en Cataluña.
       invalid: Hubo un error al subir los documentos.
       updated: Documentos subidos correctamente. Los revisaremos próximamente.
     steps:
@@ -726,6 +730,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       token: Código SMS
       button: "Comprobar"
       information_html: "Debes ingresar un teléfono móvil válido para el país en el que te encuentras, sin prefijo internacional, sólo con números (sin espacios ni guiones). Según el formulario que has rellenado te encuentras en <b>%{country}</b> (prefijo internacional +%{prefix})."
+      help_html: "Actualmente estamos teniendo algunos problemas con los envíos a móviles de fuera de España. Si es tu caso, por favor escribe a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
   static:
     privacy: Política de privacidad
     legal: Aviso legal
@@ -1091,6 +1096,13 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
         básico (agua, luz o gas) que no tenga más de tres meses de antigüedad y
         en el cual aparezca la identidad de la persona y un domicilio en
         Cataluña.
+      foreign_cera_id: >
+        DNI o NIE con domicilio de fuera de Cataluña y copia del certificado de
+        inscripción en el CERA (Censo de Electores Residentes Ausentes) en el
+        cual figure un municipio de inscripción en Cataluña.
+    closed_1: Actuakment no hi ha cap punt de verificació presencial actiu.
+    closed_2: Prova la verificació digital.
+    closed_3: I si tens qualsevol problema escriu a contacte@catalunyaencomu.cat
     bring_your_documents_to: "Trae la documentación a:"
     user_verified: Usuario/a verificado/a
     user_unverified: No te has verificado
