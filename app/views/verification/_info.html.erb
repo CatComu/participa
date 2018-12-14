@@ -1,20 +1,11 @@
 <p>
-  <% link = link_to t('verification.online_name').downcase,
-                      sms_validator_step1_path %>
-
-  <%= t('verification.reasons_online_html', form: link) %>
+<%= t('verification.reasons_online_html', form:
+      link_to(t('verification.online_name').downcase, sms_validator_step1_path)) %>
 </p>
 
-<div class="requirements">
-  <p class="title"><%= t('verification.requirements.header') %></p>
-
-  <ol class="lettered">
-    <li><%= t('verification.requirements.local_id') %></li>
-    <li><%= t('verification.requirements.foreign_id') %></li>
-  </ol>
-</div>
+<%= render partial: "verification/requirements" %>
 
 <div class="center">
-  <%= link_to t('verification.online_cta'), link, class: "button" %>
+  <%= link_to t('verification.online_cta'), sms_validator_step1_path, class: "button" %>
 </div>
 

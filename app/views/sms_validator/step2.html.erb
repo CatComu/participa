@@ -16,6 +16,8 @@
                    country: current_user.country_name,
                    prefix: current_user.phone_prefix) %></p>
 
+          <p><%= t('sms_validator.phone.help_html') %></p>
+
           <%= errors_in_form current_user %>
 
           <div class="inputlabel-box">

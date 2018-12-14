@@ -262,6 +262,7 @@ ActiveAdmin.register User do
       column :last_name
       column :document_type_name
       column :document_vatid
+      column :phone
     end
 
     column :postal_code
