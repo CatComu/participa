@@ -24,7 +24,7 @@ gem 'sprockets-rails'
 gem 'pg'
 gem 'airbrake', group: :production
 
-gem 'devise'
+gem 'devise', '~> 4.4'
 gem 'cancancan', '~> 1.9'
 gem 'bootstrap-sass'
 gem 'formtastic'
@@ -32,7 +32,7 @@ gem 'formtastic-bootstrap'
 gem 'spanish_vat_validators', github: 'javiertoledo/spanish_vat_validators'
 gem 'simple_captcha2', require: 'simple_captcha'
 gem 'carmen-rails'
-gem 'savon', '~> 2.11.0'
+gem 'esendex'
 
 gem 'activeadmin', '~> 1.0'
 gem 'active_skin'
@@ -77,6 +77,7 @@ group :development, :test do
   gem 'rubocop', github: 'bbatsov/rubocop'
   gem 'ruby-prof'
   gem 'simplecov'
+  gem 'railroady'
 end
 
 group :test do
