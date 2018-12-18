@@ -1,24 +1,14 @@
-require 'savon'
-
 module SMS
   module Sender
-    def self.send_message(dst, code)
+    def self.send_message(to, code)
       case Rails.env
       when "staging", "production"
-        client = Savon.client(wsdl: Rails.application.secrets.sms["wsdl_url"])
-        message = {
-          user: Rails.application.secrets.sms["user"],
-          pass: Rails.application.secrets.sms["pass"],
-          src: Rails.application.secrets.sms["src"],
-          dst: dst,
-          msg: "El teu codi d'activació per a Catalunya en Comú és #{code}"
-        }
-        response = client.call(:send_sms, message: message)
-        Rails.logger.debug response.to_s
+        sms = Esendex::Account.new
+        sms.send_message( to: to, body: "El teu codi d'activació per a Catalunya en Comú és #{code}")
       when "development", "test"
-        Rails.logger.info "ACTIVATION CODE para #{dst} == #{code}"
+        Rails.logger.info "ACTIVATION CODE para #{to} == #{code}"
       else
-        Rails.logger.info "ACTIVATION CODE para #{dst} == #{code}"
+        Rails.logger.info "ACTIVATION CODE para #{to} == #{code}"
       end
     end
   end
