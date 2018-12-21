@@ -32,7 +32,8 @@ gem 'formtastic-bootstrap'
 gem 'spanish_vat_validators', github: 'javiertoledo/spanish_vat_validators'
 gem 'simple_captcha2', require: 'simple_captcha'
 gem 'carmen-rails'
-gem 'esendex'
+gem 'esendex' # for SMS with Esendex
+gem 'savon', '~> 2.11.0' # for SMS with SomConnexio
 
 gem 'activeadmin', '~> 1.0'
 gem 'active_skin'

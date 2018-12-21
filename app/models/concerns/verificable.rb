@@ -91,7 +91,10 @@ module Verificable
   end
 
   def generate_sms_token
-    SecureRandom.hex(4).upcase
+    # Removes some confusing characters like I1l or 0O
+    SecureRandom.hex(10).upcase.remove(
+      "1","I","0","O","8","B","5","S"
+    )[0..7]
   end
 
   def set_sms_token!
