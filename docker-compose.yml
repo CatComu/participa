@@ -1,31 +1,64 @@
-version: '2'
+version: '3.1'
 services:
-  participa:
-    image: bec/participa:1.0.0
-    build:
-      context: .
-      dockerfile: config/docker/Dockerfile
-      args:
-        - APP_HOME=/srv/www/participa
+  app:
+    build: .
     volumes:
-      - .:/srv/www/participa
+      - .:/app
+      - app_assets:/app/public/assets/
+      - app_bundle:/app/vendor/bundle
+      - app_file_storage:/app/public/system/
+      - app_logs:/app/logs/
+      # For deploy with capistrano, pass the .ssh/config and ssh-agent
+      - ~/.ssh:/root/.ssh
+      - $SSH_AUTH_SOCK:/ssh-agent
     environment:
+      - PORT=3000
+      - DATABASE_HOST=pg
+      - DATABASE_USERNAME=postgres
       - RAILS_ENV=development
-    ports:
-      - "4000:3000"
+      - REDIS_URL=redis://redis:6379
+      - SSH_AUTH_SOCK=/ssh-agent
     depends_on:
-      - postgres
+      - pg
       - redis
-      - mailcatcher
-    command: bundle exec rails server -p 3000 -b '0.0.0.0'
-
-  postgres:
-    image: postgres:9.6
-
-  redis:
-    image: redis:2.8
-
-  mailcatcher:
-    image: schickling/mailcatcher:latest
     ports:
-      - "1080:1080"
+      - 3000:3000
+    links:
+      - pg
+      - redis
+    command: bundle exec rails server -b 0.0.0.0
+  worker:
+    build: .
+    volumes:
+      - .:/app
+      - app_assets:/app/public/assets/
+      - app_bundle:/app/vendor/bundle
+      - app_file_storage:/app/public/system/
+      - app_logs:/app/logs/
+    environment:
+      - DATABASE_HOST=pg
+      - DATABASE_USERNAME=postgres
+      - RAILS_ENV=development
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - pg
+      - redis
+    links:
+      - pg
+      - redis
+    command: rake resque:work
+  pg:
+    image: postgres
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+  redis:
+    image: redis
+    volumes:
+      - redis-data:/data
+volumes:
+  app_assets: {}
+  app_bundle: {}
+  app_file_storage: {}
+  app_logs: {}
+  pg-data: {}
+  redis-data: {}
