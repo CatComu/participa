@@ -40,6 +40,7 @@ services:
       - DATABASE_USERNAME=postgres
       - RAILS_ENV=development
       - REDIS_URL=redis://redis:6379
+      - QUEUE=*
     depends_on:
       - pg
       - redis
