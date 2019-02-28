@@ -48,8 +48,7 @@
 
   <% if user_signed_in? &&
       (Features.participation_teams? ||
-       Features.microcredits? ||
-       Features.blog?) %>
+       Features.microcredits?) %>
     <div>
 
       <nav class="menu" id="top_menu">
@@ -72,11 +71,6 @@
           <% if Features.microcredits? %>
             <li class="menu-credit">
               <%= nav_menu_link_to "Microcréditos", microcredit_path, [microcredit_path], title: "Microcréditos"  %>
-            </li>
-          <% end %>
-          <% if Features.blog? %>
-            <li class="menu-world">
-              <%= nav_menu_link_to "Blog", blog_path, [blog_path], title: "Blog" %>
             </li>
           <% end %>
         </ul>

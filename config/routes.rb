@@ -88,14 +88,6 @@ Rails.application.routes.draw do
       end
     end
 
-    if Features.blog?
-      scope :brujula do
-        get '', to: 'blog#index', as: 'blog'
-        get ':id', to: 'blog#post', as: 'post'
-        get 'categoria/:id', to: 'blog#category', as: 'category'
-      end
-    end
-
     # http://stackoverflow.com/a/8884605/319241
     devise_scope :user do
       get '/registrations/regions/provinces', to: 'registrations#regions_provinces'

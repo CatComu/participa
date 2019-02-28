@@ -15,8 +15,6 @@ class Ability
       can :admin, Microcredit
       can :admin, MicrocreditLoan
 
-      can :manage, Post
-
       if !user.superadmin?
         cannot :manage, Election
         cannot :manage, Notice

@@ -659,55 +659,6 @@ info page
   }
 }
 
-.generic-wrapper.blog {
-  h1 {
-    color: $color-primary1;
-    font-size: 3em;
-    padding: 20px 0px;
-    text-transform: uppercase;
-  }
-
-  .media {
-    text-align: center;
-  }
-  .sidebar {
-    margin-top: 0px
-  }
-  img {
-    margin: 2em auto 4em;
-    max-width: 500px;
-    width: 100%;
-  }
-  .date {
-    display: inline-block;
-    margin-bottom: 2em;
-    margin-top: 7px;
-    font-size: 1.2em;
-  }
-  .post {
-    border-top: 1px solid #e3e3e3;
-    padding-top: 2em;
-  }
-  .categories {
-    margin-right: 5px;
-    a {
-      font-size:1.2em; text-transform: uppercase; font-weight: bold;
-      & + a:before {
-        content: " | ";
-        margin: 0 5px;
-      }
-    }
-  }
-  .alignright {text-align: right}
-  .links {
-    .right {float: right}
-    padding: 1em 1em;
-    border-top: 1px solid #e3e3e3;
-    margin-top: 4em;
-  }
-}
-
-
 /* -----------------------------------
 body elements
 ----------------------------------- */

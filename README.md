@@ -109,11 +109,6 @@ Reportes de grupos de usuarios y de Anti Spam con blacklists.
 
 * http://www.eldiario.es/turing/tecnologia-detras-voto-online-primarias_0_238326398.html
 
-### Blog (Brújula)
-
-Sistema de publicación de noticias que sirve de forma de argumentario y
-comunicación interna con sus inscritos.
-
 ### Newsletter
 
 Sincronización de usuarios entre sistemas (Participa y Sendy) para los

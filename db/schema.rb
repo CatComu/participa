@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190228170747) do
+ActiveRecord::Schema.define(version: 20190228173808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,15 +49,6 @@ ActiveRecord::Schema.define(version: 20190228170747) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "categories_posts", force: :cascade do |t|
-    t.integer  "post_id"
-    t.integer  "category_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["category_id"], name: "index_categories_posts_on_category_id", using: :btree
-    t.index ["post_id"], name: "index_categories_posts_on_post_id", using: :btree
   end
 
   create_table "collaborations", force: :cascade do |t|
@@ -289,17 +280,6 @@ ActiveRecord::Schema.define(version: 20190228170747) do
     t.integer "user_id"
     t.index ["participation_team_id"], name: "index_participation_teams_users_on_participation_team_id", using: :btree
     t.index ["user_id"], name: "index_participation_teams_users_on_user_id", using: :btree
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.string   "slug"
-    t.integer  "status"
-    t.datetime "deleted_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "media_url"
   end
 
   create_table "report_groups", force: :cascade do |t|
