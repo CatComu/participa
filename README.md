@@ -75,18 +75,6 @@ de Podemos en todas las Comunidades Autonómicas (más de 1.500.000€).
 * http://transparencia.podemos.info/preguntas-frecuentes
 * http://www.bolsamania.com/noticias/politica/como-funcionan-los-microcreditos-con-los-que-podemos-ha-financiado-la-campana-electoral--743443.html
 
-### Iniciativas Ciudadanas
-
-Sistema de llegada de propuestas filtradas por votaciones con +1 bottom-up
-tomando como modelo el sistema planteado en el documento Organizativo de
-Podemos. Sobre esto mismo se realizará el sistema de Recovatorios de Cargos.
-Toma iniciativas de una categoría ("Propuestas") en la Plaza Podemos (subreddit
-de Podemos). Todavía ninguna iniciativa a cumplido los requisitos mínimos de
-participación impuestos por Podemos.
-
-* http://www.eldiario.es/politica/Podemos-sistema-iniciativas-ciudadanas-revocatorios_0_369914239.html
-* http://labodemo.net/es/2015/03/28/labodemo-ayuda-a-lanzar-las-iniciativas-ciudadanas-en-podemos/
-
 ### Equipos de Participación
 
 Permite a los inscritos darse de alta como interesado en formar parte de
@@ -320,7 +308,6 @@ configurarla siguiendo los siguientes pasos:
     collaborations: true
     microcredits: true
     elections: true
-    proposals: true
     notifications: true
     participation_teams: true
 ```

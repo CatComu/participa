@@ -47,12 +47,6 @@ Lint/BlockAlignment:
   Exclude:
     - 'app/workers/podemos_collaboration_sepa_worker.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Lint/Debugger:
-  Exclude:
-    - 'test/integration/proposals_test.rb'
-
 # Offense count: 7
 # Cop supports --auto-correct.
 Lint/DeprecatedClassMethods:
@@ -461,7 +455,6 @@ Style/CommentAnnotation:
     - 'app/admin/collaboration.rb'
     - 'test/controllers/collaborations_controller_test.rb'
     - 'test/controllers/vote_controller_test.rb'
-    - 'test/integration/proposals_test.rb'
 
 # Offense count: 12
 # Cop supports --auto-correct.
@@ -509,7 +502,6 @@ Style/EmptyMethod:
   Exclude:
     - 'app/controllers/collaborations_controller.rb'
     - 'app/controllers/page_controller.rb'
-    - 'app/controllers/proposals_controller.rb'
     - 'app/models/verification/center.rb'
 
 # Offense count: 22
@@ -817,7 +809,6 @@ Style/RedundantParentheses:
     - 'app/admin/collaboration.rb'
     - 'app/admin/report.rb'
     - 'app/models/microcredit.rb'
-    - 'app/models/proposal.rb'
     - 'app/models/report.rb'
     - 'app/models/user.rb'
     - 'test/models/user_test.rb'

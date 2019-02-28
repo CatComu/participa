@@ -35,28 +35,6 @@ class RegularUserDeletionTest < ActionDispatch::IntegrationTest
 end
 
 class UserDeletionAfterJsActionsTest < JsFeatureTest
-  test "a logged in user should delete itself after making a support on a proposal" do
-    with_features(verifications_sms: true, proposals: true) do
-      assert_equal 0, Support.all.count
-      proposal = create(:proposal)
-      user = create(:user, :confirmed_by_sms)
-
-      login_as(user)
-      visit proposals_path
-      click_button "Apoyar propuesta"
-      assert_content "¡Muchas gracias!"
-      assert_equal 1, Support.all.count
-
-      visit edit_user_registration_path
-      click_link "Darme de baja" # change tab
-      click_button "Darme de baja"
-      assert_content "¡Adiós! Tu cuenta ha sido cancelada. Esperamos volver a verte pronto."
-
-      # resource should be deleted
-      assert_equal 0, Support.all.count
-    end
-  end
-
   test "a logged in user should delete itself after making a collaboration" do
     create_resource_and_delete_itself Collaboration, :collaboration, 0
   end

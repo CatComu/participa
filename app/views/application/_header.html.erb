@@ -48,7 +48,6 @@
 
   <% if user_signed_in? &&
       (Features.participation_teams? ||
-       Features.proposals? ||
        Features.microcredits? ||
        Features.blog?) %>
     <div>
@@ -68,11 +67,6 @@
           <% if Features.participation_teams? %>
             <li class="menu-people">
               <%= nav_menu_link_to "Equipos de Participación", participation_teams_path, [participation_teams_path], title: "Equipos de Participación" %>
-            </li>
-          <% end %>
-          <% if Features.proposals? %>
-            <li class="menu-thumbup">
-              <%= nav_menu_link_to "Iniciativas ciudadanas", proposals_path, [proposals_path], title: "Iniciativas ciudadanas " %>
             </li>
           <% end %>
           <% if Features.microcredits? %>

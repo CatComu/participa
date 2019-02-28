@@ -37,10 +37,6 @@ module Features
     features["blog"]
   end
 
-  def proposals?
-    features["proposals"]
-  end
-
   def participation_teams?
     features["participation_teams"]
   end

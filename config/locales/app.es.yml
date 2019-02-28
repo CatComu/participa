@@ -67,9 +67,6 @@ es:
       election:
         one: Elección
         other: Elecciones
-      proposal:
-        one: Iniciativa ciudadana
-        other: Iniciativas ciudadanas
       notice:
         one: Aviso
         other: Avisos
@@ -230,10 +227,6 @@ es:
         starts_at: "Empieza"
         ends_at: "Termina"
         close_message: "Mensaje de cierre"
-      proposal: 
-        title: "Título"
-        description: "Descripción"
-        image_url: "URL de la imagen"
       notice:
         title: "Título"
         body: "Mensaje"

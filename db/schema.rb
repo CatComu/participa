@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190228132512) do
+ActiveRecord::Schema.define(version: 20190228170747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -302,21 +302,6 @@ ActiveRecord::Schema.define(version: 20190228132512) do
     t.string   "media_url"
   end
 
-  create_table "proposals", force: :cascade do |t|
-    t.text     "title"
-    t.text     "description"
-    t.integer  "votes",            default: 0
-    t.string   "reddit_url"
-    t.string   "reddit_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "reddit_threshold", default: false
-    t.string   "image_url"
-    t.integer  "supports_count",   default: 0
-    t.integer  "hotness",          default: 0
-    t.string   "author"
-  end
-
   create_table "report_groups", force: :cascade do |t|
     t.string   "title"
     t.text     "proc"
@@ -357,13 +342,6 @@ ActiveRecord::Schema.define(version: 20190228132512) do
     t.text     "data"
     t.string   "query"
     t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "supports", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "proposal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

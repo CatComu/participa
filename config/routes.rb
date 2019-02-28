@@ -39,13 +39,6 @@ Rails.application.routes.draw do
       patch '/equipos-de-accion-participativa/actualizar', to: 'participation_teams#update_user', as: 'participation_teams_update_user'
     end
 
-    if Features.proposals?
-      get '/propuestas', to: 'proposals#index', as: 'proposals'
-      get '/propuestas/info', to: 'proposals#info', as: 'proposals_info'
-      get '/propuestas/:id', to: 'proposals#show', as: 'proposal'
-      post '/apoyar/:proposal_id', to: 'supports#create', as: 'proposal_supports'
-    end
-
     get :notices, to: 'notice#index', as: 'notices'
 
     get '/vote/create/:election_id', to: 'vote#create', as: :create_vote
