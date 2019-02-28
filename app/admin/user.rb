@@ -15,11 +15,6 @@ ActiveAdmin.register User do
     scope :has_collaboration_bank_international
   end
 
-  if Features.participation_teams?
-    scope :participation_team
-    scope :has_circle
-  end
-
   scope :unconfirmed_mail
   scope :confirmed_mail
 
@@ -181,7 +176,6 @@ ActiveAdmin.register User do
       row :current_sign_in_ip
       row :remember_created_at
       row :deleted_at
-      row :participation_team_at
       if Features.presential_verifications?
         row :verified_by
         row :verified_at
@@ -200,19 +194,6 @@ ActiveAdmin.register User do
       end
     end
 
-    if !user.participation_team_at.nil?
-
-      panel "Equipos de Acción Participativa" do
-        if user.participation_team.any?
-          table_for user.participation_team do
-            column :name
-            column :active
-          end
-        else
-          "El usuario no está inscrito en equipos específicos."
-        end
-      end
-    end
     active_admin_comments
   end
 
@@ -245,7 +226,6 @@ ActiveAdmin.register User do
   filter :sms_confirmed_at
   filter :sign_in_count
   filter :wants_participation
-  filter :participation_team_id, as: :select, collection: -> { ParticipationTeam.all }
   filter :votes_election_id, as: :select, collection: -> { Election.all }
   if Features.presential_verifications?
     filter :verified_by_id, as: :select, collection: -> { User.presential_verifier_ever }

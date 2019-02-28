@@ -75,14 +75,6 @@ de Podemos en todas las Comunidades Autonómicas (más de 1.500.000€).
 * http://transparencia.podemos.info/preguntas-frecuentes
 * http://www.bolsamania.com/noticias/politica/como-funcionan-los-microcreditos-con-los-que-podemos-ha-financiado-la-campana-electoral--743443.html
 
-### Equipos de Participación
-
-Permite a los inscritos darse de alta como interesado en formar parte de
-equipos localizados geográficamente para fomentar la participación presencial y
-la formación sobre la participación digital.
-
-* http://www.europapress.es/nacional/noticia-podemos-crea-estructura-participacion-paralela-circulos-articulara-equipos-accion-20141217145841.html
-
 ### Verificación presencial
 
 Método de verificación utilizado por Barcelona En Comú. Una vez el usuario se
@@ -304,5 +296,4 @@ configurarla siguiendo los siguientes pasos:
     microcredits: true
     elections: true
     notifications: true
-    participation_teams: true
 ```

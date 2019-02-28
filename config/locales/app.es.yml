@@ -70,9 +70,6 @@ es:
       notice:
         one: Aviso
         other: Avisos
-      participation_team:
-        one: Equipo de Acción Participativa
-        other: Equipos de Acción Participativa
       report:
         one: Informe
         other: Informes
@@ -395,7 +392,6 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       has_collaboration_credit_card: "Con colaboración económica (tarjeta de crédito)"
       has_collaboration_bank_national: "Con colaboración económica (banco nacional)"
       has_collaboration_bank_international: "Con colaboración económica (banco internacional)"
-      participation_team: "En equipos de participación"
       has_circle: "En Círculo"
   microcredit:
     common:

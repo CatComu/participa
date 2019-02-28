@@ -275,7 +275,6 @@ Rails/FindEach:
 # Include: app/models/**/*.rb
 Rails/HasAndBelongsToMany:
   Exclude:
-    - 'app/models/participation_team.rb'
     - 'app/models/user.rb'
 
 # Offense count: 9

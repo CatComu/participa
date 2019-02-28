@@ -32,7 +32,6 @@
 //= require hamburger_menu
 //= require microcredit
 //= require mobile
-//= require participation_teams
 //= require registrations
 //= require registrations.provinces_countries
 //= require select2_impl

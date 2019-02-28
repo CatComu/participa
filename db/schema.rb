@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190228175532) do
+ActiveRecord::Schema.define(version: 20190228180040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -253,21 +253,6 @@ ActiveRecord::Schema.define(version: 20190228175532) do
     t.string   "autonomy_code"
     t.string   "island_code"
     t.index ["parent_id"], name: "index_orders_on_parent_id", using: :btree
-  end
-
-  create_table "participation_teams", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "participation_teams_users", id: false, force: :cascade do |t|
-    t.integer "participation_team_id"
-    t.integer "user_id"
-    t.index ["participation_team_id"], name: "index_participation_teams_users_on_participation_team_id", using: :btree
-    t.index ["user_id"], name: "index_participation_teams_users_on_user_id", using: :btree
   end
 
   create_table "report_groups", force: :cascade do |t|

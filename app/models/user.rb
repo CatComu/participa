@@ -24,9 +24,7 @@ class User < ApplicationRecord
   has_paper_trail
 
   has_many :votes, dependent: :destroy
-  has_many :supports, dependent: :destroy
   has_one :collaboration, dependent: :destroy
-  has_and_belongs_to_many :participation_team
   has_many :microcredit_loans
 
   belongs_to :catalan_town, foreign_key: :town, primary_key: :code
@@ -116,7 +114,6 @@ class User < ApplicationRecord
   scope :deleted, -> { only_deleted }
   scope :admins, -> { where(admin: true) }
   scope :signed_in, -> { where.not(sign_in_count: 0) }
-  scope :participation_team, -> { includes(:participation_team).where.not(participation_team_at: nil) }
   scope :has_circle, -> { where.not(circle: nil) }
 
   scope :has_collaboration, -> { joins(:collaboration).where.not(collaborations: { user_id: nil }) }
