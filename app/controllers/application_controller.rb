@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin_user!
-    unless signed_in? && (current_user.is_admin? || current_user.finances_admin? || current_user.impulsa_admin?)
+    unless signed_in? && (current_user.is_admin? || current_user.finances_admin?)
       redirect_to root_url, flash: { error: t('unauthorized.default') }
     end
   end

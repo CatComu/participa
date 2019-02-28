@@ -26,7 +26,6 @@ Lint/AmbiguousOperator:
     - 'app/admin/collaboration.rb'
     - 'app/admin/microcredit.rb'
     - 'app/helpers/registrations_helper.rb'
-    - 'app/models/impulsa_edition.rb'
     - 'test/factories/verification_center.rb'
 
 # Offense count: 1
@@ -135,7 +134,6 @@ Lint/UnusedBlockArgument:
     - 'app/admin/election.rb'
     - 'app/admin/microcredit.rb'
     - 'app/admin/report.rb'
-    - 'app/models/impulsa_project.rb'
     - 'app/models/microcredit_loan.rb'
     - 'app/models/report.rb'
     - 'lib/podemos_export.rb'
@@ -159,7 +157,6 @@ Lint/UnusedMethodArgument:
 Lint/UselessAssignment:
   Exclude:
     - 'app/admin/collaboration.rb'
-    - 'app/admin/impulsa_edition.rb'
     - 'app/controllers/open_id_controller.rb'
     - 'app/models/election.rb'
     - 'app/models/election_location_question.rb'
@@ -231,7 +228,6 @@ Performance/Sample:
 Performance/StringReplacement:
   Exclude:
     - 'app/models/collaboration.rb'
-    - 'app/models/impulsa_edition_category.rb'
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -248,7 +244,6 @@ Rails/Blank:
 # Whitelist: find_by_sql
 Rails/DynamicFindBy:
   Exclude:
-    - 'app/admin/impulsa_project.rb'
     - 'app/controllers/verification_controller.rb'
     - 'app/mailers/users_mailer.rb'
     - 'app/models/election.rb'
@@ -307,8 +302,6 @@ Rails/OutputSafety:
   Exclude:
     - 'app/admin/collaboration.rb'
     - 'app/admin/election.rb'
-    - 'app/admin/impulsa_edition.rb'
-    - 'app/admin/impulsa_project.rb'
     - 'app/admin/microcredit.rb'
     - 'app/admin/microcredit_loan.rb'
     - 'app/admin/post.rb'
@@ -332,12 +325,8 @@ Rails/PluralizationGrammar:
 # Configuration parameters: NotNilAndNotEmpty, NotBlank, UnlessBlank.
 Rails/Present:
   Exclude:
-    - 'app/admin/impulsa_edition.rb'
-    - 'app/admin/impulsa_project.rb'
-    - 'app/controllers/impulsa_controller.rb'
     - 'app/models/election.rb'
     - 'app/models/election_location.rb'
-    - 'app/models/impulsa_edition_category.rb'
     - 'app/models/report.rb'
     - 'app/models/user.rb'
 
@@ -367,7 +356,6 @@ Security/YAMLLoad:
   Exclude:
     - 'app/admin/report.rb'
     - 'app/models/collaboration.rb'
-    - 'app/models/impulsa_project.rb'
     - 'app/models/microcredit.rb'
     - 'app/models/microcredit_loan.rb'
     - 'app/models/report_group.rb'
@@ -409,9 +397,6 @@ Style/BlockComments:
 Style/BlockDelimiters:
   Exclude:
     - 'app/admin/collaboration.rb'
-    - 'app/admin/impulsa_edition.rb'
-    - 'app/admin/impulsa_edition_category.rb'
-    - 'app/admin/impulsa_project.rb'
     - 'app/admin/report.rb'
     - 'app/admin/spam_filter.rb'
     - 'app/admin/user.rb'
@@ -489,7 +474,6 @@ Style/ConditionalAssignment:
     - 'app/controllers/blog_controller.rb'
     - 'app/mailers/users_mailer.rb'
     - 'app/models/collaboration.rb'
-    - 'app/models/impulsa_project.rb'
     - 'app/models/order.rb'
     - 'app/models/report.rb'
 
@@ -594,9 +578,7 @@ Style/IfUnlessModifier:
 # Configuration parameters: InverseMethods, InverseBlocks.
 Style/InverseMethods:
   Exclude:
-    - 'app/admin/impulsa_project.rb'
     - 'app/models/collaboration.rb'
-    - 'app/models/impulsa_edition_category.rb'
 
 # Offense count: 17
 # Cop supports --auto-correct.
@@ -605,7 +587,6 @@ Style/InverseMethods:
 Style/Lambda:
   Exclude:
     - 'app/helpers/registrations_helper.rb'
-    - 'app/models/impulsa_project.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -634,7 +615,6 @@ Style/MethodDefParentheses:
 # Offense count: 2
 Style/MethodMissing:
   Exclude:
-    - 'app/models/impulsa_project.rb'
     - 'app/models/microcredit.rb'
 
 # Offense count: 1
@@ -649,7 +629,6 @@ Style/ModuleFunction:
 Style/MultilineIfModifier:
   Exclude:
     - 'app/admin/election.rb'
-    - 'app/admin/impulsa_project.rb'
     - 'app/helpers/blog_helper.rb'
     - 'lib/podemos_export.rb'
 
@@ -672,9 +651,6 @@ Style/MutableConstant:
     - 'app/models/election.rb'
     - 'app/models/election_location.rb'
     - 'app/models/election_location_question.rb'
-    - 'app/models/impulsa_edition.rb'
-    - 'app/models/impulsa_edition_category.rb'
-    - 'app/models/impulsa_project.rb'
     - 'app/models/order.rb'
     - 'app/models/post.rb'
     - 'app/models/user.rb'
@@ -753,16 +729,12 @@ Style/NumericLiterals:
 Style/NumericPredicate:
   Exclude:
     - 'spec/**/*'
-    - 'app/admin/impulsa_project.rb'
     - 'app/admin/microcredit.rb'
     - 'app/admin/spam_filter.rb'
     - 'app/admin/user.rb'
-    - 'app/controllers/impulsa_controller.rb'
     - 'app/controllers/microcredit_controller.rb'
     - 'app/models/collaboration.rb'
     - 'app/models/election_location_question.rb'
-    - 'app/models/impulsa_edition.rb'
-    - 'app/models/impulsa_project.rb'
     - 'app/models/microcredit.rb'
     - 'app/models/order.rb'
     - 'app/models/post.rb'
@@ -808,8 +780,6 @@ Style/PredicateName:
     - 'app/models/concerns/verificable.rb'
     - 'app/models/election.rb'
     - 'app/models/election_location.rb'
-    - 'app/models/impulsa_edition_category.rb'
-    - 'app/models/impulsa_project.rb'
     - 'app/models/microcredit.rb'
     - 'app/models/microcredit_loan.rb'
     - 'app/models/notice.rb'
@@ -830,7 +800,6 @@ Style/Proc:
   Exclude:
     - 'app/admin/report.rb'
     - 'app/models/collaboration.rb'
-    - 'app/models/impulsa_project.rb'
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -886,7 +855,6 @@ Style/SafeNavigation:
   Exclude:
     - 'app/admin/collaboration.rb'
     - 'app/admin/microcredit_loan.rb'
-    - 'app/models/impulsa_project.rb'
     - 'app/models/order.rb'
     - 'app/models/report.rb'
 
@@ -926,7 +894,6 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Exclude:
     - 'app/admin/collaboration.rb'
-    - 'app/admin/impulsa_edition.rb'
     - 'app/admin/microcredit.rb'
     - 'app/admin/report.rb'
     - 'app/admin/user.rb'
@@ -949,7 +916,6 @@ Style/SymbolArray:
 Style/SymbolProc:
   Exclude:
     - 'app/admin/collaboration.rb'
-    - 'app/admin/impulsa_project.rb'
     - 'app/admin/order.rb'
     - 'app/admin/report.rb'
     - 'app/admin/user.rb'
@@ -989,7 +955,6 @@ Style/TrivialAccessors:
 # Cop supports --auto-correct.
 Style/UnneededInterpolation:
   Exclude:
-    - 'app/admin/impulsa_project.rb'
     - 'app/admin/microcredit.rb'
     - 'app/admin/user.rb'
     - 'app/models/collaboration.rb'

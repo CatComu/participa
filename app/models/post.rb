@@ -28,11 +28,11 @@ class Post < ApplicationRecord
     ]
   end
 
-  auto_html_for :content do
-    simple_format
-    link(target: "_blank")
-    youtube(width: 400, height: 250)
-    vimeo(width: 400, height: 250)
-    image
-  end
+  # auto_html_for :content do
+  #   simple_format
+  #   link(target: "_blank")
+  #   youtube(width: 400, height: 250)
+  #   vimeo(width: 400, height: 250)
+  #   image
+  # end
 end

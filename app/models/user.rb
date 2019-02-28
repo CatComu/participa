@@ -11,8 +11,6 @@ class User < ApplicationRecord
   has_flags 1 => :banned,
             2 => :superadmin,
             4 => :finances_admin,
-            6 => :impulsa_author,
-            7 => :impulsa_admin,
             check_for_column: false
 
   # Include default devise modules. Others available are:

@@ -30,7 +30,6 @@
 //= require credits
 //= require faq
 //= require hamburger_menu
-//= require impulsa
 //= require microcredit
 //= require mobile
 //= require participation_teams

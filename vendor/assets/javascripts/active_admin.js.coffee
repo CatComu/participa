@@ -7,7 +7,6 @@
 #= require active_admin_charts
 #= require active_admin_data_panel
 #= require active_admin_spam_filter
-#= require active_admin_impulsa
 #= require active_admin_flatpickr
 #= require leaflet
 #= require census_map
