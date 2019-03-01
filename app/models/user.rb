@@ -113,6 +113,7 @@ class User < ApplicationRecord
   attr_accessor :sms_user_token_given
   attr_accessor :login
 
+  default_scope { order(created_at: :desc) }
   scope :wants_newsletter, -> { where(wants_newsletter: true) }
   scope :created, -> { not_banned }
   scope :deleted, -> { only_deleted }
