@@ -57,4 +57,9 @@ module ApplicationHelper
       "signed-in"
     end
   end
+
+  def current_election
+    election = Election.active.last
+    render partial: "application/election", locals: { election: election } unless election.nil?
+  end
 end

@@ -86,4 +86,10 @@ class ApplicationHelperTest < ActionView::TestCase
     expected = "logged-out"
     assert_equal expected, result
   end
+
+  test "should current_election work" do
+    create(:election, :opened)
+    result = current_election
+    assert_not_nil result
+  end
 end
