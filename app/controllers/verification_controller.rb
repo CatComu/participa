@@ -26,7 +26,7 @@ class VerificationController < ApplicationController
   def search
     authorize! :search, :verification
 
-    @user = User.find_by_email(search_params[:email])
+    @user = User.find_for_database_authentication(search_params)
     if @user
       if @user.confirmed_at.nil?
         @user.send_confirmation_instructions
@@ -51,7 +51,7 @@ class VerificationController < ApplicationController
   end
 
   def search_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:login)
   end
 
   def already_verified_alert
