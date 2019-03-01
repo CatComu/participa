@@ -33,7 +33,7 @@ es:
       apologize: >-
         Si no ha sido tu caso, te pedimos disculpas por este correo.
   home:
-    signup_title: Inscríbete para poder votar
+    signup_title: Inscríbete para poder participar
   election:
     close_message: "Ha llegado la fecha límite para votar. La votación está cerrada."
   errors:
@@ -772,7 +772,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           Para votar en las próximas votaciones te tienes que registrar
           rellenando este formulario. Te llegará un correo para validarte. Si
           no recibes el correo ponte en contacto con nosotros
-          <a href='http://catalunyaencomu.cat/ca/contacte'>aquí</a>.
+          <a href='mailto:contacte@catalunyaencomu.cat'>aquí</a>.
         </p>
         "
   unauthorized:
@@ -1119,7 +1119,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     born_at: Fecha de nacimiento
     document_type: Tipo y número de documento
     email: Correo electrónico
-    result: "Estos son los datos asociados al email introducido:"
+    result: "Estos son los datos asociados:"
     check: "Comprova que:"
     admin: Gestor de verificaciones presenciales
     alerts:

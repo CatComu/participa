@@ -28,7 +28,7 @@ ca:
       apologize: >-
         Si no ha sigut el teu cas, et demanem disculpes per aquest correu.
   home:
-    signup_title: Inscriu-te per poder votar
+    signup_title: Inscriu-te per poder participar
   election:
     close_message: "Ha arribat la data límit per votar. La votació està tancada."
   errors:
@@ -430,7 +430,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
           Per poder votar en les properes votacions t'has d'enregistrar
           omplint aquest formulari. T'arribarà un correu per validar-te. Si no
           reps el correu posa't en contacte amb nosaltres
-          <a href='http://catalunyaencomu.cat/contacte'>aquí</a>.
+          <a href='mailto:contacte@catalunyaencomu.cat'>aquí</a>.
         </p>
         "
   unauthorized:
@@ -776,7 +776,7 @@ Amb tres passos molt senzills:
     full_name: Nom complet
     document_type: Tipus i número de document
     email: Correu electrònic
-    result:  "Aquestes són les dades associades a l'email introduït:"
+    result:  "Aquestes són les dades associades:"
     check: "Comprova que:"
     other: Verifica un altre usuari/ària.
     admin: Gestor de verificacions presencials
