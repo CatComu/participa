@@ -742,6 +742,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     country: "País"
     province: "Provincia"
     town: "Municipio"
+    verify_on_update: Al modificar los datos de domicilio, se debe realizar nuevamente el proceso de verificación.
     inscription_policy: Condiciones de inscripción
     legends:
       inscription_html: "Inscribirse en En Comú te da derecho a participar en todas las consultas y procesos participativos que se lancen en esta aplicación. No supone ninguna obligación económica, aunque puedes colaborar en este sentido si lo deseas. Aceptando, recibirás nuestros newsletters informativos.<br><br> EN COMÚ con personalidad jurídica propia, de acuerdo con la Ley Orgánica 6/2002, de 27 de junio, de Partidos Políticos, e inscrita en el Registro de Partidos Políticos con fecha 1 de abril de 2015, Folio 113, Tomo IX. Domicilio social: C. Or, 44 3º-2ª (CP 08012 BARCELONA). Telèfon: 935.321.796. "
