@@ -389,7 +389,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       token: Codi SMS
       button: "Comprova"
       information_html: "Has d'ingressar un telèfon mòbil vàlid per al país on et trobes, sense prefix internacional, només amb números (sense espais ni guions). Segons el formulari que has emplenat et trobes a <b>%{country}</b> (prefix internacional +%{prefix})."
-      help_html: "Actualment estem tenint alguns problemes amb els enviaments a mòbils de fora d'Espanya. Si és el teu cas, si us plau escriu a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
+      help_html: "Si tens qualsevol problema escriu a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
   static:
     privacy: Política de privacitat
     legal: Avís legal

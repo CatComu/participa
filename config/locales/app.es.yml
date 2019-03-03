@@ -730,7 +730,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       token: Código SMS
       button: "Comprobar"
       information_html: "Debes ingresar un teléfono móvil válido para el país en el que te encuentras, sin prefijo internacional, sólo con números (sin espacios ni guiones). Según el formulario que has rellenado te encuentras en <b>%{country}</b> (prefijo internacional +%{prefix})."
-      help_html: "Actualmente estamos teniendo algunos problemas con los envíos a móviles de fuera de España. Si es tu caso, por favor escribe a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
+      help_html: "Si tienes algún problema por favor escribe a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
   static:
     privacy: Política de privacidad
     legal: Aviso legal
