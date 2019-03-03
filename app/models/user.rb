@@ -21,6 +21,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :lockable
 
   before_save :before_save
+  before_save :updated_location, if: :location_changed?
 
   acts_as_paranoid
   has_paper_trail
@@ -582,5 +583,15 @@ class User < ApplicationRecord
 
   def sms_check_token
     Digest::SHA1.digest("#{sms_check_at}#{id}#{Rails.application.secrets.users['sms_secret_key']}")[0..3].codepoints.map { |c| "%02X" % c }.join if sms_check_at
+  end
+
+  private
+
+  def updated_location
+    self.verified_by, self.verified_at, self.verified_online_by, self.verified_online_at = nil
+  end
+
+  def location_changed?
+    address_changed? || town_changed? || province_changed? || postal_code_changed?
   end
 end
