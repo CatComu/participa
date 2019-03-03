@@ -262,7 +262,7 @@ ActiveAdmin.register User do
       column :last_name
       column :document_type_name
       column :document_vatid
-      column :phone
+      column(:phone) { |user| user.phone.gsub("0034","") }
     end
 
     column :postal_code
