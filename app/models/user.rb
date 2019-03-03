@@ -21,7 +21,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :lockable
 
   before_save :before_save
-  before_save :updated_location, if: :location_changed?
+  before_update :updated_location, if: :location_changed?
 
   acts_as_paranoid
   has_paper_trail
