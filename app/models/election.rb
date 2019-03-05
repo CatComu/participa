@@ -102,7 +102,7 @@ class Election < ApplicationRecord
                       "00"
     end
     Rails.logger.info "user_location: #{user_location}"
-    election_location = self.election_locations.find_by_location user_location
+    election_location = self.election_locations.find_by_location user_location.to_i
     "#{self.agora_election_id}#{election_location.override or election_location.location}#{election_location.agora_version}".to_i
   end
 
