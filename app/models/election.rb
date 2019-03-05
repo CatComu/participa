@@ -57,7 +57,8 @@ class Election < ApplicationRecord
     case self.scope
     when 0 then true
     when 1 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_autonomy_numeric }
-    when 2 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_province_numeric }
+    # Fixes bug on province Barcelona (8 != 08)
+    when 2 then user.has_vote_town? and self.election_locations.any? { |l| "%02d" % l.location == user.vote_province_numeric }
     when 3 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_town_numeric }
     when 4 then user.has_vote_town? and self.election_locations.any? { |l| l.location == user.vote_island_numeric }
     when 5 then user.country != "ES"
