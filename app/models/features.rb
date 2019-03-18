@@ -33,18 +33,6 @@ module Features
     features["collaborations_redsys"]
   end
 
-  def blog?
-    features["blog"]
-  end
-
-  def proposals?
-    features["proposals"]
-  end
-
-  def participation_teams?
-    features["participation_teams"]
-  end
-
   def microcredits?
     features["microcredits"]
   end

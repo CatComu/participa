@@ -32,20 +32,6 @@ Rails.application.routes.draw do
     get '/cookie-policy', to: 'page#cookie_policy', as: 'page_cookie_policy'
     get '/preguntas-frecuentes', to: 'page#faq', as: 'faq'
 
-    if Features.participation_teams?
-      get '/equipos-de-accion-participativa', to: 'participation_teams#index', as: 'participation_teams'
-      put '/equipos-de-accion-participativa/entrar(/:team_id)', to: 'participation_teams#join', as: 'participation_teams_join'
-      put '/equipos-de-accion-participativa/dejar(/:team_id)', to: 'participation_teams#leave', as: 'participation_teams_leave'
-      patch '/equipos-de-accion-participativa/actualizar', to: 'participation_teams#update_user', as: 'participation_teams_update_user'
-    end
-
-    if Features.proposals?
-      get '/propuestas', to: 'proposals#index', as: 'proposals'
-      get '/propuestas/info', to: 'proposals#info', as: 'proposals_info'
-      get '/propuestas/:id', to: 'proposals#show', as: 'proposal'
-      post '/apoyar/:proposal_id', to: 'supports#create', as: 'proposal_supports'
-    end
-
     get :notices, to: 'notice#index', as: 'notices'
 
     get '/vote/create/:election_id', to: 'vote#create', as: :create_vote
@@ -92,14 +78,6 @@ Rails.application.routes.draw do
           get 'OK', to: 'collaborations#ok', as: 'ok_collaboration'
           get 'KO', to: 'collaborations#ko', as: 'ko_collaboration'
         end
-      end
-    end
-
-    if Features.blog?
-      scope :brujula do
-        get '', to: 'blog#index', as: 'blog'
-        get ':id', to: 'blog#post', as: 'post'
-        get 'categoria/:id', to: 'blog#category', as: 'category'
       end
     end
 

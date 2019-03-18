@@ -30,11 +30,8 @@
 //= require credits
 //= require faq
 //= require hamburger_menu
-//= require impulsa
 //= require microcredit
 //= require mobile
-//= require participation_teams
-//= require proposals
 //= require registrations
 //= require registrations.provinces_countries
 //= require select2_impl

@@ -15,11 +15,6 @@ ActiveAdmin.register User do
     scope :has_collaboration_bank_international
   end
 
-  if Features.participation_teams?
-    scope :participation_team
-    scope :has_circle
-  end
-
   scope :unconfirmed_mail
   scope :confirmed_mail
 
@@ -181,7 +176,6 @@ ActiveAdmin.register User do
       row :current_sign_in_ip
       row :remember_created_at
       row :deleted_at
-      row :participation_team_at
       if Features.presential_verifications?
         row :verified_by
         row :verified_at
@@ -200,19 +194,6 @@ ActiveAdmin.register User do
       end
     end
 
-    if !user.participation_team_at.nil?
-
-      panel "Equipos de Acción Participativa" do
-        if user.participation_team.any?
-          table_for user.participation_team do
-            column :name
-            column :active
-          end
-        else
-          "El usuario no está inscrito en equipos específicos."
-        end
-      end
-    end
     active_admin_comments
   end
 
@@ -232,9 +213,9 @@ ActiveAdmin.register User do
   filter :province
   filter :country
   filter :circle
-  filter :vote_autonomy_in, as: :select, collection: Podemos::GeoExtra::AUTONOMIES.values.uniq.map(&:reverse), label: "Vote autonomy"
-  filter :vote_province_in, as: :select, collection: Carmen::Country.coded("ES").subregions.map { |x| [x.name, "p_#{(x.index + 1).to_s.rjust(2, "0")}"] }, label: "Vote province"
-  filter :vote_island_in, as: :select, collection: Podemos::GeoExtra::ISLANDS.values.uniq.map(&:reverse), label: "Vote island"
+  filter :vote_autonomy_in, as: :select, collection: -> { Podemos::GeoExtra::AUTONOMIES.values.uniq.map(&:reverse) }, label: "Vote autonomy"
+  filter :vote_province_in, as: :select, collection: -> { Carmen::Country.coded("ES").subregions.map { |x| [x.name, "p_#{(x.index + 1).to_s.rjust(2, "0")}"] } }, label: "Vote province"
+  filter :vote_island_in, as: :select, collection: -> { Podemos::GeoExtra::ISLANDS.values.uniq.map(&:reverse) }, label: "Vote island"
   filter :vote_town
   filter :current_sign_in_ip
   filter :last_sign_in_at
@@ -245,10 +226,9 @@ ActiveAdmin.register User do
   filter :sms_confirmed_at
   filter :sign_in_count
   filter :wants_participation
-  filter :participation_team_id, as: :select, collection: ParticipationTeam.all
-  filter :votes_election_id, as: :select, collection: Election.all
+  filter :votes_election_id, as: :select, collection: -> { Election.all }
   if Features.presential_verifications?
-    filter :verified_by_id, as: :select, collection: User.presential_verifier_ever
+    filter :verified_by_id, as: :select, collection: -> { User.presential_verifier_ever }
   end
 
   form partial: "form"
@@ -326,21 +306,6 @@ ActiveAdmin.register User do
     u.verify! current_user
     u.update(banned: false)
     flash[:notice] = "El usuario ha sido modificado"
-    redirect_to action: :show
-  end
-
-  action_item(:impulsa_author, only: :show) do
-    if user.impulsa_author?
-      link_to('Quitar autor Impulsa', impulsa_author_admin_user_path(user), method: :delete, data: { confirm: "¿Estas segura de que este usuario ya no puede crear proyectos especiales en Impulsa?" })
-    else
-      link_to('Autor Impulsa', impulsa_author_admin_user_path(user), method: :post, data: { confirm: "¿Estas segura de que este usuario puede crear proyectos especiales en Impulsa?" })
-    end
-  end
-
-  member_action :impulsa_author, :method => [:post, :delete] do
-    u = User.find(params[:id])
-    u.update(impulsa_author: request.post?)
-    flash[:notice] = "El usuario ya #{"no" if request.delete?} puede crear proyectos especiales en Impulsa"
     redirect_to action: :show
   end
 

@@ -7,7 +7,7 @@ class ApplicationHelperTest < ActionView::TestCase
   attr_reader :request
 
   around do |&block|
-    with_features(participation_teams: true, collaborations: true) do
+    with_features(collaborations: true) do
       super(&block)
     end
   end
@@ -18,9 +18,6 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal expected, response
     response = nav_menu_link_to "Inicio", root_path, [root_path], title: "Inicio"
     expected = "<a title=\"Inicio\" class=\"\" href=\"/\">Inicio</a>"
-    assert_equal expected, response
-    response = nav_menu_link_to "Equipos de Participación", participation_teams_path, [participation_teams_path], title: "Equipos de Participación"
-    expected = "<a title=\"Equipos de Participación\" class=\"\" href=\"/equipos-de-accion-participativa\">Equipos de Participación</a>"
     assert_equal expected, response
     response = nav_menu_link_to "Colaboración económica", new_collaboration_path, [new_collaboration_path], title: "Colaboración económica"
     expected = "<a title=\"Colaboración económica\" class=\"\" href=\"/colabora\">Colaboración económica</a>"

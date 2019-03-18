@@ -67,15 +67,9 @@ es:
       election:
         one: Elección
         other: Elecciones
-      proposal:
-        one: Iniciativa ciudadana
-        other: Iniciativas ciudadanas
       notice:
         one: Aviso
         other: Avisos
-      participation_team:
-        one: Equipo de Acción Participativa
-        other: Equipos de Acción Participativa
       report:
         one: Informe
         other: Informes
@@ -94,18 +88,6 @@ es:
       category:
         one: Categoría
         other: Categorías
-      impulsa_edition:
-        one: Edición de Impulsa
-        other: Ediciones de Impulsa
-      impulsa_edition_topic:
-        one: Temática de Impulsa
-        other: Temáticas de Impulsa
-      impulsa_edition_category:
-        one: Categoría de Impulsa
-        other: Categorías de Impulsa
-      impulsa_project:
-        one: Proyecto de Impulsa
-        other: Proyectos de Impulsa
       verification/center:
         one: "Punto de Verificación"
         other: "Puntos de Verificación"
@@ -167,115 +149,7 @@ es:
               accepted: "Debes declarar que eres mayor de 16 años"
             terms_of_service:
               accepted: "Debes aceptar las condiciones"
-        impulsa_edition:
-          attributes:
-            terms_of_service: "Acepto las condiciones generales"
     attributes:
-      impulsa_edition:
-        name: "Nombre"
-        start_at: "Fecha de inicio"
-        new_projects_until: "Cierre de inscripciones"
-        review_projects_until: "Fecha de fin revisiones"
-        validation_projects_until: "Fecha de fin validación"
-        votings_start_at: "Fecha de inicio de las votaciones"
-        ends_at: "Fecha de final de las votaciones"
-        publish_results_at: "Fecha de publicación de los resultados"
-        legal: "Bases"
-        schedule_model: "Modelo de cronograma"
-        activities_resources_model: "Modelo de actividades y recursos"
-        requested_budget_model: "Modelo de solicitud de presupuesto"
-        monitoring_evaluation_model: "Modelo de seguimiento y evaluación"
-        deleted_at: "Fecha de borrado"
-        created_at: "Fecha de creación"
-        updated_at: "Fecha de última modificación"
-      impulsa_edition_topic:
-        impulsa_edition: "Edición de Impulsa"
-        name: "Nombre"
-        deleted_at: "Fecha de borrado"
-        created_at: "Fecha de creación"
-        updated_at: "Fecha de última modificación"
-      impulsa_edition_category:
-        impulsa_edition: "Edición de Impulsa"
-        name: "Nombre"
-        category_type: "Tipo de categoría"
-        category_type_name: "Tipo de categoría"
-        winners: "Ganadores"
-        prize: "Premio"
-        only_authors: "Sólo autores"
-        coofficial_language: "Idioma cooficial"
-        coofficial_language_name: "Idioma cooficial"
-        territories: "Territorios"
-        deleted_at: "Fecha de borrado"
-        created_at: "Fecha de creación"
-        updated_at: "Fecha de última modificación"
-      impulsa_project:
-        impulsa_edition: "Edición de Impulsa"
-        impulsa_edition_category: "Categoría de Impulsa"
-        impulsa_edition_topics: "Temáticas"
-        impulsa_edition_topic_ids: "Temáticas"
-        name: "Título"
-        user: "Usuario"
-        status: "Estado"
-        status_name: "Estado"
-        additional_contact: "Información de contacto (nombre y apellidos, telefono, email)"
-        counterpart_information: "Información adicional sobre la contraparte"
-        authority: "Órgano que presenta la iniciativa"
-        authority_name: "Nombre y apellidos del representante del órgano"
-        authority_phone: "Teléfono del representante del órgano"
-        authority_email: "Email del representante del órgano"
-        organization_type: "Tipo de solicitante"
-        organization_name: "Nombre"
-        organization_address: "Dirección postal completa (vía, número, ciudad y código postal)"
-        organization_web: "Página web o blog"
-        organization_nif: "NIF"
-        scanned_nif: "Tarjeta del NIF"
-        organization_year: "Año de creación"
-        organization_legal_name: "Nombre y apellidos del representante legal"
-        organization_legal_nif: "DNI/NIE de la persona representante legal"
-        organization_mission: "Misión de la organización"
-        career: "Trayectoria"
-        counterpart: "Contrapartes"
-        short_description: "Descripción breve"
-        territorial_context: "Contexto territorial"
-        long_description: "Descripción"
-        aim: "Objetivos"
-        metodology: "Metodología y fomento de la participación"
-        population_segment: "Segmento poblacional objetivo"
-        video_link: "Enlace al vídeo"
-        coofficial_translation: "Traducir"
-        coofficial_name: "Título traducido"
-        coofficial_short_description: "Descripción breve traducida"
-        coofficial_video_link: "Enlace al vídeo traducido"
-        coofficial_territorial_context: "Contexto territorial traducido"
-        coofficial_long_description: "Descripción traducida"
-        coofficial_aim: "Objetivos traducidos"
-        coofficial_metodology: "Metodología y fomento de la participación traducidas"
-        coofficial_population_segment: "Segmento poblacional objetivo traducido"
-        coofficial_organization_mission: "Misión de la organización traducida"
-        coofficial_career: "Trayectoria traducida"
-        logo: "Foto o logo"
-        endorsement: "Aval de un Círculo, de un Consejo Ciudadano o de una Secretaría General"
-        register_entry: "Inscripción de la entidad solicitante en el registro correspondiente"
-        statutes: "Copia de los Estatutos de la entidad solicitante debidamente registrados"
-        responsible_nif: "NIF del responsable (gestor de proyectos o solicitante)"
-        fiscal_obligations_certificate: "Certificado de la Agencia Tributaria de obligaciones fiscales al corriente"
-        labor_obligations_certificate: "Certificado de la Seguridad Social de obligaciones laborales al corriente"
-        last_fiscal_year_report_of_activities: "Memoria de actividades del último ejercicio"
-        last_fiscal_year_annual_accounts: "Cuentas anuales del último ejercicio"
-        home_certificate: "Certificado de inscripción en el Consulado español del país de su residencia actual"
-        bank_certificate: "Certificado bancario de titularidad de una cuenta en una entidad financiera resi­dente en España en la que se abonará la ayuda"
-        schedule: "Cronograma y fases" 
-        activities_resources: "Actividades y Recursos"
-        total_budget: "Presupuesto total"
-        requested_budget: "Presupuesto solicitado"
-        monitoring_evaluation: "Seguimiento y evaluación"
-        deleted_at: "Fecha de borrado"
-        created_at: "Fecha de creación"
-        updated_at: "Fecha de última modificación"
-        terms_of_service: "Términos legales"
-        data_truthfulness: "Veracidad de los datos"
-        content_rights: "Propiedad intelectual"
-        votes: "Votos"
       microcredit:
         id: "Identificador"
         starts_at: "Fecha de inicio"
@@ -350,10 +224,6 @@ es:
         starts_at: "Empieza"
         ends_at: "Termina"
         close_message: "Mensaje de cierre"
-      proposal: 
-        title: "Título"
-        description: "Descripción"
-        image_url: "URL de la imagen"
       notice:
         title: "Título"
         body: "Mensaje"
@@ -469,104 +339,6 @@ Al confirmar este formulario aceptáis que:
         first: Cuánto y cómo quieres colaborar
         second: Confirmación
         third:  Resultado
-    impulsa:
-      title: "IMPULSA"
-      upcoming: "La próxima edición de IMPULSA comenzará el %{start_at}."
-      noupcoming: "La convocatoria de una nueva edición de IMPULSA se realizará próximamente, mantente informado."
-      text_limit: "máximo %{limit} caracteres"
-      model_link: "Utiliza este fichero como modelo."
-      file_validation: "el fichero subido debe ser %{file_type} y su tamaño no puede superar %{file_size}"
-      file_type_image: "una imagen (ficheros .jpeg, .jpg, .png o .gif)"
-      file_type_spreadsheet: "una hoja de cálculo Excel (ficheros .xls, .xlsx o .ods)"
-      file_type_document: "un documento Word (ficheros .doc, .docx o .odt)"
-      file_type_pdf: "un documento PDF (ficheros .pdf)"
-      admin_section: "Datos para administración"
-      project_data_section: "Datos del proyecto"
-      organization_data_section: "Datos de la organización que desarrollará el proyecto"
-      organization_data_internal_section: "Datos de la organización premiada"
-      documents_section: "Documentos solicitados"
-      project_progress_section: "Desarrollo del proyecto"
-      impulsa_edition_category_extra: "En esta edición de IMPULSA puedes presentar tu proyecto a diferentes categorías, comprueba los requisitos y condiciones en las %{legal} para saber en cual hacerlo."
-      legal: "bases de la convocatoria"
-      organization_mission_extra: "Describe cuál es la misión de la organización y las actividades principales a las que se dedica."
-      short_description_extra: "En este apartado deberá aparecer la descripción que se desee exponer en la página web de Impulsa para dar a conocer el proyecto."
-      short_description_internal_extra: "En este apartado deberá aparecer la descripción que se desee exponer en la página web de Impulsa para dar a conocer la iniciativa premiada."
-      last_year_extra: "Sólo en el caso de que la entidad tenga una antigüedad de más de un año."
-      counterpart_extra: "Si el proyecto se realiza junto a otras entidades, se solicitará también información sobre dichas entidades para confirmar el cumplimiento del código ético."
-      territorial_context_extra: "Indicar nombre del municipio, provincia y/ o comunidad autónoma en que se desarrolla (en caso de desarrollarse en un barrio o distrito específico, indicar también), número de habitantes de la zona en que se realizará el proyecto y contexto general en la zona de realización del proyecto (prestando atención a elementos de desigualdad social, exclusión,...)"
-      long_description_extra: "Describe las necesidades que atiende el proyecto, las razones por las que es importante atender estas necesidades y cómo va a responder el proyecto a estas necesidades."
-      aim_extra: "Describe el objetivo general, que es la situación deseable a cuya realización contribuirá el proyecto a largo plazo, y los objetivos específicos, que se derivan del objetivo general y lo concretan, señalando el camino que hay que seguir para conseguirlos y expresando los cambios o efectos más concretos que se pretenden alcanzar."
-      metodology_extra: "Describe cómo se va a desarrollar el proyecto y qué estrategias se pondrían en marcha para fomentar la participación dentro del mismo."
-      population_segment_extra: "Especifica si el proyecto se dirige a un grupo concreto de población, cuáles son las razones de dicha elección y qué tipo de estrategias se utilizarán para asegurar la comunicación con ese grupo (o grupos)."
-      schedule_extra: "Indica las fechas de inicio y finalización del proyecto, sus fases y duración, y los principales hitos a cumplir, mediante un cuadro o cronograma. Recuerda que el periodo de ejecución del proyecto es de %{limit} meses, aunque en casos excepcionales y justificados se podrá alargar el periodo de duración de un proyecto."
-      activities_resources_extra: "Según la planificación presentada en el cronograma, detalla las actividades que prevéis desarrollar durante el periodo de ejecución del proyecto. Para cada actividad, indica los recursos materiales y humanos que serán necesarios para llevarla a cabo."      
-      requested_budget_extra: "Basándote en el cuadro de actividades y recursos, establece el presupuesto de gastos e ingresos utilizando la plantilla adjunta. Asegúrate de rellenar las dos pestañas de la hoja de cálculo: Gastos e Ingresos. Recuerda que el presupuesto máximo son %{limit}."
-      monitoring_evaluation_extra: "Detalla los indicadores que se utilizarán para la evaluación, especificando el objetivo al que responden, el tiempo estimado para alcanzarlo, el valor esperado al final del proyecto para cada indicador y la fuente de verificación que se utilizará para su medición."
-      coofficial_translation_extra: "Si quieres que, para la fase de votaciones, tu proyecto se pueda ver en %{lang} marca esta casilla y rellena los siguientes campos en ese idioma."
-      authority_section: "Órgano que presenta la iniciativa"
-      translation_section: "Traducciones a idioma cooficial"
-      next_step: "Continuar"
-      next_step_text: "Introduce los datos básicos del proyecto y presiona '%{next_step}' para cargar el resto de información."
-      choose_user_text: "Al dar de alta el proyecto con tu usuario serás la persona de contacto para hacer correcciones en el proyecto. Si crees que hay otra persona más adecuada para esto, por favor comunícalo para que sea quien cargue el proyecto utilizando su usuario del portal de participación."
-      save_draft_text: "Puedes utilizar el botón '%{save_draft}' en cualquier momento para guardar la información que has cargado hasta el momento. Esto te permitirá buscar la información que no tengas a mano o revisar con algún compañero los datos ingresados antes de enviárnoslos."
-      fixes_text: "Hemos revisado el proyecto que has presentado a IMPULSA y hemos detectado algunos puntos que necesitan subsanación."
-      non_fixes_text: "No hemos recibido, en plazo, la subsanación de los errores indicados en el proyecto que has presentado a esta edición de IMPULSA. El plazo de subsanación ha finalizado, por lo que lamentamos comunicarte que tu proyecto no pasa a la fase de validación."
-      mark_for_review_text: "Cuando hayas completado todos los datos del proyecto y consideres que son correctos utiliza el botón '%{mark_for_review}' para indicarnos que podemos revisarlo (aunque podrás seguir haciendo correcciones hasta que lo hagamos)."
-      spam_text: "Después de realizar la revisión de los proyectos presentados, hemos detectado que tu proyecto está prácticamente vacío. Por esta razón, lo hemos marcado como desestimado. Si tienes alguna consulta al respecto, por favor ponte en contacto con nosotros en el correo contacte@catalunyaencomu.cat"
-      reviewing_text: "Hemos recibido tu proyecto y estamos revisando que todos los datos sean correctos. En cuanto terminemos este proceso te avisaremos."
-      validable_text: "Hemos recibido correctamente el proyecto que has presentado, está completo y pasa a la fase de revisión."
-      invalidated_text: "Lamentamos comunicarte que el proyecto que has presentado a IMPULSA ha sido invalidado por las siguientes razones: %{invalid_reasons}"
-      validated1_text: "Una vez realizada la revisión de los proyectos presentados a la edición actual de IMPULSA, tenemos el placer de informarte de que tu proyecto ha sido validado. Esto implica que participarás en la fase de pre-selección en la que un Jurado compuesto por el Equipo técnico de IMPULSA, miembros de la Comisión de Garantías Democráticas, miembros del Consejo Ciudadano Estatal, y las Senadoras de Catalunya , valorarán los proyectos validados en función de los criterios establecidos en las bases de la convocatoria y preseleccionarán un máximo de %{prewinners} proyectos. Los resultados de la preselección se harán públicos en la página web: <XXX. En el caso de que tu proyecto sea preseleccionado, te informaremos por correo electrónico. Del %{voting_dates}, se abrirá un proceso de votaciones en el que las personas inscritas en XXXXXX podrán elegir %{winners} proyectos ganadores entre los %{prewinners} preseleccionados."
-      validated2_text: "Una vez realizada la valoración de los proyectos presentados a esta edición de IMPULSA, tenemos el placer de informarte de que tu proyecto ha sido validado. Esto implica que participarás, del %{voting_dates}, en la fase de votaciones con los demás proyectos validados de tu territorio, dependiendo de la categoría donde te hayas presentado."
-      terms_of_service: "He leído y acepto <a href='%{link}'>las condiciones generales del proyecto IMPULSA y la política de privacidad</a>."
-      data_truthfulness: "Declaro la veracidad de los datos facilitados y de los documentos aportados en la solicitud de la presente convocatoria."
-      content_rights: "Declaro ser titular de todos los derechos de propiedad intelectual, industrial y derechos de imagen, de las obras, textos, imágenes, vídeos, música, logotipos e ideas incluidos en este formulario y que forman parte del proyecto, eximiendo a Catalunya en Comú de cualquier responsabilidad que pudiera derivarse de las infracciones de estos derechos."
-      translated: "en %{lang}"
-      save_draft: "Guardar borrador"
-      mark_for_review: "Marcar para revisión"
-      choose_impulsa_category: "Debes elegir una categoría para que aparezca el resto de campos."
-      authority_hint: "nombre del Grupo parlamentario, Consejo Ciudadano Autonómico, Grupo juntero (País Vasco) o Grupo Europarlamentario"
-      impulsa_edition_topics_hint: "señalar un máximo de dos entre las diferentes temáticas propuestas"
-      video_link_hint: "debe ser un enlace a un video subido en YouTube"
-      project_status:
-        new: "Nuevo"
-        review: "Revisar"
-        fixes: "Correcciones"
-        review_fixes: "Revisar correcciones"
-        validate: "Validar"
-        invalidated: "Invalidado"
-        validated: "Validado"
-        discarded: "Descartado"
-        resigned: "Renuncia"
-        winner: "Premiado"
-        spam: "Spam"
-        dissent: "Disenso"
-      category_type_name:
-        internal: "Interna"
-        state: "Estatal"
-        territorial: "Territorial"
-      organization_type:
-        organization: "Entidad constituida"
-        people: "Grupo de personas que no tienen una entidad constituida legalmente"
-        foreign_people: "Residentes en el extranjero"
-      responsible_nif:
-        organization: "NIF de la persona que representa a la entidad en la gestión de proyectos o, en el caso de que no exista, del representante legal de la entidad"
-        people: "DNI/NIE de la persona solicitante del proyecto"
-        foreign_people: "DNI o pasaporte español en vigor de la persona solicitante"
-      fiscal_obligations_certificate: 
-        local: "Certificado de la Agencia Tributaria de obligaciones fiscales al corriente en el momento de la presentación del proyecto"
-        foreign: "Certificado de la Agencia Tributaria española según el cual la persona solicitante está al corriente de las obligaciones fiscales en el momento de la presentación del proyecto"
-      labor_obligations_certificate: 
-        local: "Certificado de la Seguridad Social de obligaciones laborales al corriente en el momento de la presentación del proyecto"
-        foreign: "Certificado de la Seguridad Social española de obligaciones laborales al corriente en el momento de la presentación del proyecto"
-      career:
-        internal: "Trayectoria del colectivo"
-        territorial: "Trayectoria formativa y profesional de las personas solicitantes del proyecto"
-      career_extra:
-        internal: "Incluir cuándo se formó, qué causas sociales defienden y qué hitos han logrado."
-        territorial: "Indica brevemente la formación y experiencia profesional de las personas que desarrollarán el proyecto, incidiendo en las relacionadas con el ámbito del proyecto presentado."
-      coofficial_translation: "Traducir al %{lang}"
-      total_price: "Importe del premio concedido"
   issues:
     confirm_sms: "Por seguridad, debes confirmar tu teléfono."
     born_at: "Debes indicar tu fecha de nacimiento."
@@ -620,7 +392,6 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       has_collaboration_credit_card: "Con colaboración económica (tarjeta de crédito)"
       has_collaboration_bank_national: "Con colaboración económica (banco nacional)"
       has_collaboration_bank_international: "Con colaboración económica (banco internacional)"
-      participation_team: "En equipos de participación"
       has_circle: "En Círculo"
   microcredit:
     common:
