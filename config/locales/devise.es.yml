@@ -2,7 +2,7 @@ es:
   devise:
     confirmations:
       confirmed: "Tu dirección de correo electrónico ha sido confirmada. Puedes iniciar sesión."
-      send_instructions: "Recibirás un correo electrónico en unos minutos con instrucciones sobre cómo restablecer tu contraseña."
+      send_instructions: "Recibirás un correo electrónico en unos minutos con instrucciones sobre cómo restablecer tu contraseña. Si tienes algún problema contacta a contacte@catalunyaencomu.cat"
       send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos recibirás un correo electrónico en unos minutos con instrucciones sobre cómo reiniciar tu contraseña."
     failure:
       already_authenticated: "Ya estás identificado."

@@ -9,6 +9,12 @@ class HomeTest < ActionDispatch::IntegrationTest
     assert_title "Iniciar sesión"
   end
 
+  test "show current election info" do
+    create(:election, :opened)
+    visit root_path
+    assert_text "Hay una votación en curso."
+  end
+
   test "does not redirect" do
     I18n.with_locale(:es) do
       visit root_path

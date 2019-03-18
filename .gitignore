@@ -41,3 +41,6 @@ app/assets/fonts/StagStencil-Bold-Web.woff2
 /public/system
 
 db/*.sqlite3
+
+# Ignore byebug history
+.byebug_history
