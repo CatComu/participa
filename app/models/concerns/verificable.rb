@@ -168,4 +168,8 @@ module Verificable
   def verify_online! user
     update(verified_online_at: Time.zone.now, verified_online_by: user)
   end
+
+  def unverify!
+    update(verified_online_at: nil, verified_at: nil, verified_by: nil, verified_online_by: nil)
+  end
 end

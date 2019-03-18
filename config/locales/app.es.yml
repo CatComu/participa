@@ -33,7 +33,7 @@ es:
       apologize: >-
         Si no ha sido tu caso, te pedimos disculpas por este correo.
   home:
-    signup_title: Inscríbete para poder votar
+    signup_title: Inscríbete para poder participar
   election:
     close_message: "Ha llegado la fecha límite para votar. La votación está cerrada."
   errors:
@@ -501,7 +501,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
       token: Código SMS
       button: "Comprobar"
       information_html: "Debes ingresar un teléfono móvil válido para el país en el que te encuentras, sin prefijo internacional, sólo con números (sin espacios ni guiones). Según el formulario que has rellenado te encuentras en <b>%{country}</b> (prefijo internacional +%{prefix})."
-      help_html: "Actualmente estamos teniendo algunos problemas con los envíos a móviles de fuera de España. Si es tu caso, por favor escribe a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
+      help_html: "Si tienes algún problema por favor escribe a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
   static:
     privacy: Política de privacidad
     legal: Aviso legal
@@ -513,6 +513,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     country: "País"
     province: "Provincia"
     town: "Municipio"
+    verify_on_update: Al modificar los datos de domicilio, se debe realizar nuevamente el proceso de verificación.
     inscription_policy: Condiciones de inscripción
     legends:
       inscription_html: "Inscribirse en En Comú te da derecho a participar en todas las consultas y procesos participativos que se lancen en esta aplicación. No supone ninguna obligación económica, aunque puedes colaborar en este sentido si lo deseas. Aceptando, recibirás nuestros newsletters informativos.<br><br> EN COMÚ con personalidad jurídica propia, de acuerdo con la Ley Orgánica 6/2002, de 27 de junio, de Partidos Políticos, e inscrita en el Registro de Partidos Políticos con fecha 1 de abril de 2015, Folio 113, Tomo IX. Domicilio social: C. Or, 44 3º-2ª (CP 08012 BARCELONA). Telèfon: 935.321.796. "
@@ -543,7 +544,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
           Para votar en las próximas votaciones te tienes que registrar
           rellenando este formulario. Te llegará un correo para validarte. Si
           no recibes el correo ponte en contacto con nosotros
-          <a href='http://catalunyaencomu.cat/ca/contacte'>aquí</a>.
+          <a href='mailto:contacte@catalunyaencomu.cat'>aquí</a>.
         </p>
         "
   unauthorized:
@@ -890,7 +891,7 @@ De conformidad con lo dispuesto en el artículo 16.3 de la Ley Orgánica de Prot
     born_at: Fecha de nacimiento
     document_type: Tipo y número de documento
     email: Correo electrónico
-    result: "Estos son los datos asociados al email introducido:"
+    result: "Estos son los datos asociados:"
     check: "Comprova que:"
     admin: Gestor de verificaciones presenciales
     alerts:

@@ -28,7 +28,7 @@ ca:
       apologize: >-
         Si no ha sigut el teu cas, et demanem disculpes per aquest correu.
   home:
-    signup_title: Inscriu-te per poder votar
+    signup_title: Inscriu-te per poder participar
   election:
     close_message: "Ha arribat la data límit per votar. La votació està tancada."
   errors:
@@ -388,7 +388,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
       token: Codi SMS
       button: "Comprova"
       information_html: "Has d'ingressar un telèfon mòbil vàlid per al país on et trobes, sense prefix internacional, només amb números (sense espais ni guions). Segons el formulari que has emplenat et trobes a <b>%{country}</b> (prefix internacional +%{prefix})."
-      help_html: "Actualment estem tenint alguns problemes amb els enviaments a mòbils de fora d'Espanya. Si és el teu cas, si us plau escriu a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
+      help_html: "Si tens qualsevol problema escriu a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
   static:
     privacy: Política de privacitat
     legal: Avís legal
@@ -400,6 +400,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
     country: País
     province: Província
     town: Municipi
+    verify_on_update: Quan editeu les dades de domicili, s'ha de realitzar novament el procés de verificació.
     inscription_policy: Condicions d'inscripció
     legends:
       inscription_html: "Inscriure's a En Comú et dóna dret a participar en totes les consultes i processos participatius que s'endeguin en aquesta aplicació. No representa cap mena d'obligació econòmica encara que pots col·laborar en aquest sentit si ho desitges. En acceptar-hi, rebràs tots els nostres butlletins informatius.<br><br> EN COMÚ amb personalitat jurídica pròpia, d'acord amb la Llei Orgànica 6/2002, de 27 de juny, de Partits Polítics, i inscrita en el Registre de Partits Polítics amb data de l'1 d'abril del 2015, Full 113, Volum IX. Domicili social: C. Or, 44 3º-2ª (CP 08012 BARCELONA). Telèfon: 935.321.796. "
@@ -429,7 +430,7 @@ Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció d
           Per poder votar en les properes votacions t'has d'enregistrar
           omplint aquest formulari. T'arribarà un correu per validar-te. Si no
           reps el correu posa't en contacte amb nosaltres
-          <a href='http://catalunyaencomu.cat/contacte'>aquí</a>.
+          <a href='mailto:contacte@catalunyaencomu.cat'>aquí</a>.
         </p>
         "
   unauthorized:
@@ -775,7 +776,7 @@ Amb tres passos molt senzills:
     full_name: Nom complet
     document_type: Tipus i número de document
     email: Correu electrònic
-    result:  "Aquestes són les dades associades a l'email introduït:"
+    result:  "Aquestes són les dades associades:"
     check: "Comprova que:"
     other: Verifica un altre usuari/ària.
     admin: Gestor de verificacions presencials

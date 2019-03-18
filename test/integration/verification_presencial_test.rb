@@ -74,7 +74,7 @@ class VerificationPresencialTest < JsFeatureTest
     verificator = create(:user, :verifying_presentially)
     login(verificator)
     visit verification_step1_path
-    fill_in(:user_email, with: user.email)
+    fill_in(:user_login, with: user.email)
     click_button('Siguiente')
     assert_content I18n.t('verification.result')
     click_link('Verificar')
@@ -93,7 +93,7 @@ class VerificationPresencialTest < JsFeatureTest
     verificator = create(:user, :verifying_presentially)
     login(verificator)
     visit verification_step1_path
-    fill_in(:user_email, with: user.email)
+    fill_in(:user_login, with: user.email)
     click_button('Siguiente')
     assert_content I18n.t('verification.result')
     click_link('No verificar')
@@ -111,7 +111,7 @@ class VerificationPresencialTest < JsFeatureTest
     verificator = create(:user, :verifying_presentially)
     login(verificator)
     visit verification_step1_path
-    fill_in(:user_email, with: unconfirmed_user.email)
+    fill_in(:user_login, with: unconfirmed_user.email)
 
     assert_difference -> { ActionMailer::Base.deliveries.count }, 1 do
       click_button('Siguiente')
@@ -126,5 +126,18 @@ class VerificationPresencialTest < JsFeatureTest
     refute \
       unconfirmed_user.reload.is_verified_presentially?,
       "User shouldn't be verified presentially but it is"
+  end
+
+  test "can verify by document number" do
+    user = create(:user)
+    verificator = create(:user, :verifying_presentially)
+    login(verificator)
+    visit verification_step1_path
+    fill_in(:user_login, with: user.document_vatid)
+    click_button('Siguiente')
+    assert_content I18n.t('verification.result')
+    assert_content user.email
+    click_link('Verificar')
+    assert_content I18n.t('verification.alerts.ok.title')
   end
 end

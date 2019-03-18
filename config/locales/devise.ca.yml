@@ -2,7 +2,7 @@ ca:
   devise:
     confirmations:
       confirmed: "La teva adreça de correu electrònic ha estat confirmada. Pots iniciar sessió."
-      send_instructions: "Rebràs un correu electrònic en uns minuts amb instruccions sobre com restablir la teva contrasenya."
+      send_instructions: "Rebràs un correu electrònic en uns minuts amb instruccions sobre com restablir la teva contrasenya. Si tens qualsevol problema contacta amb contacte@catalunyaencomu.cat"
       send_paranoid_instructions: "Si el teu correu electrònic existeix a la nostra base de dades, rebràs un correu electrònic d'aquí a uns minuts amb instruccions sobre com reiniciar la teva contrasenya."
     failure:
       already_authenticated: "Ja estàs identificat."
