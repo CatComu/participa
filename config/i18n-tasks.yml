@@ -1,0 +1,18 @@
+---
+base_locale: ca
+locales: [ca, es]
+data:
+  read:
+    - config/locales/*.%{locale}.yml
+  write:
+    - config/locales/app.%{locale}.yml
+  yaml:
+    write:
+      line_width: -1
+search:
+  paths:
+    - app/
+  exclude:
+    - app/assets/images
+    - app/assets/fonts
+    - app/assets/videos

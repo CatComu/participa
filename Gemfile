@@ -74,11 +74,13 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'byebug'
   gem 'rubocop', github: 'bbatsov/rubocop'
   gem 'ruby-prof'
   gem 'simplecov'
   gem 'railroady'
+  gem 'i18n-tasks'
 end
 
 group :test do

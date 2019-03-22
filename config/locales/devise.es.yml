@@ -1,91 +1,90 @@
+---
 es:
   devise:
     confirmations:
-      confirmed: "Tu dirección de correo electrónico ha sido confirmada. Puedes iniciar sesión."
-      send_instructions: "Recibirás un correo electrónico en unos minutos con instrucciones sobre cómo restablecer tu contraseña. Si tienes algún problema contacta a contacte@catalunyaencomu.cat"
-      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos recibirás un correo electrónico en unos minutos con instrucciones sobre cómo reiniciar tu contraseña."
+      confirmed: Tu dirección de correo electrónico ha sido confirmada. Puedes iniciar sesión.
+      send_instructions: Recibirás un correo electrónico en unos minutos con instrucciones sobre cómo restablecer tu contraseña. Si tienes algún problema contacta a contacte@catalunyaencomu.cat
+      send_paranoid_instructions: Si tu correo electrónico existe en nuestra base de datos recibirás un correo electrónico en unos minutos con instrucciones sobre cómo reiniciar tu contraseña.
     failure:
-      already_authenticated: "Ya estás identificado."
-      inactive: "Tu cuenta aún no ha sido activada."
-      invalid: "Correo electrónico, número de documento o contraseña inválidos. Recuerde que puede iniciar sesión tanto con su DNI como son su correo electrónico."
-      invalid_token: "Cadena de autenticación invalida."
-      locked: "Tu cuenta está bloqueada."
-      not_found_in_database: "Correo electrónico, número de documento o contraseña inválidos. Recuerde que puede iniciar sesión tanto con su DNI como son su correo electrónico."
-      timeout: "Tu sesión ha expirado, por favor identifícate de nuevo para continuar."
-      unauthenticated: "Necesitas iniciar sesión o registrarte para continuar."
-      unauthenticated_html: "Necesitas <a href='/'>iniciar sesión</a> o <a href='/users/sign_up'>registrarte</a> para continuar."
-      unconfirmed: "Debes confirmar tu cuenta para continuar."
-      last_attempt: "Tienes un intento más antes que tu cuenta quede bloqueada."
+      already_authenticated: Ya estás identificado.
+      inactive: Tu cuenta aún no ha sido activada.
+      invalid: Correo electrónico, número de documento o contraseña inválidos. Recuerde que puede iniciar sesión tanto con su DNI como son su correo electrónico.
+      invalid_token: Cadena de autenticación invalida.
+      last_attempt: Tienes un intento más antes que tu cuenta quede bloqueada.
+      locked: Tu cuenta está bloqueada.
+      not_found_in_database: Correo electrónico, número de documento o contraseña inválidos. Recuerde que puede iniciar sesión tanto con su DNI como son su correo electrónico.
+      timeout: Tu sesión ha expirado, por favor identifícate de nuevo para continuar.
+      unauthenticated: Necesitas iniciar sesión o registrarte para continuar.
+      unauthenticated_html: Necesitas <a href='/'>iniciar sesión</a> o <a href='/users/sign_up'>registrarte</a> para continuar.
+      unconfirmed: Debes confirmar tu cuenta para continuar.
+    labels:
+      new_email: Correo electrónico nuevo
+      new_password: Contraseña nueva
+      new_password_confirmation: Contraseña nueva (repetir)
+    links:
+      forgot_mail: No he recibido el correo de confirmación
+      forgot_manual: Ver el manual de inscripción
+      forgot_manual_vot: Ver el manual de votación
+      forgot_way: Problemas con la inscripción
+      insc: Inscripción
     mailer:
-      hello: "¡Hola %{user}!"
-      welcome: "¡Bienvenido/a %{user}!"
-      remember_email:
-        title: "Nuevo intento de registro con tu cuenta de email"
-        greeting: "Hola %{user}!"
-        did_you_try: ¿Has intentado crear una nueva cuenta con tus datos?
-        affirmative_action_html: "En caso afirmativo, recuerda que ya tienes
-una y que puedes cambiar tu contraseña %{here}."
-        negative_action_html: "En caso de que no hayas sido tú, puedes ignorar
-este mensaje. Si lo recibes varias veces, avísanos a %{mail}."
-        here: aquí
       confirm:
-        p1: "Te has dado de alta o has cambiado tu correo electrónico en el entorno Catalunya en Comú. Si no es ese el caso, ignora este correo. Puedes confirmar que esta es tu dirección de correo a través del siguiente enlace:"
-        p2: "Si tienes cualquier problema con el registro, por favor, contacta con contacte@catalunyaencomu.cat"
-        text_only_instructions: "O copia la siguiente dirección y pégala en tu navegador:"
-      password:
-        p1: "Alguien ha pedido que cambies tu contraseña. Puedes hacerlo mediante el siguiente enlace:"
-        p2: "Si tienes cualquier problema con el registro, por favor, contacta con contacte@catalunyaencomu.cat"
-        p3: "Si no has sido tú, por favor, no hagas caso de este mensaje. Tu contraseña no cambiará hasta que valides este enlace y crees una nueva."
-        link: 'Cambiar contraseña'
+        p1: 'Te has dado de alta o has cambiado tu correo electrónico en el entorno Catalunya en Comú. Si no es ese el caso, ignora este correo. Puedes confirmar que esta es tu dirección de correo a través del siguiente enlace:'
+        p2: Si tienes cualquier problema con el registro, por favor, contacta con contacte@catalunyaencomu.cat
+        text_only_instructions: 'O copia la siguiente dirección y pégala en tu navegador:'
       confirmation_instructions:
-        subject: "Catalunya en Comú - Instrucciones de confirmación"
+        subject: Catalunya en Comú - Instrucciones de confirmación
+      hello: "¡Hola %{user}!"
+      password:
+        link: Cambiar contraseña
+        p1: 'Alguien ha pedido que cambies tu contraseña. Puedes hacerlo mediante el siguiente enlace:'
+        p2: Si tienes cualquier problema con el registro, por favor, contacta con contacte@catalunyaencomu.cat
+        p3: Si no has sido tú, por favor, no hagas caso de este mensaje. Tu contraseña no cambiará hasta que valides este enlace y crees una nueva.
+      remember_email:
+        affirmative_action_html: En caso afirmativo, recuerda que ya tienes una y que puedes cambiar tu contraseña %{here}.
+        did_you_try: "¿Has intentado crear una nueva cuenta con tus datos?"
+        greeting: Hola %{user}!
+        here: aquí
+        negative_action_html: En caso de que no hayas sido tú, puedes ignorar este mensaje. Si lo recibes varias veces, avísanos a %{mail}.
+        title: Nuevo intento de registro con tu cuenta de email
       reset_password_instructions:
-        subject: "Catalunya en Comú - Instrucciones para restablecer tu contraseña"
+        subject: Catalunya en Comú - Instrucciones para restablecer tu contraseña
       unlock_instructions:
-        subject: "Catalunya en Comú - Instrucciones de desbloqueo"
+        subject: Catalunya en Comú - Instrucciones de desbloqueo
+      welcome: "¡Bienvenido/a %{user}!"
     omniauth_callbacks:
-      failure: "No se te pudo autorizar de %{kind} debido a \"%{reason}\"."
-      success: "Identificado correctamente de %{kind}."
+      failure: No se te pudo autorizar de %{kind} debido a "%{reason}".
+      success: Identificado correctamente de %{kind}.
     passwords:
-      no_token: "No puedes acceder a esta página sino es por medio de un enlace para restablecer contraseña. Si accediste desde el enlace para restablecer la contraseña, asegúrate de que la URL está completa."
-      send_instructions: "Recibirás un correo electrónico con instrucciones sobre cómo restablecer tu contraseña en unos minutos."
-      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un enlace para restablecer la contraseña en unos minutos."
-      updated: "Tu contraseña se cambió correctamente. Has sido identificado."
-      updated_not_active: "Tu contraseña se cambió correctamente."
+      no_token: No puedes acceder a esta página sino es por medio de un enlace para restablecer contraseña. Si accediste desde el enlace para restablecer la contraseña, asegúrate de que la URL está completa.
+      send_instructions: Recibirás un correo electrónico con instrucciones sobre cómo restablecer tu contraseña en unos minutos.
+      send_paranoid_instructions: Si tu correo electrónico existe en nuestra base de datos, recibirás un enlace para restablecer la contraseña en unos minutos.
+      updated: Tu contraseña se cambió correctamente. Has sido identificado.
+      updated_not_active: Tu contraseña se cambió correctamente.
     registrations:
       destroyed: "¡Adiós! Tu cuenta ha sido cancelada. Esperamos volver a verte pronto."
       signed_up: "¡Bienvenido! Has sido identificado."
-      signed_up_but_inactive: "Te has inscrito correctamente, pero no has podido iniciar sesión porque no has activado tu cuenta."
-      signed_up_but_locked: "Te has inscrito correctamente, pero no has podido iniciar sesión porque tu cuenta está bloqueada."
-      signed_up_but_unconfirmed: "Se te ha enviado un mensaje con un enlace de confirmación. Por favor visita el enlace en las próximas horas para activar tu cuenta."
-      update_needs_confirmation: "Actualizaste tu cuenta correctamente, sin embargo necesitamos verificar tu nueva cuenta de correo. Por favor revisa tu correo electrónico y visita el enlace para finalizar la confirmación de tu nueva dirección de correo electrónico."
-      updated: "Has actualizado tu cuenta correctamente."
+      signed_up_but_inactive: Te has inscrito correctamente, pero no has podido iniciar sesión porque no has activado tu cuenta.
+      signed_up_but_locked: Te has inscrito correctamente, pero no has podido iniciar sesión porque tu cuenta está bloqueada.
+      signed_up_but_unconfirmed: Se te ha enviado un mensaje con un enlace de confirmación. Por favor visita el enlace en las próximas horas para activar tu cuenta.
+      update_needs_confirmation: Actualizaste tu cuenta correctamente, sin embargo necesitamos verificar tu nueva cuenta de correo. Por favor revisa tu correo electrónico y visita el enlace para finalizar la confirmación de tu nueva dirección de correo electrónico.
+      updated: Has actualizado tu cuenta correctamente.
     sessions:
-      signed_in: "Has iniciado sesión satisfactoriamente."
-      signed_out: "Has cerrado la sesión satisfactoriamente."
+      signed_in: Has iniciado sesión satisfactoriamente.
+      signed_out: Has cerrado la sesión satisfactoriamente.
     unlocks:
-      send_instructions: "Recibirás un correo electrónico en unos minutos con instrucciones sobre cómo desbloquear tu cuenta."
-      send_paranoid_instructions: "Si tu cuenta existe, recibirás un correo electrónico en unos minutos con instrucciones sobre cómo desbloquear tu cuenta."
-      unlocked: "Tu cuenta ha sido desbloqueada. Por favor inicia sesión para continuar."
-    links:
-      forgot_way: "Problemas con la inscripción"
-      forgot_manual: "Ver el manual de inscripción"
-      forgot_manual_vot: "Ver el manual de votación"
-      forgot_mail: "No he recibido el correo de confirmación"
-      insc: "Inscripción"
-    labels:
-      new_email: "Correo electrónico nuevo"
-      new_password: "Contraseña nueva"
-      new_password_confirmation: "Contraseña nueva (repetir)"
+      send_instructions: Recibirás un correo electrónico en unos minutos con instrucciones sobre cómo desbloquear tu cuenta.
+      send_paranoid_instructions: Si tu cuenta existe, recibirás un correo electrónico en unos minutos con instrucciones sobre cómo desbloquear tu cuenta.
+      unlocked: Tu cuenta ha sido desbloqueada. Por favor inicia sesión para continuar.
   errors:
     messages:
-      confirmation: "El valor no coincide con la confirmación."
-      invalid: "El valor no es correcto."
-      already_confirmed: "Ya estás confirmado, por favor intenta iniciar sesión."
-      confirmation_period_expired: "necesita ser confirmado en %{period}, por favor vuelve a solicitarla."
-      expired: "ha expirado, por favor vuelve a solicitarla."
-      not_found: "no se encontró."
-      not_locked: "no estaba bloqueado."
+      already_confirmed: Ya estás confirmado, por favor intenta iniciar sesión.
+      confirmation: El valor no coincide con la confirmación.
+      confirmation_period_expired: necesita ser confirmado en %{period}, por favor vuelve a solicitarla.
+      expired: ha expirado, por favor vuelve a solicitarla.
+      invalid: El valor no es correcto.
+      not_found: no se encontró.
+      not_locked: no estaba bloqueado.
       not_saved:
-        one: "1 error impidió que este %{resource} fuese guardado:"
+        one: '1 error impidió que este %{resource} fuese guardado:'
         other: "%{count} errores impidieron que este %{resource} fuese guardado:"

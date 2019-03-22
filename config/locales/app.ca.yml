@@ -1,839 +1,752 @@
+---
 ca:
-  domicilio: "Domicili"
-  consentimiento: "Consentiment"
-  access_data: "Dades d'accés"
+  access_data: Dades d'accés
+  active_admin:
+    dashboard: Dashboard
+    empty: Empty
+    scopes:
+      banned: Expulsats
+      confirmed_by_sms: Telèfon confirmat
+      confirmed_mail: Email confirmat
+      created: Creats
+      deleted: Esborrats
+      has_circle: En Círculo
+      has_collaboration: Amb col·laboració econòmica
+      has_collaboration_bank_international: Amb col·laboració econòmica (banc internacional)
+      has_collaboration_bank_national: Amb col·laboració econòmica (banc nacional)
+      has_collaboration_credit_card: Amb col·laboració econòmica (targeta de crèdit)
+      no_voting_right: Sense dret a vot
+      signed_in: Van iniciar sessió
+      unconfirmed_by_sms: Telèfon sense confirmar
+      unconfirmed_mail: Email sense confirmar
+      unverified: No verificat
+      unverified_online: No verificat online
+      unverified_presentially: No verificat presencialmente
+      unverified_with_voting_right: No verificat amd dret a vot
+      verified: Verificat
+      verified_online: Verificat online
+      verified_presentially: Verificat presencialmente
+      verifying_online: Verificant online
+      verifying_presentially: Verificant presencialment
+      voting_right: Amb dret a vot
+  activerecord:
+    attributes:
+      category:
+        name: nombre
+      collaboration:
+        amount: Import mensual
+        ccc_account: Número de compte
+        ccc_dc: DC
+        ccc_entity: Entitat
+        ccc_office: Oficina
+        created_at: Creada el
+        frequency: Freqüència de pagament
+        frequency_name: Freqüència de pagament
+        iban_account: IBAN
+        iban_bic: BIC/SWIFT
+        minimal_year_old: Edat mínima requerida
+        order_id: Número d'ordre a Redsys
+        payment_type: Mètode de pagament
+        payment_type_name: Mètode de pagament
+        terms_of_service: Acord legal
+        updated_at: Actualitzada el
+        user: Usuari/ària
+      election:
+        agora_election_id: ID a AgoraVoting
+        close_message: Missatge de tancament
+        ends_at: Acaba
+        starts_at: Comença
+        title: Títol
+      microcredit:
+        account_number: Número de cuenta
+        agreement_link: Enlace al contrato
+        contact_phone: Teléfono de contacto
+        created_at: Fecha de creación
+        deleted_at: Fecha de borrado
+        ends_at: Fecha de final
+        id: Identificador
+        limits: Montos y limites por fase
+        reset_at: Fecha último cambio de fase
+        slug: Dirección página
+        starts_at: Fecha de inicio
+        total_goal: Objetivo final
+        updated_at: Fecha de última modificación
+      microcredit_loan:
+        address: Dirección
+        all: Todos
+        amount: Importe
+        confirmed_at: Fecha de confirmación
+        counted_at: Fecha de aparición en la web
+        created_at: Fecha de suscripción
+        discarded_at: Fecha de descarte
+        document_vatid: DNI o NIE
+        first_name: Nombre
+        id: Identificador
+        last_name: Apellidos
+        microcredit: Microcrédito
+        microcredits: Microcréditos
+        minimal_year_old: Edad mínima requerida
+        original_loans: Suscripción original
+        postal_code: Código postal
+        returned_at: Fecha de devolución
+        terms_of_service: Acuerdo legal
+        transferred_to: Transferido a
+        transferred_to_id: Transferido a
+        user: Usuario
+      notice:
+        body: Missatge
+        title: Títol
+      order:
+        collaboration: Col·laboració
+        created_at: Creada el
+        deleted_at: Esborrada el
+        payable_at: A cobrar el
+        payed_at: Cobrada el
+        status: Estat
+        status_name: Estat
+        updated_at: Actualitzada el
+        user: Usuari/ària
+      renewals:
+        loan_renewals: Microcréditos suscritos
+        renewal_terms: Condiciones generales de extinción del anterior microcrédito y renovación de la suscripción
+        terms_of_service: Condiciones generales de la suscripción del nuevo microcrédito
+      user:
+        address: Adreça
+        age_restriction: Declaro ser major de 16 anys
+        born_at: Data de naixement
+        captcha: Captcha
+        circle: Círculo
+        country: País
+        current_password: Contrasenya actual
+        document_type: Tipus de document
+        document_vatid: Núm. de document
+        email: Correu electrònic
+        email_confirmation: Correu electrònic (repetir)
+        first_name: Nom
+        gender_identity: Identitat de gènere
+        last_name: Cognoms
+        login: Correu electrónic o núm. de document
+        password: Contrasenya
+        password_confirmation: Contrasenya (repetir)
+        phone: Telèfon mòbil
+        postal_code: Codi postal
+        province: Provincia
+        province_town: Provincia de origen
+        remember_me: Recorda'm
+        terms_of_service: He llegit les condicions i accepto inscriure'm
+        town: Municipio
+        unconfirmed_phone: Telèfon mòbil
+        vote_town: Municipio de origen
+        wants_newsletter: Butlletí
+      user_group:
+        ends_at: Fecha final
+        has_location: Tiene territorio
+        has_space: Es un espacio
+        is_institutional: Es institucional
+        location_type: Tipo de territorio
+        name: Nombre
+        space_type: Tipo de espacio
+        starts_at: Fecha de inicio
+      verification/center:
+        address: Adreça
+        created_at: Creada el
+        latitude: Latitud
+        longitude: Longitud
+        name: Nom
+        updated_at: Actualitzada el
+      verification/slot:
+        created_at: Creada el
+        ends_at: Termina
+        starts_at: Empieza
+        updated_at: Actualizada el
+        verification_center: Centro
+    errors:
+      messages:
+        bad_spanish_phone_number: Has de posar un telèfon mòbil vàlid d'Espanya que comenci per 6 o 7
+        bad_spanish_postal_code_length: El codi postal ha de ser un nombre de 5 xifres
+        bad_spanish_postal_code_province: El codi postal no coincideix amb la província indicada
+        duplicated_phone: Ja hi ha algú amb aquest número de telèfon
+        invalid_phone: Revisa el format del teu telèfon
+      models:
+        user:
+          attributes:
+            address:
+              blank: La teva adreça no pot estar en blanc
+            age_restriction:
+              accepted: Has de declarar que ets major de 16 anys
+            born_at:
+              blank: La teva data de naixement no pot estar en blanc
+              inclusion: Has de ser més gran de 16 anys
+              not_a_date: No és una data vàlida. Comprova que el format amb el qual estàs escrivint la data sigui el correcte
+            current_password:
+              blank: Has d'indicar la teva contrasenya per validar els canvis.
+            document_type:
+              blank: El teu tipus de document no pot estar en blanc
+              inclusion: Tipus de document no vàlid
+            document_vatid:
+              blank: El teu número de document no pot estar en blanc
+              taken: Hi ha hagut un error a l'hora de desar aquesta dada. Torna-ho a provar
+            email:
+              blank: El teu correu electrònic no pot estar en blanc
+              taken: Hi ha hagut un error a l'hora de guardar aquesta dada. Torna-ho a provar
+            email_confirmation:
+              confirmation: El teu correo electrònic no coincideix amb la confirmació
+            first_name:
+              blank: El teu nom no pot estar en blanc
+            last_name:
+              blank: El teu cognom no pot estar en blanc
+            password:
+              blank: La teva contrasenya no pot estar en blanc
+              too_long: La teva contrasenya és massa llarg (128 caràcters màxim)
+              too_short: La teva contrasenya és massa curt (6 caràcters mínims)
+            password_confirmation:
+              confirmation: El teva contrasenya no coincideix amb la confirmació
+            postal_code:
+              blank: El teu codi postal no pot estar en blanc
+            province:
+              blank: La teva provincia no pot estar en blanc
+              present: ha d'estar en blanc
+            terms_of_service:
+              accepted: Has d'acceptar les condicions
+            town:
+              blank: El teu municipi no pot estar en blanc
+              present: El teu municipi ha d'estar en blanco
+    models:
+      category:
+        one: Categoría
+        other: Categorías
+      collaboration:
+        one: Col·laboració econòmica
+        other: Col·laboracions econòmiques
+      election:
+        one: Elecció
+        other: Eleccions
+      microcredit:
+        one: Microcrédito
+        other: Microcréditos
+      microcredit_loan:
+        one: Suscripción
+        other: Suscripciones
+      notice:
+        one: Avís
+        other: Avisos
+      order:
+        one: Ordre de pagament
+        other: Ordres de pagament
+      page:
+        one: Formulario
+        other: Formularios
+      report:
+        one: Informe
+        other: Informes
+      report_group:
+        one: Parte de Informe
+        other: Partes de Informe
+      spam_filter:
+        one: Filtro anti-spam
+        other: Filtros anti-spam
+      user:
+        one: Usuari/ària
+        other: Usuaris/àries
+      user_group:
+        one: Grupo de usuarios
+        other: Grupos de usuarios
+      verification/center:
+        one: Punto de Verificación
+        other: Puntos de Verificación
+      verification/slot:
+        one: Horario
+        other: Horarios
+      verifier_profile: Perfil de Verificador
+  confirmation_mailer:
+    retry_confirmation_instructions:
+      apologize: Si no ha sigut el teu cas, et demanem disculpes per aquest correu.
+      explanation: Hem detectat que no has confirmat el teu correu. Hi ha hagut diversos problemes tècnics aliens a la nostra voluntat, per això hem volgut escriure't per assegurar-nos que has rebut el correu de confirmació.
+      hello: 'Hola, %{user}:'
+      instructions: Confirma el teu correu clicant al link següent per poder seguir amb el procés de votació de Catalunya en Comú, així com per poder accedir a l'Assemblea d'aquest cap de setmana!
+  consentimiento: Consentiment
+  domicilio: Domicili
+  election:
+    close_message: Ha arribat la data límit per votar. La votació està tancada.
+  ends_at_before_starts_at: Ends at before starts at
   enumerize:
     user:
       gender_identity:
         cis_man: Home (cis)
         cis_woman: Dona (cis)
+        fluid: Gènere No-binari
         trans_man: Home (trans)
         trans_woman: Dona (trans)
-        fluid: Gènere No-binari
-  meta:
-    flatpickr_code: "cat"
-    language: "Idioma"
-    language_name: "Català"
-  confirmation_mailer:
-    retry_confirmation_instructions:
-      hello: "Hola, %{user}:"
-      explanation: >-
-        Hem detectat que no has confirmat el teu correu. Hi ha hagut diversos
-        problemes tècnics aliens a la nostra voluntat, per això hem volgut
-        escriure't per assegurar-nos que has rebut el correu de confirmació.
-      instructions: >-
-        Confirma el teu correu clicant al link següent per poder seguir amb el
-        procés de votació de Catalunya en Comú, així com per poder accedir a
-        l'Assemblea d'aquest cap de setmana!
-      apologize: >-
-        Si no ha sigut el teu cas, et demanem disculpes per aquest correu.
-  home:
-    signup_title: Inscriu-te per poder participar
-  election:
-    close_message: "Ha arribat la data límit per votar. La votació està tancada."
   errors:
-    show:
-      "404":
-        title: "Pàgina no trobada"
-        message_html: "No hem pogut trobar aquesta pàgina. Torna-ho a provar més tard o <a href='/'>prova-ho des de la pàgina principal</a>."
-      "500":
-        title: "Error en el servidor"
-        message_html: "Hi ha hagut un error en el servidor. Pots avisar-nos a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
     messages:
-      not_valid_spanish_vat: El número d'identificació fiscal no és vàlid
-      not_valid_nif: El DNI no és vàlid
       not_valid_cif: El CIF no és vàlid
       not_valid_nie: El NIE no és vàlid
-  activerecord:
-    models:
-      user:
-        one: Usuari/ària
-        other: Usuaris/àries
-      collaboration:
-        one: Col·laboració econòmica
-        other: Col·laboracions econòmiques
-      order:
-        one: Ordre de pagament
-        other: Ordres de pagament
-      election:
-        one: Elecció
-        other: Eleccions
-      notice:
-        one: Avís
-        other: Avisos
-    errors:
-      messages:
-        bad_spanish_postal_code_length: >-
-          El codi postal ha de ser un nombre de 5 xifres
-        bad_spanish_postal_code_province: >-
-          El codi postal no coincideix amb la província indicada
-        duplicated_phone: Ja hi ha algú amb aquest número de telèfon
-        invalid_phone: Revisa el format del teu telèfon
-        bad_spanish_phone_number: >-
-          Has de posar un telèfon mòbil vàlid d'Espanya que comenci per 6 o 7
-      models:
-        user:
-          attributes:
-            first_name:
-              blank: "El teu nom no pot estar en blanc"
-            last_name:
-              blank: "El teu cognom no pot estar en blanc"
-            document_type:
-              blank: "El teu tipus de document no pot estar en blanc"
-              inclusion: "Tipus de document no vàlid"
-            document_vatid:
-              blank: "El teu número de document no pot estar en blanc"
-              taken: "Hi ha hagut un error a l'hora de desar aquesta dada. Torna-ho a provar"
-            born_at:
-              blank: "La teva data de naixement no pot estar en blanc"
-              inclusion: "Has de ser més gran de 16 anys"
-              not_a_date: "No és una data vàlida. Comprova que el format amb el qual estàs escrivint la data sigui el correcte"
-            address:
-              blank: "La teva adreça no pot estar en blanc"
-            town:
-              blank: "El teu municipi no pot estar en blanc"
-              present: "El teu municipi ha d'estar en blanco"
-            postal_code:
-              blank: "El teu codi postal no pot estar en blanc"
-            province:
-              blank: "La teva provincia no pot estar en blanc"
-              present: "ha d'estar en blanc"
-            email:
-              blank: "El teu correu electrònic no pot estar en blanc"
-              taken: "Hi ha hagut un error a l'hora de guardar aquesta dada. Torna-ho a provar"
-            email_confirmation:
-              confirmation: "El teu correo electrònic no coincideix amb la confirmació"
-            password:
-              blank: "La teva contrasenya no pot estar en blanc"
-              too_short: "La teva contrasenya és massa curt (6 caràcters mínims)"
-              too_long: "La teva contrasenya és massa llarg (128 caràcters màxim)"
-            current_password:
-              blank: "Has d'indicar la teva contrasenya per validar els canvis."
-            password_confirmation:
-              confirmation: "El teva contrasenya no coincideix amb la confirmació"
-            age_restriction:
-              accepted: "Has de declarar que ets major de 16 anys"
-            terms_of_service:
-              accepted: "Has d'acceptar les condicions"
-    attributes:
-      collaboration:
-        user: "Usuari/ària"
-        created_at: "Creada el"
-        updated_at: "Actualitzada el"
-        amount: "Import mensual"
-        frequency: "Freqüència de pagament"
-        frequency_name: "Freqüència de pagament"
-        minimal_year_old: "Edat mínima requerida"
-        terms_of_service: "Acord legal"
-        order_id: "Número d'ordre a Redsys"
-        payment_type: "Mètode de pagament"
-        payment_type_name: "Mètode de pagament"
-        ccc_entity: "Entitat"
-        ccc_office: "Oficina"
-        ccc_dc: "DC"
-        ccc_account: "Número de compte"
-        iban_account: "IBAN"
-        iban_bic: "BIC/SWIFT"
-      order:
-        status: "Estat"
-        status_name: "Estat"
-        collaboration: "Col·laboració"
-        user: "Usuari/ària"
-        payable_at: "A cobrar el"
-        payed_at: "Cobrada el"
-        created_at: "Creada el"
-        deleted_at: "Esborrada el"
-        updated_at: "Actualitzada el"
-      election:
-        title: "Títol"
-        agora_election_id: "ID a AgoraVoting"
-        starts_at: "Comença"
-        ends_at: "Acaba"
-        close_message: "Missatge de tancament"
-      notice:
-        title: "Títol"
-        body: "Missatge"
-      user:
-        login: "Correu electrónic o núm. de document"
-        first_name: "Nom"
-        last_name: "Cognoms"
-        document_type: "Tipus de document"
-        document_vatid: "Núm. de document"
-        born_at: "Data de naixement"
-        gender_identity: "Identitat de gènere"
-        email: "Correu electrònic"
-        email_confirmation: "Correu electrònic (repetir)"
-        phone: "Telèfon mòbil"
-        unconfirmed_phone: "Telèfon mòbil"
-        address: "Adreça"
-        postal_code: "Codi postal"
-        password: "Contrasenya"
-        password_confirmation: "Contrasenya (repetir)"
-        remember_me: "Recorda'm"
-        wants_newsletter: 'Butlletí'
-        terms_of_service: "He llegit les condicions i accepto inscriure'm"
-        age_restriction: "Declaro ser major de 16 anys"
-        captcha: "Captcha"
-        current_password: "Contrasenya actual"
-      verification/center:
-        name: Nom
-        address: Adreça
-        latitude: Latitud
-        longitude: Longitud
-        created_at: "Creada el"
-        updated_at: "Actualitzada el"
+      not_valid_nif: El DNI no és vàlid
+      not_valid_spanish_vat: El número d'identificació fiscal no és vàlid
+      url: no es una dirección web válida (debe comenzar con http:// o https://)
+    show:
+      '404':
+        message_html: No hem pogut trobar aquesta pàgina. Torna-ho a provar més tard o <a href='/'>prova-ho des de la pàgina principal</a>.
+        title: Pàgina no trobada
+      '500':
+        message_html: Hi ha hagut un error en el servidor. Pots avisar-nos a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>
+        title: Error en el servidor
+  formtastic:
+    labels:
+      address: Adreça
+      document_vatid: DNI
+      email: Correu electrònic
+      first_name: Nom
+      last_name: Cognoms
+      loan_renewals: Microcréditos confirmados
+      postal_code: Codi postal
+      renewal_terms: Condiciones generales de extinción del microcrédito y renovación de la suscripción
+      terms_of_service: Condiciones generales de la suscripción del nuevo microcrédito
+  home:
+    signup_title: Inscriu-te per poder participar
+  issues:
+    born_at: Has d'indicar la teva data de naixement.
+    confirm_sms: Per seguretat, has de confirmar el teu telèfon.
+    location: Sisplau, verifica que les dades de la teva adreça són correctes i desa les dades.
+  meta:
+    flatpickr_code: cat
+    language: Idioma
+    language_name: Català
+    languages:
+      ca: catalán
+      es: español
+      eu: vasco
+      ga: gallego
   microcredit:
     common:
-      title: "Microcrèdits %{name}"
-      help_us: "Ajuda'ns a finançar la campanya electoral demanant un microcrèdit %{name}. Quan rebem la subvenció electoral et retornarem la teva aportació."
-      more_info: "Més informació"
-      has_finished: "La campanya de microcrèdits ha finalitzat"
-      campaign_results: "Hem aconseguit %{total}.<br/>Moltes gràcies per col·laborar amb el canvi!"
-      choose_province: "Tria una província"
-      no_province: "Cap província"
-      choose_town: "Tria un municipi"
-      amount: "Import"
-    index:
-      will_start: "La propera campanya de microcrèdits començarà ben aviat"
-      will_start_at: "Pots demanar un microcrèdit %{name} a partir de les %{hour} del dia %{date}."
-      no_campaigns: "En aquests moments no hi ha cap campanya de microcrèdits activa."
-      no_campaigns_message: "No et preocupis, t'avisarem de seguida que comenci la propera campanya."
-      success: "Objetiu aconseguit"
-      remaining: "Restant"
-      current_phase: "Fase actual:"
-      accumulated: "Acumulat:"
-      want_to_collaborate: "Vull col·laborar"
-    new_loan:
-      user_access: "Et recomanem que cliquis aquí %{link} per evitar que hagis d'introduir aquestes dades novament i per tal de consultar l'estat del teu préstec en el futur."
-      user_access_link: "accés amb el teu usuari al Portal de Participació"
-      nologin: "Continuar sense identificar-te"
-      login: "Accedir amb el teu usuari"
-      help_phone: "Si necessites ajuda contacta amb <strong>%{phone}</strong>."
-      info: "Informació"
-      has_microcredit: "Ja has demanat un microcrèdit per a aquesta campanya per un import de %{total}."
-      has_microcredits: "Ja has demanat %{count} microcrèdits per a aquesta campanya per un import total de %{total}."
-      required: "obligatori"
-      home_address: "Domicili"
-      country: "País"
-      province: "Província"
-      town: "Municipi"
-      remaining_count: "(queden %{total})"
-      over_age_message: "Declaro ser major de 18 anys."
-      terms_of_service_message: "Accepto la subscripció d'un contracte civil de préstec per l'import indicat, segons les condicions generals que s'indiquen al següent enllaç, que declaro haver llegit i estar conforme amb el seu contingut."
-      terms_of_service_link: "Condicions generals del contracte civil de préstec i política de privacitat"
-      will_receive_email: "En uns instants rebràs un correu electrònic amb tota la informació necessària per a finalitzar el procés de subscripció d'un microcrèdit. Si us plau, tingues en compte que és possible que el comptador no s'actualitzi immediatament. Gràcies per col·laborar!"
-      tweet_campaign: "Si desitges ajudar-nos a difondre aquesta campanya, <a target='_top' href='http://twitter.com/home/?status=He%20subscrit%20un%20microcr%C3%A8dit%20%{twitter_account}%20per%20finan%C3%A7ar%20la%20campanya.%20Pots%20invertir%20en%20el%20canvi%20a%20%{main_url}%20%23AmbTuSíQueEsPot'>comparteix a Twitter</a>."
-      subscribe: "Subscriure"
+      amount: Import
+      campaign_results: Hem aconseguit %{total}.<br/>Moltes gràcies per col·laborar amb el canvi!
+      choose_province: Tria una província
+      choose_town: Tria un municipi
+      confirmed: Confirmados
+      doubts: Dudas
+      empty: No detectados
+      has_finished: La campanya de microcrèdits ha finalitzat
+      help_us: Ajuda'ns a finançar la campanya electoral demanant un microcrèdit %{name}. Quan rebem la subvenció electoral et retornarem la teva aportació.
+      more_info: Més informació
+      no_province: Cap província
+      sure: Seguros
+      title: Microcrèdits %{name}
     email:
-      subject: "Confirmació microcrèdits %{name}"
-      intro: "Per acabar de formalitzar el microcrèdit és necessari que realitzis la següent transferència bancària durant les properes 24 hores amb les següents dades:"
-      recipient: "Beneficiari"
-      bank: "Banc"
-      account_number: "Número de compte"
-      concept: "Concepte de l'ingrés"
-      thanks: "Moltes gràcies per col·laborar! El canvi comença gràcies a tu."
-  issues:
-    confirm_sms: "Per seguretat, has de confirmar el teu telèfon."
-    born_at: "Has d'indicar la teva data de naixement."
-    location: "Sisplau, verifica que les dades de la teva adreça són correctes i desa les dades."
+      account_number: Número de compte
+      bank: Banc
+      concept: Concepte de l'ingrés
+      intro: 'Per acabar de formalitzar el microcrèdit és necessari que realitzis la següent transferència bancària durant les properes 24 hores amb les següents dades:'
+      recipient: Beneficiari
+      subject: Confirmació microcrèdits %{name}
+      thanks: Moltes gràcies per col·laborar! El canvi comença gràcies a tu.
+    index:
+      accumulated: 'Acumulat:'
+      current_phase: 'Fase actual:'
+      no_campaigns: En aquests moments no hi ha cap campanya de microcrèdits activa.
+      no_campaigns_message: No et preocupis, t'avisarem de seguida que comenci la propera campanya.
+      remaining: Restant
+      success: Objetiu aconseguit
+      want_to_collaborate: Vull col·laborar
+      will_start: La propera campanya de microcrèdits començarà ben aviat
+      will_start_at: Pots demanar un microcrèdit %{name} a partir de les %{hour} del dia %{date}.
+    loans_renewal:
+      none_selected: Debes elegir al menos una suscripción para renovar
+      renew: Renovar
+      renewal_success: Has renovado microcréditos por valor de %{amount} para la campaña %{campaign}. ¡Muchas gracias por colaborar con el cambio!
+      renewal_terms_link: Condiciones particulares sobre extinción de microcréditos y depósito para nueva suscripción.
+      renewal_terms_message: He leído y acepto las condiciones particulares de extinción del anterior microcrédito y la renovación de la suscripción.
+      terms_of_service_link: Condiciones generales del contrato civil de préstamo y política de privacidad del microcrédito %{name} %{campaign}
+      terms_of_service_message: He leído y acepto las condiciones generales de la suscripción del microcrédito %{name} %{campaign}.
+    new_loan:
+      country: País
+      has_microcredit: Ja has demanat un microcrèdit per a aquesta campanya per un import de %{total}.
+      has_microcredits: Ja has demanat %{count} microcrèdits per a aquesta campanya per un import total de %{total}.
+      help_phone: Si necessites ajuda contacta amb <strong>%{phone}</strong>.
+      home_address: Domicili
+      info: Informació
+      login: Accedir amb el teu usuari
+      nologin: Continuar sense identificar-te
+      over_age_message: Declaro ser major de 18 anys.
+      province: Província
+      remaining_count: "(queden %{total})"
+      required: obligatori
+      subscribe: Subscriure
+      terms_of_service_link: Condicions generals del contracte civil de préstec i política de privacitat
+      terms_of_service_message: Accepto la subscripció d'un contracte civil de préstec per l'import indicat, segons les condicions generals que s'indiquen al següent enllaç, que declaro haver llegit i estar conforme amb el seu contingut.
+      town: Municipi
+      tweet_campaign: Si desitges ajudar-nos a difondre aquesta campanya, <a target='_top' href='http://twitter.com/home/?status=He%20subscrit%20un%20microcr%C3%A8dit%20%{twitter_account}%20per%20finan%C3%A7ar%20la%20campanya.%20Pots%20invertir%20en%20el%20canvi%20a%20%{main_url}%20%23AmbTuSíQueEsPot'>comparteix a Twitter</a>.
+      user_access: Et recomanem que cliquis aquí %{link} per evitar que hagis d'introduir aquestes dades novament i per tal de consultar l'estat del teu préstec en el futur.
+      user_access_link: accés amb el teu usuari al Portal de Participació
+      will_receive_email: En uns instants rebràs un correu electrònic amb tota la informació necessària per a finalitzar el procés de subscripció d'un microcrèdit. Si us plau, tingues en compte que és possible que el comptador no s'actualitzi immediatament. Gràcies per col·laborar!
+  online_verifications:
+    accept:
+      success: Persona usuària verificada correctament
+    add_another_document: Afegir-hi un altre document
+    admin: Gestor de verificacions digitals
+    index:
+      accept_description: 'Confirmes la veracitat de la persona usuària i la validesa dels documents que hi ha carregat. Els vots que hagi emès o emeti en el futur seran considerats vàlids.
+
+'
+      accept_title: Acceptar (botó verd)
+      get_started: Començar
+      no_pending_users: 'Hores d''ara no hi ha persones usuàries pendents de verificar.
+
+'
+      reject_description: 'Assenyales que es tracta d''una sol·licitud fraudulenta. La persona usuària serà expulsada i no podrà accedir més a la plataforma de participació.
+
+'
+      reject_title: Expulsar (botó vermell)
+      report_description: 'Si la sol·licitud és vàlida però està incompleta. Per exemple, si falten documents, les fotografies estan borroses i no permeten llegir les dades, etcètera. Aquesta opció permet assenyalar els problemes detectats entre diverses opcions predefinides i envia un correu electrònic a la persona usuària informant-la dels problemes i de com solucionar-los mitjançant la càrrega de nous documents. Es recomana complementar l''ús d''aquesta opció amb una trucada telefònica directa per informar del cas. Els temps són molt ajustats i no volem que ningú no es quedi sense votar perquè no va poder llegir un correu. L''ús d''aquest botó queda registrat en la sol·licitud perquè qui ho verifiqui pugui comprovar fàcilment si la persona usuària va solucionar els problemes originals.
+
+'
+      report_title: Assenyalar un problema (botó taronja)
+      title: Interfície de Verificació Digital
+      welcome: 'Et donem la benvinguda a la interfície de verificació. A cada pantalla podràs veure les dades d''una persona usuària que ha iniciat el procés de verificació digital, així com els documents que ha carregat. Les possibles accions que pots prendre després d''analitzar la sol·licitud són les següents.
+
+'
+    label:
+      invalid_id: 'El document d''identitat que has adjuntat no és vàlid. Ha de ser DNI, NIE o passaport.
+
+'
+      non_local_id_with_invalid_residence_proof: 'El document d''identitat que has adjuntat és de fora de Catalunya i la prova de residència que s''inclou no és vàlida. Ha de ser un rebut d''aigua, llum o gas.
+
+'
+      non_local_id_with_missing_residence_proof: 'El document d''identitat que has adjuntat és de fora de Catalunya i no has inclòs un document extra amb una prova de residència a Catalunya mitjançant una factura recent de subministrament bàsic.
+
+'
+      non_local_id_with_outdated_residence_proof: 'El document d''identitat que has adjuntat és de fora de Catalunya i la prova de residència que s''inclou no és recent. Ha de ser un rebut dels últims tres mesos.
+
+'
+      non_local_id_with_unmatched_residence_proof: 'El document d''identitat que has adjuntat és de fora de Catalunya i la prova de residència que s''inclou no està a nom del sol·licitant.
+
+'
+      non_local_id_with_unverifiable_residence_proof: 'El document d''identitat que has adjuntat és de fora de Catalunya i la prova de residència que s''inclou no es pot verificar. A la foto s''ha de poder distingir clarament la data, el tipus i titular del rebut. Comprova que no estigui borrosa.
+
+'
+      non_visible_id: "Has adjuntat només una de les cares del document d'identitat,  necessitem que adjuntis les dues \n"
+      unmatched_identity: 'El document d''identitat que has adjuntat no coincideix amb la identitat del sol·licitant. Comprova que la persona registrada és la mateixa que el titular del document que envies.
+
+'
+      unverifiable_id: 'El document d''identitat que has adjuntat no es pot verificar. A la foto el teu nom s''ha de poder distingir clarament. Comprova que no estigui borrosa.
+
+'
+    mailer:
+      introduction: 'Hola, hem revisat la teva sol·licitud de verificació digital i hem detectat els següents problemes amb els documents que hi has carregat.
+
+'
+      subject: Revisa la teva sol·licitud de verificació digital en Catalunya en Comú
+      suggested_action: 'Si us plau, clica el següent enllaç per carregar els documents corregits. D''aquesta manera podrem verificar la teva identitat i podràs votar en les properes consultes.
+
+'
+      suggested_action_text_only: 'Si us plau, visita la següent adreça url per carregar els documents corregits. D''aquesta manera podrem verificar la teva identitat i podràs votar en les properes consultes.
+
+'
+    max_size: 'Mida màxima del documents 10 MB. Formats: JPG, PNG, PDF'
+    menu_link: Verifica't aquí
+    reject:
+      success: Persona usuària expulsada correctament
+    remove_document: Eliminar document
+    report:
+      success: Sol·licitud actualitzada correctament
+    report_modal:
+      button: Informar la persona usuària
+      title: Assenyalar un problema amb la sol·licitud de %{name}
+    reupload_documents: Selecciona i envia els documents corregits
+    show:
+      accept: Acceptar
+      change: Canviar
+      pending_counter:
+        one: "%{count} verificació pendent"
+        other: "%{count} verificacions pendents"
+      reject: Expulsar
+      report: Assenyalar un problema
+      skip: Següent
+      title: Verificació digital
+    user_uploaded_images: "%{name} va carregar les següents imatges"
+    user_uploaded_images_self: Has carregat les següents imatges"
+    user_uploaded_pdfs: "%{name} va carregar els següents PDF's"
+    user_uploaded_pdfs_self: Has carregat els següents PDF's
+    verifier_reported: "%{name} va informar dels següents problemes"
+    verifier_reported_self: Es van informar dels següents problemes
+    you_are_done: 'No resten persones usuàries pendents de verificació. Bona feina!
+
+'
+  page:
+    faq:
+      faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. Què em cal per accedir a participa.catalunyaencomu.cat?</a> <div class="cd-faq-content"> <p> Es necessari residir a la ciutat de Catalunya. </p> <p>&nbsp;&nbsp;&nbsp;&nbsp; 1. <strong> DNI / NIF / Passaport </strong>. Per seguretat, ha de ser únic i no es podrà canviar. </p> <p>&nbsp;&nbsp;&nbsp;&nbsp; 2. <strong> Correu electrònic </strong>: Per seguretat, ha de ser únic. </p> </div> <!-- cd-faq-content --> </li> <li> <a class="cd-faq-trigger" href="#0">2. Què faig si he perdut la contrassenya?</a> <div class="cd-faq-content"> <p> Si no recordes la contrasenya, fes clic <a href="https://participa.catalunyaencomu.cat/ca/users/password/new" target="_blank" title="Has oblidat la teva contrasenya?"> Aquí </a> per sol·licitar-ne una de nova. </p> </div> <!-- cd-faq-content --></li>'
+      faq2_html: "<li><a class='cd-faq-trigger' href='#0'>3. No arecordo del correu electrònc. Què faig?</a> <div class='cd-faq-content'> <p> Fes servir el DNI o passaport per entrar a la plataforma. Un cop a dins podràs canviar el teu correu electrònic. </ P> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>4. M'han bloquejat el compte d'accés a la plataforma. Què puc fer?</a> <div class='cd-faq-content'> <p> Per seguretat, bloquegem el compte durant una hora després de 20 temptatives fallides d'accés. Un cop passat aquest temps, la persona usuària és desbloquejada automàticament. </ P> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>5. Continuo sense poder accedir al portal de participació. Com puc comunicar-me amb l'equip de suport?</a> <div class='cd-faq-content'> <p> Si tens algun problema pots comunicar-te amb nosaltres a <a href='mailto:contacte@catalunyaencomu.cat'> contacte@catalunyaencomu.cat </a> indicant si escau les dades següents: </ p> <p> Nom i cognoms: <br /> Correu electrònic: <br /> DNI: <br /> Descripció del problema: </ p> </div> <!-- cd-faq-content --></li>"
+      faq3_html: "<li><a class='cd-faq-trigger' href='#0'>6. Correu  electrònic, número de document o contrasenya invàlida.</a> <div class='cd-faq-content'> <p> Si no recordes el correu electrònic que vas fer servir per inscriure't, prova-ho amb el teu DNI. </p> <p> Si no recordes la contrasenyaa, fes clic <a href='https://participa.catalunyaencomu.cat/es/users/password/new' target='_blank' title='Has olblidat la teva contrasenya? '> Aquí </a> per sol·licitar-ne una de nova. </p> <p> Si no reps la teva contrasenya, mira l'error núm. 2, que apareix més avall.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>7. No m'arriben correus a cap dels meus comptes. Em sembla que m'he equivocat a l'hora d'escriure el meu correu electrònic.  </a> <div class='cd-faq-content'> <p><strong>Causa:</strong><br />Potser vas escriure malament el teu correu durant el procés de registre o el registre ha estat incomplet.</p> <p> <strong> Solució:</strong><br />Escriu un correu a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>indica-hi les teves dades personals i adjunta-hi una fotocòpia del teu DNI o passaport per donar-te de baixa i així podràs tornar a inscriure-t'hi.</p> </div> <!-- cd-faq-content --> </li>"
+      faq4_html: "<li> <a class='cd-faq-trigger' href='#0'>8. Quins mètodes de verificació s'han habilitat?</a> <div class='cd-faq-content'> <p>Hem habilitat <a href='%{verifications_url}'>punts presencials per a la verificació</a>.</p> </div> <!-- cd-faq-content --> </li>"
+      faq5_html: "<li><a class='cd-faq-trigger' href='#0'>9. Com puc votar?</a> <div class='cd-faq-content'> <p>Amb tres passos molt senzills:<br/> Amb tres passos molt senzills: 1r.  Entra al web participa.catalunyaencomu.cat, accedeix al portal de participació i introdueix el DNI / correu electrònic i la contrasenya.  Si no estàs inscrit/a, fes-ho aquí: https://participa.catalunyaencomu.cat. És molt senzill. 2n.  Accedeix a la cabina de votació: un cop hagis entrat a l'aplicació  de  Catalunya En Comú, veuràs un botó per votar. Fes-hi clic i se’t redirigirà a la cabina de votació, 3r. Vota: respon la pregunta de la votació. </p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>10. Qui pot votar?</a> <div class='cd-faq-content'> <p>Qualsevol  persona inscrita a Catalunya En Comú a través de  http://participa.catalunyaencomu.cat que tingui més de 16 anys i visqui a  Catalunya i hagi realitzat la verificació presencial.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>11. Què necessito per votar?</a> <div class='cd-faq-content'> <p>Necessites un ordinador o qualsevol altre dispositiu (android / iphone) amb  accés a la xarxa per accedir a <a href='https://participa.catalunyaencomu.cat' target='_blank' >https://participa.catalunyaencomu.cat</a> i estar inscrit/a a <a href='https://participa.catalunyaencomu.cat' target='_blank'>https://participa.catalunyaencomu.cat</a>.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>12. Puc votar sense tenir ordinador?</a> <div class='cd-faq-content'> <p>Sí. Catalunya En Comú ha habilitat diversos punts de votació digital assistida </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>13. Si no tinc un dispositiu mòbil (telèfon intel•ligent/tàblet), puc votar?</a> <div class='cd-faq-content'> <p>Sí, pots votar també des d'un ordinador amb accés a Internet a participa.catalunyaencomu.cat. El mòbil només cal per registrar-se.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>14. Puc canviar el vot durant el període de votació?</a> <div class='cd-faq-content'> <p>No, un cop hagis emès el teu vot ja no podràs canviar-lo.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>15. Puc votar en blanc o abstenir-me?</a> <div class='cd-faq-content'> <p>Sí. En funció del tipus de pregunta, podràs votar en blanc o abstenir-te'n.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>16. Quines mesures de seguretat s'han implementat?</a> <div class='cd-faq-content'> <p>L'esquema de seguretat Agora Voting està basat en un verifiable mixnet amb xifrat de llindar El-Gamal de clau pública. La implementació la proporciona la llibreria Verificatum.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>17. En quines altres votacions s'ha fet servir Agora Voting?</a> <div class='cd-faq-content'> <p>Entre altres, Agora Voting s'ha utilitzat per fer les primàries europees i els consells municipals i autonòmics de Podem, en dues votacions de la iniciativa de Congrés Transparent i en les primàries de la Confederació Pirata.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>18. Com puc comprovar que el vot s’ha enregistrat correctament?</a> <div class='cd-faq-content'> <p>Amb el localitzador del vot que el sistema mostra després de votar a la cabina de votació, que has d'anotar. Un cop emès el vot, es podrà comprovar si el procés s'ha completat amb èxit. Aquesta comprovació no només serveix per verificar que el vot s’ha enregistrat, sinó que també verifica que s’ha comptabilitzat en el còmput (es pot veure dues preguntes més avall).</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>19. He buscat el meu vot tal com diu la pregunta anterior i no surt llistat. Per què?</a> <div class='cd-faq-content'> <p>Segurament has copiat malament el localitzador del vot. Sisplau, torna-ho a comprovar.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>20. Com puc comprovar que el còmput de la votació és correcte?</a> <div class='cd-faq-content'> <p>Agora Voting és un sistema verificable. Això vol dir que qualsevol pot revisar el còmput de la votació a partir dels localitzadors dels vots i les demostracions matemàtiques publicades després del còmput. Agora Voting proporciona un procediment de verificació que, com la resta del sistema, és públicament auditable. No obstant això, la verificació es basa en tècniques criptogràfiques que, tot i que estan ben establertes en l'àmbit acadèmic, no són fàcils d'entendre.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>21. És possible esbrinar el contingut del vot? Com puc saber que no es revelarà?</a> <div class='cd-faq-content'> <p>No, ni els administradors del sistema poden esbrinar-ho. Només és possible revelar el contingut d'un vot si totes les autoritats es posen d’acord per fer-ho (o si totes són atacades amb èxit, com es pot veure més avall). El secret del vot és segur.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>22. Quines són les autoritats de la votació?</a> <div class='cd-faq-content'> <p>Són dues: OpenKratio i Agora Voting. Pots veure més informació sobre les autoritats de la votació en aquests links: <a href='http://openkratio.org/' target='_blank'>http://openkratio.org/</a> i <a href='https://agoravoting.com/' target='_blank'></a>https://agoravoting.com/.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>23. Com s'assegura que cada persona vota una sola vegada i que només voten les persones amb dret a fer-ho?</a> <div class='cd-faq-content'> <p>Gràcies al sistema d'autenticació al portal de participació de Catalunya En Comú s'assegura que només aquelles persones que figurin en el cens de Catalunya En Comú poden votar i es controla que només hi hagi un vot per persona.</p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>24. On puc trobar més informació tècnica sobre la votació?</a> <div class='cd-faq-content'> <p>Hem creat un document amb informació més tècnica en anglès, el technical overview. </p> </div> <!-- cd-faq-content --> </li> <li> <a class='cd-faq-trigger' href='#0'>25. Tinc més preguntes.</a> <div class='cd-faq-content'> <p>En aquest cas, pots contactar amb nosaltres i intentarem resoldre els teus dubtes, preguntes o comentaris enviant un mail a contacte@catalunyaencomu.cat.</p> </div> <!-- cd-faq-content --></li>"
+      general: GENERAL
+      inscription: INSCRIPCIÓ
+      inscription_errors: ERRORS D'INSCRIPCIÓ
+      title: Preguntes Freqüents - Votacions
+      verification: VERIFICACIÓ
+      voting: VOTACIÓ
   podemos:
-    error:
-      title: "No s'han pogut actualitzar les dades"
-      description: "Hi ha hagut els errors següents:"
     collaboration:
+      are_you_sure: Estàs segur que vols donar de baixa aquesta col·laboració?
       cancel: Cancel·lar
-      confirm_ok: Confirmar
-      cancel_message: "Estàs segur que no vols confirmar aquesta col·laboració?"
-      confirm:  Revisa i confirma totes les dades per activar la col·laboració.
-      errors:
-        iban: "Marcada com a alerta perquè el número de compte indica un codi d'entitat invàlid o no trobat en la base de dades de BICs espanyols."
-        passport: "No pots col·laborar si no disposes de DNI o NIE."
-        age_over: "No pots col·laborar si ets menor d'edat."
-        valid: "Ccompte corrent invàlid. Dígit de control erroni. Sisplau revisa'l."
-      title: "Col·labora econòmicament"
-      p1: "BComú és una plataforma ciutadana que, per garantir la seva autonomia financera, necessita d'una petita aportació econòmica de cadascú de nosaltres ajudant així a garantir la independència i coherència del projecte. Fem-ho possible entre tots i totes! Apunta't a les donacions periódiques de BComú!"
-      ok:
-        p1: "La teva donació s'ha donat d'alta correctament."
-        p2: "Gràcies per col·laborar amb Catalunya En Comú."
-      ko:
-        title: Hi ha hagut un error amb la teva col·laboració.
-        contact: "Sisplau intenta realitzar el pagament un altre cop. Si tornes a tenir problemes contacta tresoreria@bcnencomu.cat "
-      passport_message_html: "<p>Segons la nostra base de dades estàs inscrit amb un nombre de passaport. Atès que la Llei Orgànica 8/2007, de 4 de juliol, sobre finançament dels  partits polítics, exigeix la identificació fiscal dels donants, per poder col·laborar econòmicament amb Catalunya En Comú i poder emplenar el formulari d'alta com a col·laborador és imprescindible disposar de DNI o NIE.</p><p>Si ets espanyol o estranger amb NIE envia'ns una còpia del teu DNI o document on consti el teu nombre d'identificació d'estranger a l'adreça xxxxx@xxxx.xxx perquè puguem actualitzar les dades de la teva inscripció.</p>"
-      over: Declaro ser major de 18 anys.
-      total_amount: Aportació económica
-      next: "Ja tens una col·laboració. És la següent:"
-      remove: Dóna de baixa la teva col·laboració
-      save: Desa canvis
-      are_you_sure: "Estàs segur que vols donar de baixa aquesta col·laboració?"
-      change_title: "Canvis en la col·laboració"
+      cancel_message: Estàs segur que no vols confirmar aquesta col·laboració?
       change: Si vols canviar de mètode de pagament de la teva col·laboració has de cancel·lar la teva col·laboració actual i crear-ne una de nova.
-      freq_table:
-        title: Colaboraciones
-        date: Data estimada de pagament
-        amount: Import
-        total: Total
-      terms_of_service:
-        accept: Accepto les condicions generals.
-        title: "Condicions Generals"
-        p1_title: "Relació entre Catalunya En Comú i el col·laborador"
-        p1: "La realització de donacions econòmiques no implica la vinculació del col·laborador amb Catalunya En Comú, ni li confereix la condició legal de soci, afiliat o simpatitzant, ni li atorga drets davant el partit, ni queda obligat pels seus estatuts i resta de normes internes. D’acord amb el que s'estableix a la Llei orgànica 8/2007, de 4 de juliol, de finançament de partits polítics, el vostre donatiu tindrà la consideració de ”donació privada”, diferent de les quotes de socis, afiliats o simpatitzants.
-
-Al confirmar aquest formulari accepteu que:
-
-aquesta donació no es realitza des d’organismes, entitats o empreses públiques.
-
-Aquesta donació no es realitza des d’empreses privades que tenen contractes, presten serveis o realitzen obres per a les Administracions Públiques, organismes públics o empreses de capital majoritàriament públic.
-
-Aquesta donació no es fa des de governs, organismes, entitats o empreses públiques estrangeres, o d’empreses relacionades directament o indirecta amb aquests.
-
-La quantitat que vós doneu no us ha sigut lliurada per part d’alguna persona o entitat amb l’objectiu que aquesta donació es pugui fer."
-        p2_title: "Protecció de dades de caràcter personal"
-        p2: "Catalunya En Comú, d’acord amb la Llei orgànica 15/1999, de protecció de dades de caràcter personal, us informa que les vostres dades seran incorporades al fitxer “donacions”, del qual és responsable Catalunya En Comú, que les emprarà per tramitar la vostra col·laboració, gestionar els càrrecs bancaris i complir amb la normativa de finançament de partits polítics, així com amb finalitats estadístiques i fer-vos arribar periòdicament informació de les seves activitats. Concediu el consentiment exprés perquè aquestes dades passin a formar part de Catalunya En Comú. Per exercir els vostres drets d’accés, rectificació, cancel·lació o oposició, com ara cancel·lar la subscripció, modificar les dades bancàries o l’import i freqüència de la vostra donació, podeu enviar un correu electrònic a tresoreria@bcnencomu.cat, indicant la referència “modificació de la donació” o per correu postal a la seu social sítia al carrer Castillejos, 233, baixos, de Catalunya, adjuntant còpia del vostre document nacional d’identitat."
-        p3_title: "Consentiment de l'ordre de domiciliació"
-        p3: "Autoritzeu a Catalunya En Comú i a la vostra entitat bancària a efectuar les operacions de cobrament mitjançant càrrecs al compte bancari que ens heu facilitat, per l’import i amb la freqüència que ens heu indicat al formulari. Els càrrecs domiciliats es realitzaran entre els dies 10 i 15 de cada mes."
+      change_title: Canvis en la col·laboració
+      confirm: Revisa i confirma totes les dades per activar la col·laboració.
+      confirm_ok: Confirmar
+      errors:
+        age_over: No pots col·laborar si ets menor d'edat.
+        iban: Marcada com a alerta perquè el número de compte indica un codi d'entitat invàlid o no trobat en la base de dades de BICs espanyols.
+        passport: No pots col·laborar si no disposes de DNI o NIE.
+        valid: Ccompte corrent invàlid. Dígit de control erroni. Sisplau revisa'l.
       freq:
-        first: "Mensual"
-        second: "Trimestral"
-        third: "Annual"
+        first: Mensual
+        second: Trimestral
+        third: Annual
+      freq_table:
+        amount: Import
+        date: Data estimada de pagament
+        title: Colaboraciones
+        total: Total
+      ko:
+        contact: 'Sisplau intenta realitzar el pagament un altre cop. Si tornes a tenir problemes contacta tresoreria@bcnencomu.cat '
+        title: Hi ha hagut un error amb la teva col·laboració.
+      next: 'Ja tens una col·laboració. És la següent:'
+      ok:
+        p1: La teva donació s'ha donat d'alta correctament.
+        p2: Gràcies per col·laborar amb Catalunya En Comú.
       order:
-        cc: "Suscripción con Tarjeta de Crédito/Débito"
+        cc: Suscripción con Tarjeta de Crédito/Débito
         ccc: Domiciliació amb compte bancari (format CCC)
         iban: Domiciliació amb compte bancari (format IBAN)
+      over: Declaro ser major de 18 anys.
+      p1: BComú és una plataforma ciutadana que, per garantir la seva autonomia financera, necessita d'una petita aportació econòmica de cadascú de nosaltres ajudant així a garantir la independència i coherència del projecte. Fem-ho possible entre tots i totes! Apunta't a les donacions periódiques de BComú!
+      passport_message_html: "<p>Segons la nostra base de dades estàs inscrit amb un nombre de passaport. Atès que la Llei Orgànica 8/2007, de 4 de juliol, sobre finançament dels  partits polítics, exigeix la identificació fiscal dels donants, per poder col·laborar econòmicament amb Catalunya En Comú i poder emplenar el formulari d'alta com a col·laborador és imprescindible disposar de DNI o NIE.</p><p>Si ets espanyol o estranger amb NIE envia'ns una còpia del teu DNI o document on consti el teu nombre d'identificació d'estranger a l'adreça xxxxx@xxxx.xxx perquè puguem actualitzar les dades de la teva inscripció.</p>"
+      remove: Dóna de baixa la teva col·laboració
+      save: Desa canvis
       steps:
         first: Quant i com vols col·laborar
         second: Confirmació
         third: Resultat
+      terms_of_service:
+        accept: Accepto les condicions generals.
+        p1: |-
+          La realització de donacions econòmiques no implica la vinculació del col·laborador amb Catalunya En Comú, ni li confereix la condició legal de soci, afiliat o simpatitzant, ni li atorga drets davant el partit, ni queda obligat pels seus estatuts i resta de normes internes. D’acord amb el que s'estableix a la Llei orgànica 8/2007, de 4 de juliol, de finançament de partits polítics, el vostre donatiu tindrà la consideració de ”donació privada”, diferent de les quotes de socis, afiliats o simpatitzants.
+          Al confirmar aquest formulari accepteu que:
+          aquesta donació no es realitza des d’organismes, entitats o empreses públiques.
+          Aquesta donació no es realitza des d’empreses privades que tenen contractes, presten serveis o realitzen obres per a les Administracions Públiques, organismes públics o empreses de capital majoritàriament públic.
+          Aquesta donació no es fa des de governs, organismes, entitats o empreses públiques estrangeres, o d’empreses relacionades directament o indirecta amb aquests.
+          La quantitat que vós doneu no us ha sigut lliurada per part d’alguna persona o entitat amb l’objectiu que aquesta donació es pugui fer.
+        p1_title: Relació entre Catalunya En Comú i el col·laborador
+        p2: Catalunya En Comú, d’acord amb la Llei orgànica 15/1999, de protecció de dades de caràcter personal, us informa que les vostres dades seran incorporades al fitxer “donacions”, del qual és responsable Catalunya En Comú, que les emprarà per tramitar la vostra col·laboració, gestionar els càrrecs bancaris i complir amb la normativa de finançament de partits polítics, així com amb finalitats estadístiques i fer-vos arribar periòdicament informació de les seves activitats. Concediu el consentiment exprés perquè aquestes dades passin a formar part de Catalunya En Comú. Per exercir els vostres drets d’accés, rectificació, cancel·lació o oposició, com ara cancel·lar la subscripció, modificar les dades bancàries o l’import i freqüència de la vostra donació, podeu enviar un correu electrònic a tresoreria@bcnencomu.cat, indicant la referència “modificació de la donació” o per correu postal a la seu social sítia al carrer Castillejos, 233, baixos, de Catalunya, adjuntant còpia del vostre document nacional d’identitat.
+        p2_title: Protecció de dades de caràcter personal
+        p3: Autoritzeu a Catalunya En Comú i a la vostra entitat bancària a efectuar les operacions de cobrament mitjançant càrrecs al compte bancari que ens heu facilitat, per l’import i amb la freqüència que ens heu indicat al formulari. Els càrrecs domiciliats es realitzaran entre els dies 10 i 15 de cada mes.
+        p3_title: Consentiment de l'ordre de domiciliació
+        title: Condicions Generals
+      title: Col·labora econòmicament
+      total_amount: Aportació económica
+    election:
+      close_message: Ha llegado la fecha límite para votar. La votación está cerrada.
+      no_location: No hay votaciones en tu municipio.
+    error:
+      description: 'Hi ha hagut els errors següents:'
+      title: No s'han pogut actualitzar les dades
   recaptcha:
     errors:
-      incorrect-captcha-sol: "Hi ha hagut un error amb el captcha, sisplau, completa'l de nou"
-      verification_failed: "Hi ha hagut un error amb el captcha, sisplau, completa'l de nou"
-      recaptcha_unreachable: "Hi ha hagut un error amb el captcha, sisplau, completa'l de nou"
-  user:
-    personal_data: "Dades personals"
-    change_email: "Canvia correu electrònic"
-    change_email_explain: "Si canvies el teu correu electrònic t'enviarem un altre correu perquè el confirmis."
-    change_phone: "Canvia el telèfon mòbil"
-    change_phone_explain_html: "T'has validat amb el telèfon mòbil <b>%{unprefixed_phone}</b> de <b>%{phone_country}</b> (prefix internacional %{phone_prefix})."
-    change_documents: "Els meus documents"
-    change_documents_explain: >
-      Aquesta és la llista d'imatges que ens has facilitat per al procés de
-      verificació digital. Si hi ha errors a la teva sol·licitud inicial, o et
-      manca qualsevol document, aquí pots carregar les imatges que necessitis.
-    change_password: "Canvia contrasenya"
-    cancel_account: "Dóna'm de baixa"
-    cancel_account_explain_html: "<p>Si cliques \"Dóna'm de baixa\" deixaràs de ser membre de Catalunya En Comú i cancel·larem les teves dades personals conforme a allò convingut a la Llei Orgànica 15/1999 de Protecció de Dades de Caràcter Personal.</p>
-<p> A partir d'aquest moment el teu compte d'accés al portal de participació de Catalunya En Comú quedarà eliminat.</p>
-<p>
-Conforme a allò convingut a l'article 16.3 de la Llei Orgànica de Protecció de Dades, la cancel•lació donarà lloc al bloqueig de les dades, es conservaran únicament a disposició de les Administracions Públiques, Jutges i Tribunals, per a l'atenció de les possibles responsabilitats nascudes del tractament, durant el termini de prescripció d'aquestes possibles responsabilitats. Complert el citat termini es procedirà a la supressió de les dades.
-</p>
-"
-  active_admin:
-    scopes:
-      created: "Creats"
-      deleted: "Esborrats"
-      banned: "Expulsats"
-      unconfirmed_mail: "Email sense confirmar"
-      confirmed_mail: "Email confirmat"
-      unconfirmed_by_sms: "Telèfon sense confirmar"
-      confirmed_by_sms: "Telèfon confirmat"
-      verified_presentially: "Verificat presencialmente"
-      unverified_presentially: "No verificat presencialmente"
-      verified_online: "Verificat online"
-      unverified_online: "No verificat online"
-      verified: "Verificat"
-      unverified: "No verificat"
-      voting_right: "Amb dret a vot"
-      no_voting_right: "Sense dret a vot"
-      unverified_with_voting_right: "No verificat amd dret a vot"
-      verifying_online: "Verificant online"
-      verifying_presentially: "Verificant presencialment"
-      signed_in: "Van iniciar sessió"
-      has_collaboration: "Amb col·laboració econòmica"
-      has_collaboration_credit_card: "Amb col·laboració econòmica (targeta de crèdit)"
-      has_collaboration_bank_national: "Amb col·laboració econòmica (banc nacional)"
-      has_collaboration_bank_international: "Amb col·laboració econòmica (banc internacional)"
-      has_circle:
-  formtastic:
-    labels:
-      first_name: "Nom"
-      last_name: "Cognoms"
-      document_vatid: "DNI"
-      email: "Correu electrònic"
-      address: "Adreça"
-      postal_code: "Codi postal"
-  simple_captcha:
-    placeholder: "text"
-    label: "Introdueix el text que es veu a la imatge"
-    refresh_button_text: "Regenerar"
-    message:
-      default: "El text introductori no es correspon amb el de la imatge"
-  sms_validator:
-    documents:
-      local_id: "Per la verificació necessites enviar-nos un DNI o NIE amb domicili a Catalunya."
-      foreign_id: "Alternativament, pots enviar-nos un DNI o NIE amb domicili de fora de Catalunya (o Passaport, o Permís de Conduir) i un certificat d'empadronament o rebut d'un subministrament bàsic (aigua, llum o gas) que no tingui més de tres mesos d'antiguitat i en el qual aparegui la identitat de la persona i un domicili a Catalunya."
-      foreign_cera_id: "O també un DNI o NIE amb domicili de fora de Catalunya i còpia del certificat d’inscripció en el CERA (Cens d’Electors Residents Absents) en el qual figuri un municipi d’inscripció a Catalunya."
-      invalid: Hi ha hagut un error en carregar els documents.
-      updated: Documents carregats correctament. Els revisarem aviat.
-    steps:
-      step1: "Envia'ns la documentació"
-      step2: "Introdueix el teu número de telèfon mòbil"
-      step3: "Introdueix el codi rebut per SMS"
-    phone:
-      p1: "Introdueix el teu nou número de telèfon mòbil."
-      p2: "Rebràs el codi de verificació per validar el nou número en uns segons."
-      p3: "Si ja has participat en alguna votació de Catalunya En Comú, t'enviarem el codi per correu electrònic."
-      p5: "Introdueix el codi que hagis rebut per SMS per confirmar-lo"
-      valid: "T'hem verificat correctament. Si els teus documents són correctes, tindràs l'autorització per votar."
-      invalid: "El codi que has posat no correspon amb el que t'hem enviar per SMS."
-      token: Codi SMS
-      button: "Comprova"
-      information_html: "Has d'ingressar un telèfon mòbil vàlid per al país on et trobes, sense prefix internacional, només amb números (sense espais ni guions). Segons el formulari que has emplenat et trobes a <b>%{country}</b> (prefix internacional +%{prefix})."
-      help_html: "Si tens qualsevol problema escriu a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>"
-  static:
-    privacy: Política de privacitat
-    legal: Avís legal
-    cookies: Política de cookies
+      incorrect-captcha-sol: Hi ha hagut un error amb el captcha, sisplau, completa'l de nou
+      recaptcha_unreachable: Hi ha hagut un error amb el captcha, sisplau, completa'l de nou
+      verification_failed: Hi ha hagut un error amb el captcha, sisplau, completa'l de nou
   registration:
     catalonia_resident: Resideixo a Catalunya
     choose_province: Tria una província
     choose_town: Tria un municipi
     country: País
-    province: Província
-    town: Municipi
-    verify_on_update: Quan editeu les dades de domicili, s'ha de realitzar novament el procés de verificació.
     inscription_policy: Condicions d'inscripció
     legends:
-      inscription_html: "Inscriure's a En Comú et dóna dret a participar en totes les consultes i processos participatius que s'endeguin en aquesta aplicació. No representa cap mena d'obligació econòmica encara que pots col·laborar en aquest sentit si ho desitges. En acceptar-hi, rebràs tots els nostres butlletins informatius.<br><br> EN COMÚ amb personalitat jurídica pròpia, d'acord amb la Llei Orgànica 6/2002, de 27 de juny, de Partits Polítics, i inscrita en el Registre de Partits Polítics amb data de l'1 d'abril del 2015, Full 113, Volum IX. Domicili social: C. Or, 44 3º-2ª (CP 08012 BARCELONA). Telèfon: 935.321.796. "
+      cant_modify: No pots modificar-lo
+      cis_definition: persona que s'identifica amb el gènere que li va ser assignat al néixer
+      cis_key: CIS (cisgènere)
+      fluid_definition: persona que no s'identifica amb cap dels dos gèneres binaris establerts de forma única
+      fluid_key: Gènere No-binari
+      inscription_html: 'Inscriure''s a En Comú et dóna dret a participar en totes les consultes i processos participatius que s''endeguin en aquesta aplicació. No representa cap mena d''obligació econòmica encara que pots col·laborar en aquest sentit si ho desitges. En acceptar-hi, rebràs tots els nostres butlletins informatius.<br><br> EN COMÚ amb personalitat jurídica pròpia, d''acord amb la Llei Orgànica 6/2002, de 27 de juny, de Partits Polítics, i inscrita en el Registre de Partits Polítics amb data de l''1 d''abril del 2015, Full 113, Volum IX. Domicili social: C. Or, 44 3º-2ª (CP 08012 BARCELONA). Telèfon: 935.321.796. '
       legal0: Mira las condicions d'inscripció
       legal1: Mira la política de privacitat
       legal2: Mira avís legal
       legal3: Mira la política de galetes
       password_limits: Mínim 6 caràcters
-      cant_modify: No pots modificar-lo
-      cis_key: CIS (cisgènere)
-      cis_definition: persona que s'identifica amb el gènere que li va ser assignat al néixer
-      trans_key: TRANS (transgènere)
       trans_definition: persona que no s'identifica amb el gènere que li va ser assignat al néixer i per tant viu en una altra identitat de gènere
-      fluid_key: Gènere No-binari
-      fluid_definition: persona que no s'identifica amb cap dels dos gèneres binaris establerts de forma única
+      trans_key: TRANS (transgènere)
     message:
-      dni: "El format ha de ser 8 xifres i una lletra, sense guions ni espais."
-      nie: "El format ha de ser una lletra, 7 xifres i una lletra, sense guions ni espais."
-      passport: "El format ha de ser sense guions ni espais."
-      welcome_html: "
-        <p>
-          Apunta't al formulari per rebre informació i per poder participar
-          en la construcció del nou espai.
-        </p>
-
-        <p>
-          Per poder votar en les properes votacions t'has d'enregistrar
-          omplint aquest formulari. T'arribarà un correu per validar-te. Si no
-          reps el correu posa't en contacte amb nosaltres
-          <a href='mailto:contacte@catalunyaencomu.cat'>aquí</a>.
-        </p>
-        "
+      dni: El format ha de ser 8 xifres i una lletra, sense guions ni espais.
+      existing_user_location: Se ha recuperado tu lugar de participación de un usuario anterior.
+      nie: El format ha de ser una lletra, 7 xifres i una lletra, sense guions ni espais.
+      passport: El format ha de ser sense guions ni espais.
+      welcome_html: " <p> Apunta't al formulari per rebre informació i per poder participar en la construcció del nou espai. </p>\n<p> Per poder votar en les properes votacions t'has d'enregistrar omplint aquest formulari. T'arribarà un correu per validar-te. Si no reps el correu posa't en contacte amb nosaltres <a href='mailto:contacte@catalunyaencomu.cat'>aquí</a>. </p> "
+    province: Província
+    town: Municipi
+    verify_on_update: Quan editeu les dades de domicili, s'ha de realitzar novament el procés de verificació.
+  simple_captcha:
+    label: Introdueix el text que es veu a la imatge
+    message:
+      default: El text introductori no es correspon amb el de la imatge
+    placeholder: text
+    refresh_button_text: Regenerar
+  sms_validator:
+    documents:
+      foreign_cera_id: O també un DNI o NIE amb domicili de fora de Catalunya i còpia del certificat d’inscripció en el CERA (Cens d’Electors Residents Absents) en el qual figuri un municipi d’inscripció a Catalunya.
+      foreign_id: Alternativament, pots enviar-nos un DNI o NIE amb domicili de fora de Catalunya (o Passaport, o Permís de Conduir) i un certificat d'empadronament o rebut d'un subministrament bàsic (aigua, llum o gas) que no tingui més de tres mesos d'antiguitat i en el qual aparegui la identitat de la persona i un domicili a Catalunya.
+      invalid: Hi ha hagut un error en carregar els documents.
+      local_id: Per la verificació necessites enviar-nos un DNI o NIE amb domicili a Catalunya.
+      updated: Documents carregats correctament. Els revisarem aviat.
+    phone:
+      button: Comprova
+      help_html: Si tens qualsevol problema escriu a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>
+      information_html: Has d'ingressar un telèfon mòbil vàlid per al país on et trobes, sense prefix internacional, només amb números (sense espais ni guions). Segons el formulari que has emplenat et trobes a <b>%{country}</b> (prefix internacional +%{prefix}).
+      invalid: El codi que has posat no correspon amb el que t'hem enviar per SMS.
+      p1: Introdueix el teu nou número de telèfon mòbil.
+      p2: Rebràs el codi de verificació per validar el nou número en uns segons.
+      p3: Si ja has participat en alguna votació de Catalunya En Comú, t'enviarem el codi per correu electrònic.
+      p5: Introdueix el codi que hagis rebut per SMS per confirmar-lo
+      token: Codi SMS
+      valid: T'hem verificat correctament. Si els teus documents són correctes, tindràs l'autorització per votar.
+    steps:
+      step1: Envia'ns la documentació
+      step2: Introdueix el teu número de telèfon mòbil
+      step3: Introdueix el codi rebut per SMS
+  static:
+    cookies: Política de cookies
+    legal: Avís legal
+    privacy: Política de privacitat
   unauthorized:
-    default: "No tens permisos per accedir a aquesta secció"
-    banned: >
-      Gràcies, %{full_name}. Per poder participar-hi cal que ens escriguis un
-      correu electrònic a contacte@catalunyaencomu.cat
-  online_verifications:
-    menu_link: Verifica't aquí
-    admin: Gestor de verificacions digitals
-    add_another_document: Afegir-hi un altre document
-    max_size: "Mida màxima del documents 10 MB. Formats: JPG, PNG, PDF"
-    remove_document: Eliminar document
-    reupload_documents: Selecciona i envia els documents corregits
-    label:
-      invalid_id: >
-        El document d'identitat que has adjuntat no és vàlid. Ha de ser DNI, NIE
-        o passaport.
-      unverifiable_id: >
-        El document d'identitat que has adjuntat no es pot verificar. A la foto
-        el teu nom s'ha de poder distingir clarament. Comprova que no estigui
-        borrosa.
-      unmatched_identity: >
-        El document d'identitat que has adjuntat no coincideix amb la identitat
-        del sol·licitant. Comprova que la persona registrada és la mateixa que
-        el titular del document que envies.
-      non_local_id_with_missing_residence_proof: >
-        El document d'identitat que has adjuntat és de fora de Catalunya i no
-        has inclòs un document extra amb una prova de residència a Catalunya
-        mitjançant una factura recent de subministrament bàsic.
-      non_local_id_with_invalid_residence_proof: >
-        El document d'identitat que has adjuntat és de fora de Catalunya i la
-        prova de residència que s'inclou no és vàlida. Ha de ser un rebut
-        d'aigua, llum o gas.
-      non_local_id_with_outdated_residence_proof: >
-        El document d'identitat que has adjuntat és de fora de Catalunya i la
-        prova de residència que s'inclou no és recent. Ha de ser un rebut dels
-        últims tres mesos.
-      non_local_id_with_unmatched_residence_proof: >
-        El document d'identitat que has adjuntat és de fora de Catalunya i la
-        prova de residència que s'inclou no està a nom del sol·licitant.
-      non_local_id_with_unverifiable_residence_proof: >
-        El document d'identitat que has adjuntat és de fora de Catalunya i la
-        prova de residència que s'inclou no es pot verificar. A la foto s'ha de
-        poder distingir clarament la data, el tipus i titular del rebut.
-        Comprova que no estigui borrosa.
-      non_visible_id: >
-        Has adjuntat només una de les cares del document d'identitat, 
-        necessitem que adjuntis les dues 
-    mailer:
-      subject: >-
-        Revisa la teva sol·licitud de verificació digital en Catalunya en Comú
-      introduction: >
-        Hola, hem revisat la teva sol·licitud de verificació digital i hem
-        detectat els següents problemes amb els documents que hi has carregat.
-      suggested_action: >
-        Si us plau, clica el següent enllaç per carregar els documents
-        corregits. D'aquesta manera podrem verificar la teva identitat i podràs
-        votar en les properes consultes.
-      suggested_action_text_only: >
-       Si us plau, visita la següent adreça url per carregar els documents
-       corregits. D'aquesta manera podrem verificar la teva identitat i podràs
-       votar en les properes consultes.
-    index:
-      title: Interfície de Verificació Digital
-      welcome: >
-        Et donem la benvinguda a la interfície de verificació. A cada pantalla
-        podràs veure les dades d'una persona usuària que ha iniciat el procés de
-        verificació digital, així com els documents que ha carregat. Les
-        possibles accions que pots prendre després d'analitzar la sol·licitud
-        són les següents.
-      accept_title: Acceptar (botó verd)
-      accept_description: >
-        Confirmes la veracitat de la persona usuària i la validesa dels
-        documents que hi ha carregat. Els vots que hagi emès o emeti en el futur
-        seran considerats vàlids.
-      reject_title: Expulsar (botó vermell)
-      reject_description: >
-        Assenyales que es tracta d'una sol·licitud fraudulenta. La persona
-        usuària serà expulsada i no podrà accedir més a la plataforma de
-        participació.
-      report_title: Assenyalar un problema (botó taronja)
-      report_description: >
-        Si la sol·licitud és vàlida però està incompleta. Per exemple, si falten
-        documents, les fotografies estan borroses i no permeten llegir les
-        dades, etcètera. Aquesta opció permet assenyalar els problemes detectats
-        entre diverses opcions predefinides i envia un correu electrònic a la
-        persona usuària informant-la dels problemes i de com solucionar-los
-        mitjançant la càrrega de nous documents. Es recomana complementar l'ús
-        d'aquesta opció amb una trucada telefònica directa per informar del cas.
-        Els temps són molt ajustats i no volem que ningú no es quedi sense votar
-        perquè no va poder llegir un correu. L'ús d'aquest botó queda registrat
-        en la sol·licitud perquè qui ho verifiqui pugui comprovar fàcilment si
-        la persona usuària va solucionar els problemes originals.
-      get_started: Començar
-      no_pending_users: >
-        Hores d'ara no hi ha persones usuàries pendents de verificar.
-    accept:
-      success: Persona usuària verificada correctament
-    reject:
-      success: Persona usuària expulsada correctament
-    report:
-      success: Sol·licitud actualitzada correctament
-    report_modal:
-      title: Assenyalar un problema amb la sol·licitud de %{name}
-      button: Informar la persona usuària
-    show:
-      title: Verificació digital
-      pending_counter:
-        one: "%{count} verificació pendent"
-        other: "%{count} verificacions pendents"
-      change: Canviar
-      accept: Acceptar
-      reject: Expulsar
-      skip: Següent
-      report: Assenyalar un problema
-    user_uploaded_images: "%{name} va carregar les següents imatges"
-    user_uploaded_images_self: Has carregat les següents imatges"
-    user_uploaded_pdfs: "%{name} va carregar els següents PDF's"
-    user_uploaded_pdfs_self: "Has carregat els següents PDF's"
-    verifier_reported: "%{name} va informar dels següents problemes"
-    verifier_reported_self: Es van informar dels següents problemes
-    you_are_done: >
-      No resten persones usuàries pendents de verificació. Bona feina!
-  page:
-    faq:
-      title: "Preguntes Freqüents - Votacions"
-      general: "GENERAL"
-      inscription: "INSCRIPCIÓ"
-      voting: "VOTACIÓ"
-      inscription_errors: "ERRORS D'INSCRIPCIÓ"
-      verification: "VERIFICACIÓ"
-      faq1_html: '<li><a class="cd-faq-trigger" href="#0">1. Què em cal per accedir a participa.catalunyaencomu.cat?</a>
-            <div class="cd-faq-content">
-    <p> Es necessari residir a la ciutat de Catalunya.
-    </p>
-  <p>&nbsp;&nbsp;&nbsp;&nbsp; 1. <strong> DNI / NIF / Passaport </strong>. Per seguretat, ha de ser únic i no es podrà canviar. </p>
- <p>&nbsp;&nbsp;&nbsp;&nbsp; 2. <strong> Correu electrònic </strong>: Per seguretat, ha de ser únic. </p>
-          </div> <!-- cd-faq-content -->
-          </li>
-          <li>
-          <a class="cd-faq-trigger" href="#0">2. Què faig si he perdut la contrassenya?</a>
-          <div class="cd-faq-content">
-           <p> Si no recordes la contrasenya, fes clic <a href="https://participa.catalunyaencomu.cat/ca/users/password/new" target="_blank" title="Has oblidat la teva contrasenya?"> Aquí </a> per sol·licitar-ne una de nova. </p>
-          </div> <!-- cd-faq-content --></li>'
-      faq2_html: "<li><a class='cd-faq-trigger' href='#0'>3. No arecordo del correu electrònc. Què faig?</a>
-          <div class='cd-faq-content'>
-<p> Fes servir el DNI o passaport per entrar a la plataforma. Un cop a dins podràs canviar el teu correu electrònic. </ P>
-          </div> <!-- cd-faq-content -->
-          </li>
-          <li>
-          <a class='cd-faq-trigger' href='#0'>4. M'han bloquejat el compte d'accés a la plataforma. Què puc fer?</a>
-            <div class='cd-faq-content'>
-              <p> Per seguretat, bloquegem el compte durant una hora després de 20 temptatives fallides d'accés. Un cop passat aquest temps, la persona usuària és desbloquejada automàticament. </ P>
-            </div> <!-- cd-faq-content -->
-          </li>
-          <li>
-           <a class='cd-faq-trigger' href='#0'>5. Continuo sense poder accedir al portal de participació. Com puc comunicar-me amb l'equip de suport?</a>
-          <div class='cd-faq-content'>
-<p> Si tens algun problema pots comunicar-te amb nosaltres a <a href='mailto:contacte@catalunyaencomu.cat'> contacte@catalunyaencomu.cat </a> indicant si escau les dades següents: </ p>
-<p> Nom i cognoms: <br />
-Correu electrònic: <br />
-DNI: <br />
-Descripció del problema: </ p>
-          </div> <!-- cd-faq-content --></li>"
-      faq3_html: "<li><a class='cd-faq-trigger' href='#0'>6. Correu  electrònic, número de document o contrasenya invàlida.</a>
-          <div class='cd-faq-content'>
-            <p> Si no recordes el correu electrònic que vas fer servir per inscriure't, prova-ho amb el teu DNI. </p>
-             <p> Si no recordes la contrasenyaa, fes clic <a href='https://participa.catalunyaencomu.cat/es/users/password/new' target='_blank' title='Has olblidat la teva contrasenya? '> Aquí </a> per sol·licitar-ne una de nova. </p>
-             <p> Si no reps la teva contrasenya, mira l'error núm. 2, que apareix més avall.</p>
-          </div> <!-- cd-faq-content -->
-          </li>
-          <li>
-           <a class='cd-faq-trigger' href='#0'>7. No m'arriben correus a cap dels meus comptes. Em sembla que m'he equivocat a l'hora d'escriure el meu correu electrònic.  </a>
-          <div class='cd-faq-content'>
-             <p><strong>Causa:</strong><br />Potser vas escriure malament el teu correu durant el procés de registre o el registre ha estat incomplet.</p>
-             <p> <strong> Solució:</strong><br />Escriu un correu a <a href='mailto:contacte@catalunyaencomu.cat'>contacte@catalunyaencomu.cat</a>indica-hi les teves dades personals i adjunta-hi una fotocòpia del teu DNI o passaport per donar-te de baixa i així podràs tornar a inscriure-t'hi.</p>
-     </div> <!-- cd-faq-content -->
-          </li>"
-      faq4_html: "<li> <a class='cd-faq-trigger' href='#0'>8. Quins mètodes de verificació s'han habilitat?</a> <div class='cd-faq-content'> <p>Hem habilitat <a href='%{verifications_url}'>punts presencials per a la verificació</a>.</p> </div> <!-- cd-faq-content --> </li>"
-      faq5_html: "<li><a class='cd-faq-trigger' href='#0'>9. Com puc votar?</a>
-      <div class='cd-faq-content'>
-        <p>Amb tres passos molt senzills:<br/>
-Amb tres passos molt senzills:
- 1r.  Entra al web participa.catalunyaencomu.cat, accedeix al portal de participació i introdueix el DNI / correu electrònic i la contrasenya.  Si no estàs inscrit/a, fes-ho aquí: https://participa.catalunyaencomu.cat. És molt senzill.
- 2n.  Accedeix a la cabina de votació: un cop hagis entrat a l'aplicació  de  Catalunya En Comú, veuràs un botó per votar. Fes-hi clic i se’t redirigirà a la cabina de votació,
- 3r. Vota: respon la pregunta de la votació.
-</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>10. Qui pot votar?</a>
-      <div class='cd-faq-content'>
-        <p>Qualsevol  persona inscrita a Catalunya En Comú a través de  http://participa.catalunyaencomu.cat que tingui més de 16 anys i visqui a  Catalunya i hagi realitzat la verificació presencial.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>11. Què necessito per votar?</a>
-      <div class='cd-faq-content'>
-        <p>Necessites un ordinador o qualsevol altre dispositiu (android / iphone) amb  accés a la xarxa per accedir a <a href='https://participa.catalunyaencomu.cat' target='_blank' >https://participa.catalunyaencomu.cat</a> i estar inscrit/a a <a href='https://participa.catalunyaencomu.cat' target='_blank'>https://participa.catalunyaencomu.cat</a>.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>12. Puc votar sense tenir ordinador?</a>
-      <div class='cd-faq-content'>
-        <p>Sí. Catalunya En Comú ha habilitat diversos punts de votació digital assistida
-      </div> <!-- cd-faq-content -->
-      </li>
-        <li>
-      <a class='cd-faq-trigger' href='#0'>13. Si no tinc un dispositiu mòbil (telèfon intel•ligent/tàblet), puc votar?</a>
-      <div class='cd-faq-content'>
-        <p>Sí, pots votar també des d'un ordinador amb accés a Internet a participa.catalunyaencomu.cat. El mòbil només cal per registrar-se.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>14. Puc canviar el vot durant el període de votació?</a>
-      <div class='cd-faq-content'>
-        <p>No, un cop hagis emès el teu vot ja no podràs canviar-lo.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>15. Puc votar en blanc o abstenir-me?</a>
-      <div class='cd-faq-content'>
-        <p>Sí. En funció del tipus de pregunta, podràs votar en blanc o abstenir-te'n.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>16. Quines mesures de seguretat s'han implementat?</a>
-      <div class='cd-faq-content'>
-        <p>L'esquema de seguretat Agora Voting està basat en un verifiable mixnet amb xifrat de llindar El-Gamal de clau pública. La implementació la proporciona la llibreria Verificatum.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>17. En quines altres votacions s'ha fet servir Agora Voting?</a>
-      <div class='cd-faq-content'>
-        <p>Entre altres, Agora Voting s'ha utilitzat per fer les primàries europees i els consells municipals i autonòmics de Podem, en dues votacions de la iniciativa de Congrés Transparent i en les primàries de la Confederació Pirata.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>18. Com puc comprovar que el vot s’ha enregistrat correctament?</a>
-      <div class='cd-faq-content'>
-        <p>Amb el localitzador del vot que el sistema mostra després de votar a la cabina de votació, que has d'anotar. Un cop emès el vot, es podrà comprovar si el procés s'ha completat amb èxit. Aquesta comprovació no només serveix per verificar que el vot s’ha enregistrat, sinó que també verifica que s’ha comptabilitzat en el còmput (es pot veure dues preguntes més avall).</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>19. He buscat el meu vot tal com diu la pregunta anterior i no surt llistat. Per què?</a>
-      <div class='cd-faq-content'>
-        <p>Segurament has copiat malament el localitzador del vot. Sisplau, torna-ho a comprovar.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>20. Com puc comprovar que el còmput de la votació és correcte?</a>
-      <div class='cd-faq-content'>
-        <p>Agora Voting és un sistema verificable. Això vol dir que qualsevol pot revisar el còmput de la votació a partir dels localitzadors dels vots i les demostracions matemàtiques publicades després del còmput. Agora Voting proporciona un procediment de verificació que, com la resta del sistema, és públicament auditable. No obstant això, la verificació es basa en tècniques criptogràfiques que, tot i que estan ben establertes en l'àmbit acadèmic, no són fàcils d'entendre.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>21. És possible esbrinar el contingut del vot? Com puc saber que no es revelarà?</a>
-      <div class='cd-faq-content'>
-        <p>No, ni els administradors del sistema poden esbrinar-ho. Només és possible revelar el contingut d'un vot si totes les autoritats es posen d’acord per fer-ho (o si totes són atacades amb èxit, com es pot veure més avall). El secret del vot és segur.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>22. Quines són les autoritats de la votació?</a>
-      <div class='cd-faq-content'>
-        <p>Són dues: OpenKratio i Agora Voting. Pots veure més informació sobre les autoritats de la votació en aquests links: <a href='http://openkratio.org/' target='_blank'>http://openkratio.org/</a> i <a href='https://agoravoting.com/' target='_blank'></a>https://agoravoting.com/.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>23. Com s'assegura que cada persona vota una sola vegada i que només voten les persones amb dret a fer-ho?</a>
-      <div class='cd-faq-content'>
-        <p>Gràcies al sistema d'autenticació al portal de participació de Catalunya En Comú s'assegura que només aquelles persones que figurin en el cens de Catalunya En Comú poden votar i es controla que només hi hagi un vot per persona.</p>
-      </div> <!-- cd-faq-content -->
-      </li>
-      <li>
-      <a class='cd-faq-trigger' href='#0'>24. On puc trobar més informació tècnica sobre la votació?</a>
-      <div class='cd-faq-content'>
-        <p>Hem creat un document amb informació més tècnica en anglès, el technical overview. </p>
-      </div> <!-- cd-faq-content -->
-      </li>
-       <li>
-      <a class='cd-faq-trigger' href='#0'>25. Tinc més preguntes.</a>
-      <div class='cd-faq-content'>
-        <p>En aquest cas, pots contactar amb nosaltres i intentarem resoldre els teus dubtes, preguntes o comentaris enviant un mail a contacte@catalunyaencomu.cat.</p>
-      </div> <!-- cd-faq-content --></li>"
+    banned: 'Gràcies, %{full_name}. Per poder participar-hi cal que ens escriguis un correu electrònic a contacte@catalunyaencomu.cat
+
+'
+    default: No tens permisos per accedir a aquesta secció
+  user:
+    cancel_account: Dóna'm de baixa
+    cancel_account_explain_html: '<p>Si cliques "Dóna''m de baixa" deixaràs de ser membre de Catalunya En Comú i cancel·larem les teves dades personals conforme a allò convingut a la Llei Orgànica 15/1999 de Protecció de Dades de Caràcter Personal.</p> <p> A partir d''aquest moment el teu compte d''accés al portal de participació de Catalunya En Comú quedarà eliminat.</p> <p> Conforme a allò convingut a l''article 16.3 de la Llei Orgànica de Protecció de Dades, la cancel•lació donarà lloc al bloqueig de les dades, es conservaran únicament a disposició de les Administracions Públiques, Jutges i Tribunals, per a l''atenció de les possibles responsabilitats nascudes del tractament, durant el termini de prescripció d''aquestes possibles responsabilitats. Complert el citat termini es procedirà a la supressió de les dades. </p> '
+    change_documents: Els meus documents
+    change_documents_explain: 'Aquesta és la llista d''imatges que ens has facilitat per al procés de verificació digital. Si hi ha errors a la teva sol·licitud inicial, o et manca qualsevol document, aquí pots carregar les imatges que necessitis.
+
+'
+    change_email: Canvia correu electrònic
+    change_email_explain: Si canvies el teu correu electrònic t'enviarem un altre correu perquè el confirmis.
+    change_password: Canvia contrasenya
+    change_phone: Canvia el telèfon mòbil
+    change_phone_explain_html: T'has validat amb el telèfon mòbil <b>%{unprefixed_phone}</b> de <b>%{phone_country}</b> (prefix internacional %{phone_prefix}).
+    personal_data: Dades personals
   verification:
-    from: de
-    from_with_article: del
-    to: a
-    to_with_article: al
-    show:
-      title: "Mapa de punts de verificació"
-      explain_html: "Aquí pots veure tots els punts i horaris habilitats per a que puguis anar a verificar-te"
-      no_points: "No hi ha cap punt actiu actualment"
-      link_title: "inscriure't"
-    pending_title: Només et queda una última verificació per fer!
-    reasons_presential: >
-      Perquè els nostres processos de votació resultin tan democràtics com sigui
-      possible ens cal que hi aportis la teva documentació de manera presencial.
-    reasons_online_html: >
-      Perquè els nostres processos de votació resultin tan democràtics com sigui
-      possible ens cal que hi aportis la teva documentació mitjançant la %{form}.
-    reasons_both_html: >
-      Perquè els nostres processos de votació resultin tan democràtics com sigui
-      possible ens cal que hi aportis la teva documentació de manera presencial
-      o mitjançant la %{form}.
-    how_to:
-      header: >
-        Posem a la teva disposició dues maneres de verificar la teva identitat:
-      presential: >
-        Al mapa trobaràs tots els punts per verificar-te a tot Catalunya.
-      online: Un equip de persones comprovaran després que tot està correcte.
-    online_cta: "Verificar-me"
-    presential_name: Verificació presencial
-    online_name: Verificació digital
-    requirements:
-      header: "Documentació requerida per la verificació:"
-      local_id: DNI o NIE amb domicili a Catalunya.
-      foreign_id: >
-        DNI o NIE amb domicili de fora de Catalunya o passaport o permís de
-        conduir + certificat d'empadronament o rebut d'un subministrament bàsic
-        (aigua, llum o gas) que no tingui més de tres meses d'antiguitat i on
-        aparegui la identitat de la persona i un domicili a Catalunya.
-      foreign_cera_id: >
-        DNI o NIE amb domicili de fora de Catalunya i còpia del certificat
-        d’inscripció en el CERA (Cens d’Electors Residents Absents) en el qual
-        figuri un municipi d’inscripció a Catalunya.
+    admin: Gestor de verificacions presencials
+    age: L'inscrit/a és major de 16 anys - nascut abans de %{date}
+    alerts:
+      already_presencial: L'usuari/ària amb document %{document} ja estava  verificat, per %{by}, el %{when}. L'usuari/ària ja podrà votar.
+      ko:
+        msg_html: No podrà votar en les properes consultes. Envia-li un Telegram al Coordinador del teu districte amb les dades (nom, correu electrònic i DNI) de l'usuari perquè ho revisi. Informa a l'usuari que ens posarem en contacte amb ell o ella al més aviat possible.
+        title: No s'ha verificat a l'usuari.
+      not_found: 'No hem trobat un usuari/ària amb aquest document o correu electrònic. Búsqueda: %{query}'
+      ok:
+        msg_html: La persona ha estat verificada correctament. Li hem enviat un correu avisant-li. Podrà votar en futures votacions. Pots verificar al següent usuari.
+        title: S'ha verificat l'usuari/ària correctament
+      unconfirmed_html: 'La persona amb l''email <b>%{email}</b> no ha confirmat el seu correu electrònic. Li acabem d''enviar un mail de confirmació ara mateix perquè pugui confirmar el seu correu, verificar-se i votar
+
+'
+    born_at: Fecha de nacimiento
+    bring_your_documents_to: 'Porta la documentació a:'
+    check: 'Comprova que:'
     closed_1: Actualmente no hay ningún punto de verificación presencial activo.
     closed_2: Prueba la verificación digital.
     closed_3: Y si tienes cualquier problema escribe a contacte@catalunyaencomu.cat
-    bring_your_documents_to: "Porta la documentació a:"
-    user_verified: Usuari verificat
-    user_unverified: No t'has verificat
-    title: Verificació
-    step1: Cerca
-    step2: Comprova
+    confirm: Verificar
+    document: DNI/NIE/Passaport
+    document_type: Tipus i número de document
+    documents: L'inscrit/a aporta un DNI o NIE amb domicili a Catalunya o, alternativament, un DNI o NIE amb domicili de fora de Catalunya (o Passaport, o Permís de Conduir) i un certificat d'empadronament o rebut d'un subministrament bàsic (aigua, llum o gas) que no tingui més de tres mesos d'antiguitat
+    email: Correu electrònic
+    from: de
+    from_with_article: del
+    full_name: Nom complet
+    how_to:
+      header: 'Posem a la teva disposició dues maneres de verificar la teva identitat:
+
+'
+      online: Un equip de persones comprovaran després que tot està correcte.
+      presential: 'Al mapa trobaràs tots els punts per verificar-te a tot Catalunya.
+
+'
+    identity: Les dades dels documents aportats coincideixen amb les dades associades a l'email introduït.
+    mailer:
+      bye: Salutacions.
+      hello: Hola %{user},
+      verified:
+        message: |-
+          Has sigut verificat i ja formes part de la comunitat de Catalunya en Comú.
+          A partir d'ara ja no necessites verificar-te més i podràs participar a les consultes futures.
+          Cada cop que hi hagi una consulta t'avisarem per correu electrònic perquè puguis participar.
+          Recorda que ara formes part de la comunitat de Catalunya en Comú.
+        message_html: |-
+          <p>Has sigut verificat i ja formes part de la comunitat de Catalunya en Comú.</p>
+          <p>A partir d'ara ja no necessites verificar-te més i podràs participar a les consultes futures.</p>
+          <p>Cada cop que hi hagi una consulta t'avisarem per correu electrònic perquè puguis participar.</p>
+          <p>Recorda que ara formes part de la comunitat de Catalunya en Comú.</p>
+        subject: Catalunya en Comú - Has estat verificat correctament
+    new: Escriu en el fomulari següent el document o correu electrònic amb què s'ha inscrit
     next: Següent
     next_user: Continuar amb el següent usuari
-    confirm: Verificar
     no_confirm: No verificar
-    new: "Escriu en el fomulari següent el document o correu electrònic amb què s'ha inscrit"
-    document: "DNI/NIE/Passaport"
-    full_name: Nom complet
-    document_type: Tipus i número de document
-    email: Correu electrònic
-    result:  "Aquestes són les dades associades:"
-    check: "Comprova que:"
+    online_cta: Verificar-me
+    online_name: Verificació digital
     other: Verifica un altre usuari/ària.
-    admin: Gestor de verificacions presencials
-    alerts:
-      already_presencial: "L'usuari/ària amb document %{document} ja estava  verificat, per %{by}, el %{when}. L'usuari/ària ja podrà votar."
-      ok:
-        title: "S'ha verificat l'usuari/ària correctament"
-        msg_html: "La persona ha estat verificada correctament. Li hem enviat un correu avisant-li. Podrà votar en futures votacions. Pots verificar al següent usuari."
-      ko:
-        title: "No s'ha verificat a l'usuari."
-        msg_html: "No podrà votar en les properes consultes. Envia-li un Telegram al Coordinador del teu districte amb les dades (nom, correu electrònic i DNI) de l'usuari perquè ho revisi. Informa a l'usuari que ens posarem en contacte amb ell o ella al més aviat possible."
-      unconfirmed_html: >
-        La persona amb l'email <b>%{email}</b> no ha confirmat el seu correu
-        electrònic. Li acabem d'enviar un mail de confirmació ara mateix
-        perquè pugui confirmar el seu correu, verificar-se i votar
-      not_found: "No hem trobat un usuari/ària amb aquest document o correu electrònic. Búsqueda: %{query}"
-    mailer:
-      hello: "Hola %{user},"
-      bye: Salutacions.
-      verified:
-        subject: Catalunya en Comú - Has estat verificat correctament
-        message: "Has sigut verificat i ja formes part de la comunitat de Catalunya en Comú.
+    pending_title: Només et queda una última verificació per fer!
+    presential_name: Verificació presencial
+    reasons_both_html: 'Perquè els nostres processos de votació resultin tan democràtics com sigui possible ens cal que hi aportis la teva documentació de manera presencial o mitjançant la %{form}.
 
-A partir d'ara ja no necessites verificar-te més i podràs participar a les consultes futures.
+'
+    reasons_online_html: 'Perquè els nostres processos de votació resultin tan democràtics com sigui possible ens cal que hi aportis la teva documentació mitjançant la %{form}.
 
-Cada cop que hi hagi una consulta t'avisarem per correu electrònic perquè puguis participar.
+'
+    reasons_presential: 'Perquè els nostres processos de votació resultin tan democràtics com sigui possible ens cal que hi aportis la teva documentació de manera presencial.
 
-Recorda que ara formes part de la comunitat de Catalunya en Comú."
-        message_html: "<p>Has sigut verificat i ja formes part de la comunitat de Catalunya en Comú.</p>
+'
+    requirements:
+      foreign_cera_id: 'DNI o NIE amb domicili de fora de Catalunya i còpia del certificat d’inscripció en el CERA (Cens d’Electors Residents Absents) en el qual figuri un municipi d’inscripció a Catalunya.
 
-<p>A partir d'ara ja no necessites verificar-te més i podràs participar a les consultes futures.</p>
+'
+      foreign_id: 'DNI o NIE amb domicili de fora de Catalunya o passaport o permís de conduir + certificat d''empadronament o rebut d''un subministrament bàsic (aigua, llum o gas) que no tingui més de tres meses d''antiguitat i on aparegui la identitat de la persona i un domicili a Catalunya.
 
-<p>Cada cop que hi hagi una consulta t'avisarem per correu electrònic perquè puguis participar.</p>
-
-<p>Recorda que ara formes part de la comunitat de Catalunya en Comú.</p>"
-    identity: >-
-      Les dades dels documents aportats coincideixen amb les dades associades
-      a l'email introduït.
-    documents: >-
-      L'inscrit/a aporta un DNI o NIE amb domicili a Catalunya o,
-      alternativament, un DNI o NIE amb domicili de fora de Catalunya (o
-      Passaport, o Permís de Conduir) i un certificat d'empadronament o rebut d'un
-      subministrament bàsic (aigua, llum o gas) que no tingui més de tres mesos
-      d'antiguitat
-    age: "L'inscrit/a és major de 16 anys - nascut abans de %{date}"
+'
+      header: 'Documentació requerida per la verificació:'
+      local_id: DNI o NIE amb domicili a Catalunya.
+    result: 'Aquestes són les dades associades:'
+    show:
+      explain_html: Aquí pots veure tots els punts i horaris habilitats per a que puguis anar a verificar-te
+      link_title: inscriure't
+      no_points: No hi ha cap punt actiu actualment
+      title: Mapa de punts de verificació
+    step1: Cerca
+    step2: Comprova
+    title: Verificació
+    to: a
+    to_with_article: al
+    user_unverified: No t'has verificat
+    user_verified: Usuari verificat
+  views:
+    pagination:
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
+      truncate: Truncate
   voting:
-    title: "Benvingut a Participa!"
-    election_one: Hi ha una votació en curs.
-    election_none: No hi ha cap votació en curs. Quan hi hagi cap votació t'avisarem per correu electrònic.
-    election_mul_html: "Hi ha diferents votacions agrupades en 2 circumscripcions (la de tota Catalunya i la del teu àmbit territorial). Una vegada que acabis la votació en una de les circumscripcions, recorda tornar a la portada per votar en l'altra circumscripció.<br/><br/>Pots canviar el vot al llarg del procés (votant de nou en la mateixa opció). El nou vot reemplaçarà l'emès anteriorment de forma automàtica. Només l'últim és vàlid.<br/>"
-    election_use_one: La votació utilitza
-    election_use_mul: Les votacions utilitzen
-    secure_system: el sistema segur de
-    remember_last: "."
-    participate: ""
     button: Vota
+    continue: seguir votant
+    election_mul_html: Hi ha diferents votacions agrupades en 2 circumscripcions (la de tota Catalunya i la del teu àmbit territorial). Una vegada que acabis la votació en una de les circumscripcions, recorda tornar a la portada per votar en l'altra circumscripció.<br/><br/>Pots canviar el vot al llarg del procés (votant de nou en la mateixa opció). El nou vot reemplaçarà l'emès anteriorment de forma automàtica. Només l'últim és vàlid.<br/>
+    election_none: No hi ha cap votació en curs. Quan hi hagi cap votació t'avisarem per correu electrònic.
+    election_one: Hi ha una votació en curs.
+    election_use_mul: Les votacions utilitzen
+    election_use_one: La votació utilitza
+    finished_1: Les votacions ja s'han tancat.
+    participate: ''
+    remember_last: "."
+    secure_system: el sistema segur de
+    title: Benvingut a Participa!
     upcoming_1: Les votacions estan a punt de començar.
     upcoming_2: Les urnes s'obriran el
-    finished_1: Les votacions ja s'han tancat.
-    continue: "seguir votant"

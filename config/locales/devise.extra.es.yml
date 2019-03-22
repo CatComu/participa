@@ -1,45 +1,43 @@
+---
 es:
   devise:
-    registrations: 
-      ok: "Te has inscrito correctamente. Recibirás un correo que tendrás que confirmar para continuar con el proceso. Revisa tu correo."
     buttons:
-      sign_in: "Inicia sesión"
-      sign_up: "Inscríbete"
-      edit: "Actualizar datos" 
-      cancel_account: "Darme de baja"
-      reset_password: "Enviarme las instrucciones por correo electrónico"
-      change_password: "Cambiar contraseña"
-      confirmation_instructions: "Reenviar instrucciones de confirmación"
-      unlock_instructions: "Reenviar instrucciones de desbloqueo"
+      cancel_account: Darme de baja
+      change_password: Cambiar contraseña
+      confirmation_instructions: Reenviar instrucciones de confirmación
+      edit: Actualizar datos
+      reset_password: Enviarme las instrucciones por correo electrónico
+      sign_in: Inicia sesión
+      sign_up: Inscríbete
+      unlock_instructions: Reenviar instrucciones de desbloqueo
     hints:
-      locked: "No puedes modificar este campo"
-      password: ""
-      current_password: "Introduce tu contraseña para validar los cambios "
-    labels:
-      new_password: "Contraseña nueva"
-      new_password_confirmation: "Confirmar contraseña nueva"
+      current_password: 'Introduce tu contraseña para validar los cambios '
+      locked: No puedes modificar este campo
+      password: ''
     links:
-      home: "Inicio"
-      sign_in: "Inicia sesión"
-      sign_in_with: "Iniciar sesión con %{provider}"
-      sign_up: "Inscribirse"
-      sign_out: "Cerrar sesión"
-      my_account: "Mi cuenta"
-      back: "Volver"
-      forgot_password: "He olvidado mi contraseña"
+      back: Volver
       confirmation_instructions: "¿No has recibido las instrucciones de confirmación?"
+      email: Email o Documento (DNI / NIE / Pasaporte)
+      forgot_password: He olvidado mi contraseña
+      here: aquí
+      home: Inicio
+      my_account: Mi cuenta
+      passw: Contraseña
+      sign_in: Inicia sesión
+      sign_in_with: Iniciar sesión con %{provider}
+      sign_out: Cerrar sesión
+      sign_up: Inscribirse
       unlock_instructions: "¿No has recibido las instrucciones de desbloqueo?"
-      here: "aquí"
-      email: "Email o Documento (DNI / NIE / Pasaporte)"
-      passw: "Contraseña"
     messages:
       cancel_account_confirmation: "¿Estás seguro?"
-      waiting_confirmation: "Actualmente esperando instrucciones para %{email}"
+      waiting_confirmation: Actualmente esperando instrucciones para %{email}
+    registrations:
+      ok: Te has inscrito correctamente. Recibirás un correo que tendrás que confirmar para continuar con el proceso. Revisa tu correo.
     titles:
-      sign_in: "Iniciar sesión"
-      sign_up: "Inscripción a Catalunya en Comú"
-      cancel_account: "Cancelar mi cuenta"
+      cancel_account: Cancelar mi cuenta
+      change_password: Cambiar tu contraseña
+      confirmation_instructions: Reenviar instrucciones de confirmación
       forgot_password: "¿Has olvidado tu contraseña?"
-      change_password: "Cambiar tu contraseña"
-      confirmation_instructions: "Reenviar instrucciones de confirmación"
-      unlock_instructions: "Reenviar instrucciones de desbloqueo"
+      sign_in: Iniciar sesión
+      sign_up: Inscripción a Catalunya en Comú
+      unlock_instructions: Reenviar instrucciones de desbloqueo

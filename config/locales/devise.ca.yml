@@ -1,89 +1,88 @@
+---
 ca:
   devise:
     confirmations:
-      confirmed: "La teva adreça de correu electrònic ha estat confirmada. Pots iniciar sessió."
-      send_instructions: "Rebràs un correu electrònic en uns minuts amb instruccions sobre com restablir la teva contrasenya. Si tens qualsevol problema contacta amb contacte@catalunyaencomu.cat"
-      send_paranoid_instructions: "Si el teu correu electrònic existeix a la nostra base de dades, rebràs un correu electrònic d'aquí a uns minuts amb instruccions sobre com reiniciar la teva contrasenya."
+      confirmed: La teva adreça de correu electrònic ha estat confirmada. Pots iniciar sessió.
+      send_instructions: Rebràs un correu electrònic en uns minuts amb instruccions sobre com restablir la teva contrasenya. Si tens qualsevol problema contacta amb contacte@catalunyaencomu.cat
+      send_paranoid_instructions: Si el teu correu electrònic existeix a la nostra base de dades, rebràs un correu electrònic d'aquí a uns minuts amb instruccions sobre com reiniciar la teva contrasenya.
     failure:
-      already_authenticated: "Ja estàs identificat."
-      inactive: "El teu compte encara no ha estat activat."
-      invalid: "Correu electrònic, número de document o contrasenya invàlids."
-      invalid_token: "Cadena d'autenticació invàlida."
-      locked: "El teu compte està bloquejat."
-      not_found_in_database: "Correu electrònic, número de document o contrasenya invàlids."
-      timeout: "La teva sessió ha expirat, sisplau identifica't de nou per continuar."
-      unauthenticated: "Necessitas iniciar sessió o registrar-te per continuar."
-      unauthenticated_html: "Necessites <a href='/'>iniciar sessió</a> o <a href='/users/sign_up'>registrar-te</a> per continuar."
-      unconfirmed: "Has de confirmar el teu compte per continuar."
-      last_attempt: "Tens un intent més abans que el teu compte quedi bloquejat."
+      already_authenticated: Ja estàs identificat.
+      inactive: El teu compte encara no ha estat activat.
+      invalid: Correu electrònic, número de document o contrasenya invàlids.
+      invalid_token: Cadena d'autenticació invàlida.
+      last_attempt: Tens un intent més abans que el teu compte quedi bloquejat.
+      locked: El teu compte està bloquejat.
+      not_found_in_database: Correu electrònic, número de document o contrasenya invàlids.
+      timeout: La teva sessió ha expirat, sisplau identifica't de nou per continuar.
+      unauthenticated: Necessitas iniciar sessió o registrar-te per continuar.
+      unauthenticated_html: Necessites <a href='/'>iniciar sessió</a> o <a href='/users/sign_up'>registrar-te</a> per continuar.
+      unconfirmed: Has de confirmar el teu compte per continuar.
+    labels:
+      new_email: Nou correu electrònic
+      new_password: Contrasenya nova
+      new_password_confirmation: Contrasenya nova (repetir)
+    links:
+      forgot_mail: No he rebut el correu de confirmació
+      forgot_manual: Veure el manual d'inscripció
+      forgot_manual_vot: Veure el manual de votació
+      forgot_way: Problemes amb la inscripció
+      insc: Inscripció
     mailer:
-      hello: "Hola %{user}!"
-      welcome: "Benvingut/uda %{user}!"
-      remember_email:
-        title: "Nou intent de registre amb el teu compte d'email"
-        greeting: "Hola %{user}!"
-        did_you_try: Has intentat crear de no un compte amb les teves dades?
-        affirmative_action_html: "En cas afirmatiu, recorda que ja en tens un
-i que pots canviar la contrasenya %{here}."
-        negative_action_html: "En cas que no hagis estat tu post ignorar
-aquest missatge. Si ho reps diverses vegades, avisa'ns a %{mail}."
-        here: aquí
       confirm:
-        p1: "T'has donat d'alta o has canviat el teu correu electrònic a l'entorn Catalunya en Comú. Si no és així, no facis cas d'aquest missatge. Pots confirmar que aquesta és la teva adreça de correu a través de l'enllaç següent:"
-        p2: "Si tens qualsevol problema amb el registre, si us plau, contacta amb contacte@catalunyaencomu.cat"
-        text_only_instructions: "O copia la següent adreça i enganxa-la en el teu navegador:"
-      password:
-        p1: "Algú ha demanat que canviïs la teva contrasenya. Pots fer-ho a través de l'enllaç següent:"
-        p2: "Si tens qualsevol problema amb el registre, si et plau, contacta amb contacte@catalunyaencomu.cat"
-        p3: "Si no has estat tu, si et plau, no facis cas d'aquest missatge. La teva contrasenya no canviarà fins que validis aquest enllaç i en creïs una de nova."
-        link: 'Canvia contrasenya'
+        p1: 'T''has donat d''alta o has canviat el teu correu electrònic a l''entorn Catalunya en Comú. Si no és així, no facis cas d''aquest missatge. Pots confirmar que aquesta és la teva adreça de correu a través de l''enllaç següent:'
+        p2: Si tens qualsevol problema amb el registre, si us plau, contacta amb contacte@catalunyaencomu.cat
+        text_only_instructions: 'O copia la següent adreça i enganxa-la en el teu navegador:'
       confirmation_instructions:
-        subject: "Catalunya en Comú - Instruccions de confirmació"
+        subject: Catalunya en Comú - Instruccions de confirmació
+      hello: Hola %{user}!
+      password:
+        link: Canvia contrasenya
+        p1: 'Algú ha demanat que canviïs la teva contrasenya. Pots fer-ho a través de l''enllaç següent:'
+        p2: Si tens qualsevol problema amb el registre, si et plau, contacta amb contacte@catalunyaencomu.cat
+        p3: Si no has estat tu, si et plau, no facis cas d'aquest missatge. La teva contrasenya no canviarà fins que validis aquest enllaç i en creïs una de nova.
+      remember_email:
+        affirmative_action_html: En cas afirmatiu, recorda que ja en tens un i que pots canviar la contrasenya %{here}.
+        did_you_try: Has intentat crear de no un compte amb les teves dades?
+        greeting: Hola %{user}!
+        here: aquí
+        negative_action_html: En cas que no hagis estat tu post ignorar aquest missatge. Si ho reps diverses vegades, avisa'ns a %{mail}.
+        title: Nou intent de registre amb el teu compte d'email
       reset_password_instructions:
-        subject: "Catalunya en Comú - Instruccions per restablir la teva contrasenya"
+        subject: Catalunya en Comú - Instruccions per restablir la teva contrasenya
       unlock_instructions:
-        subject: "Catalunya en Comú - Instruccions de desbloqueig"
+        subject: Catalunya en Comú - Instruccions de desbloqueig
+      welcome: Benvingut/uda %{user}!
     omniauth_callbacks:
-      failure: "No se t'ha pogut autoritzar per %{kind} causa a \"%{reason}\"."
-      success: "Identificat correctament de %{kind}."
+      failure: No se t'ha pogut autoritzar per %{kind} causa a "%{reason}".
+      success: Identificat correctament de %{kind}.
     passwords:
-      no_token: "No pots accedir a aquesta pàgina sino és per mitjà d'un enllaç per restablir contrasenya. Si has accedit des de l'enlaç per restablir la contrasenya, asegura't que la URL està completa."
-      send_instructions: "Rebràs un correu electrònic amb instruccions sobre ccom restablir la teva contrasenya d'aquí uns minuts."
-      send_paranoid_instructions: "Si el teu correu electrònic existeix a la nostra base de dades, rebràs un enllaç per restablir la contrasenya d'aquí a uns minuts."
-      updated: "La teva contraseny s'ha canviat correctament. Has estat identificat."
-      updated_not_active: "La teva contrasenya s'ha canviat correctament."
+      no_token: No pots accedir a aquesta pàgina sino és per mitjà d'un enllaç per restablir contrasenya. Si has accedit des de l'enlaç per restablir la contrasenya, asegura't que la URL està completa.
+      send_instructions: Rebràs un correu electrònic amb instruccions sobre ccom restablir la teva contrasenya d'aquí uns minuts.
+      send_paranoid_instructions: Si el teu correu electrònic existeix a la nostra base de dades, rebràs un enllaç per restablir la contrasenya d'aquí a uns minuts.
+      updated: La teva contraseny s'ha canviat correctament. Has estat identificat.
+      updated_not_active: La teva contrasenya s'ha canviat correctament.
     registrations:
       destroyed: "¡Adéu! El teu compte ha estat cancel·lat. Esperem tornar-te a veure aviat."
       signed_up: "¡Benvigut/uda! Has estat identificat."
-      signed_up_but_inactive: "T'has inscrit correctament, però no has pogut iniciar sessió perquè no has activat el teu compte."
-      signed_up_but_locked: "T'has inscrit correctament, però no has pogut iniciar sessió perquè el teu compte està bloquejat."
-      signed_up_but_unconfirmed: "T'hem enviat un missatge amb un enllaç de confirmació. Sisplau visita l'enllaç per activar el teu compte."
-      update_needs_confirmation: "Has actualitzat el teu compte correctament, no obstant això necessitem verificar el teu nou compte de correu. Sisplau revisa el teu correu electrònic i visita l'enllaç per finalitzar la confirmació de la teva nova direcció de correu electrònic."
-      updated: "Has actualitzat el teu compte correctament."
+      signed_up_but_inactive: T'has inscrit correctament, però no has pogut iniciar sessió perquè no has activat el teu compte.
+      signed_up_but_locked: T'has inscrit correctament, però no has pogut iniciar sessió perquè el teu compte està bloquejat.
+      signed_up_but_unconfirmed: T'hem enviat un missatge amb un enllaç de confirmació. Sisplau visita l'enllaç per activar el teu compte.
+      update_needs_confirmation: Has actualitzat el teu compte correctament, no obstant això necessitem verificar el teu nou compte de correu. Sisplau revisa el teu correu electrònic i visita l'enllaç per finalitzar la confirmació de la teva nova direcció de correu electrònic.
+      updated: Has actualitzat el teu compte correctament.
     sessions:
-      signed_in: "Has iniciat sessió satisfactòriament."
-      signed_out: "Has tancat la sessió satisfactòriament."
+      signed_in: Has iniciat sessió satisfactòriament.
+      signed_out: Has tancat la sessió satisfactòriament.
     unlocks:
-      send_instructions: "Rebràs un correu electrònic d'aquí uns minuts amb instruccions sobre com desbloquejar el teu compte."
-      send_paranoid_instructions: "Si el teu compte existeix, rebràs un correu electrònic d'aquí a uns minuts amb instruccions sobre com desbloquejar el teu compte."
-      unlocked: "El teu compte ha estat desbloquejat. Sisplau inicia sessió per continuar."
-    links:
-      forgot_way: 'Problemes amb la inscripció'
-      forgot_manual: "Veure el manual d'inscripció"
-      forgot_manual_vot: "Veure el manual de votació"
-      forgot_mail: "No he rebut el correu de confirmació"
-      insc: "Inscripció"
-    labels:
-      new_email: "Nou correu electrònic"
-      new_password: "Contrasenya nova"
-      new_password_confirmation: "Contrasenya nova (repetir)"
+      send_instructions: Rebràs un correu electrònic d'aquí uns minuts amb instruccions sobre com desbloquejar el teu compte.
+      send_paranoid_instructions: Si el teu compte existeix, rebràs un correu electrònic d'aquí a uns minuts amb instruccions sobre com desbloquejar el teu compte.
+      unlocked: El teu compte ha estat desbloquejat. Sisplau inicia sessió per continuar.
   errors:
     messages:
-      already_confirmed: "Ja estàs confirmat, sisplau intenta iniciar sessió."
-      confirmation_period_expired: "necessita ser confirmat d'aquí %{period}, sisplau torna a sol·licitar-la."
-      expired: "ha expirat, sisplau torna a sol·licitar-la."
-      not_found: "no s'ha trobat."
-      not_locked: "no estava bloquejat."
+      already_confirmed: Ja estàs confirmat, sisplau intenta iniciar sessió.
+      confirmation_period_expired: necessita ser confirmat d'aquí %{period}, sisplau torna a sol·licitar-la.
+      expired: ha expirat, sisplau torna a sol·licitar-la.
+      not_found: no s'ha trobat.
+      not_locked: no estava bloquejat.
       not_saved:
-        one: "1 error ha impedit que aquest %{resource} fos desat:"
+        one: '1 error ha impedit que aquest %{resource} fos desat:'
         other: "%{count} errors han impedit que aques %{resource} fos desat:"

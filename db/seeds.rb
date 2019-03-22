@@ -50,3 +50,12 @@ end
 
 puts "Importing Catalonia geographical information"
 Rake::Task['encomu:import_catalan_towns'].invoke
+
+puts "Creating User Groups"
+
+3.times do
+  group = FactoryGirl.create(:group, name: Faker::Company.industry)
+  5.times do
+    FactoryGirl.create(:position, group: group, name: Faker::Job.position)
+  end
+end

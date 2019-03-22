@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190228180040) do
+ActiveRecord::Schema.define(version: 20190320032422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,19 @@ ActiveRecord::Schema.define(version: 20190228180040) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.date     "starts_at"
+    t.date     "ends_at"
+    t.boolean  "is_institutional", default: false
+    t.boolean  "has_location",     default: false
+    t.integer  "location_type"
+    t.boolean  "has_space",        default: false
+    t.string   "space_type"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
   create_table "microcredit_loans", force: :cascade do |t|
     t.integer  "microcredit_id"
     t.integer  "amount"
@@ -253,6 +266,22 @@ ActiveRecord::Schema.define(version: 20190228180040) do
     t.string   "autonomy_code"
     t.string   "island_code"
     t.index ["parent_id"], name: "index_orders_on_parent_id", using: :btree
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position_type"
+    t.integer  "group_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["group_id"], name: "index_positions_on_group_id", using: :btree
+  end
+
+  create_table "positions_users", id: false, force: :cascade do |t|
+    t.integer "position_id"
+    t.integer "user_id"
+    t.index ["position_id"], name: "index_positions_users_on_position_id", using: :btree
+    t.index ["user_id"], name: "index_positions_users_on_user_id", using: :btree
   end
 
   create_table "report_groups", force: :cascade do |t|
@@ -409,6 +438,7 @@ ActiveRecord::Schema.define(version: 20190228180040) do
   add_foreign_key "online_verification_events", "users", column: "verifier_id"
   add_foreign_key "online_verification_issues", "online_verification_events", column: "report_id"
   add_foreign_key "online_verification_issues", "online_verification_labels", column: "label_id"
+  add_foreign_key "positions", "groups"
   add_foreign_key "users", "users", column: "verified_online_by_id"
   add_foreign_key "verification_slots", "users"
 end
