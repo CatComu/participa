@@ -182,6 +182,25 @@ ActiveAdmin.register User do
       end
     end
 
+    panel "#{t('group.other', count: user.groups.count, scope: 'activerecord.models')} (#{user.groups.count})" do
+      header_action link_to t("user.add_group", scope: "activerecord.attributes"), add_group_admin_user_path(user)
+      if user.positions.any?
+        table_for user.positions do
+          column(t("position.group", scope: "activerecord.attributes")) { |position| link_to position.group.name, admin_group_path(position.group) }
+          column(t("group.space_type", scope: "activerecord.attributes")) { |position| position.group.space_type }
+          column(t('position.name', scope: 'activerecord.attributes')) { |position| position.name }
+          column(t('position.position_type', scope: 'activerecord.attributes')) { |position| position.position_type&.capitalize }
+          column(t("group.starts_at", scope: "activerecord.attributes")) { |position| position.group.starts_at }
+          column(t("group.ends_at", scope: "activerecord.attributes")) { |position| position.group.ends_at }
+          column do |position|
+            link_to('Expulsar', remove_group_admin_user_path(user, position_id: position), method: :delete, data: { confirm: "¿Está seguro que desea expulsar del grupo a este usuario?" })
+          end
+        end
+      else
+        t('group.none', scope: 'activerecord.models')
+      end
+    end
+
     panel "Votos" do
       if user.votes.any?
         table_for user.votes do
@@ -315,6 +334,42 @@ ActiveAdmin.register User do
     flash[:notice] = "Ya se ha recuperado el usuario"
     redirect_to action: :show
   end
+
+  member_action :add_group, method: :get, if: -> { can? :manage_groups, User }
+  member_action :save_group, method: :patch, if: -> { can? :manage_groups, User }
+
+  member_action :remove_group, method: :delete, if: -> { can? :manage_groups, User }
+
+  controller do
+    def add_group
+      @user = User.find(params[:id])
+    end
+
+    def save_group
+      @user = User.find(params[:id])
+      @position = Position.find(params[:user][:position_ids])
+      @user.positions << @position
+      flash[:notice] = "exito"
+      redirect_to action: :show
+    end
+
+    def remove_group
+      position = Position.find(params[:position_id])
+      user = User.find(params[:id])
+      user.positions.delete(position)
+      flash[:notice] = "El usuario se ha expulsado del grupo"
+      redirect_to action: :show
+    end
+
+  end
+
+  # member_action :save_group, method: :post do
+  #   user = User.find(params[:id])
+  #   group = Group.find(params[:group_id])
+  #   user.groups << group
+  #   flash[:notice] = I18n.t('group.added')
+  #   redirect_to action: :show
+  # end
 
   sidebar :collaborations, only: :show do
     if user.collaboration
