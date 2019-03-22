@@ -1,0 +1,7 @@
+<%= semantic_form_for([:admin, @user], url: save_group_admin_user_path, builder: Formtastic::FormBuilder) do |f| %>
+  <%= f.inputs "Group" do %>
+    <%= f.input :group_id, as: :select, collection: Group.where.not(id: @user.groups.ids) %>
+    <%= f.input :position_ids, as: :select, collection: option_groups_from_collection_for_select(Group.where.not(id: @user.group_ids), :positions, :name, :id, :name), group_by: :group  %>
+  <% end %>
+  <%= f.actions %>
+<% end %>

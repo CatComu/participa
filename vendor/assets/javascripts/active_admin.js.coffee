@@ -8,6 +8,7 @@
 #= require active_admin_data_panel
 #= require active_admin_spam_filter
 #= require active_admin_flatpickr
+#= require active_admin_positions
 #= require leaflet
 #= require census_map
 #= require active_admin_verifications_map
