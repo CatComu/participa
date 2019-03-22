@@ -4,6 +4,7 @@ class User < ApplicationRecord
   apply_simple_captcha
 
   include FlagShihTzu
+  attr_accessor :group_id
 
   include Rails.application.routes.url_helpers
   require 'phone'
@@ -29,6 +30,8 @@ class User < ApplicationRecord
   has_many :microcredit_loans
 
   belongs_to :catalan_town, foreign_key: :town, primary_key: :code
+  has_and_belongs_to_many :positions
+  has_many :groups, through: :positions
 
   extend Enumerize
   enumerize :gender_identity,
