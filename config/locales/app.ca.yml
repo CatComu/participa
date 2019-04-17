@@ -633,7 +633,7 @@ ca:
     change_email_explain: Si canvies el teu correu electrònic t'enviarem un altre correu perquè el confirmis.
     change_password: Canvia contrasenya
     change_phone: Canvia el telèfon mòbil
-    change_phone_explain_html: T'has validat amb el telèfon mòbil <b>%{unprefixed_phone}</b> de <b>%{phone_country}</b> (prefix internacional %{phone_prefix}).
+    change_phone_explain_html: Si canvies el teu telèfon t'enviarem un SMS </br></br> T'has validat amb el telèfon mòbil <b>+%{phone_prefix} %{unprefixed_phone}</b>.
     personal_data: Dades personals
   verification:
     admin: Gestor de verificacions presencials
