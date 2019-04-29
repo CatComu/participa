@@ -11,6 +11,7 @@
     <div class="col-md-4 col-sm-4 col-xs-6">
       <div class="box-info signup-box">
         <h2><%= t('home.signup_title') %></h2>
+        <p><%= raw t('home.signup_text_html') %></p>
 
         <div class="enter">
           <%= link_to t('devise.buttons.sign_up'), new_user_registration_path, class: 'button' %>
