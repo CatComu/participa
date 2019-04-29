@@ -11,6 +11,27 @@ ActiveAdmin.register Group do
     actions
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :starts_at
+      row :ends_at
+      row :is_institutional
+      row :has_space
+      row :space_type
+      row :has_location
+      row :location_type
+    end
+    panel "Users" do
+      if group.users.any?
+        table_for group.users do
+          column(t('user.name', scope: 'activerecord.attributes')) {|u| link_to u.full_name, admin_user_path(u) }
+          column(t('position.name', scope: 'activerecord.attributes')) { |u| u.positions.find_by(group: group) }
+        end
+      end
+    end
+  end
+
   form do |f|
     f.semantic_errors
     inputs do
