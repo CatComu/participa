@@ -33,10 +33,5 @@
 
 <%= render partial: "verification/requirements" %>
 
-<p class="title"><%= t('verification.bring_your_documents_to') %></p>
+<%= render partial: "verification/map" %>
 
-<%# render partial: "verification/map" %>
-
-<%= t('verification.closed_1') %>
-<%= link_to t('verification.closed_2'), sms_validator_step1_path %>
-<%= t('verification.closed_3') %>

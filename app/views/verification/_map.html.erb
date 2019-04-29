@@ -1,5 +1,7 @@
 <% if Verification::Center.any? %>
 
+  <p class="title"><%= t('verification.bring_your_documents_to') %></p>
+
   <div id="js-verification-map" style="width: 100%; height: 400px"></div>
 
   <br>
@@ -29,6 +31,11 @@
   </ul>
 <% else %>
   <p>
-    <%= t "verification.show.no_points" %>
+  <%= t('verification.closed_1') %>
+  <%= link_to t('verification.closed_2'), sms_validator_step1_path %>
+  </p>
+
+  <p>
+  <%= t('verification.closed_3') %>
   </p>
 <% end %>
