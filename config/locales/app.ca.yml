@@ -303,8 +303,8 @@ ca:
       renewal_terms: Condiciones generales de extinción del microcrédito y renovación de la suscripción
       terms_of_service: Condiciones generales de la suscripción del nuevo microcrédito
   home:
+    signup_text_html: "<p>Som com tu, som gent comuna, dotant-nos de noves eines per a construir un país que tingui cura de la seva gent, amb un nou model econòmic i ecològic basat en el bé comú, que sigui fratern i sobirà, que encapçali una revolució democràtica i feminista, i també inclusiu i on tothom tingui cabuda. I, sobretot, un país que es construeixi des de tots els territoris, pobles i ciudadades.</p><br><p>Defensem una nova manera de fer política, la política del comú, on les persones i la comunitat som protagonistes. Volem una democràcia real que impregni tots els àmbits de la nostra societat. Creiem que per assolir-la calen noves pràctiques polítiques i noves institucions, però també que la ciutadania puguem participar en la política de forma diferent a com ho hem fet fins ara.</p><br><p>Inscriu-t'hi i participa-hi! Construïm en comú el país on volem viure.</p>"
     signup_title: Et donem la benvinguda al portal de participació de Catalunya En Comú!
-    signup_text_html: <p>Som com tu, som gent comuna, dotant-nos de noves eines per a construir un país que tingui cura de la seva gent, amb un nou model econòmic i ecològic basat en el bé comú, que sigui fratern i sobirà, que encapçali una revolució democràtica i feminista, i també inclusiu i on tothom tingui cabuda. I, sobretot, un país que es construeixi des de tots els territoris, pobles i ciudadades.</p><br><p>Defensem una nova manera de fer política, la política del comú, on les persones i la comunitat som protagonistes. Volem una democràcia real que impregni tots els àmbits de la nostra societat. Creiem que per assolir-la calen noves pràctiques polítiques i noves institucions, però també que la ciutadania puguem participar en la política de forma diferent a com ho hem fet fins ara.</p><br><p>Inscriu-t'hi i participa-hi! Construïm en comú el país on volem viure.</p>
   issues:
     born_at: Has d'indicar la teva data de naixement.
     confirm_sms: Per seguretat, has de confirmar el teu telèfon.
@@ -654,9 +654,9 @@ ca:
     born_at: Fecha de nacimiento
     bring_your_documents_to: 'Porta la documentació a:'
     check: 'Comprova que:'
-    closed_1: Actualmente no hay ningún punto de verificación presencial activo.
-    closed_2: Prueba la verificación digital.
-    closed_3: Y si tienes cualquier problema escribe a contacte@catalunyaencomu.cat
+    closed_1: Actualment no hi ha cap punt de verificació pràctic.
+    closed_2: Prova la verificació digital.
+    closed_3: Si tens qualsevol problema escriu a contacte@catalunyaencomu.cat
     confirm: Verificar
     document: DNI/NIE/Passaport
     document_type: Tipus i número de document
