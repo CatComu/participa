@@ -13,6 +13,7 @@ module Verification
     end
 
     scope :past_or_current, -> { where("starts_at <= ?", Time.zone.now) }
+    scope :current_or_future, -> { where("starts_at >= ?", Time.zone.now) }
 
     scope :presential, -> { where.not(verification_center: nil) }
     scope :online, -> { where(verification_center: nil) }

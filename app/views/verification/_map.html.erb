@@ -1,4 +1,4 @@
-<% if Verification::Center.any? %>
+<% if Verification::Center.active.any? %>
 
   <p class="title"><%= t('verification.bring_your_documents_to') %></p>
 
@@ -8,7 +8,7 @@
 
   <ul class="verification-centers js-verification-map-centers"
       <%= (user_signed_in? ? "data-user-postalcode=#{current_user.postal_code}" : '') %>>
-    <% Verification::Center.order(name: :asc).each do |center| %>
+    <% Verification::Center.active.order(name: :asc).each do |center| %>
       <% slots = raw center.verification_slots.map(&:as_opening_time).join('<br />') %>
 
       <li class="verification-center"

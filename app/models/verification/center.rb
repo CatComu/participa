@@ -6,7 +6,7 @@ module Verification
 
     accepts_nested_attributes_for :verification_slots, allow_destroy: true
 
-    scope :active, -> { all }
+    scope :active, -> { joins(:verification_slots).where("verification_slots.starts_at >= ?", Time.zone.now) }
 
     def periods
     end
