@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190320032422) do
+ActiveRecord::Schema.define(version: 20190514182506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,15 @@ ActiveRecord::Schema.define(version: 20190320032422) do
     t.index ["non_user_email"], name: "index_collaborations_on_non_user_email", using: :btree
   end
 
+  create_table "districts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "code"
+    t.integer  "vegueria_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["vegueria_id"], name: "index_districts_on_vegueria_id", using: :btree
+  end
+
   create_table "election_location_questions", force: :cascade do |t|
     t.integer "election_location_id"
     t.text    "title"
@@ -145,10 +154,12 @@ ActiveRecord::Schema.define(version: 20190320032422) do
     t.boolean  "is_institutional", default: false
     t.boolean  "has_location",     default: false
     t.integer  "location_type"
-    t.boolean  "has_space",        default: false
-    t.string   "space_type"
+    t.string   "description"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.integer  "territory_id"
+    t.string   "territory_type"
+    t.index ["territory_id", "territory_type"], name: "index_groups_on_territory_id_and_territory_type", using: :btree
   end
 
   create_table "microcredit_loans", force: :cascade do |t|
@@ -284,6 +295,13 @@ ActiveRecord::Schema.define(version: 20190320032422) do
     t.index ["user_id"], name: "index_positions_users_on_user_id", using: :btree
   end
 
+  create_table "provinces", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "report_groups", force: :cascade do |t|
     t.string   "title"
     t.text     "proc"
@@ -392,6 +410,15 @@ ActiveRecord::Schema.define(version: 20190320032422) do
     t.index ["vote_town"], name: "index_users_on_vote_town", using: :btree
   end
 
+  create_table "veguerias", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "province_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["province_id"], name: "index_veguerias_on_province_id", using: :btree
+  end
+
   create_table "verification_centers", force: :cascade do |t|
     t.string   "name"
     t.string   "street"
@@ -433,6 +460,7 @@ ActiveRecord::Schema.define(version: 20190320032422) do
     t.index ["deleted_at"], name: "index_votes_on_deleted_at", using: :btree
   end
 
+  add_foreign_key "districts", "veguerias"
   add_foreign_key "online_verification_documents", "users", column: "upload_id"
   add_foreign_key "online_verification_events", "users", column: "verified_id"
   add_foreign_key "online_verification_events", "users", column: "verifier_id"
@@ -440,5 +468,6 @@ ActiveRecord::Schema.define(version: 20190320032422) do
   add_foreign_key "online_verification_issues", "online_verification_labels", column: "label_id"
   add_foreign_key "positions", "groups"
   add_foreign_key "users", "users", column: "verified_online_by_id"
+  add_foreign_key "veguerias", "provinces"
   add_foreign_key "verification_slots", "users"
 end
