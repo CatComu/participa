@@ -80,11 +80,10 @@ ActiveRecord::Schema.define(version: 20190514182506) do
   end
 
   create_table "districts", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "code"
-    t.integer  "vegueria_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string  "name"
+    t.integer "code"
+    t.integer "vegueria_id"
+    t.index ["code"], name: "index_districts_on_code", unique: true, using: :btree
     t.index ["vegueria_id"], name: "index_districts_on_vegueria_id", using: :btree
   end
 
@@ -296,10 +295,9 @@ ActiveRecord::Schema.define(version: 20190514182506) do
   end
 
   create_table "provinces", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "name"
+    t.integer "code"
+    t.index ["code"], name: "index_provinces_on_code", unique: true, using: :btree
   end
 
   create_table "report_groups", force: :cascade do |t|
@@ -411,11 +409,10 @@ ActiveRecord::Schema.define(version: 20190514182506) do
   end
 
   create_table "veguerias", force: :cascade do |t|
-    t.string   "name"
-    t.string   "code"
-    t.integer  "province_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string  "name"
+    t.string  "code"
+    t.integer "province_id"
+    t.index ["code"], name: "index_veguerias_on_code", unique: true, using: :btree
     t.index ["province_id"], name: "index_veguerias_on_province_id", using: :btree
   end
 
