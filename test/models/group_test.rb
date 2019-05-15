@@ -13,7 +13,5 @@ class GroupTest < ActiveSupport::TestCase
   test 'optional - required fields' do
     group = build(:group, has_location: true, location_type: nil)
     refute group.valid?
-    group = build(:group, has_space: true, space_type: nil)
-    refute group.valid?
   end
 end
