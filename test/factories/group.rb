@@ -8,7 +8,6 @@ FactoryGirl.define do
     is_institutional false
     has_location false
     location_type nil
-    has_space false
-    space_type nil
+    description nil
   end
 end
