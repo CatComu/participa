@@ -1,5 +1,5 @@
 ActiveAdmin.register Group do
-  permit_params %i[name starts_at ends_at is_institutional has_locations location_type has_spaces space_type]
+  permit_params %i[name starts_at ends_at is_institutional has_location location_type description territory_holder territory_type territory_id]
 
   menu parent: "Users"
 
@@ -17,8 +17,7 @@ ActiveAdmin.register Group do
       row :starts_at
       row :ends_at
       row :is_institutional
-      row :has_space
-      row :space_type
+      row :description
       row :has_location
       row :location_type
     end
@@ -32,18 +31,18 @@ ActiveAdmin.register Group do
     end
   end
 
-  form do |f|
-    f.semantic_errors
-    inputs do
-      f.input :name
-      f.input :starts_at, as: :datepicker
-      f.input :ends_at, as: :datepicker
-      f.input :is_institutional
-      f.input :has_space
-      f.input :space_type
-      f.input :has_location
-      f.input :location_type
-    end
-    actions
-  end
+  form partial: "form"
+  # form do |f|
+  #   f.semantic_errors
+  #   inputs do
+  #     f.input :name
+  #     f.input :starts_at, as: :datepicker
+  #     f.input :ends_at, as: :datepicker
+  #     f.input :is_institutional
+  #     f.input :description
+  #     f.input :has_location
+  #     f.input :location_type
+  #   end
+  #   actions
+  # end
 end

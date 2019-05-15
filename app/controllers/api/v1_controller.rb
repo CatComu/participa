@@ -17,6 +17,11 @@ module Api
       end
     end
 
+    def get_location
+      @data = params[:type].camelize.constantize.all
+      render json: @data.select(:id, :name)
+    end
+
     private
 
     def gcm_params
