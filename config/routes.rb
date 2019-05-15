@@ -4,9 +4,10 @@ Rails.application.routes.draw do
     post '/orders/callback/redsys', to: 'orders#callback_redsys', as: 'orders_callback_redsys'
   end
 
-  if Features.notifications?
-    namespace :api do
-      scope :v1 do
+  namespace :api do
+    scope :v1 do
+      get "/locations/:type", to: "v1#get_location", as: :get_location
+      if Features.notifications?
         scope :gcm do
           post 'registrars', to: 'v1#gcm_registrate'
           delete 'registrars/:registrar_id', to: 'v1#gcm_unregister'
