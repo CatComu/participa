@@ -6,6 +6,13 @@ ActiveAdmin.register Position do
     column(:name) { |position| link_to position.name, admin_position_path(position) }
     column :position_type
     column :group
+    column :users do |position|
+      table_for position.users do
+        column do |user|
+           link_to user.full_name, admin_user_path(user)
+        end
+      end
+    end
     actions
   end
 
