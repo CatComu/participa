@@ -1,4 +1,5 @@
 class District < ApplicationRecord
-  belongs_to :vegueria
   has_many :groups, as: :territory
+
+  has_and_belongs_to_many :veguerias
 end

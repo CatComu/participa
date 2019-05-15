@@ -59,3 +59,6 @@ puts "Creating User Groups"
     FactoryGirl.create(:position, group: group, name: Faker::Job.position)
   end
 end
+
+puts "Importing catalonial models"
+Rake::Task["encomu:import_catalan_models"].invoke

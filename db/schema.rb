@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190514182506) do
+ActiveRecord::Schema.define(version: 20190515195650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,9 +82,19 @@ ActiveRecord::Schema.define(version: 20190514182506) do
   create_table "districts", force: :cascade do |t|
     t.string  "name"
     t.integer "code"
-    t.integer "vegueria_id"
     t.index ["code"], name: "index_districts_on_code", unique: true, using: :btree
-    t.index ["vegueria_id"], name: "index_districts_on_vegueria_id", using: :btree
+  end
+
+  create_table "districts_provinces", id: false, force: :cascade do |t|
+    t.integer "district_id", null: false
+    t.integer "province_id", null: false
+    t.index ["district_id", "province_id"], name: "index_districts_provinces_on_district_id_and_province_id", using: :btree
+  end
+
+  create_table "districts_veguerias", id: false, force: :cascade do |t|
+    t.integer "district_id", null: false
+    t.integer "vegueria_id", null: false
+    t.index ["district_id", "vegueria_id"], name: "index_districts_veguerias_on_district_id_and_vegueria_id", using: :btree
   end
 
   create_table "election_location_questions", force: :cascade do |t|
@@ -300,6 +310,12 @@ ActiveRecord::Schema.define(version: 20190514182506) do
     t.index ["code"], name: "index_provinces_on_code", unique: true, using: :btree
   end
 
+  create_table "provinces_veguerias", id: false, force: :cascade do |t|
+    t.integer "province_id", null: false
+    t.integer "vegueria_id", null: false
+    t.index ["province_id", "vegueria_id"], name: "index_provinces_veguerias_on_province_id_and_vegueria_id", using: :btree
+  end
+
   create_table "report_groups", force: :cascade do |t|
     t.string   "title"
     t.text     "proc"
@@ -409,11 +425,9 @@ ActiveRecord::Schema.define(version: 20190514182506) do
   end
 
   create_table "veguerias", force: :cascade do |t|
-    t.string  "name"
-    t.string  "code"
-    t.integer "province_id"
+    t.string "name"
+    t.string "code"
     t.index ["code"], name: "index_veguerias_on_code", unique: true, using: :btree
-    t.index ["province_id"], name: "index_veguerias_on_province_id", using: :btree
   end
 
   create_table "verification_centers", force: :cascade do |t|
@@ -457,7 +471,6 @@ ActiveRecord::Schema.define(version: 20190514182506) do
     t.index ["deleted_at"], name: "index_votes_on_deleted_at", using: :btree
   end
 
-  add_foreign_key "districts", "veguerias"
   add_foreign_key "online_verification_documents", "users", column: "upload_id"
   add_foreign_key "online_verification_events", "users", column: "verified_id"
   add_foreign_key "online_verification_events", "users", column: "verifier_id"
@@ -465,6 +478,5 @@ ActiveRecord::Schema.define(version: 20190514182506) do
   add_foreign_key "online_verification_issues", "online_verification_labels", column: "label_id"
   add_foreign_key "positions", "groups"
   add_foreign_key "users", "users", column: "verified_online_by_id"
-  add_foreign_key "veguerias", "provinces"
   add_foreign_key "verification_slots", "users"
 end
