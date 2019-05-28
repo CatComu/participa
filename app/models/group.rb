@@ -8,7 +8,7 @@ class Group < ApplicationRecord
   validates :name, presence: true
   validates :location_type, presence: true, if: lambda { |u| u.has_location? }
 
-  enum location_type: [:province, :vegueria, :district]
+  enum location_type: [:province, :vegueria, :district, :catalan_town]
 
   attr_accessor :territory_holder
 

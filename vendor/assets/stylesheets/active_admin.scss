@@ -10,6 +10,11 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
+@import "select2";
+
+.select2-container{
+  width: 63%;
+}
 
 $skinActiveColor: #000;
 $skinHeaderBck: #000;

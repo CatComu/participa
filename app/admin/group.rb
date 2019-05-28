@@ -32,17 +32,4 @@ ActiveAdmin.register Group do
   end
 
   form partial: "form"
-  # form do |f|
-  #   f.semantic_errors
-  #   inputs do
-  #     f.input :name
-  #     f.input :starts_at, as: :datepicker
-  #     f.input :ends_at, as: :datepicker
-  #     f.input :is_institutional
-  #     f.input :description
-  #     f.input :has_location
-  #     f.input :location_type
-  #   end
-  #   actions
-  # end
 end

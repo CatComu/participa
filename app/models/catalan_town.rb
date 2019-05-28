@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CatalanTown < ApplicationRecord
-  self.primary_key = :code
 
   validates :code,
             :name,
@@ -13,4 +12,6 @@ class CatalanTown < ApplicationRecord
             :vegueria_code,
             :vegueria_name,
             presence: true
+
+  has_many :groups, as: :territory
 end

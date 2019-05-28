@@ -1,3 +1,5 @@
+#= require select2
+#= require select2_impl
 $(document).ready ->
   if $("#group_has_location").is(':checked')
     $('#territory_form').show()

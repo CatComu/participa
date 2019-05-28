@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190515195650) do
+ActiveRecord::Schema.define(version: 20190528042646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20190515195650) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
   end
 
-  create_table "catalan_towns", primary_key: "code", id: :string, force: :cascade do |t|
+  create_table "catalan_towns", id: :string, force: :cascade do |t|
     t.string  "name",              null: false
     t.integer "comarca_code",      null: false
     t.string  "comarca_name",      null: false
