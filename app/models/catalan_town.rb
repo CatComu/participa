@@ -14,4 +14,5 @@ class CatalanTown < ApplicationRecord
             presence: true
 
   has_many :groups, as: :territory
+
 end

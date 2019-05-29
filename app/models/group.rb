@@ -19,7 +19,7 @@ class Group < ApplicationRecord
   def territory_holder=(data)
     if data.present?
       data = data.split("-")
-      self.territory_type = data[0].capitalize
+      self.territory_type = data[0].camelcase
       self.territory_id = data[1]
     end
   end
