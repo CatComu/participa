@@ -3,6 +3,8 @@
 ActiveAdmin.register SupraMunicipality do
   menu parent: "Users"
 
+  permit_params :name, :municipality_ids
+
   member_action :add_municipality, method: :get
   member_action :save_municipality, method: :patch, if: -> { can? :manage, SupraMunicipality }
   member_action :remove_municipality, method: :delete, if: -> { can? :manage, SupraMunicipality }
