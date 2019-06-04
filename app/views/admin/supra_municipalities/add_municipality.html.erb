@@ -1,0 +1,6 @@
+<%= semantic_form_for([:admin, @supra_municipality], url: save_municipality_admin_supra_municipality_path, builder: Formtastic::FormBuilder) do |f| %>
+  <%= f.inputs "Municipality" do %>
+    <%= f.input :municipality_ids, as: :select, collection: CatalanTown.all %>
+  <% end %>
+  <%= f.actions %>
+<% end %>

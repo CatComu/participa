@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190529051258) do
+ActiveRecord::Schema.define(version: 20190529055029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 20190529051258) do
     t.integer "total_population"
     t.index ["code"], name: "index_catalan_towns_on_code", using: :btree
     t.index ["name"], name: "index_catalan_towns_on_name", unique: true, using: :btree
+  end
+
+  create_table "catalan_towns_supra_municipalities", id: false, force: :cascade do |t|
+    t.integer "catalan_town_id",       null: false
+    t.integer "supra_municipality_id", null: false
+    t.index ["catalan_town_id", "supra_municipality_id"], name: "index_catalan_towns_supra_municipalities", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -360,6 +366,12 @@ ActiveRecord::Schema.define(version: 20190529051258) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "supra_municipalities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -31,6 +31,11 @@ ca:
       voting_right: Amb dret a vot
   activerecord:
     attributes:
+      supra_municipality:
+        add_municipality: Agregar municipio
+        remove_municipality: Remove
+        saved: Municipality added
+        deleted: Municipality removed
       category:
         name: nombre
       collaboration:
@@ -212,6 +217,9 @@ ca:
               blank: El teu municipi no pot estar en blanc
               present: El teu municipi ha d'estar en blanco
     models:
+      catalan_town:
+        one: Municipio
+        other: Municipios
       category:
         one: Categoría
         other: Categorías
