@@ -1,5 +1,5 @@
 ActiveAdmin.register Notice do
-  menu :parent => "Users"
+  menu parent: "Avanzado"
 
   permit_params :title, :body, :link, :created_at
 

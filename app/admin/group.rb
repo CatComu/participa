@@ -1,7 +1,7 @@
 ActiveAdmin.register Group do
   permit_params %i[name starts_at ends_at is_institutional has_location location_type description territory_holder territory_type territory_id]
 
-  menu parent: "Users"
+  menu parent: "Organización"
 
   index do
     id_column

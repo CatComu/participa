@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register SupraMunicipality do
-  menu parent: "Users"
+  menu parent: "Organización"
 
   permit_params :name, :municipality_ids
 

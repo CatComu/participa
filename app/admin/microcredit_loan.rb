@@ -4,7 +4,12 @@ ActiveAdmin.register MicrocreditLoan do
   permit_params :user_id, :microcredit_id, :document_vatid, :amount, :user_data, :created_at, :confirmed_at, :counted_at, :discarded_at, :returned_at, :transferred_to_id
 
   config.sort_order = 'updated_at_desc'
-  menu :parent => "Microcredits"
+
+  if Features.microcredits?
+    menu parent: "Microcredits"
+  else
+    menu false
+  end
 
   batch_action :destroy, if: proc { can? :admin, MicrocreditLoan }
 

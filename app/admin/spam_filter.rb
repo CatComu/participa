@@ -1,5 +1,5 @@
 ActiveAdmin.register SpamFilter do
-  menu :parent => "Users"
+  menu parent: "Avanzado"
 
   permit_params :name, :code, :data, :query, :active
 

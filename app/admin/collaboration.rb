@@ -34,16 +34,15 @@ def show_collaboration_orders(collaboration, html_output = true)
 end
 
 ActiveAdmin.register Collaboration do
+
   if Features.collaborations?
-    menu :parent => "Colaboraciones"
+    menu parent: "Colaboraciones"
   else
     menu false
   end
 
   scope_to Collaboration, association_method: :full_view
   config.sort_order = 'updated_at_desc'
-
-  menu :parent => "Colaboraciones"
 
   permit_params :user_id, :status, :amount, :frequency, :payment_type, :ccc_entity, :ccc_office, :ccc_dc, :ccc_account, :iban_account, :iban_bic,
                 :redsys_identifier, :redsys_expiration, :for_autonomy_cc, :for_town_cc, :for_island_cc

@@ -1,5 +1,10 @@
 ActiveAdmin.register_page "collaborations_summary" do
-  menu parent: "Colaboraciones", label: "Resumen de colaboraciones"
+
+  if Features.collaborations?
+    menu parent: "Colaboraciones", label: "Resumen de colaboraciones"
+  else
+    menu false
+  end
 
   content title: "Resumen de colaboraciones" do
     columns do

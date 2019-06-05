@@ -1,6 +1,12 @@
 ActiveAdmin.register Microcredit do
   config.sort_order = 'title_asc'
 
+  if Features.microcredits?
+    menu parent: "Microcredits"
+  else
+    menu false
+  end
+
   scope :all
   scope :active
   scope :upcoming_finished

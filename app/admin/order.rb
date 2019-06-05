@@ -2,7 +2,11 @@ ActiveAdmin.register Order do
   scope_to Order, association_method: :full_view
   config.sort_order = 'updated_at_desc'
 
-  menu :parent => "Colaboraciones"
+  if Features.collaborations?
+    menu parent: "Colaboraciones"
+  else
+    menu false
+  end
 
   permit_params :status, :reference, :amount, :first, :payment_type, :payment_identifier, :payment_response, :payable_at, :payed_at, :created_at
 

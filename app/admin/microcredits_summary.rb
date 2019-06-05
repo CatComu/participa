@@ -1,5 +1,10 @@
 ActiveAdmin.register_page "microcredits_summary" do
-  menu parent: "microcredits", label: "Resumen de microcréditos"
+
+  if Features.microcredits?
+    menu parent: "Microcredits", label: "Resumen de microcréditos"
+  else
+    menu false
+  end
 
   content title: "Resumen de microcréditos" do
     panel "Evolución €" do

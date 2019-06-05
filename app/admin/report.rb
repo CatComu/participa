@@ -1,6 +1,7 @@
 ActiveAdmin.register Report do
-  menu :parent => "Users"
   permit_params :title, :query, :main_group, :groups, :version_at
+
+  menu parent: "Avanzado"
 
   index do
     selectable_column
