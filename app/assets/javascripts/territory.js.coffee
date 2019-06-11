@@ -7,14 +7,13 @@ $(document).ready ->
     $('#territory_form').hide()
   $("#group_has_location").change ->
     $('#territory_form').toggle()
-    $("#group_location_type option:selected").prop("selected", false)
-    $("#group_location_type").trigger("change")
+    $("#group_location_type").val(null).trigger('change')
 
   $("#group_location_type").change ->
+    $("#group_territory_holder").val(null).trigger('change')
     $("#group_territory_holder").children("option").remove()
     $.get "/api/v1/locations/" + $("#group_location_type").val(), (data) ->
       $("#group_territory_holder").append("<option value=\"\"></option>")
       $.each data, (i, item) ->
         $("#group_territory_holder").append("<option value=\"" + $("#group_location_type").val() + "-" + item.id + "\">" + item.name + "</option>")
 
-  $("#group_territory_holder")

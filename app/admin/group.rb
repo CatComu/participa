@@ -8,6 +8,8 @@ ActiveAdmin.register Group do
     column :name
     column :starts_at
     column :ends_at
+    column :location_type
+    column :territory
     actions
   end
 
@@ -20,6 +22,7 @@ ActiveAdmin.register Group do
       row :description
       row :has_location
       row :location_type
+      row :territory
     end
     panel "Users" do
       if group.users.any?
