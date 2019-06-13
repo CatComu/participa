@@ -16,13 +16,15 @@ ActiveAdmin.register Group do
   show do
     attributes_table do
       row :name
+      row :description
       row :starts_at
       row :ends_at
       row :is_institutional
-      row :description
       row :has_location
-      row :location_type
-      row :territory
+      if group.has_location
+        row :location_type
+        row :territory
+      end
     end
     panel "Users" do
       if group.users.any?
