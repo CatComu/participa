@@ -187,7 +187,7 @@ ActiveAdmin.register User do
       if user.positions.any?
         table_for user.positions do
           column(t("position.group", scope: "activerecord.attributes")) { |position| link_to position.group.name, admin_group_path(position.group) }
-          column(t("group.space_type", scope: "activerecord.attributes")) { |position| position.group.space_type }
+          column(t("group.territory_type", scope: "activerecord.attributes")) { |position| position.group.territory_type }
           column(t('position.name', scope: 'activerecord.attributes')) { |position| position.name }
           column(t('position.position_type', scope: 'activerecord.attributes')) { |position| position.position_type&.capitalize }
           column(t("group.starts_at", scope: "activerecord.attributes")) { |position| position.group.starts_at }
