@@ -143,15 +143,16 @@ ca:
         unconfirmed_phone: Telèfon mòbil
         vote_town: Municipio de origen
         wants_newsletter: Butlletí
-      user_group:
-        ends_at: Fecha final
-        has_location: Tiene territorio
-        has_space: Es un espacio
-        is_institutional: Es institucional
-        location_type: Tipo de territorio
-        name: Nombre
-        space_type: Tipo de espacio
-        starts_at: Fecha de inicio
+      group:
+        description: Descripció
+        ends_at: Data final
+        has_location: ¿Té territori?
+        is_institutional: ¿Es un espai institucional?
+        location_type: Tipus de territori
+        name: Nom
+        starts_at: Data d'inici
+        territory: Territori
+        users: Usuaris
       verification/center:
         address: Adreça
         created_at: Creada el
@@ -256,9 +257,9 @@ ca:
       user:
         one: Usuari/ària
         other: Usuaris/àries
-      user_group:
-        one: Grupo de usuarios
-        other: Grupos de usuarios
+      group:
+        one: Grup d'usuaris
+        other: Grups d'usuaris
       verification/center:
         one: Punto de Verificación
         other: Puntos de Verificación

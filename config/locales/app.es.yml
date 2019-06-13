@@ -58,14 +58,15 @@ es:
         starts_at: Empieza
         title: Título
       group:
+        description: Descripción
         ends_at: Fecha final
-        has_location: Tiene territorio
-        has_space: Es un espacio
-        is_institutional: Es institucional
+        has_location: ¿Tiene territorio?
+        is_institutional: ¿Es un espacio institucional?
         location_type: Tipo de territorio
         name: Nombre
         space_type: Territorio / ETS / CT
         starts_at: Fecha de inicio
+        territory: Territorio
       microcredit:
         account_number: Número de cuenta
         agreement_link: Enlace al contrato
