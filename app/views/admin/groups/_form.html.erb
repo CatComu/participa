@@ -9,8 +9,8 @@
   <% end %>
   <%= f.inputs "Territory", id: "territory_form" do %>
     <%= f.input :location_type %>
+    <span id="js-territory_holder_val" class="hide"><%= @group.territory_holder %></span>
     <%= f.input :territory_holder, as: :select, collection: [] %>
   <% end %>
   <%= f.actions %>
 <% end %>
-
