@@ -65,6 +65,7 @@ es:
         location_type: Tipo de territorio
         location_types:
           catalan_town: Municipio
+          district: Comarca
           province: Provincia
           supra_municipality: Supra Municipalidad
           vegueria: Vegueria
