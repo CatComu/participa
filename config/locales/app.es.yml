@@ -63,10 +63,16 @@ es:
         has_location: ¿Tiene territorio?
         is_institutional: ¿Es un espacio institucional?
         location_type: Tipo de territorio
+        location_types:
+          catalan_town: Municipio
+          province: Provincia
+          supra_municipality: Supra Municipalidad
+          vegueria: Vegueria
         name: Nombre
-        space_type: Territorio / ETS / CT
         starts_at: Fecha de inicio
         territory: Territorio
+        territory_holder: Territorio
+        users: Usuarios
       microcredit:
         account_number: Número de cuenta
         agreement_link: Enlace al contrato

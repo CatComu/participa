@@ -149,9 +149,15 @@ ca:
         has_location: ¿Té territori?
         is_institutional: ¿Es un espai institucional?
         location_type: Tipus de territori
+        location_types:
+          catalan_town: Municipi
+          province: Provincia
+          supra_municipality: Supra Municipalitat
+          vegueria: Vegueria
         name: Nom
         starts_at: Data d'inici
         territory: Territori
+        territory_holder: Territori
         users: Usuaris
       verification/center:
         address: Adreça

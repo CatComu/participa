@@ -8,8 +8,12 @@ ActiveAdmin.register Group do
     column :name
     column :starts_at
     column :ends_at
-    column :location_type
-    column :territory
+    column :location_type do |group|
+      if group.location_type
+        t("location_types.#{group.location_type}", scope: 'activerecord.attributes.group')
+      end
+    end
+    column :territory 
     actions
   end
 
@@ -22,7 +26,11 @@ ActiveAdmin.register Group do
       row :is_institutional
       row :has_location
       if group.has_location
-        row :location_type
+        row :location_type do |group|
+          if group.location_type
+            t("location_types.#{group.location_type}", scope: 'activerecord.attributes.group')
+          end
+        end
         row :territory
       end
     end
