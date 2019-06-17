@@ -29,6 +29,11 @@
             <%= nav_menu_link_to t("verification.admin"), verification_step1_path, [verification_step1_path], title: t("verification.admin") %>
           </li>
         <% end %>
+        <% if can? :index, :onlineverification %>
+          <li class="nav-action">
+            <%= nav_menu_link_to t("online_verifications.index.title"), online_verifications_path, [online_verifications_path], title: t("online_verifications.index.title") %>
+          </li>
+        <% end %>
         <% if Features.online_verifications? && !current_user.voting_right? %>
           <li class="nav-action">
             <%= nav_menu_link_to t("online_verifications.menu_link"), sms_validator_step1_path, [sms_validator_step1_path, sms_validator_step2_path, sms_validator_step3_path], title: t("online_verifications.menu_link") %>
