@@ -81,6 +81,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'railroady'
   gem 'i18n-tasks'
+  gem 'web-console'
 end
 
 group :test do

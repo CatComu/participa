@@ -58,7 +58,9 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = Rails.application.config_for(:mailserver).symbolize_keys()
 
-  BetterErrors::Middleware.allow_ip! Rails.application.secrets.trusted_ip if Rails.application.secrets.trusted_ip
+  config.web_console.whitelisted_ips = Socket.ip_address_list.reduce([]) do |res, addrinfo|
+    addrinfo.ipv4? ? res << IPAddr.new(addrinfo.ip_address).mask(24) : res
+  end
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
