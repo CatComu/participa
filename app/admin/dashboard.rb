@@ -32,6 +32,17 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
+      column do
+        panel "Últimos grupos dados de alta" do
+          columns do
+            column do
+              Group.limit(30).map do |group|
+                li link_to(group.name, admin_group_path(group)) + "- #{group.created_at}"
+              end
+            end
+          end
+        end
+      end
     end
   end
 end
