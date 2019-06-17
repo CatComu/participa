@@ -9,9 +9,7 @@ ActiveAdmin.register Group do
     column :starts_at
     column :ends_at
     column :location_type do |group|
-      if group.location_type
-        t("location_types.#{group.location_type}", scope: 'activerecord.attributes.group')
-      end
+      group.location_type_name
     end
     column :territory 
     actions
@@ -27,9 +25,7 @@ ActiveAdmin.register Group do
       row :has_location
       if group.has_location
         row :location_type do |group|
-          if group.location_type
-            t("location_types.#{group.location_type}", scope: 'activerecord.attributes.group')
-          end
+          group.location_type_name
         end
         row :territory
       end

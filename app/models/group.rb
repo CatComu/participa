@@ -12,6 +12,12 @@ class Group < ApplicationRecord
 
   attr_accessor :territory_holder
 
+  def location_type_name
+    if self.location_type
+      I18n.t("location_types.#{self.location_type}", scope: 'activerecord.attributes.group')
+    end
+  end
+
   def territory_holder
     "#{territory.class.to_s.downcase}-#{territory_id}"
   end
