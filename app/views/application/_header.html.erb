@@ -44,6 +44,11 @@
             <%= nav_menu_link_to t("podemos.collaboration.title"), new_collaboration_path, [new_collaboration_path], title: t("podemos.collaboration.title")  %>
           </li>
         <% end %>
+        <% if current_user.groups.any? %>
+          <li class="nav-action">
+            <%= nav_menu_link_to t("spaces.index.title"), spaces_path, [spaces_path], title: t("spaces.index.title") %>
+          </li>
+        <% end %>
         <li class=nav-action">
           <%= nav_menu_link_to t("user.personal_data"), edit_user_registration_path, [edit_user_registration_path], title: t("user.personal_data") %>
         </li>

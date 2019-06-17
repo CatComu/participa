@@ -95,8 +95,13 @@ Rails.application.routes.draw do
         root 'devise/sessions#new', as: :root
       end
     end
+    
+    scope '/espacios' do
+      get '/', to: 'spaces#index', as: 'spaces'
+      get '/census/csv', to: 'spaces#download_census', as: 'space_download_census'
+    end
 
-    scope '/verificadores' do
+    scope '/verificadores/presenciales' do
       get '/', to: 'verification#step1', as: :verification_step1
       get '/confirmar', to: 'verification#step2', as: :verification_step2
       post '/search', to: 'verification#search', as: :verification_search
@@ -104,7 +109,7 @@ Rails.application.routes.draw do
       post '/ko', to: 'verification#result_ko', as: :verification_result_ko
     end
 
-    scope '/verificadoresdigitales' do
+    scope '/verificadores/digitales' do
       get '/', to: 'online_verifications#index', as: :online_verifications
       get '/search', to: 'online_verifications#search', as: :search_online_verification
       get '/:user_id', to: 'online_verifications#show', as: :online_verification

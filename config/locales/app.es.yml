@@ -745,6 +745,12 @@ es:
     to_with_article: al
     user_unverified: No te has verificado
     user_verified: Usuario/a verificado/a
+spaces:
+  index: 
+    title: Espacios
+    no_spaces: Actualmente no perteneces a ningún espacio de Catalunya en Comú.
+    list: "Perteneces a los siguientes espacios de Catalunya en Comú:"
+    download: Descargar censo
   views:
     pagination:
       first: First

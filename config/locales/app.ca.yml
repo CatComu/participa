@@ -745,6 +745,12 @@ ca:
     to_with_article: al
     user_unverified: No t'has verificat
     user_verified: Usuari verificat
+  spaces:
+    index:
+      title: Espais
+      no_spaces: Actualment no pertanys a cap espai de Catalunya en Comú.
+      list: "Pertanys als següents espais de Catalunya en Comú:"
+      download: Descarregar cens
   views:
     pagination:
       first: First

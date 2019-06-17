@@ -1,0 +1,15 @@
+<% content_for :title, t('.title') %>
+
+<div class="content-content">
+  <div class="box-info">
+  <%= content_tag(:h2, t('.title')) %>
+  <% if current_user.groups.any? %>
+    <p> <%= t('.list') %> </p>
+    <% current_user.groups.each do |group| %>
+      <%= render partial: "group", locals: { group: group } %>
+    <% end %>
+  <% else %>
+    <p> <%= t('.no_spaces') %> </p>
+  <% end %>
+  </div>
+</div>
