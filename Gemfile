@@ -67,6 +67,11 @@ gem 'validate_url'
 gem 'norma43', github: 'podemos-info/norma43'
 gem 'sepa_king' # for generate SEPA XML files
 
+group :development do
+  gem 'web-console'
+  gem 'webmock'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'capistrano', '~> 3.4'
@@ -81,7 +86,6 @@ group :development, :test do
   gem 'simplecov'
   gem 'railroady'
   gem 'i18n-tasks'
-  gem 'web-console'
 end
 
 group :test do
@@ -92,8 +96,6 @@ group :test do
   gem 'database_cleaner'
   gem 'minitest-hooks'
 end
-
-gem 'webmock', group: :development
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-flatpickr-calendar'
