@@ -7,29 +7,18 @@
 # Starts with a clean ruby image from Debian (slim)
 FROM ruby:2.5.3
 
+ENV PHANTOMJS_VERSION 2.1.1
+RUN wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOMJS_VERSION}-linux-x86_64.tar.bz2
+RUN tar -xjvf phantomjs-${PHANTOMJS_VERSION}-linux-x86_64.tar.bz2
+RUN cp phantomjs-${PHANTOMJS_VERSION}-linux-x86_64/bin/phantomjs /usr/bin/phantomjs
+
 # Installs system dependencies
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -qq && apt-get install -y \
     build-essential \
+    imagemagick \
     libpq-dev \
-    nodejs \
-    imagemagick
-
-# Bleeding edge, I have some doubts with Alpine and glibc
-##
-## Starts with a clean ruby image from Alpine Linux
-#FROM ruby:2.5.3-alpine
-#
-## Installs system dependencies
-#RUN apk add --update --no-cache \
-#    build-base \
-#    file \
-#    imagemagick \
-#    libc6-compat \
-#    nodejs \
-#    postgresql-dev \
-#    tzdata \
-#    xz-libs
+    nodejs
 
 # Sets workdir as /app
 RUN mkdir /app
