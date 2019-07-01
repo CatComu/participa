@@ -15,7 +15,6 @@ services:
       - PORT=3000
       - DATABASE_HOST=pg
       - DATABASE_USERNAME=postgres
-      - RAILS_ENV=development
       - REDIS_URL=redis://redis:6379
       - SSH_AUTH_SOCK=/ssh-agent
     depends_on:
@@ -38,7 +37,6 @@ services:
     environment:
       - DATABASE_HOST=pg
       - DATABASE_USERNAME=postgres
-      - RAILS_ENV=development
       - REDIS_URL=redis://redis:6379
       - QUEUE=*
     depends_on:

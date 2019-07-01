@@ -17,6 +17,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -qq && apt-get install -y \
     build-essential \
     imagemagick \
+    ghostscript \
     libpq-dev \
     nodejs
 
@@ -37,3 +38,6 @@ RUN bundle install
 
 # Copy all the code to /app
 ADD . /app
+
+RUN touch app/assets/fonts/{StagSans-Bold-Web.eot, StagSans-Bold-Web.woff, StagSans-Bold-Web.woff2, StagSans-Book-Web.eot, StagSans-Book-Web.woff, StagSans-Book-Web.woff2, StagSans-Semibold-Web.eot, StagSans-Semibold-Web.woff, StagStencil-Bold-Web.eot, StagStencil-Bold-Web.woff, StagStencil-Bold-Web.woff2}
+
