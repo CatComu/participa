@@ -3,6 +3,11 @@ language: ruby
 services:
   - postgresql
 
+addons:
+  apt:
+    packages:
+      - ghostscript
+      - imagemagick
 rvm:
   - 2.4.1
 
