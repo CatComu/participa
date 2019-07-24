@@ -2,13 +2,16 @@
   <div>
     <p class="poll-q"> <%= group.name %> </p>
     <p class="date"> <%= group.description %> </p>
-    <% if group.has_location %>
+    <p class="date"> <%= position.name %> </p>
+    <% if group.has_location? %>
       <p class="date">
-        <%= group.territory.name %> (<%= group.location_type_name %>)
+      <%= group.territory.name %> (<%= group.location_type_name %>)
       </p>
     <% end %>
   </div>
-  <%= link_to space_download_census_path, class: "button button-vote" do %>
-    <span> <%= t('.download') %> </span>
+  <% if position.downloader? && group.has_location? %>
+    <%= link_to space_download_census_path(position: position.id), method: :post, class: "button button-vote" do %>
+      <span> <%= t('.download') %> </span>
+    <% end %>
   <% end %>
 </div>

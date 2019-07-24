@@ -14,5 +14,7 @@ class CatalanTown < ApplicationRecord
             presence: true
 
   has_many :groups, as: :territory
+  has_many :users, foreign_key: "town", class_name: "User", primary_key: "code"
+  belongs_to :vegueria, primary_key: "code", foreign_key: "vegueria_code"
 
 end

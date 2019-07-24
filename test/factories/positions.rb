@@ -5,5 +5,9 @@ FactoryGirl.define do
     name Faker::Job.position
     association :group
     position_type Random.rand(0..2)
+
+    trait :downloader do
+      downloader true
+    end
   end
 end

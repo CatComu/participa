@@ -4,4 +4,6 @@ class Position < ApplicationRecord
   validates :name, :group, presence: true
 
   enum position_type: %i[electa convidada assessora]
+  delegate :territory, to: :group, allow_nil: true
+  delegate :users, to: :territory, allow_nil: true, prefix: true
 end

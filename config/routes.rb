@@ -98,7 +98,7 @@ Rails.application.routes.draw do
     
     scope '/espacios' do
       get '/', to: 'spaces#index', as: 'spaces'
-      get '/census/csv', to: 'spaces#download_census', as: 'space_download_census'
+      post '/census/csv', to: 'spaces#download_census', as: 'space_download_census'
     end
 
     scope '/verificadores/presenciales' do

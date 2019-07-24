@@ -28,6 +28,7 @@ class Ability
       cannot :manage, :all
       cannot :manage, Resque
       cannot :manage, ActiveAdmin
+      can :show, :spaces if user.groups.any?
 
       if user.finances_admin?
         can [:read], MicrocreditLoan if user.finances_admin?

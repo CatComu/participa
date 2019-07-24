@@ -1,5 +1,5 @@
 ActiveAdmin.register Position do
-  permit_params %i[name position_type group_id]
+  permit_params %i[name position_type group_id downloader]
 
   menu parent: "Organización"
 
@@ -22,6 +22,7 @@ ActiveAdmin.register Position do
     inputs do
       f.input :name
       f.input :position_type
+      f.input :downloader
       f.input :group
     end
     actions

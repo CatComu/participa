@@ -3,10 +3,10 @@
 <div class="content-content">
   <div class="box-info">
   <%= content_tag(:h2, t('.title')) %>
-  <% if current_user.groups.any? %>
+  <% if current_user.positions.any? %>
     <p> <%= t('.list') %> </p>
-    <% current_user.groups.each do |group| %>
-      <%= render partial: "group", locals: { group: group } %>
+    <% current_user.positions.each do |position| %>
+      <%= render partial: "group", locals: { group: position.group, position: position } %>
     <% end %>
   <% else %>
     <p> <%= t('.no_spaces') %> </p>
