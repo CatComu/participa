@@ -19,7 +19,7 @@ class Group < ApplicationRecord
   end
 
   def territory_holder
-    "#{territory.class.to_s.downcase}-#{territory_id}"
+    "#{location_type}-#{territory_id}"
   end
 
   def territory_holder=(data)

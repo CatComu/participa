@@ -111,6 +111,12 @@ ca:
         status_name: Estat
         updated_at: Actualitzada el
         user: Usuari/ària
+      position:
+        downloader: Pot descarregar el cens 
+        users: Usuaris
+        name: Càrrec
+        group: Grup
+        position_type: Tipus
       renewals:
         loan_renewals: Microcréditos suscritos
         renewal_terms: Condiciones generales de extinción del anterior microcrédito y renovación de la suscripción
@@ -751,6 +757,8 @@ ca:
       no_spaces: Actualment no pertanys a cap espai de Catalunya en Comú.
       list: "Pertanys als següents espais de Catalunya en Comú:"
       download: Descarregar cens
+    group:
+      download: Descarregar
   views:
     pagination:
       first: First

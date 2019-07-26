@@ -9,7 +9,8 @@ get_territory_holder = ->
       $("#group_territory_holder").append("<option value=\"" + $("#group_location_type").val() + "-" + item.id + "\">" + item.name + "</option>")
       territory_holder_id = $('#js-territory_holder_val').html()
       if (territory_holder_id != "")
-        $('#group_territory_holder').val(territory_holder_id).trigger('change');
+        console.log(territory_holder_id)
+        $('#group_territory_holder').val(territory_holder_id).trigger('change')
 
 $(document).ready ->
   if $("#group_has_location").is(':checked')

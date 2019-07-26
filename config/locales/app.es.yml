@@ -127,6 +127,7 @@ es:
         group: Grupo
         name: Cargo
         position_type: Tipo
+        downloader: Puede descargar el censo
       renewals:
         loan_renewals: Microcréditos suscritos
         renewal_terms: Condiciones generales de extinción del anterior microcrédito y renovación de la suscripción
@@ -751,6 +752,8 @@ es:
       no_spaces: Actualmente no perteneces a ningún espacio de Catalunya en Comú.
       list: "Perteneces a los siguientes espacios de Catalunya en Comú:"
       download: Descargar censo
+    group:
+      download: Descargar
     views:
       pagination:
         first: First
