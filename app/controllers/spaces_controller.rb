@@ -12,6 +12,7 @@ class SpacesController < ApplicationController
     position = current_user.positions.find(params[:position])
     if position && position.downloader?
       send_data to_csv(position.territory_users),
+        type: "text/csv; charset=utf-8",
         filename: "census-#{position.territory.name.parameterize}.csv"
     else
       flash[:notice] = "Cant download census"
@@ -33,4 +34,3 @@ class SpacesController < ApplicationController
     end
   end
 end
-  
