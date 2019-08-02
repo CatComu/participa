@@ -47,8 +47,7 @@ module SMS
         dst: to,
         msg: body
       }
-      response = client.call(:send_sms, message: message)
+      client.call(:send_sms, message: message)
     end
-
   end
 end

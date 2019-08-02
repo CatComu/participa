@@ -10,12 +10,12 @@ class SpacesController < ApplicationController
   def download_census
     authorize! :show, :spaces
     position = current_user.positions.find(params[:position])
-    if position && position.downloader?
+    if position&.downloader?
       send_data to_csv(position.territory_users),
-        type: "text/csv; charset=utf-8",
-        filename: "census-#{position.territory.name.parameterize}.csv"
+                type: "text/csv; charset=utf-8",
+                filename: "census-#{position.territory.name.parameterize}.csv"
     else
-      flash[:notice] = "Cant download census"
+      flash[:notice] = "Can't download census"
       render :index
     end
   end
@@ -29,7 +29,7 @@ class SpacesController < ApplicationController
       csv << attributes
 
       users.each do |user|
-        csv << attributes.map{ |attr| user.send(attr) }
+        csv << attributes.map { |attr| user.send(attr) }
       end
     end
   end

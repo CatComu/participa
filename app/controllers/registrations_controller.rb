@@ -91,7 +91,7 @@ class RegistrationsController < Devise::RegistrationsController
   def cast_catalonia_resident(param)
     return unless param
 
-    param == "1" ? true : false
+    param == "1"
   end
 
   def redirect_if_valid_dup(type)

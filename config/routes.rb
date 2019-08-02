@@ -95,7 +95,7 @@ Rails.application.routes.draw do
         root 'devise/sessions#new', as: :root
       end
     end
-    
+
     scope '/espacios' do
       get '/', to: 'spaces#index', as: 'spaces'
       post '/census/csv', to: 'spaces#download_census', as: 'space_download_census'

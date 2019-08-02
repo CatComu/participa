@@ -153,17 +153,17 @@ class OpenIdController < ApplicationController
     # This is not technically correct, and should eventually be updated
     # to do real Accept header parsing and logic. Though I expect it will work
     # 99% of the time.
-    if accept and accept.include?('application/xrds+xml')
+    if accept&.include?('application/xrds+xml')
       xrds
       return
     end
     # content negotiation failed, so just render the user page
-    identity_page = <<~EOS
+    identity_page = <<~IDENT
       <html><head>
       <meta http-equiv="X-XRDS-Location" content="#{open_id_xrds_url}" />
       <link rel="openid.server" href="#{open_id_create_url}" />
       </head><body></body></html>
-    EOS
+    IDENT
     # Also add the Yadis location header, so that they don't have
     # to parse the html unless absolutely necessary.
     response.headers['X-XRDS-Location'] = open_id_xrds_url
@@ -201,7 +201,7 @@ class OpenIdController < ApplicationController
       type_str += "<Type>#{uri}</Type>\n      "
     }
 
-    yadis = <<~EOS
+    yadis = <<~YADIS
       <?xml version="1.0" encoding="UTF-8"?>
       <xrds:XRDS
           xmlns:xrds="xri://$xrds"
@@ -213,7 +213,7 @@ class OpenIdController < ApplicationController
           </Service>
         </XRD>
       </xrds:XRDS>
-    EOS
+    YADIS
 
     render :text => yadis, :content_type => 'application/xrds+xml'
   end

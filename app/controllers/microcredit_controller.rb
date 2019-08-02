@@ -45,7 +45,7 @@ class MicrocreditController < ApplicationController
 
   def new_loan
     @microcredit = Microcredit.find(params[:id])
-    redirect_to microcredit_path(brand: @brand) and return unless @microcredit and @microcredit.is_active?
+    redirect_to microcredit_path(brand: @brand) and return unless @microcredit&.is_active?
 
     @loan = MicrocreditLoan.new
     @user_loans = current_user ? @microcredit.loans.where(user: current_user) : []
@@ -53,7 +53,7 @@ class MicrocreditController < ApplicationController
 
   def create_loan
     @microcredit = Microcredit.find(params[:id])
-    redirect_to microcredit_path(brand: @brand) and return unless @microcredit and @microcredit.is_active?
+    redirect_to microcredit_path(brand: @brand) and return unless @microcredit&.is_active?
     @user_loans = current_user ? @microcredit.loans.where(user: current_user) : []
 
     @loan = MicrocreditLoan.new(loan_params) do |loan|
@@ -121,7 +121,7 @@ class MicrocreditController < ApplicationController
            else
              MicrocreditLoan.where(document_vatid: current_user.document_vatid).first
            end
-    return nil unless @microcredit && !@microcredit.has_finished? && loan && loan.microcredit.renewable? && (current_user || loan.unique_hash == params[:hash])
+    return nil unless !@microcredit&.has_finished? && loan && loan.microcredit.renewable? && (current_user || loan.unique_hash == params[:hash])
 
     loans = MicrocreditLoan.renewables.not_renewed.where(microcredit_id: loan.microcredit_id, document_vatid: loan.document_vatid)
     other_loans = MicrocreditLoan.renewables.where.not(microcredit_id: loan.microcredit_id).where(document_vatid: loan.document_vatid).to_a.uniq(&:microcredit_id)
